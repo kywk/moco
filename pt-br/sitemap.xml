@@ -3,58 +3,58 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>http://www.example.com/pt-br/categories/</loc>
+    <loc>https://kywk.github.io/moco/pt-br/categories/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://www.example.com/categories/"
+                href="https://kywk.github.io/moco/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="pt-br"
-                href="http://www.example.com/pt-br/categories/"
+                href="https://kywk.github.io/moco/pt-br/categories/"
                 />
   </url>
   
   <url>
-    <loc>http://www.example.com/pt-br/</loc>
+    <loc>https://kywk.github.io/moco/pt-br/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://www.example.com/"
+                href="https://kywk.github.io/moco/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="pt-br"
-                href="http://www.example.com/pt-br/"
+                href="https://kywk.github.io/moco/pt-br/"
                 />
   </url>
   
   <url>
-    <loc>http://www.example.com/pt-br/series/</loc>
+    <loc>https://kywk.github.io/moco/pt-br/series/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://www.example.com/series/"
+                href="https://kywk.github.io/moco/series/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="pt-br"
-                href="http://www.example.com/pt-br/series/"
+                href="https://kywk.github.io/moco/pt-br/series/"
                 />
   </url>
   
   <url>
-    <loc>http://www.example.com/pt-br/tags/</loc>
+    <loc>https://kywk.github.io/moco/pt-br/tags/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://www.example.com/tags/"
+                href="https://kywk.github.io/moco/tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="pt-br"
-                href="http://www.example.com/pt-br/tags/"
+                href="https://kywk.github.io/moco/pt-br/tags/"
                 />
   </url>
   
