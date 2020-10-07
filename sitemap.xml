@@ -1,14 +1,21 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
-  <sitemap>
-    <loc>https://kywk.github.io/moco/en/sitemap.xml</loc>
-    
-  </sitemap>
+  <url>
+    <loc>https://kywk.github.io/moco/categories/</loc>
+  </url>
   
-  <sitemap>
-    <loc>https://kywk.github.io/moco/pt-br/sitemap.xml</loc>
-    
-  </sitemap>
+  <url>
+    <loc>https://kywk.github.io/moco/</loc>
+  </url>
   
-</sitemapindex>
+  <url>
+    <loc>https://kywk.github.io/moco/series/</loc>
+  </url>
+  
+  <url>
+    <loc>https://kywk.github.io/moco/tags/</loc>
+  </url>
+  
+</urlset>
