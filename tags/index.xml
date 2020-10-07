@@ -5,6 +5,34 @@
     <link>https://kywk.github.io/moco/tags/</link>
     <description>Recent content in Tags on moco</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language><atom:link href="https://kywk.github.io/moco/tags/index.xml" rel="self" type="application/rss+xml" />
+    <language>en</language>
+    <lastBuildDate>Tue, 06 Oct 2020 15:08:05 +0800</lastBuildDate><atom:link href="https://kywk.github.io/moco/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>hexo</title>
+      <link>https://kywk.github.io/moco/tags/hexo/</link>
+      <pubDate>Tue, 06 Oct 2020 15:08:05 +0800</pubDate>
+      
+      <guid>https://kywk.github.io/moco/tags/hexo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>hugo</title>
+      <link>https://kywk.github.io/moco/tags/hugo/</link>
+      <pubDate>Tue, 06 Oct 2020 15:08:05 +0800</pubDate>
+      
+      <guid>https://kywk.github.io/moco/tags/hugo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>tutorial</title>
+      <link>https://kywk.github.io/moco/tags/tutorial/</link>
+      <pubDate>Tue, 06 Oct 2020 15:08:05 +0800</pubDate>
+      
+      <guid>https://kywk.github.io/moco/tags/tutorial/</guid>
+      <description></description>
+    </item>
+    
   </channel>
 </rss>

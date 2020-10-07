@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Language" content="en">
+
+    <meta name="author" content="Moo Cow">
+    <meta name="description" content="從 hexo 到 hugo 沒想過會再次開始寫 blog, 多事的 2020 太多意外, 覺得需要即時一一進行想做的事.
+於是重新開始了 blog, 把想做的事完成, 紀錄, 然後放水流, 繼續&hellip;
+雖一直使用 hexo, 但脫節的這些年 hexo 也改了不少. 繼續沿用 hexo 還是換個平台重新來過, 評估了許久.
+用 從 hexo 到 hugo 餵狗, 棄坑 hexo 原因大多在效能落差大, 及轉移無痛.
+個人心路歷程和 从 Hexo 到 Hugo - ouuan的博客 較為接近,
+之前使用個人修改過後的 hexi, 和 hexo 已越來越不相容, 偶爾升版都需解決衝突.
+自己後端開發工作漸漸從 node.js 轉移到 go lang, 部落格平台轉移似乎也天注定.
+安裝 hugo 選用 theme 搬移 hexo 文件 以下說明 hexo 和 hugo 設計思維不同之處, 並簡單介紹搬移 hexo 到 hugo 注意事項.">
+    <meta name="keywords" content="blog,developer">
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="從 hexo 到 hugo"/>
+<meta name="twitter:description" content="從 hexo 到 hugo 沒想過會再次開始寫 blog, 多事的 2020 太多意外, 覺得需要即時一一進行想做的事.
+於是重新開始了 blog, 把想做的事完成, 紀錄, 然後放水流, 繼續&hellip;
+雖一直使用 hexo, 但脫節的這些年 hexo 也改了不少. 繼續沿用 hexo 還是換個平台重新來過, 評估了許久.
+用 從 hexo 到 hugo 餵狗, 棄坑 hexo 原因大多在效能落差大, 及轉移無痛.
+個人心路歷程和 从 Hexo 到 Hugo - ouuan的博客 較為接近,
+之前使用個人修改過後的 hexi, 和 hexo 已越來越不相容, 偶爾升版都需解決衝突.
+自己後端開發工作漸漸從 node.js 轉移到 go lang, 部落格平台轉移似乎也天注定.
+安裝 hugo 選用 theme 搬移 hexo 文件 以下說明 hexo 和 hugo 設計思維不同之處, 並簡單介紹搬移 hexo 到 hugo 注意事項."/>
+
+    <meta property="og:title" content="從 hexo 到 hugo" />
+<meta property="og:description" content="從 hexo 到 hugo 沒想過會再次開始寫 blog, 多事的 2020 太多意外, 覺得需要即時一一進行想做的事.
+於是重新開始了 blog, 把想做的事完成, 紀錄, 然後放水流, 繼續&hellip;
+雖一直使用 hexo, 但脫節的這些年 hexo 也改了不少. 繼續沿用 hexo 還是換個平台重新來過, 評估了許久.
+用 從 hexo 到 hugo 餵狗, 棄坑 hexo 原因大多在效能落差大, 及轉移無痛.
+個人心路歷程和 从 Hexo 到 Hugo - ouuan的博客 較為接近,
+之前使用個人修改過後的 hexi, 和 hexo 已越來越不相容, 偶爾升版都需解決衝突.
+自己後端開發工作漸漸從 node.js 轉移到 go lang, 部落格平台轉移似乎也天注定.
+安裝 hugo 選用 theme 搬移 hexo 文件 以下說明 hexo 和 hugo 設計思維不同之處, 並簡單介紹搬移 hexo 到 hugo 注意事項." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://kywk.github.io/moco/posts/hugo/hugo-getting-start/" />
+<meta property="article:published_time" content="2020-10-06T15:08:05+08:00" />
+<meta property="article:modified_time" content="2020-10-06T15:08:05+08:00" />
+
+
+    <title>
+  從 hexo 到 hugo · moco
+</title>
+
+    
+      <link rel="canonical" href="https://kywk.github.io/moco/posts/hugo/hugo-getting-start/">
+    
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather:300,700%7CSource+Code+Pro:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" integrity="sha256-gsmEoJAws/Kd3CjuOQzLie5Q3yshhvmo7YNtBG7aaEY=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+
+    
+      
+      
+      <link rel="stylesheet" href="/moco/css/coder.min.9836c03fe5c87d102278a33e86d0591ef36c89b1e17e8e547ebf84c05cee010e.css" integrity="sha256-mDbAP&#43;XIfRAieKM&#43;htBZHvNsibHhfo5Ufr&#43;EwFzuAQ4=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
+    
+      
+        
+        
+        <link rel="stylesheet" href="/moco/css/coder-dark.min.717236c74e0a5208ef73964a9f44c6b443b689a95b270d8b2a40d0c012460dac.css" integrity="sha256-cXI2x04KUgjvc5ZKn0TGtEO2ialbJw2LKkDQwBJGDaw=" crossorigin="anonymous" media="screen" />
+      
+    
+
+    
+
+    
+
+    <link rel="icon" type="image/png" href="/moco/images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/moco/images/favicon-16x16.png" sizes="16x16">
+
+    <link rel="apple-touch-icon" href="/moco/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/moco/images/apple-touch-icon.png">
+
+    
+      <script src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js" crossorigin="anonymous"></script>
+    
+
+    <meta name="generator" content="Hugo 0.75.1" />
+  </head>
+
+  
+  
+    
+  
+  <body class="colorscheme-auto"
+        onload=" twemoji.parse(document.body); "
+  >
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/moco">
+      moco
+    </a>
+    
+      
+        <span id="dark-mode-toggle" class="float-right">
+          <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+        </span>
+      
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/moco/about/">About</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/moco/posts/">Blog</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/moco/projects/">Projects</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/moco/contact/">Contact me</a>
+            </li>
+          
+        
+        
+        
+          <li class="navigation-item separator">
+            <span>|</span>
+          </li>
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">從 hexo 到 hugo</h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+              <time datetime='2020-10-06T15:08:05&#43;08:00'>
+                Oct 6, 2020
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa fa-clock-o" aria-hidden="true"></i>
+              2-minute read
+            </span>
+          </div>
+          <div class="categories">
+  <i class="fa fa-folder" aria-hidden="true"></i>
+    <a href="/moco/categories/hugo/">hugo</a></div>
+
+          <div class="tags">
+  <i class="fa fa-tag" aria-hidden="true"></i>
+    <a href="/moco/tags/hugo/">hugo</a>
+      <span class="separator">•</span>
+    <a href="/moco/tags/hexo/">hexo</a>
+      <span class="separator">•</span>
+    <a href="/moco/tags/tutorial/">tutorial</a></div>
+
+        </div>
+      </header>
+
+      <div>
+        
+        <h2 id="從-hexo-到-hugo">從 hexo 到 hugo</h2>
+<p>沒想過會再次開始寫 blog, 多事的 2020 太多意外, 覺得需要即時一一進行想做的事.<br>
+於是重新開始了 blog, 把想做的事完成, 紀錄, 然後放水流, 繼續&hellip;</p>
+<p>雖一直使用 hexo, 但脫節的這些年 hexo 也改了不少.
+繼續沿用 hexo 還是換個平台重新來過, 評估了許久.<br>
+用 <a href="https://www.google.com/search?sxsrf=ALeKk032kFJ5VuvMawA5Inq9zUmrYJtn3Q%3A1602060011667&amp;ei=6359X8GUKOSbmAWh8oewDQ&amp;q=%E5%BE%9E+hexo+%E5%88%B0%C2%A0hugo&amp;oq=%E5%BE%9E+hexo+%E5%88%B0%C2%A0hugo&amp;gs_lcp=CgZwc3ktYWIQAzoECCMQJzoHCCMQsAIQJzoFCCEQoAFQi3hYnrcBYIu5AWgEcAB4AYABhAGIAbkMkgEEMjIuMpgBAKABAaoBB2d3cy13aXrAAQE&amp;sclient=psy-ab&amp;ved=0ahUKEwiBtp3PiqLsAhXkDaYKHSH5AdYQ4dUDCA0&amp;uact=5">從 hexo 到 hugo</a> 餵狗,
+棄坑 hexo 原因大多在效能落差大, 及轉移無痛.</p>
+<p>個人心路歷程和 <a href="https://ouuan.github.io/post/from-hexo-to-hugo/">从 Hexo 到 Hugo - ouuan的博客</a> 較為接近,<br>
+之前使用個人修改過後的 hexi, 和 hexo 已越來越不相容, 偶爾升版都需解決衝突.</p>
+<p>自己後端開發工作漸漸從 node.js 轉移到 go lang, 部落格平台轉移似乎也天注定.</p>
+<h2 id="安裝-hugo">安裝 hugo</h2>
+<h2 id="選用-theme">選用 theme</h2>
+<h2 id="搬移-hexo-文件">搬移 hexo 文件</h2>
+<p>以下說明 hexo 和 hugo 設計思維不同之處, 並簡單介紹搬移 hexo 到 hugo 注意事項.</p>
+<h3 id="檔案資料夾">檔案資料夾</h3>
+<p>hugo 文章存放在</p>
+<h3 id="草稿">草稿</h3>
+<p>hexo 把放在 <code>source/_draft</code> 的文章視為草稿, 發佈時不會產生該資料夾下的文章.<br>
+hugo 則是以文章 Front Matter 中的 <code>draft</code> 屬性判斷該篇文章是否為草稿, 預設為非草稿.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-markdown" data-lang="markdown">---
+title: &#34;使用 Hugo 建構個人網站與部落格&#34;
+date: 2020-10-06T15:08:05+08:00
+draft: true
+...
+---
+</code></pre></div><p>兩者設計各有優缺, 個人喜歡 hugo 的方式,
+文章編輯完直接改設定再發佈即可, 不需要搬移檔案, 操作比較直觀.</p>
+<h3 id="front-matter">Front Matter</h3>
+<p>hexo 對於 Front Matter 寬容度較高, 並不一定要包在兩個 <code>---</code> 之間.
+而 hugo 的 Front Matter 則必須包含在 <code>---</code> 之間, 否則會出錯.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-markdown" data-lang="markdown">---
+title: &#34;使用 Hugo 建構個人網站與部落格&#34;
+date: 2020-10-06T15:08:05+08:00
+categories: [&#34;hugo&#34;]
+tags: [&#34;hugo&#34;, &#34;tutorial&#34;]
+---
+</code></pre></div><h2 id="發佈到-githubio">發佈到 github.io</h2>
+<p>hugo 沒有像 hexo 內建 deploy 的指令, 需自行把檔案上傳網站空間.
+我使用 <a href="https://pages.github.com/">GitHub Pages</a> 來放置個人網站.</p>
+<p>以下說明假設對 git 已有一定程度熟悉, 關於 git 如何安裝, 相關指令細節不介紹.</p>
+<h3 id="建立-githubio-repository">建立 github.io repository</h3>
+<h3 id="發布-script">發布 script</h3>
+<p>hugo 產生的靜態網站文件都放在 <code>public</code> 資料夾下面, 基本上直接把所有檔案加入 git, 並 push 上去即可.
+於是我寫了簡單的 script 來完成發佈動作.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">hugo
+<span style="color:#fff;font-weight:bold">cd</span> public
+git add .
+git commit -m <span style="color:#0ff;font-weight:bold">&#34;Updated: `date +&#39;%Y-%m-%d %H:%M:%S&#39;`&#34;</span>
+git push -f
+<span style="color:#fff;font-weight:bold">cd</span> ..
+</code></pre></div><h2 id="後記">後記</h2>
+<p>預計完成兩個 hugo 主題開發: <strong>fuday</strong> 及 <strong>rholi</strong>.<br>
+及, 可能的話, 寫個 hexo2hugo 或 或是 hexo2netlify 的主題轉換產生器.</p>
+<p>開發歷程筆記和紀錄會整理更新在本部落格, 完成的發表亦然.<br>
+回到寫 blog 的生活, 有種充實感, 比較有目標完成某件事.</p>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "kywk-moco" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+      </div>
+
+      
+  <footer class="footer">
+    <section class="container">
+      
+        <p>Write programs that do one thing and do it well. Write programs to work together. Write programs to handle text streams, because that is a universal interface.</p>
+      
+      
+        ©
+        
+        2020
+         Moo Cow 
+      
+      
+         · 
+        Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
+      
+      
+        
+      
+    </section>
+  </footer>
+
+    </main>
+
+    
+      
+      <script src="/moco/js/dark-mode.min.0213e1773e6d1c5a644f847c67a6f8abac49a3776e2976f6008038af8c5b76a1.js"></script>
+    
+
+    
+
+    
+
+    <script>
+(function(f, a, t, h, o, m){
+	a[h]=a[h]||function(){
+		(a[h].q=a[h].q||[]).push(arguments)
+	};
+	o=f.createElement('script'),
+	m=f.getElementsByTagName('script')[0];
+	o.async=1; o.src=t; o.id='fathom-script';
+	m.parentNode.insertBefore(o,m)
+})(document, window, '//analytics.example.com/tracker.js', 'fathom');
+fathom('set', 'siteId', 'ABCDE');
+fathom('trackPageview');
+</script>
+
+
+    <script async defer data-domain="example.com" src="https://analytics.example.com/js/plausible.js"></script>
+
+
+  </body>
+
+</html>

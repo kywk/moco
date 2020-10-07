@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>moco</title>
-    <link>https://kywk.github.io/moco/</link>
-    <description>Recent content on moco</description>
+    <title>tutorial on moco</title>
+    <link>https://kywk.github.io/moco/tags/tutorial/</link>
+    <description>Recent content in tutorial on moco</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 06 Oct 2020 15:08:05 +0800</lastBuildDate><atom:link href="https://kywk.github.io/moco/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 06 Oct 2020 15:08:05 +0800</lastBuildDate><atom:link href="https://kywk.github.io/moco/tags/tutorial/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>從 hexo 到 hugo</title>
       <link>https://kywk.github.io/moco/posts/hugo/hugo-getting-start/</link>
@@ -21,26 +21,6 @@
 之前使用個人修改過後的 hexi, 和 hexo 已越來越不相容, 偶爾升版都需解決衝突.
 自己後端開發工作漸漸從 node.js 轉移到 go lang, 部落格平台轉移似乎也天注定.
 安裝 hugo 選用 theme 搬移 hexo 文件 以下說明 hexo 和 hugo 設計思維不同之處, 並簡單介紹搬移 hexo 到 hugo 注意事項.</description>
-    </item>
-    
-    <item>
-      <title>First snippet</title>
-      <link>https://kywk.github.io/moco/snippets/first/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://kywk.github.io/moco/snippets/first/</guid>
-      <description>This content is in snippets/first/index.md
-pwd </description>
-    </item>
-    
-    <item>
-      <title>Second snippet</title>
-      <link>https://kywk.github.io/moco/snippets/second/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://kywk.github.io/moco/snippets/second/</guid>
-      <description>This content is in snippets/second/index.md
-ls -la </description>
     </item>
     
   </channel>

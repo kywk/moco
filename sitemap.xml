@@ -4,10 +4,55 @@
   
   <url>
     <loc>https://kywk.github.io/moco/categories/</loc>
+    <lastmod>2020-10-06T15:08:05+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kywk.github.io/moco/tags/hexo/</loc>
+    <lastmod>2020-10-06T15:08:05+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kywk.github.io/moco/tags/hugo/</loc>
+    <lastmod>2020-10-06T15:08:05+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kywk.github.io/moco/categories/hugo/</loc>
+    <lastmod>2020-10-06T15:08:05+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://kywk.github.io/moco/</loc>
+    <lastmod>2020-10-06T15:08:05+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kywk.github.io/moco/posts/</loc>
+    <lastmod>2020-10-06T15:08:05+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kywk.github.io/moco/tags/</loc>
+    <lastmod>2020-10-06T15:08:05+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kywk.github.io/moco/tags/tutorial/</loc>
+    <lastmod>2020-10-06T15:08:05+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kywk.github.io/moco/posts/hugo/hugo-getting-start/</loc>
+    <lastmod>2020-10-06T15:08:05+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kywk.github.io/moco/snippets/first/</loc>
+  </url>
+  
+  <url>
+    <loc>https://kywk.github.io/moco/snippets/second/</loc>
   </url>
   
   <url>
@@ -15,7 +60,7 @@
   </url>
   
   <url>
-    <loc>https://kywk.github.io/moco/tags/</loc>
+    <loc>https://kywk.github.io/moco/snippets/</loc>
   </url>
   
 </urlset>
