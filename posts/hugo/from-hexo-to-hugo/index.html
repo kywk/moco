@@ -247,7 +247,7 @@ $ git clone https://github.com/luizdepra/hugo-coder.git
 <h3 id="檔案資料夾">檔案資料夾</h3>
 <p>Hugo 文章則放在 <code>content</code> 資料夾, 直接把 Hexo 站台 <code>source/_post</code> 的檔案直接複製到 Hugo 的 <code>content</code> 即可.</p>
 <p>自己目前是使用 <a href="https://obsidian.md/">Obsidian</a> 作為筆記管理系統, 部落格文章也都存放在 Obsidian 資料倉儲內.
-所幸 UN*X 檔案系統的支援, 可以直接建立 Symbolic link, 把 Obsidian 資料夾下的部落格文章 link 到 Hugo 站台.</p>
+所幸 UNIXlike 檔案系統的支援, 可以直接建立 Symbolic link, 把 Obsidian 資料夾下的部落格文章 link 到 Hugo 站台.</p>
 <div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ <span style="color:#fff;font-weight:bold">cd</span> hugo-site/content
 $ ln -sfF ~/Documents/Obsidian/blog blog
 </code></pre></div><p>這樣一來, 我可以使用 Obsidian 來管理部落格文章, 並使用 Hugo 來發佈部落格.</p>
@@ -307,19 +307,22 @@ tags: [&#34;hugo&#34;, &#34;tutorial&#34;]
 <p>我使用 <a href="https://pages.github.com/">GitHub Pages</a> 來放置個人網站.<br>
 以下說明假設對 git/GitHub 已有一定程度熟悉, 關於 git 如何安裝, 相關指令細節不介紹.</p>
 <h3 id="建立-githubio-repository">建立 github.io repository</h3>
-<p>GitHub Pages 可以建立個人網站或專案網站, 網址分別為 <code>https://username.github.io</code> 以及 <code>https://username.github.io/project</code>
-差別在於 respository 和預設 branch 不同.</p>
-<p><strong>個人網站 <a href="https://username.github.io">https://username.github.io</a></strong></p>
-<p>在 GitHub 上新建一個 <code>username.github.io</code> 的專案,
-clone 到 Hugo 站台資料夾內, 並改名為 public 即可.</p>
+<p>GitHub Pages 可以建立個人網站或專案網站,
+基本設置發布流程皆相同, 差別在於 respository 名稱和預設 branch 不同.
+詳盡的說明與步驟在 <a href="https://docs.github.com/en/free-pro-team@latest/github/working-with-github-pages/creating-a-github-pages-site">Creating a GitHub Pages site - GitHub Docs</a></p>
+<p><strong>個人網站</strong></p>
+<p>個人網站的網址為 <code>https://username.github.io</code>.</p>
+<p>大部分相關 Hugo 教學文章都是使用個人網站來介紹, 文章資源相當多.
+設定步驟亦相當簡單, 在 GitHub 上新建一個 <code>username.github.io</code> 的專案,
+將該專案 clone 到 Hugo 站台資料夾內, 並改名為 public 即可.</p>
 <div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ <span style="color:#fff;font-weight:bold">cd</span> $hugo
 $ git clone https://github.com/username/username.github.io public
-</code></pre></div><p>__專案網站 <a href="https://username.github.io/project__">https://username.github.io/project__</a></p>
-<p>GitHub 專案網站預設是使用專案倉儲中的 <code>gh-pages</code> 分支.
+</code></pre></div><p><strong>專案網站</strong></p>
+<p>GitHub 允許使用者為每個專案建置該專案網站, 網址為 <code>https://username.github.io/project</code>.</p>
+<p>GitHub Pages 專案網站預設是使用專案倉儲中的 <code>gh-pages</code> 分支.
 直接在既有的的專案中, 新增 <code>gh-pages</code> branch 即可.</p>
 <p>若想使用其他分支當作網站資料, 可到 GitHub 上去指定 GitHub Pages 所要使用的 branch 名稱和資料夾.</p>
 <p><img src="https://lh3.googleusercontent.com/pw/ACtC-3eDlmDBVj0CEUuHX1_JPkrxo1Tf_b6UDrFPEu1yWPA6HBhd86DqdS0D8h9aT44Hlgl2C6lztM0ngPo2OihyWatPbNFw-qT7wHyR4NEMDSPN9v6Hktt8va0YeQmvA-kJiMTB3XQ9E-dvTZu_awgnQX-cFg=w589-h277-no?authuser=0" alt=""></p>
-<p>詳盡的說明與步驟在 <a href="https://docs.github.com/en/free-pro-team@latest/github/working-with-github-pages/creating-a-github-pages-site">Creating a GitHub Pages site - GitHub Docs</a></p>
 <h3 id="發布-script">發布 script</h3>
 <p>Hugo 生成的靜態網站文件存放在 <code>public</code> 資料夾,
 直接把該資料夾內所有檔案加入 git, 並 push 到 GitHub 即可.
