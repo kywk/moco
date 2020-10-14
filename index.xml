@@ -6,21 +6,23 @@
     <description>Recent content on moco</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 06 Oct 2020 15:08:05 +0800</lastBuildDate><atom:link href="https://kywk.github.io/moco/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 14 Oct 2020 15:08:05 +0800</lastBuildDate><atom:link href="https://kywk.github.io/moco/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>從 hexo 到 hugo</title>
-      <link>https://kywk.github.io/moco/posts/hugo/hugo-getting-start/</link>
-      <pubDate>Tue, 06 Oct 2020 15:08:05 +0800</pubDate>
+      <title>從 Hexo 到 Hugo</title>
+      <link>https://kywk.github.io/moco/posts/hugo/from-hexo-to-hugo/</link>
+      <pubDate>Wed, 14 Oct 2020 15:08:05 +0800</pubDate>
       
-      <guid>https://kywk.github.io/moco/posts/hugo/hugo-getting-start/</guid>
-      <description>從 hexo 到 hugo 沒想過會再次開始寫 blog, 多事的 2020 太多意外, 覺得需要即時一一進行想做的事.
-於是重新開始了 blog, 把想做的事完成, 紀錄, 然後放水流, 繼續&amp;hellip;
-雖一直使用 hexo, 但脫節的這些年 hexo 也改了不少. 繼續沿用 hexo 還是換個平台重新來過, 評估了許久.
-用 從 hexo 到 hugo 餵狗, 棄坑 hexo 原因大多在效能落差大, 及轉移無痛.
-個人心路歷程和 从 Hexo 到 Hugo - ouuan的博客 較為接近,
-之前使用個人修改過後的 hexi, 和 hexo 已越來越不相容, 偶爾升版都需解決衝突.
-自己後端開發工作漸漸從 node.js 轉移到 go lang, 部落格平台轉移似乎也天注定.
-安裝 hugo 選用 theme 搬移 hexo 文件 以下說明 hexo 和 hugo 設計思維不同之處, 並簡單介紹搬移 hexo 到 hugo 注意事項.</description>
+      <guid>https://kywk.github.io/moco/posts/hugo/from-hexo-to-hugo/</guid>
+      <description>本文以 Hugo v0.76.2 編寫介紹, 其他版本若步驟或訊息內容不符, 請以官方文件為準
+從 Hexo 到 Hugo 沒想過會再次開始寫 Blog, 多事的 2020 太多意外, 覺得需要即時一一進行想做的事.
+於是重新開始了 Blog, 把想做的事完成, 紀錄, 然後放水流, 繼續&amp;hellip;
+雖一直使用 Hexo, 但脫節的這些年 Hexo 改了不少. 繼續沿用 Hexo 還是換個平台重新來過, 評估了許久.
+之前使用自行修改過後的 Hexi, 和 Hexo 已越來越不相容, 偶爾升版都需解決衝突.
+用 從 Hexo 到 Hugo 餵狗, 多數人棄坑 Hexo 原因多為效能落差大, 及轉移無痛.
+這些文章中, 個人心路歷程則和 从 Hexo 到 Hugo - ouuan的博客 較為接近.
+自己工作上的開發也漸漸從 node.js 轉移到 go lang, 部落格平台轉移似乎天注定.
+建制環境 官方有提供如何安裝及設定 Hugo 的說明文件, 網路上也找得到中文版文件.
+使用Hugo+Github Pages建置Blog 這篇寫得挺詳細, 部分內容架構會參考該文, 再以自己的歷程增減補充.</description>
     </item>
     
     <item>
