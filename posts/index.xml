@@ -6,7 +6,28 @@
     <description>Recent content in Posts on moco</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 14 Oct 2020 15:08:05 +0800</lastBuildDate><atom:link href="https://kywk.github.io/moco/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 24 Oct 2020 17:05:52 +0800</lastBuildDate><atom:link href="https://kywk.github.io/moco/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Porting Hexo tags to Hugo shortcode</title>
+      <link>https://kywk.github.io/moco/posts/hugo/porting-hexo-tags/</link>
+      <pubDate>Sat, 24 Oct 2020 17:05:52 +0800</pubDate>
+      
+      <guid>https://kywk.github.io/moco/posts/hugo/porting-hexo-tags/</guid>
+      <description>Hexo 標籤 Hexo 標籤外掛是用於在文章中快速插入特定內容的外掛, 有幾種方式擴充:
+  內建標籤:
+Hexo 內建標籤有常用的 Block Quote, Gist, iframe, Youtube, &amp;hellip; 包含 Markdown 不支援但常用的 HTML 語法, 影音嵌入, 程式片斷嵌入&amp;hellip;等.
+文章使用內建標籤的相容性最高, 不容易因更換主題而導致生成錯誤的情況. 但不同 Hexo 版本的內建標籤還是可能不同而發生相容性問題.
+  標籤外掛:
+Hexo 有強大的外掛系統, 能輕鬆擴展功能而不用修改核心模組的原始碼.
+標籤亦可透過外掛擴充, 如何製作標籤外掛 官方有詳細說明.
+Plugins | Hexo 是官方收集的外掛列表, hexo-tag 開頭為標籤外掛. 通常透過 npm install PACKAGE_NAME 來安裝外掛.
+標籤外掛安裝在站台根目錄, 文章使用外掛的標籤和內建標籤一樣是不分主題皆可使用, 通常和 Hexo 版本無關, 不會因 Hexo 升版而出現相容問題.
+  主題支援:
+Hexo 主題可以提供該主題內建支援的標籤, 主題內透過外掛的方式提供擴充的標籤提供文章使用.
+主題支援的標籤產生的網頁風格型態通常比較美觀. 但更換主題時可能會不支援的問題.
+  Hugo shortcode Hugo shortcode 和 Hexo tags 很像, 也有內建 / 站台外掛 / 主題支援三種方式.</description>
+    </item>
+    
     <item>
       <title>從 Hexo 到 Hugo</title>
       <link>https://kywk.github.io/moco/posts/hugo/from-hexo-to-hugo/</link>
