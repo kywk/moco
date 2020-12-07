@@ -10,7 +10,8 @@
     <meta name="description" content="測試 Rclone 伺服機端傳輸時發覺 macOS 並無 iftop 指令, 習慣性地用 brew 安裝了.
 $ brew install iftop ... ... iftop requires root privileges so you will need to run `sudo iftop`. You should be certain that you trust any software you grant root privileges. 安裝完成後提示 iftop 這個指令需要用 root 權限執行.
 然而使用 sudo iftop 之後卻出現 command not found 的錯誤.
-$sudo iftop sudo: iftop: command not found 上網查了查, 看到這篇 一次macbook安装iftop失败的经历及解决方式_偷懒的加菲-CSDN博客 跟著該文的敘述確認了一次, 發覺我的電腦上只存在著 sbin 不在 path 環境變數的問題.">
+$sudo iftop sudo: iftop: command not found 上網查了查, 看到這篇 一次macbook安装iftop失败的经历及解决方式_偷懒的加菲-CSDN博客
+跟著該文敘述一一確認後, 發覺我電腦上只存在著 sbin 不在 path 環境變數的問題.">
     <meta name="keywords" content="blog,developer">
 
     <meta name="twitter:card" content="summary"/>
@@ -18,13 +19,15 @@ $sudo iftop sudo: iftop: command not found 上網查了查, 看到這篇 一次m
 <meta name="twitter:description" content="測試 Rclone 伺服機端傳輸時發覺 macOS 並無 iftop 指令, 習慣性地用 brew 安裝了.
 $ brew install iftop ... ... iftop requires root privileges so you will need to run `sudo iftop`. You should be certain that you trust any software you grant root privileges. 安裝完成後提示 iftop 這個指令需要用 root 權限執行.
 然而使用 sudo iftop 之後卻出現 command not found 的錯誤.
-$sudo iftop sudo: iftop: command not found 上網查了查, 看到這篇 一次macbook安装iftop失败的经历及解决方式_偷懒的加菲-CSDN博客 跟著該文的敘述確認了一次, 發覺我的電腦上只存在著 sbin 不在 path 環境變數的問題."/>
+$sudo iftop sudo: iftop: command not found 上網查了查, 看到這篇 一次macbook安装iftop失败的经历及解决方式_偷懒的加菲-CSDN博客
+跟著該文敘述一一確認後, 發覺我電腦上只存在著 sbin 不在 path 環境變數的問題."/>
 
     <meta property="og:title" content="macOS 安裝 iftop 失敗與解決方式" />
 <meta property="og:description" content="測試 Rclone 伺服機端傳輸時發覺 macOS 並無 iftop 指令, 習慣性地用 brew 安裝了.
 $ brew install iftop ... ... iftop requires root privileges so you will need to run `sudo iftop`. You should be certain that you trust any software you grant root privileges. 安裝完成後提示 iftop 這個指令需要用 root 權限執行.
 然而使用 sudo iftop 之後卻出現 command not found 的錯誤.
-$sudo iftop sudo: iftop: command not found 上網查了查, 看到這篇 一次macbook安装iftop失败的经历及解决方式_偷懒的加菲-CSDN博客 跟著該文的敘述確認了一次, 發覺我的電腦上只存在著 sbin 不在 path 環境變數的問題." />
+$sudo iftop sudo: iftop: command not found 上網查了查, 看到這篇 一次macbook安装iftop失败的经历及解决方式_偷懒的加菲-CSDN博客
+跟著該文敘述一一確認後, 發覺我電腦上只存在著 sbin 不在 path 環境變數的問題." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kywk.github.io/moco/posts/macos/macos_install-iftop/" />
 <meta property="article:published_time" content="2020-12-07T16:48:04+08:00" />
@@ -177,10 +180,10 @@ You should be certain that you trust any software you grant root privileges.
 <p>然而使用 sudo iftop 之後卻出現 command not found 的錯誤.</p>
 <div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$sudo iftop
 sudo: iftop: command not found
-</code></pre></div><p>上網查了查, 看到這篇 <a href="https://blog.csdn.net/hl449006540/article/details/86753227">一次macbook安装iftop失败的经历及解决方式_偷懒的加菲-CSDN博客</a>
-跟著該文的敘述確認了一次, 發覺我的電腦上只存在著 sbin 不在 path 環境變數的問題.</p>
+</code></pre></div><p>上網查了查, 看到這篇 <a href="https://blog.csdn.net/hl449006540/article/details/86753227">一次macbook安装iftop失败的经历及解决方式_偷懒的加菲-CSDN博客</a><br>
+跟著該文敘述一一確認後, 發覺我電腦上只存在著 sbin 不在 path 環境變數的問題.</p>
 <div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ sudo vim /etc/paths
-</code></pre></div><p>打開後發覺 <code>/usr/local/bin</code> 存在該文件中, 但沒有 <code>/usr/local/sbin</code>,
+</code></pre></div><p>打開後發覺裡面有 <code>/usr/local/bin</code>, 但沒有 <code>/usr/local/sbin</code>.<br>
 手動把 <code>/usr/local/sbin</code> 加入, 存檔, 重啟終端機.</p>
 <p><img src="https://lh3.googleusercontent.com/pw/ACtC-3dGa69B3UVBKt_TYzNt4-nTxPn8WbSfDK1nVlQ7PXOXDIwwV9pQbliqr6_vH69TMj-FOUY26BG_CiFLDHo6pXTGOE6dtYMESpYQD-8jucaCbnZ3qObEMzdsFbm62I_Omdvzz-Q_unLNo2CVRxQPkyDsAw=w1208-h894-no?authuser=0" alt=""></p>
 <p>成功.
