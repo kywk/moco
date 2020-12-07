@@ -7,7 +7,7 @@
     <meta http-equiv="Content-Language" content="en">
 
     <meta name="author" content="Moo Cow">
-    <meta name="description" content="tags: #hugo  本文以 Hugo v0.76.2 編寫介紹, 其他版本若步驟或訊息內容不符, 請以官方文件為準
+    <meta name="description" content="本文以 Hugo v0.76.2 編寫介紹, 其他版本若步驟或訊息內容不符, 請以官方文件為準
 從 Hexo 到 Hugo 沒想過會再次開始寫 Blog, 多事的 2020 太多意外, 覺得需要即時一一進行想做的事.
 於是重新開始了 Blog, 把想做的事完成, 紀錄, 然後放水流, 繼續&hellip;
 雖一直使用 Hexo, 但脫節的這些年 Hexo 改了不少. 繼續沿用 Hexo 還是換個平台重新來過, 評估了許久.
@@ -15,12 +15,13 @@
 用 從 Hexo 到 Hugo 餵狗, 多數人棄坑 Hexo 原因多為效能落差大, 及轉移無痛.
 這些文章中, 個人心路歷程則和 从 Hexo 到 Hugo - ouuan的博客 較為接近.
 自己工作上的開發也漸漸從 node.js 轉移到 go lang, 部落格平台轉移似乎天注定.
-建制環境 官方有提供如何安裝及設定 Hugo 的說明文件, 網路上也找得到中文版文件.">
+建制環境 官方有提供如何安裝及設定 Hugo 的說明文件, 網路上也找得到中文版文件.
+使用Hugo&#43;Github Pages建置Blog 這篇寫得挺詳細, 部分內容架構會參考該文, 再以自己的歷程增減補充.">
     <meta name="keywords" content="blog,developer">
 
     <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="從 Hexo 到 Hugo"/>
-<meta name="twitter:description" content="tags: #hugo  本文以 Hugo v0.76.2 編寫介紹, 其他版本若步驟或訊息內容不符, 請以官方文件為準
+<meta name="twitter:description" content="本文以 Hugo v0.76.2 編寫介紹, 其他版本若步驟或訊息內容不符, 請以官方文件為準
 從 Hexo 到 Hugo 沒想過會再次開始寫 Blog, 多事的 2020 太多意外, 覺得需要即時一一進行想做的事.
 於是重新開始了 Blog, 把想做的事完成, 紀錄, 然後放水流, 繼續&hellip;
 雖一直使用 Hexo, 但脫節的這些年 Hexo 改了不少. 繼續沿用 Hexo 還是換個平台重新來過, 評估了許久.
@@ -28,10 +29,11 @@
 用 從 Hexo 到 Hugo 餵狗, 多數人棄坑 Hexo 原因多為效能落差大, 及轉移無痛.
 這些文章中, 個人心路歷程則和 从 Hexo 到 Hugo - ouuan的博客 較為接近.
 自己工作上的開發也漸漸從 node.js 轉移到 go lang, 部落格平台轉移似乎天注定.
-建制環境 官方有提供如何安裝及設定 Hugo 的說明文件, 網路上也找得到中文版文件."/>
+建制環境 官方有提供如何安裝及設定 Hugo 的說明文件, 網路上也找得到中文版文件.
+使用Hugo&#43;Github Pages建置Blog 這篇寫得挺詳細, 部分內容架構會參考該文, 再以自己的歷程增減補充."/>
 
     <meta property="og:title" content="從 Hexo 到 Hugo" />
-<meta property="og:description" content="tags: #hugo  本文以 Hugo v0.76.2 編寫介紹, 其他版本若步驟或訊息內容不符, 請以官方文件為準
+<meta property="og:description" content="本文以 Hugo v0.76.2 編寫介紹, 其他版本若步驟或訊息內容不符, 請以官方文件為準
 從 Hexo 到 Hugo 沒想過會再次開始寫 Blog, 多事的 2020 太多意外, 覺得需要即時一一進行想做的事.
 於是重新開始了 Blog, 把想做的事完成, 紀錄, 然後放水流, 繼續&hellip;
 雖一直使用 Hexo, 但脫節的這些年 Hexo 改了不少. 繼續沿用 Hexo 還是換個平台重新來過, 評估了許久.
@@ -39,7 +41,8 @@
 用 從 Hexo 到 Hugo 餵狗, 多數人棄坑 Hexo 原因多為效能落差大, 及轉移無痛.
 這些文章中, 個人心路歷程則和 从 Hexo 到 Hugo - ouuan的博客 較為接近.
 自己工作上的開發也漸漸從 node.js 轉移到 go lang, 部落格平台轉移似乎天注定.
-建制環境 官方有提供如何安裝及設定 Hugo 的說明文件, 網路上也找得到中文版文件." />
+建制環境 官方有提供如何安裝及設定 Hugo 的說明文件, 網路上也找得到中文版文件.
+使用Hugo&#43;Github Pages建置Blog 這篇寫得挺詳細, 部分內容架構會參考該文, 再以自己的歷程增減補充." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kywk.github.io/moco/posts/hugo/from-hexo-to-hugo/" />
 <meta property="article:published_time" content="2020-10-14T15:08:05+08:00" />
@@ -88,7 +91,7 @@
       <script src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js" crossorigin="anonymous"></script>
     
 
-    <meta name="generator" content="Hugo 0.78.1" />
+    <meta name="generator" content="Hugo 0.79.0" />
   </head>
 
   
@@ -175,8 +178,6 @@
   <i class="fa fa-tag" aria-hidden="true"></i>
     <a href="/moco/tags/hugo/">hugo</a>
       <span class="separator">•</span>
-    <a href="/moco/tags/hexo/">hexo</a>
-      <span class="separator">•</span>
     <a href="/moco/tags/tutorial/">tutorial</a></div>
 
         </div>
@@ -184,13 +185,7 @@
 
       <div>
         
-        <div style="display:none">
-  
-tags: #hugo
-
-</div>
-
-<p><em>本文以 Hugo v0.76.2 編寫介紹, 其他版本若步驟或訊息內容不符, 請以官方文件為準</em></p>
+        <p><em>本文以 Hugo v0.76.2 編寫介紹, 其他版本若步驟或訊息內容不符, 請以官方文件為準</em></p>
 <h2 id="從-hexo-到-hugo">從 Hexo 到 Hugo</h2>
 <p>沒想過會再次開始寫 Blog, 多事的 2020 太多意外, 覺得需要即時一一進行想做的事.<br>
 於是重新開始了 Blog, 把想做的事完成, 紀錄, 然後放水流, 繼續&hellip;</p>

@@ -6,14 +6,43 @@
     <description>Recent content on moco</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 24 Oct 2020 17:05:52 +0800</lastBuildDate><atom:link href="https://kywk.github.io/moco/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 07 Dec 2020 11:35:05 +0800</lastBuildDate><atom:link href="https://kywk.github.io/moco/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Google Team Drive 無限空間申請</title>
+      <link>https://kywk.github.io/moco/posts/tool/gd_team-drive-signup/</link>
+      <pubDate>Mon, 07 Dec 2020 11:35:05 +0800</pubDate>
+      
+      <guid>https://kywk.github.io/moco/posts/tool/gd_team-drive-signup/</guid>
+      <description>Google Drive 團隊硬碟 Google 針對商業和教育用戶推出了 Team Drive (團隊硬碟), 上傳到團隊硬碟中的檔案, 所有權屬於該團隊硬碟管理員和團隊管理員, 可解決員工離職後員工所存放的檔案失效的問題. 團隊硬碟也可以分享給團隊外的成員, 和外部廠商合作時可以讓廠商上傳檔案. 由於檔案所有權屬於管理員, 也可避免廠商擅自移除檔案.
+Google Drive 團隊硬碟在線自助領取 目前團隊硬碟的容量為無限容量, 也未限制每個用戶能開設的團隊硬碟數量, 故有些企業或教育用戶管理員開放大眾使用該組織的團隊硬碟.
+這樣的使用並不完全符合 Google 規範, 且管理員也有權隨時取消團隊硬碟. 使用前還是要先評估.
+近來 Google 對於無限容量服務策略有不少調整, 無限空間可能隨時會被 Google 取消收回, 使用相關服務請三思. 可以拿來存放網路資源, 加密異地備份, 但避免存放個人重要資料.
+last success updated: 2020-12-07
+ YesYesxx.Me團隊盤：https://gd.zxd.workers.dev  failed at 2020-12-07
+ 無限次免費Google TeamDrive：https://td.fastio.me (Error 400) 404 NOT FOUND團隊盤：http://leon.educationhost.cloud (Error 400) 台灣中正大學團隊盤：https://gd.404edu.workers.dev 美國西南學院團隊盤：https://teamdrive.xcpx.workers.dev  connection timeout
+ 英國老牌名校謝菲爾德大學團隊盤：https://gdrive.zppcw.cn (Error: 522) 洛杉矶加利福尼亞大學團隊盤：https://ucla.ur.workers.dev (Error: 522) 日本國際大學團隊盤：https://iuj.ur.workers.dev (Error: 523)  Google Drive 團隊硬碟領取方式 發文時只剩第一組連結能成功申請, 以下說明以該服務為例.</description>
+    </item>
+    
+    <item>
+      <title>Setup Rclone for Google Team Drive on macOS</title>
+      <link>https://kywk.github.io/moco/posts/tool/gd_rclone-config/</link>
+      <pubDate>Tue, 01 Dec 2020 17:35:35 +0800</pubDate>
+      
+      <guid>https://kywk.github.io/moco/posts/tool/gd_rclone-config/</guid>
+      <description>針對 Google Drive 個人與商業用戶, Google 分別提供了 Backup and Sync 以及 DriveFS 兩個桌面軟體以便操作, 但無論是 Backup and Sync 還是 DriveFS 都不支援 Team Drive, 無法在桌面環境下操作 Team Drive, 只能透過網頁端處理.
+所幸萬能的 Rclone 有支援 Team Drive. Rclone Rclone 是一個非常好用的雲端硬碟管理工具, 在命令模式下直接針對多數雲端硬碟服務進行操作, 搭配其他系統工具, 可自動化雲端硬碟的管理, 包括異地備份, 打包, 移除老舊檔案&amp;hellip; 等等.
+目前 Rclone 支援的雲端硬碟服務多達 38 種, 其中本篇的重點在第 13 項 &amp;ldquo;Google Drive&amp;rdquo;.
+注意: 第 12 項的 Google Cloud Storage 並不是 Google Drive, 而是 GCP 中類似 AWS S3 的服務.
+Install rclone on macOS 請無腦愛用 Homebrew</description>
+    </item>
+    
     <item>
       <title>Porting Hexo tags to Hugo shortcode</title>
       <link>https://kywk.github.io/moco/posts/hugo/porting-hexo-tags/</link>
       <pubDate>Sat, 24 Oct 2020 17:05:52 +0800</pubDate>
       
       <guid>https://kywk.github.io/moco/posts/hugo/porting-hexo-tags/</guid>
-      <description>tags: #hugo  Hexo 標籤 Hexo 標籤外掛是用於在文章中快速插入特定內容的外掛, 有幾種方式擴充:
+      <description>Hexo 標籤 Hexo 標籤外掛是用於在文章中快速插入特定內容的外掛, 有幾種方式擴充:
   內建標籤:
 Hexo 內建標籤有常用的 Block Quote, Gist, iframe, Youtube, &amp;hellip; 包含 Markdown 不支援但常用的 HTML 語法, 影音嵌入, 程式片斷嵌入&amp;hellip;等.
 文章使用內建標籤的相容性最高, 不容易因更換主題而導致生成錯誤的情況. 但不同 Hexo 版本的內建標籤還是可能不同而發生相容性問題.
@@ -34,7 +63,7 @@ Hexo 主題可以提供該主題內建支援的標籤, 主題內透過外掛的�
       <pubDate>Wed, 14 Oct 2020 15:08:05 +0800</pubDate>
       
       <guid>https://kywk.github.io/moco/posts/hugo/from-hexo-to-hugo/</guid>
-      <description>tags: #hugo  本文以 Hugo v0.76.2 編寫介紹, 其他版本若步驟或訊息內容不符, 請以官方文件為準
+      <description>本文以 Hugo v0.76.2 編寫介紹, 其他版本若步驟或訊息內容不符, 請以官方文件為準
 從 Hexo 到 Hugo 沒想過會再次開始寫 Blog, 多事的 2020 太多意外, 覺得需要即時一一進行想做的事.
 於是重新開始了 Blog, 把想做的事完成, 紀錄, 然後放水流, 繼續&amp;hellip;
 雖一直使用 Hexo, 但脫節的這些年 Hexo 改了不少. 繼續沿用 Hexo 還是換個平台重新來過, 評估了許久.
@@ -42,7 +71,8 @@ Hexo 主題可以提供該主題內建支援的標籤, 主題內透過外掛的�
 用 從 Hexo 到 Hugo 餵狗, 多數人棄坑 Hexo 原因多為效能落差大, 及轉移無痛.
 這些文章中, 個人心路歷程則和 从 Hexo 到 Hugo - ouuan的博客 較為接近.
 自己工作上的開發也漸漸從 node.js 轉移到 go lang, 部落格平台轉移似乎天注定.
-建制環境 官方有提供如何安裝及設定 Hugo 的說明文件, 網路上也找得到中文版文件.</description>
+建制環境 官方有提供如何安裝及設定 Hugo 的說明文件, 網路上也找得到中文版文件.
+使用Hugo+Github Pages建置Blog 這篇寫得挺詳細, 部分內容架構會參考該文, 再以自己的歷程增減補充.</description>
     </item>
     
     <item>

@@ -7,7 +7,7 @@
     <meta http-equiv="Content-Language" content="en">
 
     <meta name="author" content="Moo Cow">
-    <meta name="description" content="tags: #hugo  Hexo 標籤 Hexo 標籤外掛是用於在文章中快速插入特定內容的外掛, 有幾種方式擴充:
+    <meta name="description" content="Hexo 標籤 Hexo 標籤外掛是用於在文章中快速插入特定內容的外掛, 有幾種方式擴充:
   內建標籤:
 Hexo 內建標籤有常用的 Block Quote, Gist, iframe, Youtube, &hellip; 包含 Markdown 不支援但常用的 HTML 語法, 影音嵌入, 程式片斷嵌入&hellip;等.
 文章使用內建標籤的相容性最高, 不容易因更換主題而導致生成錯誤的情況. 但不同 Hexo 版本的內建標籤還是可能不同而發生相容性問題.
@@ -24,7 +24,7 @@ Hexo 主題可以提供該主題內建支援的標籤, 主題內透過外掛的�
 
     <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Porting Hexo tags to Hugo shortcode"/>
-<meta name="twitter:description" content="tags: #hugo  Hexo 標籤 Hexo 標籤外掛是用於在文章中快速插入特定內容的外掛, 有幾種方式擴充:
+<meta name="twitter:description" content="Hexo 標籤 Hexo 標籤外掛是用於在文章中快速插入特定內容的外掛, 有幾種方式擴充:
   內建標籤:
 Hexo 內建標籤有常用的 Block Quote, Gist, iframe, Youtube, &hellip; 包含 Markdown 不支援但常用的 HTML 語法, 影音嵌入, 程式片斷嵌入&hellip;等.
 文章使用內建標籤的相容性最高, 不容易因更換主題而導致生成錯誤的情況. 但不同 Hexo 版本的內建標籤還是可能不同而發生相容性問題.
@@ -39,7 +39,7 @@ Hexo 主題可以提供該主題內建支援的標籤, 主題內透過外掛的�
   Hugo shortcode Hugo shortcode 和 Hexo tags 很像, 也有內建 / 站台外掛 / 主題支援三種方式."/>
 
     <meta property="og:title" content="Porting Hexo tags to Hugo shortcode" />
-<meta property="og:description" content="tags: #hugo  Hexo 標籤 Hexo 標籤外掛是用於在文章中快速插入特定內容的外掛, 有幾種方式擴充:
+<meta property="og:description" content="Hexo 標籤 Hexo 標籤外掛是用於在文章中快速插入特定內容的外掛, 有幾種方式擴充:
   內建標籤:
 Hexo 內建標籤有常用的 Block Quote, Gist, iframe, Youtube, &hellip; 包含 Markdown 不支援但常用的 HTML 語法, 影音嵌入, 程式片斷嵌入&hellip;等.
 文章使用內建標籤的相容性最高, 不容易因更換主題而導致生成錯誤的情況. 但不同 Hexo 版本的內建標籤還是可能不同而發生相容性問題.
@@ -100,7 +100,7 @@ Hexo 主題可以提供該主題內建支援的標籤, 主題內透過外掛的�
       <script src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js" crossorigin="anonymous"></script>
     
 
-    <meta name="generator" content="Hugo 0.78.1" />
+    <meta name="generator" content="Hugo 0.79.0" />
   </head>
 
   
@@ -187,8 +187,6 @@ Hexo 主題可以提供該主題內建支援的標籤, 主題內透過外掛的�
   <i class="fa fa-tag" aria-hidden="true"></i>
     <a href="/moco/tags/hugo/">hugo</a>
       <span class="separator">•</span>
-    <a href="/moco/tags/hexo/">hexo</a>
-      <span class="separator">•</span>
     <a href="/moco/tags/tutorial/">tutorial</a></div>
 
         </div>
@@ -196,13 +194,7 @@ Hexo 主題可以提供該主題內建支援的標籤, 主題內透過外掛的�
 
       <div>
         
-        <div style="display:none">
-  
-tags: #hugo
-
-</div>
-
-<h2 id="hexo-標籤">Hexo 標籤</h2>
+        <h2 id="hexo-標籤">Hexo 標籤</h2>
 <p>Hexo 標籤外掛是用於在文章中快速插入特定內容的外掛, 有幾種方式擴充:</p>
 <ol>
 <li>
@@ -609,9 +601,9 @@ Hexo 主題可以提供該主題內建支援的標籤, 主題內透過外掛的�
 中所提及的, 我的 blog 資料夾是放在 Obsidian Vault 中,
 為了可以正常使用 Obsidian 標籤, 區塊連結, 反向連結等功能, 文章中穿插了不少 Obsidian 的語法.
 這些語法雖不會造成 Hugo 錯誤, 但部落格文章中有奇怪的語法總是怪.</p>
-<p>簡單做了個 Obsidian shortcode, 區塊中的內容將變成 <code>display:disable</code> 的 div block.
-只要把 Obsidian 所需要的語法標示放在 Obsidian 區塊中,
-既可同時享受 Obsidian 帶來的便利功能, 同時也不影響部落格的閱讀.</p>
+<p>做了個 Obsidian shortcode, 區塊內容將放在 <code>display:disable</code> 的 div block 中.
+只要把 Obsidian 的語法標示放在 Obsidian 區塊中,
+既可享受 Obsidian 帶來的便利功能, 也不影響部落格的閱讀.</p>
 <div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">{{&lt; obsidian &gt;}}
   Obsidian tag, link, block id, ... etc here.
 {{&lt; /obsidian &gt;}}

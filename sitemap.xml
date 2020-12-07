@@ -4,12 +4,47 @@
   
   <url>
     <loc>https://kywk.github.io/moco/categories/</loc>
-    <lastmod>2020-10-24T17:05:52+08:00</lastmod>
+    <lastmod>2020-12-07T11:35:05+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://kywk.github.io/moco/tags/hexo/</loc>
-    <lastmod>2020-10-24T17:05:52+08:00</lastmod>
+    <loc>https://kywk.github.io/moco/posts/tool/gd_team-drive-signup/</loc>
+    <lastmod>2020-12-07T11:35:05+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kywk.github.io/moco/tags/google-drive/</loc>
+    <lastmod>2020-12-07T11:35:05+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kywk.github.io/moco/categories/google-drive/</loc>
+    <lastmod>2020-12-07T11:35:05+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kywk.github.io/moco/</loc>
+    <lastmod>2020-12-07T11:35:05+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kywk.github.io/moco/posts/</loc>
+    <lastmod>2020-12-07T11:35:05+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kywk.github.io/moco/tags/</loc>
+    <lastmod>2020-12-07T11:35:05+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kywk.github.io/moco/tags/rclone/</loc>
+    <lastmod>2020-12-01T17:35:35+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kywk.github.io/moco/posts/tool/gd_rclone-config/</loc>
+    <lastmod>2020-12-01T17:35:35+08:00</lastmod>
   </url>
   
   <url>
@@ -23,22 +58,7 @@
   </url>
   
   <url>
-    <loc>https://kywk.github.io/moco/</loc>
-    <lastmod>2020-10-24T17:05:52+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://kywk.github.io/moco/posts/hugo/porting-hexo-tags/</loc>
-    <lastmod>2020-10-24T17:05:52+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://kywk.github.io/moco/posts/</loc>
-    <lastmod>2020-10-24T17:05:52+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://kywk.github.io/moco/tags/</loc>
     <lastmod>2020-10-24T17:05:52+08:00</lastmod>
   </url>
   
