@@ -6,7 +6,20 @@
     <description>Recent content in google-drive on moco</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 07 Dec 2020 11:35:05 +0800</lastBuildDate><atom:link href="https://kywk.github.io/moco/tags/google-drive/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 07 Dec 2020 17:35:35 +0800</lastBuildDate><atom:link href="https://kywk.github.io/moco/tags/google-drive/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Setup Rclone for Google Team Drive on macOS</title>
+      <link>https://kywk.github.io/moco/posts/tool/gd_rclone-config/</link>
+      <pubDate>Mon, 07 Dec 2020 17:35:35 +0800</pubDate>
+      
+      <guid>https://kywk.github.io/moco/posts/tool/gd_rclone-config/</guid>
+      <description>針對 Google Drive 個人與商業用戶, Google 分別提供了 Backup and Sync 以及 DriveFS 兩個桌面軟體以便操作, 但無論是 Backup and Sync 還是 DriveFS 都不支援 Team Drive, 無法在桌面環境下操作 Team Drive, 只能透過網頁端處理.
+所幸萬能的 Rclone 有支援 Team Drive. Rclone Rclone 是一個非常好用的雲端硬碟管理工具, 在命令模式下直接針對多數雲端硬碟服務進行操作, 搭配其他系統工具, 可自動化雲端硬碟的管理, 包括異地備份, 打包, 移除老舊檔案&amp;hellip; 等等.
+目前 Rclone 支援的雲端硬碟服務多達 38 種, 其中本篇的重點在第 13 項 &amp;ldquo;Google Drive&amp;rdquo;.
+注意: 第 12 項的 Google Cloud Storage 並不是 Google Drive, 而是 GCP 中類似 AWS S3 的服務.
+Install rclone on macOS 請無腦愛用 Homebrew</description>
+    </item>
+    
     <item>
       <title>Google Team Drive 無限空間申請</title>
       <link>https://kywk.github.io/moco/posts/tool/gd_team-drive-signup/</link>
@@ -21,19 +34,6 @@ last success updated: 2020-12-07
  YesYesxx.Me團隊盤：https://gd.zxd.workers.dev  failed at 2020-12-07
  無限次免費Google TeamDrive：https://td.fastio.me (Error 400) 404 NOT FOUND團隊盤：http://leon.educationhost.cloud (Error 400) 台灣中正大學團隊盤：https://gd.404edu.workers.dev 美國西南學院團隊盤：https://teamdrive.xcpx.workers.dev  connection timeout
  英國老牌名校謝菲爾德大學團隊盤：https://gdrive.zppcw.cn (Error: 522) 洛杉矶加利福尼亞大學團隊盤：https://ucla.ur.workers.dev (Error: 522) 日本國際大學團隊盤：https://iuj.ur.workers.dev (Error: 523)  Google Drive 團隊硬碟領取方式 發文時只剩第一組連結能成功申請, 以下說明以該服務為例.</description>
-    </item>
-    
-    <item>
-      <title>Setup Rclone for Google Team Drive on macOS</title>
-      <link>https://kywk.github.io/moco/posts/tool/gd_rclone-config/</link>
-      <pubDate>Tue, 01 Dec 2020 17:35:35 +0800</pubDate>
-      
-      <guid>https://kywk.github.io/moco/posts/tool/gd_rclone-config/</guid>
-      <description>針對 Google Drive 個人與商業用戶, Google 分別提供了 Backup and Sync 以及 DriveFS 兩個桌面軟體以便操作, 但無論是 Backup and Sync 還是 DriveFS 都不支援 Team Drive, 無法在桌面環境下操作 Team Drive, 只能透過網頁端處理.
-所幸萬能的 Rclone 有支援 Team Drive. Rclone Rclone 是一個非常好用的雲端硬碟管理工具, 在命令模式下直接針對多數雲端硬碟服務進行操作, 搭配其他系統工具, 可自動化雲端硬碟的管理, 包括異地備份, 打包, 移除老舊檔案&amp;hellip; 等等.
-目前 Rclone 支援的雲端硬碟服務多達 38 種, 其中本篇的重點在第 13 項 &amp;ldquo;Google Drive&amp;rdquo;.
-注意: 第 12 項的 Google Cloud Storage 並不是 Google Drive, 而是 GCP 中類似 AWS S3 的服務.
-Install rclone on macOS 請無腦愛用 Homebrew</description>
     </item>
     
   </channel>
