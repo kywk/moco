@@ -6,7 +6,19 @@
     <description>Recent content in Posts on moco</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 07 Dec 2020 11:35:05 +0800</lastBuildDate><atom:link href="https://kywk.github.io/moco/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 07 Dec 2020 16:48:04 +0800</lastBuildDate><atom:link href="https://kywk.github.io/moco/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>macOS 安裝 iftop 失敗與解決方式</title>
+      <link>https://kywk.github.io/moco/posts/macos/macos_install-iftop/</link>
+      <pubDate>Mon, 07 Dec 2020 16:48:04 +0800</pubDate>
+      
+      <guid>https://kywk.github.io/moco/posts/macos/macos_install-iftop/</guid>
+      <description>測試 Rclone 伺服機端傳輸時發覺 macOS 並無 iftop 指令, 習慣性地用 brew 安裝了.
+$ brew install iftop ... ... iftop requires root privileges so you will need to run `sudo iftop`. You should be certain that you trust any software you grant root privileges. 安裝完成後提示 iftop 這個指令需要用 root 權限執行.
+然而使用 sudo iftop 之後卻出現 command not found 的錯誤.
+$sudo iftop sudo: iftop: command not found 上網查了查, 看到這篇 一次macbook安装iftop失败的经历及解决方式_偷懒的加菲-CSDN博客 跟著該文的敘述確認了一次, 發覺我的電腦上只存在著 sbin 不在 path 環境變數的問題.</description>
+    </item>
+    
     <item>
       <title>Google Team Drive 無限空間申請</title>
       <link>https://kywk.github.io/moco/posts/tool/gd_team-drive-signup/</link>
