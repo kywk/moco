@@ -389,6 +389,13 @@ team_drive = xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 <p><strong>伺服器端檔案傳輸僅限於同一帳戶下的不同資料夾 (包含共享硬碟), 操作前需先把相關資料夾分享並加到相同帳戶下才不會出錯</strong></p>
 <p>BTW, 在 macOS 安裝 iftop 發生了小問題, 解決紀錄於此: <a href="https://kywk.github.io/moco/posts/macos/macos_install-iftop/">macOS 安裝 iftop 失敗與解決方式 · moco</a></p>
 <h2 id="see-also">See Also</h2>
+<h3 id="rclone-configure-file">rclone configure file</h3>
+<p>在 macOS, Linux 環境下, rclone 設置檔存放在 <code>$HOME/.config/rclone/rclone.conf</code>
+我工作需在多台電腦中切換, 個人習慣把 .config 裡相關資料夾放在 Dropbox 上, 再建立對應 symbolic link.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ mkdir ~/Dropbox/config/rclone
+$ ln -sfF ~/Dropbox/config/rclone .config/rclone
+</code></pre></div><p>這樣無論在哪台電腦修改了什麼設定, 換個電腦仍可輕鬆同步設定.</p>
+<h3 id="rclone-supported-cloud-drive">rclone supported cloud drive</h3>
 <p>Rclone 所支援的雲端硬敵種類如下:</p>
 <div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"> 1 / 1Fichier
  2 / Alias for an existing remote
