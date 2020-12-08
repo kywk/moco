@@ -152,7 +152,7 @@ Install rclone on macOS 請無腦愛用 Homebrew" />
             </span>
             <span class="reading-time">
               <i class="fa fa-clock-o" aria-hidden="true"></i>
-              2-minute read
+              6-minute read
             </span>
           </div>
           <div class="categories">
@@ -183,9 +183,148 @@ Install rclone on macOS 請無腦愛用 Homebrew" />
 <p>請無腦愛用 Homebrew</p>
 <div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ brew install rclone
 </code></pre></div><h2 id="configure-team-drive">Configure team drive</h2>
-<p>透過 brew 安裝 rclone 通常不會出錯, 安裝完後可以準備進行設定.</p>
+<p>透過 brew 安裝 rclone 通常不會出錯, 安裝完後可以準備進行設定.
+輸入 <code>rclone config</code> 後會進入設定模式.</p>
 <div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ rclone config
-</code></pre></div><h3 id="drive-server-side-across">drive-server-side-across</h3>
+
+e) Edit existing remote
+n) New remote
+d) Delete remote
+r) Rename remote
+c) Copy remote
+s) Set configuration password
+q) Quit config
+e/n/d/r/c/s/q&gt;  n 
+name&gt;  it-if-bimgo 
+</code></pre></div><p>先選擇 <code>n</code> 新增一組遠端硬碟, 取個自己喜歡且方便辨識的名稱</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Type of storage to configure.
+Enter a string value. Press Enter for the default (&#34;&#34;).
+Choose a number from below, or type in your own value
+...
+11 / FTP Connection
+   \ &#34;ftp&#34;
+12 / Google Cloud Storage (this is not Google Drive)
+   \ &#34;google cloud storage&#34;
+13 / Google Drive
+   \ &#34;drive&#34;
+14 / Google Photos
+   \ &#34;google photos&#34;
+ ...   
+Storage&gt; 13
+</code></pre></div><p>接著要選擇遠端硬碟的類型, 這篇介紹的是 Google Drive, 選 13.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">** See help for drive backend at: https://rclone.org/drive/ **
+
+Google Application Client Id
+Setting your own is recommended.
+See https://rclone.org/drive/#making-your-own-client-id for how to create your own.
+If you leave this blank, it will use an internal key which is low performance.
+Enter a string value. Press Enter for the default (&#34;&#34;).
+client_id&gt; 9847344-xxx-xxx-xxx
+OAuth Client Secret
+Leave blank normally.
+Enter a string value. Press Enter for the default (&#34;&#34;).
+client_secret&gt; a6AZxxxxxxxx
+</code></pre></div><p>依循 <a href="https://rclone.org/drive/#making-your-own-client-id">Google drive | rclone</a> 的說明,
+申請 Google Drive API 以及 App client_id 和 client_secret, 填入.
+不知道如何申請也可留空, 不過指令執行效率會較差.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Scope that rclone should use when requesting access from drive.
+Enter a string value. Press Enter for the default (&#34;&#34;).
+Choose a number from below, or type in your own value
+ 1 / Full access all files, excluding Application Data Folder.
+   \ &#34;drive&#34;
+ 2 / Read-only access to file metadata and file contents.
+   \ &#34;drive.readonly&#34;
+   / Access to files created by rclone only.
+ 3 | These are visible in the drive website.
+   | File authorization is revoked when the user deauthorizes the app.
+   \ &#34;drive.file&#34;
+   / Allows read and write access to the Application Data folder.
+ 4 | This is not visible in the drive website.
+   \ &#34;drive.appfolder&#34;
+   / Allows read-only access to file metadata but
+ 5 | does not allow any access to read or download file content.
+   \ &#34;drive.metadata.readonly&#34;
+scope&gt; 1
+</code></pre></div><p>接著選擇這個 Remote 的存取權限, 通常選 1, 完整存取的權限.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">ID of the root folder
+Leave blank normally.
+
+Fill in to access &#34;Computers&#34; folders (see docs), or for rclone to use
+a non root folder as its starting point.
+
+Enter a string value. Press Enter for the default (&#34;&#34;).
+root_folder_id&gt;
+</code></pre></div><p>設定預設根目錄的 ID. 以團隊碟來說留空即可.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Service Account Credentials JSON file path
+Leave blank normally.
+Needed only if you want use SA instead of interactive login.
+
+Leading `~` will be expanded in the file name as will environment variables such as `${RCLONE_CONFIG_DIR}`.
+
+Enter a string value. Press Enter for the default (&#34;&#34;).
+service_account_file&gt;
+</code></pre></div><p>Service Account 將在後篇介紹, 這邊先留空即可</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Edit advanced config? (y/n)
+y) Yes
+n) No (default)
+y/n&gt; n
+Remote config
+Use auto config?
+ * Say Y if not sure
+ * Say N if you are working on a remote or headless machine
+y) Yes (default)
+n) No
+y/n&gt;
+If your browser doesn&#39;t open automatically go to the following link: http://127.0.0.1:53682/auth?state=qQkpxmh1iDjj0kmwp4weGw
+Log in and authorize rclone for access
+Waiting for code...
+</code></pre></div><p>進階設定和自動設定都直接按 Enter 以預設值即可, 接著會自動打開網頁, 需要網站上同意 rclone 存取 Google Drive.
+<img src="https://lh3.googleusercontent.com/pw/ACtC-3ecAsml5AprwhfVG3ZFgUqwPlOzVd5imrLPKzUTeQPTGusvxLr556E5_SKQTvPwhyM1i14luzwrycNlSaEncdDfdT7HP8x6siJlsHkMZUz30KAqtMSttstvpJO_ysjLgL-BttXGvvdxbiwFfkcuOt1iZA=w469-h624-no?authuser=0" alt=""></p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">Log in and authorize rclone for access
+Waiting for code...
+Got code
+Configure this as a team drive?
+y) Yes
+n) No (default) 
+y/n&gt; y
+Fetching team drive list...
+Choose a number from below, or type in your own value
+ 1 / if.bimgo
+   \ &#34;0AMxxxxxxxxxxxxxxxx&#34;
+ 2 / i.bimgo
+   \ &#34;0APxxxxxxxxxxxxxxxx&#34;
+ 3 / i.hcc
+   \ &#34;0AHxxxxxxxxxxxxxxxx&#34;
+ 4 / i.vip
+   \ &#34;0AHxxxxxxxxxxxxxxxx&#34;
+Enter a Team Drive ID&gt; 1
+</code></pre></div><p>網頁授權成功後, rclone 會詢問這組 remote 是否為 team drive, 選 y.
+此時 rclone 會自動抓取所有的團隊硬碟, 選擇所要對應的團隊硬碟.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">--------------------
+[it-if-bimgo]
+type = drive
+client_id = 9847344-xxx-xxx-xxx
+client_secret = a6AZxxxxxxxx
+scope = drive
+token = {xxxxxx}
+team_drive = 0AMxxxxxxxxxxxxxxxx
+root_folder_id =
+--------------------
+y) Yes this is OK (default)
+e) Edit this remote
+d) Delete this remote
+y/e/d&gt; y
+</code></pre></div><p>最後再確認上述資訊是否正確, 若無誤選 y 保存. rclone 就設定完成了.</p>
+<h3 id="test">Test</h3>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ rclone mkdir it-if-bimgo:Test                                                    915  2.29    17:25:45 
+$ rclone lsd it-if-bimgo:                                                          917  2.31    17:26:04 
+          -1 2020-12-08 17:25:56        -1 Test
+</code></pre></div><p>測試方式很簡單, 先透過 rclone mkdir 建立一個空資料夾,
+再透過 rclone lsd 確認該資料夾是否存在.
+亦可開網頁確認:
+<img src="https://lh3.googleusercontent.com/pw/ACtC-3cNRVBXgzQV003vslOd5Ms4tIA_w_VcT6Z-6t_vm4BMxy-cDnDETos5QyNXCpNnONFWp5uNhpw046yRyNwmTchdaNY5QttX3IiYhb8Ve8bBlPEgK0Nhx5P15WXEmoUgofpudjZYTLwYhLXXdgZ6N-nEfw=w545-h148-no?authuser=0" alt=""></p>
+<p>這篇文章有更多 rclone 常用指令的介紹: <a href="http://jdev.tw/blog/4746/rclone-cloud-storage-command-line">用rclone命令行指令簡化雲端儲存服務的各項檔案操作 | 簡睿隨筆 | 學習過程的紀錄與備忘</a></p>
+<h3 id="drive-server-side-across">drive-server-side-across</h3>
 <p>Rclone 在 Google 雲端硬碟有支援一項<a href="https://rclone.org/drive/#drive-server-side-across-configs">特殊的設定</a>, 可以直接在伺服器端進行傳輸:</p>
 
 
@@ -245,9 +384,10 @@ token = xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 team_drive = xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 </code></pre></div><p>接著進行傳輸, 同時透過 iftop 觀察網路頻寬.
 可以發現到 rclone 回報的速度數百 MBps 左右, 但是 iftop 回報的流量只有數十 kbps.
-代表成功的直接在伺服器端進行傳輸, 而不消耗本機頻寬, 速度快多了。</p>
+代表成功的直接在伺服器端進行傳輸, 而不消耗本機頻寬, 速度快多了.</p>
 <p><img src="https://lh3.googleusercontent.com/7iZtKqnmydWubdHMGbOhPKRi8EXEgJERJgVth-CGb0XNCOsBcDnuTRf55r1wiYXiMOw55nG6vnoBhA7PUiHtbEJeuOnPQ1t3Z9TJsysCosdwxI9mdFK01DZIk7ptx8HDyQTxyHMl3OPSqCU8ZTMlsOmxFgbXUEZ5qAOJri8hAf_chZu14hbIG5jV_vmzsLMpklYKlwP2Z5CAzkSTc8UVwIKUT4HlQUEpZ4MUCrSiK_zyU3NnuCiPbjuxYf6DWDLYiqlfoXBF0CkraJILc9ZprI_Z1d1EMtdSrgioVn7S1nTaQt980KEGWBYLneKezD9ze7K-JGbwWJtqYq-zl3ZjTZV6Ihh4l8LuNNjw7p5v4Xl94kmvOfU72BSGhvEc_j3QBzP1qNengq1V7qEK1-4bRkeF4dgVmKEIBo0IUw5ePKj5qS37pqPks0W2WZZzHVtI93gh8VLoddSVjt4-FvvgWYIU5ERwoNyOFwPCbz6d_dUKlJ8mgcUSHoLcOwAejOkowg2un0WJ-irWtmoEbJOpOb_peHV0Tq_h4ZzjJMqppwMxLZxQ7KK_nYJQDHYVvGYt9ZwaaWc9Dj6S4xJ_w0S9zfG7N4Lha6bT2kBKlqV4blLJol5_LXb5QD_J8OKtodUmlqHj0J66b0KLwSJMFThevVp6V4Ig0wJ46KBQVKjNQ11TmsBQiE-qwmlfWcZGe9c=w730-h588-no?authuser=0" alt=""></p>
 <p><strong>伺服器端檔案傳輸僅限於同一帳戶下的不同資料夾 (包含共享硬碟), 操作前需先把相關資料夾分享並加到相同帳戶下才不會出錯</strong></p>
+<p>BTW, 在 macOS 安裝 iftop 發生了小問題, 解決紀錄於此: <a href="https://kywk.github.io/moco/posts/macos/macos_install-iftop/">macOS 安裝 iftop 失敗與解決方式 · moco</a></p>
 <h2 id="see-also">See Also</h2>
 <p>Rclone 所支援的雲端硬敵種類如下:</p>
 <div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback"> 1 / 1Fichier
@@ -292,6 +432,8 @@ team_drive = xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 <ul>
 <li><a href="https://wp.madjack.info/linux/rclone-googledrive-onedrive.html">Rclone:玩轉Google Drive &amp; One Drive - 消失的亞特蘭提斯</a></li>
 <li><a href="https://caloskao.org/rclone-across-transfer-each-cloud-drive-without-local-machine-bandwidth/">Rclone 在不使用本機頻寬的條件下進行跨雲端硬碟傳輸 | Calos&rsquo;s Blog</a></li>
+<li><a href="http://jdev.tw/blog/4746/rclone-cloud-storage-command-line">用rclone命令行指令簡化雲端儲存服務的各項檔案操作 | 簡睿隨筆 | 學習過程的紀錄與備忘</a></li>
+<li><a href="t.ly/AWMh">GOOGLE Drive 相互複製 對拷. 前言 | by BunnyBit | Medium</a></li>
 </ul>
 
       </div>
