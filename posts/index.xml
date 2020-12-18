@@ -6,7 +6,21 @@
     <description>Recent content in Posts on moco</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 07 Dec 2020 17:35:35 +0800</lastBuildDate><atom:link href="https://kywk.github.io/moco/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 10 Dec 2020 17:31:07 +0800</lastBuildDate><atom:link href="https://kywk.github.io/moco/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Tar 加密打包語法</title>
+      <link>https://kywk.github.io/moco/posts/tool/cli_encrypt-tarball/</link>
+      <pubDate>Thu, 10 Dec 2020 17:31:07 +0800</pubDate>
+      
+      <guid>https://kywk.github.io/moco/posts/tool/cli_encrypt-tarball/</guid>
+      <description>網路上免費創建團隊硬碟理論上創建者是團隊硬碟管理員, 但實際上所有的團隊硬碟仍受 Google GSuite / Workspace 機構管理員管轄. 機構管理員雖然無法直接存取檔案, 但有權將檔案擁有者轉移給他人. 如果只是存放網路上載來的資源就算了, 若是存放個人檔案, 仍建議加密壓縮.
+TarBall Tar 支援 gzip, bz2, xz&amp;hellip; 等多種壓縮方式, 但 tar 並不支援加密. 在命令列模式下要加密 tarball, 需透過其他指令來完成, 最常用的是 openssl.
+加密 簡單指令如下: (僅加密打包不壓縮)
+$ tar cvf - FILE_NAME | openssl des3 -salt -k passw0rd -out /path/to/file.tar 這個指令主要分成兩部分
+第一部分是 tar cvf - FILE_NAME, 意思是針對 FILE_NAME 進行打包, 其中三個參數的意思是:
+ c: create 創建一個新的 tarball 文件 v: verbose 輸出詳細的處理過程 f:file 需要打包的檔案 (Unix 下一切都是檔案, 資料夾也屬於檔案)  第二部分是 openssl des3 -salt -k passw0rd -out /path/to/file.</description>
+    </item>
+    
     <item>
       <title>Setup Rclone for Google Team Drive on macOS</title>
       <link>https://kywk.github.io/moco/posts/tool/gd_rclone-config/</link>
@@ -17,7 +31,7 @@
 所幸萬能的 Rclone 有支援 Team Drive. Rclone Rclone 是一個非常好用的雲端硬碟管理工具, 在命令模式下直接針對多數雲端硬碟服務進行操作, 搭配其他系統工具, 可自動化雲端硬碟的管理, 包括異地備份, 打包, 移除老舊檔案&amp;hellip; 等等.
 目前 Rclone 支援的雲端硬碟服務多達 38 種, 其中本篇的重點在第 13 項 &amp;ldquo;Google Drive&amp;rdquo;.
 注意: 第 12 項的 Google Cloud Storage 並不是 Google Drive, 而是 GCP 中類似 AWS S3 的服務.
-Install rclone on macOS 請無腦愛用 Homebrew</description>
+Install rclone on macOS 在 macOS 透過 homebrew 安裝的 rclone 目前不支援 mount 命令.</description>
     </item>
     
     <item>
@@ -43,9 +57,10 @@ $sudo iftop sudo: iftop: command not found 上網查了查, 看到這篇 一次m
 Google Drive 團隊硬碟在線自助領取 目前團隊硬碟的容量為無限容量, 也未限制每個用戶能開設的團隊硬碟數量, 故有些企業或教育用戶管理員開放大眾使用該組織的團隊硬碟.
 這樣的使用並不完全符合 Google 規範, 且管理員也有權隨時取消團隊硬碟. 使用前還是要先評估.
 近來 Google 對於無限容量服務策略有不少調整, 無限空間可能隨時會被 Google 取消收回, 使用相關服務請三思. 可以拿來存放網路資源, 加密異地備份, 但避免存放個人重要資料.
-last success updated: 2020-12-07
- YesYesxx.Me團隊盤: https://gd.zxd.workers.dev  failed at 2020-12-07
- 無限次免費Google TeamDrive: https://td.fastio.me (Error 400) 404 NOT FOUND團隊盤: http://leon.educationhost.cloud (Error 400) 台灣中正大學團隊盤: https://gd.404edu.workers.dev 美國西南學院團隊盤: https://teamdrive.xcpx.workers.dev connection timeout 英國老牌名校謝菲爾德大學團隊盤: https://gdrive.zppcw.cn (Error: 522) 洛杉矶加利福尼亞大學團隊盤: https://ucla.</description>
+系列文還在編寫的同時, 之前申請的某個團隊營碟就硬生生消失了. 別把重要資料放團隊碟, 多申請幾組, 設定備份才是使用團隊硬碟較為保險的方式.
+下列申請網址隨時可能失效, 有些達到 API 單日上限, 隔日再試即可.
+ 無限次免費Google TeamDrive: https://td.fastio.me 英國老牌名校謝菲爾德大學團隊盤: https://gdrive.zppcw.cn  failed at 2020-12-17
+ yesyesxx.me: https://gd.zxd.workers.dev/ 台灣中正大學團隊盤: https://gd.404edu.workers.dev/ 404 NOT FOUND團隊盤: http://leon.educationhost.cloud  Google Drive 團隊硬碟領取方式 發文時只剩第一組連結能成功申請, 以下說明以該服務為例, 其他連結申請方式大同小異.</description>
     </item>
     
     <item>

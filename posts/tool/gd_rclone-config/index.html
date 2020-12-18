@@ -11,7 +11,7 @@
 所幸萬能的 Rclone 有支援 Team Drive. Rclone Rclone 是一個非常好用的雲端硬碟管理工具, 在命令模式下直接針對多數雲端硬碟服務進行操作, 搭配其他系統工具, 可自動化雲端硬碟的管理, 包括異地備份, 打包, 移除老舊檔案&hellip; 等等.
 目前 Rclone 支援的雲端硬碟服務多達 38 種, 其中本篇的重點在第 13 項 &ldquo;Google Drive&rdquo;.
 注意: 第 12 項的 Google Cloud Storage 並不是 Google Drive, 而是 GCP 中類似 AWS S3 的服務.
-Install rclone on macOS 請無腦愛用 Homebrew">
+Install rclone on macOS 在 macOS 透過 homebrew 安裝的 rclone 目前不支援 mount 命令.">
     <meta name="keywords" content="blog,developer">
 
     <meta name="twitter:card" content="summary"/>
@@ -20,14 +20,14 @@ Install rclone on macOS 請無腦愛用 Homebrew">
 所幸萬能的 Rclone 有支援 Team Drive. Rclone Rclone 是一個非常好用的雲端硬碟管理工具, 在命令模式下直接針對多數雲端硬碟服務進行操作, 搭配其他系統工具, 可自動化雲端硬碟的管理, 包括異地備份, 打包, 移除老舊檔案&hellip; 等等.
 目前 Rclone 支援的雲端硬碟服務多達 38 種, 其中本篇的重點在第 13 項 &ldquo;Google Drive&rdquo;.
 注意: 第 12 項的 Google Cloud Storage 並不是 Google Drive, 而是 GCP 中類似 AWS S3 的服務.
-Install rclone on macOS 請無腦愛用 Homebrew"/>
+Install rclone on macOS 在 macOS 透過 homebrew 安裝的 rclone 目前不支援 mount 命令."/>
 
     <meta property="og:title" content="Setup Rclone for Google Team Drive on macOS" />
 <meta property="og:description" content="針對 Google Drive 個人與商業用戶, Google 分別提供了 Backup and Sync 以及 DriveFS 兩個桌面軟體以便操作, 但無論是 Backup and Sync 還是 DriveFS 都不支援 Team Drive, 無法在桌面環境下操作 Team Drive, 只能透過網頁端處理.
 所幸萬能的 Rclone 有支援 Team Drive. Rclone Rclone 是一個非常好用的雲端硬碟管理工具, 在命令模式下直接針對多數雲端硬碟服務進行操作, 搭配其他系統工具, 可自動化雲端硬碟的管理, 包括異地備份, 打包, 移除老舊檔案&hellip; 等等.
 目前 Rclone 支援的雲端硬碟服務多達 38 種, 其中本篇的重點在第 13 項 &ldquo;Google Drive&rdquo;.
 注意: 第 12 項的 Google Cloud Storage 並不是 Google Drive, 而是 GCP 中類似 AWS S3 的服務.
-Install rclone on macOS 請無腦愛用 Homebrew" />
+Install rclone on macOS 在 macOS 透過 homebrew 安裝的 rclone 目前不支援 mount 命令." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kywk.github.io/moco/posts/tool/gd_rclone-config/" />
 <meta property="article:published_time" content="2020-12-07T17:35:35+08:00" />
@@ -180,9 +180,20 @@ Install rclone on macOS 請無腦愛用 Homebrew" />
 <p>目前 Rclone 支援的雲端硬碟服務多達 38 種, 其中本篇的重點在第 13 項 &ldquo;Google Drive&rdquo;.</p>
 <p><strong>注意:</strong> 第 12 項的 Google Cloud Storage 並不是 Google Drive, 而是 GCP 中類似 AWS S3 的服務.</p>
 <h2 id="install-rclone-on-macos">Install rclone on macOS</h2>
-<p>請無腦愛用 Homebrew</p>
+<p>在 macOS 透過 homebrew 安裝的 rclone 目前不支援 mount 命令.
+不過目前我的使用情境還不需要 mount 遠端硬碟, 所以無腦使用 Homebrew 安裝:</p>
 <div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ brew install rclone
-</code></pre></div><h2 id="configure-team-drive">Configure team drive</h2>
+
+Homebrew&#39;s installation does not include the `mount` subcommand on MacOS.
+
+zsh completions have been installed to:
+  /usr/local/share/zsh/site-functions
+
+/usr/local/share/zsh/site-functions is not in your zsh FPATH!
+Add it by following these steps:
+  https://docs.brew.sh/Shell-Completion#configuring-completions-in-zsh
+</code></pre></div><h3 id="zsh-auto-completion">zsh auto completion</h3>
+<h2 id="configure-team-drive">Configure team drive</h2>
 <p>透過 brew 安裝 rclone 通常不會出錯, 安裝完後可以準備進行設定.
 輸入 <code>rclone config</code> 後會進入設定模式.</p>
 <div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ rclone config
@@ -391,8 +402,10 @@ team_drive = xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 <h2 id="see-also">See Also</h2>
 <h3 id="rclone-configure-file">rclone configure file</h3>
 <p>在 macOS, Linux 環境下, rclone 設置檔存放在 <code>$HOME/.config/rclone/rclone.conf</code>
-我工作需在多台電腦中切換, 個人習慣把 .config 裡相關資料夾放在 Dropbox 上, 再建立對應 symbolic link.</p>
-<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ mkdir ~/Dropbox/config/rclone
+我工作需在多台電腦中切換, 個人習慣把 .config 裡需在多台電腦同步的資料夾放在 Dropbox 上,
+再建立對應 symbolic link.</p>
+<div class="highlight"><pre style="color:#e5e5e5;background-color:#000;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">$ mkdir ~/Dropbox/config
+$ mv ~/.config/rclone ~/Dropbox/config
 $ ln -sfF ~/Dropbox/config/rclone .config/rclone
 </code></pre></div><p>這樣無論在哪台電腦修改了什麼設定, 換個電腦仍可輕鬆同步設定.</p>
 <h3 id="rclone-supported-cloud-drive">rclone supported cloud drive</h3>
