@@ -5,14 +5,15 @@
     <link>https://kywk.github.io/moco/tags/hugo/</link>
     <description>Recent content in hugo on moco</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
+    <language>en-us</language>
+    <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
     <lastBuildDate>Sat, 24 Oct 2020 17:05:52 +0800</lastBuildDate><atom:link href="https://kywk.github.io/moco/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Porting Hexo tags to Hugo shortcode</title>
-      <link>https://kywk.github.io/moco/posts/hugo/porting-hexo-tags/</link>
+      <link>https://kywk.github.io/moco/posts/2020/10/porting-hexo-tags/</link>
       <pubDate>Sat, 24 Oct 2020 17:05:52 +0800</pubDate>
       
-      <guid>https://kywk.github.io/moco/posts/hugo/porting-hexo-tags/</guid>
+      <guid>https://kywk.github.io/moco/posts/2020/10/porting-hexo-tags/</guid>
       <description>Hexo 標籤 Hexo 標籤外掛是用於在文章中快速插入特定內容的外掛, 有幾種方式擴充:
   內建標籤:
 Hexo 內建標籤有常用的 Block Quote, Gist, iframe, Youtube, &amp;hellip; 包含 Markdown 不支援但常用的 HTML 語法, 影音嵌入, 程式片斷嵌入&amp;hellip;等.
@@ -30,10 +31,10 @@ Hexo 主題可以提供該主題內建支援的標籤, 主題內透過外掛的�
     
     <item>
       <title>從 Hexo 到 Hugo</title>
-      <link>https://kywk.github.io/moco/posts/hugo/from-hexo-to-hugo/</link>
+      <link>https://kywk.github.io/moco/posts/2020/10/from-hexo-to-hugo/</link>
       <pubDate>Wed, 14 Oct 2020 15:08:05 +0800</pubDate>
       
-      <guid>https://kywk.github.io/moco/posts/hugo/from-hexo-to-hugo/</guid>
+      <guid>https://kywk.github.io/moco/posts/2020/10/from-hexo-to-hugo/</guid>
       <description>本文以 Hugo v0.76.2 編寫介紹, 其他版本若步驟或訊息內容不符, 請以官方文件為準
 從 Hexo 到 Hugo 沒想過會再次開始寫 Blog, 多事的 2020 太多意外, 覺得需要即時一一進行想做的事.
 於是重新開始了 Blog, 把想做的事完成, 紀錄, 然後放水流, 繼續&amp;hellip;

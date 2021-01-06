@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="Moo Cow ">
+<meta name="description" content="針對 Google Drive 個人與商業用戶, Google 分別提供了 Backup and Sync 以及 DriveFS 兩個桌面軟體以便操作, 但無論是 Backup and Sync 還是 DriveFS 都不支援 Team Drive, 無法在桌面環境下操作 Team Drive, 只能透過網頁端處理.
+所幸萬能的 Rclone 有支援 Team Drive. Rclone Rclone 是一個非常好用的雲端硬碟管理工具, 在命令模式下直接針對多數雲端硬碟服務進行操作, 搭配其他系統工具, 可自動化雲端硬碟的管理, 包括異地備份, 打包, 移除老舊檔案&amp;hellip; 等等.
+目前 Rclone 支援的雲端硬碟服務多達 38 種, 其中本篇的重點在第 13 項 &amp;ldquo;Google Drive&amp;rdquo;.
+注意: 第 12 項的 Google Cloud Storage 並不是 Google Drive, 而是 GCP 中類似 AWS S3 的服務.
+Install rclone on macOS 在 macOS 透過 homebrew 安裝的 rclone 目前不支援 mount 命令." />
+<meta name="keywords" content="blog,developer, google-drive, rclone" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="#252627" />
+<link rel="canonical" href="https://kywk.github.io/moco/posts/2020/12/gd_rclone-config/" />
+
+
+    <title>
+        
+            Setup Rclone for Google Team Drive on macOS :: moco  — Hello Friend NG Theme
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="https://kywk.github.io/moco/main.393856bf2c430bb6c01d7af07c6fe966e7cce8073435cfbbc46e590bab7405ef.css">
+
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="https://kywk.github.io/moco/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://kywk.github.io/moco/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://kywk.github.io/moco/favicon-16x16.png">
+    <link rel="manifest" href="https://kywk.github.io/moco/site.webmanifest">
+    <link rel="mask-icon" href="https://kywk.github.io/moco/safari-pinned-tab.svg" color="#252627">
+    <link rel="shortcut icon" href="https://kywk.github.io/moco/favicon.ico">
+    <meta name="msapplication-TileColor" content="#252627">
+    <meta name="theme-color" content="#252627">
+
+
+
+<meta itemprop="name" content="Setup Rclone for Google Team Drive on macOS">
+<meta itemprop="description" content="針對 Google Drive 個人與商業用戶, Google 分別提供了 Backup and Sync 以及 DriveFS 兩個桌面軟體以便操作, 但無論是 Backup and Sync 還是 DriveFS 都不支援 Team Drive, 無法在桌面環境下操作 Team Drive, 只能透過網頁端處理.
+所幸萬能的 Rclone 有支援 Team Drive. Rclone Rclone 是一個非常好用的雲端硬碟管理工具, 在命令模式下直接針對多數雲端硬碟服務進行操作, 搭配其他系統工具, 可自動化雲端硬碟的管理, 包括異地備份, 打包, 移除老舊檔案&hellip; 等等.
+目前 Rclone 支援的雲端硬碟服務多達 38 種, 其中本篇的重點在第 13 項 &ldquo;Google Drive&rdquo;.
+注意: 第 12 項的 Google Cloud Storage 並不是 Google Drive, 而是 GCP 中類似 AWS S3 的服務.
+Install rclone on macOS 在 macOS 透過 homebrew 安裝的 rclone 目前不支援 mount 命令.">
+<meta itemprop="datePublished" content="2020-12-07T17:35:35+08:00" />
+<meta itemprop="dateModified" content="2020-12-07T17:35:35+08:00" />
+<meta itemprop="wordCount" content="1201">
+<meta itemprop="image" content="https://kywk.github.io/moco"/>
+
+
+
+<meta itemprop="keywords" content="google-drive,rclone," />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://kywk.github.io/moco"/>
+
+<meta name="twitter:title" content="Setup Rclone for Google Team Drive on macOS"/>
+<meta name="twitter:description" content="針對 Google Drive 個人與商業用戶, Google 分別提供了 Backup and Sync 以及 DriveFS 兩個桌面軟體以便操作, 但無論是 Backup and Sync 還是 DriveFS 都不支援 Team Drive, 無法在桌面環境下操作 Team Drive, 只能透過網頁端處理.
+所幸萬能的 Rclone 有支援 Team Drive. Rclone Rclone 是一個非常好用的雲端硬碟管理工具, 在命令模式下直接針對多數雲端硬碟服務進行操作, 搭配其他系統工具, 可自動化雲端硬碟的管理, 包括異地備份, 打包, 移除老舊檔案&hellip; 等等.
+目前 Rclone 支援的雲端硬碟服務多達 38 種, 其中本篇的重點在第 13 項 &ldquo;Google Drive&rdquo;.
+注意: 第 12 項的 Google Cloud Storage 並不是 Google Drive, 而是 GCP 中類似 AWS S3 的服務.
+Install rclone on macOS 在 macOS 透過 homebrew 安裝的 rclone 目前不支援 mount 命令."/>
+
+
+
+    <meta property="og:title" content="Setup Rclone for Google Team Drive on macOS" />
+<meta property="og:description" content="針對 Google Drive 個人與商業用戶, Google 分別提供了 Backup and Sync 以及 DriveFS 兩個桌面軟體以便操作, 但無論是 Backup and Sync 還是 DriveFS 都不支援 Team Drive, 無法在桌面環境下操作 Team Drive, 只能透過網頁端處理.
+所幸萬能的 Rclone 有支援 Team Drive. Rclone Rclone 是一個非常好用的雲端硬碟管理工具, 在命令模式下直接針對多數雲端硬碟服務進行操作, 搭配其他系統工具, 可自動化雲端硬碟的管理, 包括異地備份, 打包, 移除老舊檔案&hellip; 等等.
+目前 Rclone 支援的雲端硬碟服務多達 38 種, 其中本篇的重點在第 13 項 &ldquo;Google Drive&rdquo;.
+注意: 第 12 項的 Google Cloud Storage 並不是 Google Drive, 而是 GCP 中類似 AWS S3 的服務.
+Install rclone on macOS 在 macOS 透過 homebrew 安裝的 rclone 目前不支援 mount 命令." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://kywk.github.io/moco/posts/2020/12/gd_rclone-config/" />
+<meta property="og:image" content="https://kywk.github.io/moco"/>
+<meta property="article:published_time" content="2020-12-07T17:35:35+08:00" />
+<meta property="article:modified_time" content="2020-12-07T17:35:35+08:00" />
+
+
+
+
+    <meta property="article:section" content="google-drive" />
+
+
+
+    <meta property="article:published_time" content="2020-12-07 17:35:35 &#43;0800 CST" />
+
+
+
+
+
+
+
+
+    </head>
+
+    <body class="dark-theme">
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="https://kywk.github.io/moco/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">></span>
+            <span class="logo__text">$ cd /home/kywk</span>
+            <span class="logo__cursor" style=
+                  "
+                   
+                   ">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="https://kywk.github.io/moco/about/">About</a></li><li><a href="https://kywk.github.io/moco/posts/">Posts</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+
+            <span class="theme-toggle unselectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+</svg>
+</span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+  <main class="post">
+
+    <div class="post-info">
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+        6 minutes
+
+        
+      </p>
+    </div>
+
+    <article>
+      <h1 class="post-title">
+        <a href="https://kywk.github.io/moco/posts/2020/12/gd_rclone-config/">Setup Rclone for Google Team Drive on macOS</a>
+      </h1>
+
+      
+
+      <div class="post-content">
+        <p>針對 Google Drive 個人與商業用戶, Google 分別提供了 Backup and Sync 以及 DriveFS 兩個桌面軟體以便操作,
+但無論是 Backup and Sync 還是 DriveFS 都不支援 Team Drive,
+無法在桌面環境下操作 Team Drive, 只能透過網頁端處理.</p>
+<p>所幸萬能的 Rclone 有支援 Team Drive.  </p>
+<h2 id="rclonehttpsrcloneorg"><a href="https://rclone.org/">Rclone</a></h2>
+<p>Rclone 是一個非常好用的雲端硬碟管理工具, 在命令模式下直接針對多數雲端硬碟服務進行操作,
+搭配其他系統工具, 可自動化雲端硬碟的管理, 包括異地備份, 打包, 移除老舊檔案&hellip; 等等.</p>
+<p>目前 Rclone 支援的雲端硬碟服務多達 38 種, 其中本篇的重點在第 13 項 &ldquo;Google Drive&rdquo;.</p>
+<p><strong>注意:</strong> 第 12 項的 Google Cloud Storage 並不是 Google Drive, 而是 GCP 中類似 AWS S3 的服務.</p>
+<h2 id="install-rclone-on-macos">Install rclone on macOS</h2>
+<p>在 macOS 透過 homebrew 安裝的 rclone 目前不支援 mount 命令.
+不過目前我的使用情境還不需要 mount 遠端硬碟, 所以無腦使用 Homebrew 安裝:</p>
+<pre><code>$ brew install rclone
+
+Homebrew's installation does not include the `mount` subcommand on MacOS.
+
+zsh completions have been installed to:
+  /usr/local/share/zsh/site-functions
+
+/usr/local/share/zsh/site-functions is not in your zsh FPATH!
+Add it by following these steps:
+  https://docs.brew.sh/Shell-Completion#configuring-completions-in-zsh
+</code></pre><h3 id="zsh-auto-completion">zsh auto completion</h3>
+<h2 id="configure-team-drive">Configure team drive</h2>
+<p>透過 brew 安裝 rclone 通常不會出錯, 安裝完後可以準備進行設定.
+輸入 <code>rclone config</code> 後會進入設定模式.</p>
+<pre><code>$ rclone config
+
+e) Edit existing remote
+n) New remote
+d) Delete remote
+r) Rename remote
+c) Copy remote
+s) Set configuration password
+q) Quit config
+e/n/d/r/c/s/q&gt;  n 
+name&gt;  it-if-bimgo 
+</code></pre><p>先選擇 <code>n</code> 新增一組遠端硬碟, 取個自己喜歡且方便辨識的名稱</p>
+<pre><code>Type of storage to configure.
+Enter a string value. Press Enter for the default (&quot;&quot;).
+Choose a number from below, or type in your own value
+...
+11 / FTP Connection
+   \ &quot;ftp&quot;
+12 / Google Cloud Storage (this is not Google Drive)
+   \ &quot;google cloud storage&quot;
+13 / Google Drive
+   \ &quot;drive&quot;
+14 / Google Photos
+   \ &quot;google photos&quot;
+ ...   
+Storage&gt; 13
+</code></pre><p>接著要選擇遠端硬碟的類型, 這篇介紹的是 Google Drive, 選 13.</p>
+<pre><code>** See help for drive backend at: https://rclone.org/drive/ **
+
+Google Application Client Id
+Setting your own is recommended.
+See https://rclone.org/drive/#making-your-own-client-id for how to create your own.
+If you leave this blank, it will use an internal key which is low performance.
+Enter a string value. Press Enter for the default (&quot;&quot;).
+client_id&gt; 9847344-xxx-xxx-xxx
+OAuth Client Secret
+Leave blank normally.
+Enter a string value. Press Enter for the default (&quot;&quot;).
+client_secret&gt; a6AZxxxxxxxx
+</code></pre><p>依循 <a href="https://rclone.org/drive/#making-your-own-client-id">Google drive | rclone</a> 的說明,
+申請 Google Drive API 以及 App client_id 和 client_secret, 填入.
+不知道如何申請也可留空, 不過指令執行效率會較差.</p>
+<pre><code>Scope that rclone should use when requesting access from drive.
+Enter a string value. Press Enter for the default (&quot;&quot;).
+Choose a number from below, or type in your own value
+ 1 / Full access all files, excluding Application Data Folder.
+   \ &quot;drive&quot;
+ 2 / Read-only access to file metadata and file contents.
+   \ &quot;drive.readonly&quot;
+   / Access to files created by rclone only.
+ 3 | These are visible in the drive website.
+   | File authorization is revoked when the user deauthorizes the app.
+   \ &quot;drive.file&quot;
+   / Allows read and write access to the Application Data folder.
+ 4 | This is not visible in the drive website.
+   \ &quot;drive.appfolder&quot;
+   / Allows read-only access to file metadata but
+ 5 | does not allow any access to read or download file content.
+   \ &quot;drive.metadata.readonly&quot;
+scope&gt; 1
+</code></pre><p>接著選擇這個 Remote 的存取權限, 通常選 1, 完整存取的權限.</p>
+<pre><code>ID of the root folder
+Leave blank normally.
+
+Fill in to access &quot;Computers&quot; folders (see docs), or for rclone to use
+a non root folder as its starting point.
+
+Enter a string value. Press Enter for the default (&quot;&quot;).
+root_folder_id&gt;
+</code></pre><p>設定預設根目錄的 ID. 以團隊碟來說留空即可.</p>
+<pre><code>Service Account Credentials JSON file path
+Leave blank normally.
+Needed only if you want use SA instead of interactive login.
+
+Leading `~` will be expanded in the file name as will environment variables such as `${RCLONE_CONFIG_DIR}`.
+
+Enter a string value. Press Enter for the default (&quot;&quot;).
+service_account_file&gt;
+</code></pre><p>Service Account 將在後篇介紹, 這邊先留空即可</p>
+<pre><code>Edit advanced config? (y/n)
+y) Yes
+n) No (default)
+y/n&gt; n
+Remote config
+Use auto config?
+ * Say Y if not sure
+ * Say N if you are working on a remote or headless machine
+y) Yes (default)
+n) No
+y/n&gt;
+If your browser doesn't open automatically go to the following link: http://127.0.0.1:53682/auth?state=qQkpxmh1iDjj0kmwp4weGw
+Log in and authorize rclone for access
+Waiting for code...
+</code></pre><p>進階設定和自動設定都直接按 Enter 以預設值即可, 接著會自動打開網頁, 需要網站上同意 rclone 存取 Google Drive.
+<img src="https://lh3.googleusercontent.com/pw/ACtC-3ecAsml5AprwhfVG3ZFgUqwPlOzVd5imrLPKzUTeQPTGusvxLr556E5_SKQTvPwhyM1i14luzwrycNlSaEncdDfdT7HP8x6siJlsHkMZUz30KAqtMSttstvpJO_ysjLgL-BttXGvvdxbiwFfkcuOt1iZA=w469-h624-no?authuser=0" alt=""></p>
+<pre><code>Log in and authorize rclone for access
+Waiting for code...
+Got code
+Configure this as a team drive?
+y) Yes
+n) No (default) 
+y/n&gt; y
+Fetching team drive list...
+Choose a number from below, or type in your own value
+ 1 / if.bimgo
+   \ &quot;0AMxxxxxxxxxxxxxxxx&quot;
+ 2 / i.bimgo
+   \ &quot;0APxxxxxxxxxxxxxxxx&quot;
+ 3 / i.hcc
+   \ &quot;0AHxxxxxxxxxxxxxxxx&quot;
+ 4 / i.vip
+   \ &quot;0AHxxxxxxxxxxxxxxxx&quot;
+Enter a Team Drive ID&gt; 1
+</code></pre><p>網頁授權成功後, rclone 會詢問這組 remote 是否為 team drive, 選 y.
+此時 rclone 會自動抓取所有的團隊硬碟, 選擇所要對應的團隊硬碟.</p>
+<pre><code>--------------------
+[it-if-bimgo]
+type = drive
+client_id = 9847344-xxx-xxx-xxx
+client_secret = a6AZxxxxxxxx
+scope = drive
+token = {xxxxxx}
+team_drive = 0AMxxxxxxxxxxxxxxxx
+root_folder_id =
+--------------------
+y) Yes this is OK (default)
+e) Edit this remote
+d) Delete this remote
+y/e/d&gt; y
+</code></pre><p>最後再確認上述資訊是否正確, 若無誤選 y 保存. rclone 就設定完成了.</p>
+<h3 id="test">Test</h3>
+<pre><code>$ rclone mkdir it-if-bimgo:Test                                                    915  2.29    17:25:45 
+$ rclone lsd it-if-bimgo:                                                          917  2.31    17:26:04 
+          -1 2020-12-08 17:25:56        -1 Test
+</code></pre><p>測試方式很簡單, 先透過 rclone mkdir 建立一個空資料夾,
+再透過 rclone lsd 確認該資料夾是否存在.
+亦可開網頁確認:
+<img src="https://lh3.googleusercontent.com/pw/ACtC-3cNRVBXgzQV003vslOd5Ms4tIA_w_VcT6Z-6t_vm4BMxy-cDnDETos5QyNXCpNnONFWp5uNhpw046yRyNwmTchdaNY5QttX3IiYhb8Ve8bBlPEgK0Nhx5P15WXEmoUgofpudjZYTLwYhLXXdgZ6N-nEfw=w545-h148-no?authuser=0" alt=""></p>
+<p>這篇文章有更多 rclone 常用指令的介紹: <a href="http://jdev.tw/blog/4746/rclone-cloud-storage-command-line">用rclone命令行指令簡化雲端儲存服務的各項檔案操作 | 簡睿隨筆 | 學習過程的紀錄與備忘</a></p>
+<h3 id="drive-server-side-across">drive-server-side-across</h3>
+<p>Rclone 在 Google 雲端硬碟有支援一項<a href="https://rclone.org/drive/#drive-server-side-across-configs">特殊的設定</a>, 可以直接在伺服器端進行傳輸:</p>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+<blockquote>
+  <p><p>&ndash;drive-server-side-across-configs<br>
+Allow server side operations (eg copy) to work across different drive configs.<br>
+This can be useful if you wish to do a server side copy between two different Google drives. Note that this isn’t enabled by default because it isn’t easy to tell if it will work between any two configurations.</p>
+<ul>
+<li>Config: server_side_across_configs</li>
+<li>Env Var: RCLONE_DRIVE_SERVER_SIDE_ACROSS_CONFIGS</li>
+<li>Type: bool</li>
+<li>Default: false</li>
+</ul>
+</p>
+  <footer>
+    <strong></strong>
+    
+      
+        
+      
+    
+  </footer>
+</blockquote>
+
+<p>編輯 <code>~/.config/rclone/rclone.conf</code>,
+加入 <code>server_side_across_configs = true</code></p>
+<pre><code>[google-personal-drive]
+type = drive
+scope = drive
+server_side_across_configs = true
+token = xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+root_folder_id = xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+[google-team-drive]
+type = drive
+scope = drive
+server_side_across_configs = true
+token = xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+team_drive = xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+</code></pre><p>接著進行傳輸, 同時透過 iftop 觀察網路頻寬.
+可以發現到 rclone 回報的速度數百 MBps 左右, 但是 iftop 回報的流量只有數十 kbps.
+代表成功的直接在伺服器端進行傳輸, 而不消耗本機頻寬, 速度快多了.</p>
+<p><img src="https://lh3.googleusercontent.com/7iZtKqnmydWubdHMGbOhPKRi8EXEgJERJgVth-CGb0XNCOsBcDnuTRf55r1wiYXiMOw55nG6vnoBhA7PUiHtbEJeuOnPQ1t3Z9TJsysCosdwxI9mdFK01DZIk7ptx8HDyQTxyHMl3OPSqCU8ZTMlsOmxFgbXUEZ5qAOJri8hAf_chZu14hbIG5jV_vmzsLMpklYKlwP2Z5CAzkSTc8UVwIKUT4HlQUEpZ4MUCrSiK_zyU3NnuCiPbjuxYf6DWDLYiqlfoXBF0CkraJILc9ZprI_Z1d1EMtdSrgioVn7S1nTaQt980KEGWBYLneKezD9ze7K-JGbwWJtqYq-zl3ZjTZV6Ihh4l8LuNNjw7p5v4Xl94kmvOfU72BSGhvEc_j3QBzP1qNengq1V7qEK1-4bRkeF4dgVmKEIBo0IUw5ePKj5qS37pqPks0W2WZZzHVtI93gh8VLoddSVjt4-FvvgWYIU5ERwoNyOFwPCbz6d_dUKlJ8mgcUSHoLcOwAejOkowg2un0WJ-irWtmoEbJOpOb_peHV0Tq_h4ZzjJMqppwMxLZxQ7KK_nYJQDHYVvGYt9ZwaaWc9Dj6S4xJ_w0S9zfG7N4Lha6bT2kBKlqV4blLJol5_LXb5QD_J8OKtodUmlqHj0J66b0KLwSJMFThevVp6V4Ig0wJ46KBQVKjNQ11TmsBQiE-qwmlfWcZGe9c=w730-h588-no?authuser=0" alt=""></p>
+<p><strong>伺服器端檔案傳輸僅限於同一帳戶下的不同資料夾 (包含共享硬碟), 操作前需先把相關資料夾分享並加到相同帳戶下才不會出錯</strong></p>
+<p>BTW, 在 macOS 安裝 iftop 發生了小問題, 解決紀錄於此: <a href="https://kywk.github.io/moco/posts/macos/macos_install-iftop/">macOS 安裝 iftop 失敗與解決方式 · moco</a></p>
+<h2 id="see-also">See Also</h2>
+<h3 id="rclone-configure-file">rclone configure file</h3>
+<p>在 macOS, Linux 環境下, rclone 設置檔存放在 <code>$HOME/.config/rclone/rclone.conf</code>
+我工作需在多台電腦中切換, 個人習慣把 .config 裡需在多台電腦同步的資料夾放在 Dropbox 上,
+再建立對應 symbolic link.</p>
+<pre><code>$ mkdir ~/Dropbox/config
+$ mv ~/.config/rclone ~/Dropbox/config
+$ ln -sfF ~/Dropbox/config/rclone .config/rclone
+</code></pre><p>這樣無論在哪台電腦修改了什麼設定, 換個電腦仍可輕鬆同步設定.</p>
+<h3 id="rclone-supported-cloud-drive">rclone supported cloud drive</h3>
+<p>Rclone 所支援的雲端硬敵種類如下:</p>
+<pre><code> 1 / 1Fichier
+ 2 / Alias for an existing remote
+ 3 / Amazon Drive
+ 4 / Amazon S3 Compliant Storage Provider (AWS, Alibaba, Ceph, Digital Ocean, Dreamhost, IBM COS, Minio, Tencent COS, etc)
+ 5 / Backblaze B2
+ 6 / Box
+ 7 / Cache a remote
+ 8 / Citrix Sharefile
+ 9 / Dropbox
+10 / Encrypt/Decrypt a remote
+11 / FTP Connection
+12 / Google Cloud Storage (this is not Google Drive)
+13 / Google Drive
+14 / Google Photos
+15 / Hubic
+16 / In memory object storage system.
+17 / Jottacloud
+18 / Koofr
+19 / Local Disk
+20 / Mail.ru Cloud
+21 / Mega
+22 / Microsoft Azure Blob Storage
+23 / Microsoft OneDrive
+24 / OpenDrive
+25 / OpenStack Swift (Rackspace Cloud Files, Memset Memstore, OVH)
+26 / Pcloud
+27 / Put.io
+28 / QingCloud Object Storage
+29 / SSH/SFTP Connection
+30 / Sugarsync
+31 / Tardigrade Decentralized Cloud Storage
+32 / Transparently chunk/split large files
+33 / Union merges the contents of several upstream fs
+34 / Webdav
+35 / Yandex Disk
+36 / http Connection
+37 / premiumize.me
+38 / seafile
+</code></pre><h3 id="reference">Reference</h3>
+<ul>
+<li><a href="https://wp.madjack.info/linux/rclone-googledrive-onedrive.html">Rclone:玩轉Google Drive &amp; One Drive - 消失的亞特蘭提斯</a></li>
+<li><a href="https://caloskao.org/rclone-across-transfer-each-cloud-drive-without-local-machine-bandwidth/">Rclone 在不使用本機頻寬的條件下進行跨雲端硬碟傳輸 | Calos&rsquo;s Blog</a></li>
+<li><a href="http://jdev.tw/blog/4746/rclone-cloud-storage-command-line">用rclone命令行指令簡化雲端儲存服務的各項檔案操作 | 簡睿隨筆 | 學習過程的紀錄與備忘</a></li>
+<li><a href="t.ly/AWMh">GOOGLE Drive 相互複製 對拷. 前言 | by BunnyBit | Medium</a></li>
+</ul>
+
+      </div>
+    </article>
+
+    <hr />
+
+    <div class="post-info">
+      
+    <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg>
+
+        <span class="tag"><a href="https://kywk.github.io/moco/tags/google-drive/">google-drive</a></span>
+        <span class="tag"><a href="https://kywk.github.io/moco/tags/rclone/">rclone</a></span>
+        
+    </p>
+
+      
+    <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-folder meta-icon"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+
+        <span class="tag"><a href="https://kywk.github.io/moco/categories/google-drive/">google-drive</a></span>
+        
+    </p>
+
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <line x1="16" y1="13" x2="8" y2="13"></line>
+          <line x1="16" y1="17" x2="8" y2="17"></line>
+          <polyline points="10 9 9 9 8 9"></polyline>
+        </svg>
+        1201 Words
+      </p>
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="16" y1="2" x2="16" y2="6"></line>
+          <line x1="8" y1="2" x2="8" y2="6"></line>
+          <line x1="3" y1="10" x2="21" y2="10"></line>
+        </svg>
+        
+          2020-12-07 17:35
+        
+
+         
+          
+        
+      </p>
+    </div>
+      <hr />
+      <div class="sharing-buttons">
+        
+<a class="resp-sharing-button__link" href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fkywk.github.io%2fmoco%2fposts%2f2020%2f12%2fgd_rclone-config%2f" target="_blank" rel="noopener" aria-label="" title="Share on facebook">
+  <div class="resp-sharing-button resp-sharing-button--facebook resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+    </div>
+  </div>
+</a>
+
+
+<a class="resp-sharing-button__link" href="https://twitter.com/intent/tweet/?url=https%3a%2f%2fkywk.github.io%2fmoco%2fposts%2f2020%2f12%2fgd_rclone-config%2f" target="_blank" rel="noopener" aria-label="" title="Share on twitter">
+  <div class="resp-sharing-button resp-sharing-button--twitter resp-sharing-button--small">
+      <div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>
+    </div>
+  </div>
+</a>
+
+
+<a class="resp-sharing-button__link" href="https://www.tumblr.com/widgets/share/tool?posttype=link&amp;title=Setup%20Rclone%20for%20Google%20Team%20Drive%20on%20macOS&amp;caption=Setup%20Rclone%20for%20Google%20Team%20Drive%20on%20macOS&amp;canonicalUrl=https%3a%2f%2fkywk.github.io%2fmoco%2fposts%2f2020%2f12%2fgd_rclone-config%2f" target="_blank" rel="noopener" aria-label="" title="Share on tumblr">
+  <div class="resp-sharing-button resp-sharing-button--tumblr resp-sharing-button--small">
+    <div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.563 24c-5.093 0-7.031-3.756-7.031-6.411V9.747H5.116V6.648c3.63-1.313 4.512-4.596 4.71-6.469C9.84.051 9.941 0 9.999 0h3.517v6.114h4.801v3.633h-4.82v7.47c.016 1.001.375 2.371 2.207 2.371h.09c.631-.02 1.486-.205 1.936-.419l1.156 3.425c-.436.636-2.4 1.374-4.156 1.404h-.178l.011.002z"/></svg>
+    </div>
+  </div>
+</a>
+
+
+<a class="resp-sharing-button__link" href="mailto:?subject=Setup%20Rclone%20for%20Google%20Team%20Drive%20on%20macOS&amp;body=https%3a%2f%2fkywk.github.io%2fmoco%2fposts%2f2020%2f12%2fgd_rclone-config%2f" target="_self" rel="noopener" aria-label="" title="Share via email">
+  <div class="resp-sharing-button resp-sharing-button--email resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+    </div>
+  </div>
+</a>
+
+
+<a class="resp-sharing-button__link" href="https://pinterest.com/pin/create/button/?url=https%3a%2f%2fkywk.github.io%2fmoco%2fposts%2f2020%2f12%2fgd_rclone-config%2f&amp;media=https%3a%2f%2fkywk.github.io%2fmoco%2fposts%2f2020%2f12%2fgd_rclone-config%2f;description=Setup%20Rclone%20for%20Google%20Team%20Drive%20on%20macOS" target="_blank" rel="noopener" aria-label="" title="Share on pinterest">
+  <div class="resp-sharing-button resp-sharing-button--pinterest resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.39 18.592.026 11.985.026L12.017 0z"/></svg>
+    </div>
+  </div>
+</a>
+
+
+<a class="resp-sharing-button__link" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fkywk.github.io%2fmoco%2fposts%2f2020%2f12%2fgd_rclone-config%2f&amp;title=Setup%20Rclone%20for%20Google%20Team%20Drive%20on%20macOS&amp;summary=Setup%20Rclone%20for%20Google%20Team%20Drive%20on%20macOS&amp;source=https%3a%2f%2fkywk.github.io%2fmoco%2fposts%2f2020%2f12%2fgd_rclone-config%2f" target="_blank" rel="noopener" aria-label="" title="Share on linkedin">
+  <div class="resp-sharing-button resp-sharing-button--linkedin resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+    </div>
+  </div>
+</a>
+
+
+<a class="resp-sharing-button__link" href="https://reddit.com/submit/?url=https%3a%2f%2fkywk.github.io%2fmoco%2fposts%2f2020%2f12%2fgd_rclone-config%2f&amp;resubmit=true&amp;title=Setup%20Rclone%20for%20Google%20Team%20Drive%20on%20macOS" target="_blank" rel="noopener" aria-label="" title="Share on reddit">
+  <div class="resp-sharing-button resp-sharing-button--reddit resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/></svg>
+    </div>
+  </div>
+</a>
+
+
+<a class="resp-sharing-button__link" href="https://www.xing.com/app/user?op=share;url=https%3a%2f%2fkywk.github.io%2fmoco%2fposts%2f2020%2f12%2fgd_rclone-config%2f;title=Setup%20Rclone%20for%20Google%20Team%20Drive%20on%20macOS" target="_blank" rel="noopener" aria-label="" title="Share on xing">
+  <div class="resp-sharing-button resp-sharing-button--xing resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M18.188 0c-.517 0-.741.325-.927.66 0 0-7.455 13.224-7.702 13.657.015.024 4.919 9.023 4.919 9.023.17.308.436.66.967.66h3.454c.211 0 .375-.078.463-.22.089-.151.089-.346-.009-.536l-4.879-8.916c-.004-.006-.004-.016 0-.022L22.139.756c.095-.191.097-.387.006-.535C22.056.078 21.894 0 21.686 0h-3.498zM3.648 4.74c-.211 0-.385.074-.473.216-.09.149-.078.339.02.531l2.34 4.05c.004.01.004.016 0 .021L1.86 16.051c-.099.188-.093.381 0 .529.085.142.239.234.45.234h3.461c.518 0 .766-.348.945-.667l3.734-6.609-2.378-4.155c-.172-.315-.434-.659-.962-.659H3.648v.016z"/></svg>
+    </div>
+  </div>
+</a>
+
+
+<a class="resp-sharing-button__link" href="whatsapp://send?text=Setup%20Rclone%20for%20Google%20Team%20Drive%20on%20macOS%20https%3a%2f%2fkywk.github.io%2fmoco%2fposts%2f2020%2f12%2fgd_rclone-config%2f" target="_blank" rel="noopener" aria-label="" title="Share on whatsapp">
+  <div class="resp-sharing-button resp-sharing-button--whatsapp resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+    </div>
+  </div>
+</a>
+
+
+<a class="resp-sharing-button__link" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fkywk.github.io%2fmoco%2fposts%2f2020%2f12%2fgd_rclone-config%2f&amp;t=Setup%20Rclone%20for%20Google%20Team%20Drive%20on%20macOS" target="_blank" rel="noopener" aria-label="" title="Share on hacker news">
+  <div class="resp-sharing-button resp-sharing-button--hackernews resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M0 24V0h24v24H0zM6.951 5.896l4.112 7.708v5.064h1.583v-4.972l4.148-7.799h-1.749l-2.457 4.875c-.372.745-.688 1.434-.688 1.434s-.297-.708-.651-1.434L8.831 5.896h-1.88z"/></svg>
+    </div>
+  </div>
+</a>
+
+
+<a class="resp-sharing-button__link" href="https://telegram.me/share/url?text=Setup%20Rclone%20for%20Google%20Team%20Drive%20on%20macOS&amp;url=https%3a%2f%2fkywk.github.io%2fmoco%2fposts%2f2020%2f12%2fgd_rclone-config%2f" target="_blank" rel="noopener" aria-label="" title="Share on telegram">
+  <div class="resp-sharing-button resp-sharing-button--telegram resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+    </div>
+  </div>
+</a>
+
+      </div>
+
+    
+      <div class="pagination">
+        <div class="pagination__title">
+          <span class="pagination__title-h"></span>
+          <hr />
+        </div>
+
+        <div class="pagination__buttons">
+          
+            <span class="button previous">
+              <a href="https://kywk.github.io/moco/posts/2020/12/cli_encrypt-tarball/">
+                <span class="button__icon">←</span>
+                <span class="button__text">Tar 加密打包語法</span>
+              </a>
+            </span>
+          
+
+          
+            <span class="button next">
+              <a href="https://kywk.github.io/moco/posts/2020/12/macos_install-iftop/">
+                <span class="button__text">macOS 安裝 iftop 失敗與解決方式</span>
+                <span class="button__icon">→</span>
+              </a>
+            </span>
+          
+        </div>
+      </div>
+    
+
+
+    
+      
+        <div id="comments">
+          <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "kywk-moco" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        </div>
+      
+    
+
+  </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2021</span>
+            
+                <span><a href="https://kywk.github.io/moco">Moo Cow</a></span>
+            
+            
+                <span><a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></span>
+            <span><a href="https://kywk.github.io/moco/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+        </div>
+    </div>
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>Powered by <a href="http://gohugo.io">Hugo</a></span>
+            <span>Made with &#10084; by <a href="https://github.com/rhazdon">Djordje Atlialp</a></span>
+          </div>
+    </div>
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+
+<script type="text/javascript" src="https://kywk.github.io/moco/bundle.min.dc716e9092c9820b77f96da294d0120aeeb189b5bcea9752309ebea27fd53bbe6b13cffb2aca8ecf32525647ceb7001f76091de4199ac5a3caa432c070247f5b.js" integrity="sha512-3HFukJLJggt3&#43;W2ilNASCu6xibW86pdSMJ6&#43;on/VO75rE8/7KsqOzzJSVkfOtwAfdgkd5BmaxaPKpDLAcCR/Ww=="></script>
+
+
+
+    </body>
+</html>

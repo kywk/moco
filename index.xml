@@ -5,14 +5,15 @@
     <link>https://kywk.github.io/moco/</link>
     <description>Recent content on moco</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
+    <language>en-us</language>
+    <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
     <lastBuildDate>Thu, 10 Dec 2020 17:31:07 +0800</lastBuildDate><atom:link href="https://kywk.github.io/moco/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Tar 加密打包語法</title>
-      <link>https://kywk.github.io/moco/posts/tool/cli_encrypt-tarball/</link>
+      <link>https://kywk.github.io/moco/posts/2020/12/cli_encrypt-tarball/</link>
       <pubDate>Thu, 10 Dec 2020 17:31:07 +0800</pubDate>
       
-      <guid>https://kywk.github.io/moco/posts/tool/cli_encrypt-tarball/</guid>
+      <guid>https://kywk.github.io/moco/posts/2020/12/cli_encrypt-tarball/</guid>
       <description>網路上免費創建團隊硬碟理論上創建者是團隊硬碟管理員, 但實際上所有的團隊硬碟仍受 Google GSuite / Workspace 機構管理員管轄. 機構管理員雖然無法直接存取檔案, 但有權將檔案擁有者轉移給他人. 如果只是存放網路上載來的資源就算了, 若是存放個人檔案, 仍建議加密壓縮.
 TarBall Tar 支援 gzip, bz2, xz&amp;hellip; 等多種壓縮方式, 但 tar 並不支援加密. 在命令列模式下要加密 tarball, 需透過其他指令來完成, 最常用的是 openssl.
 加密 簡單指令如下: (僅加密打包不壓縮)
@@ -23,10 +24,10 @@ $ tar cvf - FILE_NAME | openssl des3 -salt -k passw0rd -out /path/to/file.tar �
     
     <item>
       <title>Setup Rclone for Google Team Drive on macOS</title>
-      <link>https://kywk.github.io/moco/posts/tool/gd_rclone-config/</link>
+      <link>https://kywk.github.io/moco/posts/2020/12/gd_rclone-config/</link>
       <pubDate>Mon, 07 Dec 2020 17:35:35 +0800</pubDate>
       
-      <guid>https://kywk.github.io/moco/posts/tool/gd_rclone-config/</guid>
+      <guid>https://kywk.github.io/moco/posts/2020/12/gd_rclone-config/</guid>
       <description>針對 Google Drive 個人與商業用戶, Google 分別提供了 Backup and Sync 以及 DriveFS 兩個桌面軟體以便操作, 但無論是 Backup and Sync 還是 DriveFS 都不支援 Team Drive, 無法在桌面環境下操作 Team Drive, 只能透過網頁端處理.
 所幸萬能的 Rclone 有支援 Team Drive. Rclone Rclone 是一個非常好用的雲端硬碟管理工具, 在命令模式下直接針對多數雲端硬碟服務進行操作, 搭配其他系統工具, 可自動化雲端硬碟的管理, 包括異地備份, 打包, 移除老舊檔案&amp;hellip; 等等.
 目前 Rclone 支援的雲端硬碟服務多達 38 種, 其中本篇的重點在第 13 項 &amp;ldquo;Google Drive&amp;rdquo;.
@@ -36,10 +37,10 @@ Install rclone on macOS 在 macOS 透過 homebrew 安裝的 rclone 目前不支�
     
     <item>
       <title>macOS 安裝 iftop 失敗與解決方式</title>
-      <link>https://kywk.github.io/moco/posts/macos/macos_install-iftop/</link>
+      <link>https://kywk.github.io/moco/posts/2020/12/macos_install-iftop/</link>
       <pubDate>Mon, 07 Dec 2020 16:48:04 +0800</pubDate>
       
-      <guid>https://kywk.github.io/moco/posts/macos/macos_install-iftop/</guid>
+      <guid>https://kywk.github.io/moco/posts/2020/12/macos_install-iftop/</guid>
       <description>測試 Rclone 伺服機端傳輸時發覺 macOS 並無 iftop 指令, 習慣性地用 brew 安裝了.
 $ brew install iftop ... ... iftop requires root privileges so you will need to run `sudo iftop`. You should be certain that you trust any software you grant root privileges. 安裝完成後提示 iftop 這個指令需要用 root 權限執行.
 然而使用 sudo iftop 之後卻出現 command not found 的錯誤.
@@ -49,10 +50,10 @@ $sudo iftop sudo: iftop: command not found 上網查了查, 看到這篇 一次m
     
     <item>
       <title>Google Team Drive 無限空間申請</title>
-      <link>https://kywk.github.io/moco/posts/tool/gd_team-drive-signup/</link>
+      <link>https://kywk.github.io/moco/posts/2020/12/gd_team-drive-signup/</link>
       <pubDate>Mon, 07 Dec 2020 11:35:05 +0800</pubDate>
       
-      <guid>https://kywk.github.io/moco/posts/tool/gd_team-drive-signup/</guid>
+      <guid>https://kywk.github.io/moco/posts/2020/12/gd_team-drive-signup/</guid>
       <description>Google Drive 團隊硬碟 Google 針對商業和教育用戶推出了 Team Drive (團隊硬碟), 上傳到團隊硬碟中的檔案, 所有權屬於該團隊硬碟管理員和團隊管理員, 可解決員工離職後員工所存放的檔案失效的問題. 團隊硬碟也可以分享給團隊外的成員, 和外部廠商合作時可以讓廠商上傳檔案. 由於檔案所有權屬於管理員, 也可避免廠商擅自移除檔案.
 Google Drive 團隊硬碟在線自助領取 目前團隊硬碟的容量為無限容量, 也未限制每個用戶能開設的團隊硬碟數量, 故有些企業或教育用戶管理員開放大眾使用該組織的團隊硬碟.
 這樣的使用並不完全符合 Google 規範, 且管理員也有權隨時取消團隊硬碟. 使用前還是要先評估.
@@ -65,10 +66,10 @@ Google Drive 團隊硬碟在線自助領取 目前團隊硬碟的容量為無限
     
     <item>
       <title>Porting Hexo tags to Hugo shortcode</title>
-      <link>https://kywk.github.io/moco/posts/hugo/porting-hexo-tags/</link>
+      <link>https://kywk.github.io/moco/posts/2020/10/porting-hexo-tags/</link>
       <pubDate>Sat, 24 Oct 2020 17:05:52 +0800</pubDate>
       
-      <guid>https://kywk.github.io/moco/posts/hugo/porting-hexo-tags/</guid>
+      <guid>https://kywk.github.io/moco/posts/2020/10/porting-hexo-tags/</guid>
       <description>Hexo 標籤 Hexo 標籤外掛是用於在文章中快速插入特定內容的外掛, 有幾種方式擴充:
   內建標籤:
 Hexo 內建標籤有常用的 Block Quote, Gist, iframe, Youtube, &amp;hellip; 包含 Markdown 不支援但常用的 HTML 語法, 影音嵌入, 程式片斷嵌入&amp;hellip;等.
@@ -86,10 +87,10 @@ Hexo 主題可以提供該主題內建支援的標籤, 主題內透過外掛的�
     
     <item>
       <title>從 Hexo 到 Hugo</title>
-      <link>https://kywk.github.io/moco/posts/hugo/from-hexo-to-hugo/</link>
+      <link>https://kywk.github.io/moco/posts/2020/10/from-hexo-to-hugo/</link>
       <pubDate>Wed, 14 Oct 2020 15:08:05 +0800</pubDate>
       
-      <guid>https://kywk.github.io/moco/posts/hugo/from-hexo-to-hugo/</guid>
+      <guid>https://kywk.github.io/moco/posts/2020/10/from-hexo-to-hugo/</guid>
       <description>本文以 Hugo v0.76.2 編寫介紹, 其他版本若步驟或訊息內容不符, 請以官方文件為準
 從 Hexo 到 Hugo 沒想過會再次開始寫 Blog, 多事的 2020 太多意外, 覺得需要即時一一進行想做的事.
 於是重新開始了 Blog, 把想做的事完成, 紀錄, 然後放水流, 繼續&amp;hellip;

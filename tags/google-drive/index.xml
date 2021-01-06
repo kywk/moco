@@ -5,14 +5,15 @@
     <link>https://kywk.github.io/moco/tags/google-drive/</link>
     <description>Recent content in google-drive on moco</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
+    <language>en-us</language>
+    <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
     <lastBuildDate>Mon, 07 Dec 2020 17:35:35 +0800</lastBuildDate><atom:link href="https://kywk.github.io/moco/tags/google-drive/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Setup Rclone for Google Team Drive on macOS</title>
-      <link>https://kywk.github.io/moco/posts/tool/gd_rclone-config/</link>
+      <link>https://kywk.github.io/moco/posts/2020/12/gd_rclone-config/</link>
       <pubDate>Mon, 07 Dec 2020 17:35:35 +0800</pubDate>
       
-      <guid>https://kywk.github.io/moco/posts/tool/gd_rclone-config/</guid>
+      <guid>https://kywk.github.io/moco/posts/2020/12/gd_rclone-config/</guid>
       <description>針對 Google Drive 個人與商業用戶, Google 分別提供了 Backup and Sync 以及 DriveFS 兩個桌面軟體以便操作, 但無論是 Backup and Sync 還是 DriveFS 都不支援 Team Drive, 無法在桌面環境下操作 Team Drive, 只能透過網頁端處理.
 所幸萬能的 Rclone 有支援 Team Drive. Rclone Rclone 是一個非常好用的雲端硬碟管理工具, 在命令模式下直接針對多數雲端硬碟服務進行操作, 搭配其他系統工具, 可自動化雲端硬碟的管理, 包括異地備份, 打包, 移除老舊檔案&amp;hellip; 等等.
 目前 Rclone 支援的雲端硬碟服務多達 38 種, 其中本篇的重點在第 13 項 &amp;ldquo;Google Drive&amp;rdquo;.
@@ -22,10 +23,10 @@ Install rclone on macOS 在 macOS 透過 homebrew 安裝的 rclone 目前不支�
     
     <item>
       <title>Google Team Drive 無限空間申請</title>
-      <link>https://kywk.github.io/moco/posts/tool/gd_team-drive-signup/</link>
+      <link>https://kywk.github.io/moco/posts/2020/12/gd_team-drive-signup/</link>
       <pubDate>Mon, 07 Dec 2020 11:35:05 +0800</pubDate>
       
-      <guid>https://kywk.github.io/moco/posts/tool/gd_team-drive-signup/</guid>
+      <guid>https://kywk.github.io/moco/posts/2020/12/gd_team-drive-signup/</guid>
       <description>Google Drive 團隊硬碟 Google 針對商業和教育用戶推出了 Team Drive (團隊硬碟), 上傳到團隊硬碟中的檔案, 所有權屬於該團隊硬碟管理員和團隊管理員, 可解決員工離職後員工所存放的檔案失效的問題. 團隊硬碟也可以分享給團隊外的成員, 和外部廠商合作時可以讓廠商上傳檔案. 由於檔案所有權屬於管理員, 也可避免廠商擅自移除檔案.
 Google Drive 團隊硬碟在線自助領取 目前團隊硬碟的容量為無限容量, 也未限制每個用戶能開設的團隊硬碟數量, 故有些企業或教育用戶管理員開放大眾使用該組織的團隊硬碟.
 這樣的使用並不完全符合 Google 規範, 且管理員也有權隨時取消團隊硬碟. 使用前還是要先評估.

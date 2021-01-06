@@ -5,14 +5,15 @@
     <link>https://kywk.github.io/moco/tags/homebrew/</link>
     <description>Recent content in homebrew on moco</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
+    <language>en-us</language>
+    <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
     <lastBuildDate>Mon, 07 Dec 2020 16:48:04 +0800</lastBuildDate><atom:link href="https://kywk.github.io/moco/tags/homebrew/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>macOS 安裝 iftop 失敗與解決方式</title>
-      <link>https://kywk.github.io/moco/posts/macos/macos_install-iftop/</link>
+      <link>https://kywk.github.io/moco/posts/2020/12/macos_install-iftop/</link>
       <pubDate>Mon, 07 Dec 2020 16:48:04 +0800</pubDate>
       
-      <guid>https://kywk.github.io/moco/posts/macos/macos_install-iftop/</guid>
+      <guid>https://kywk.github.io/moco/posts/2020/12/macos_install-iftop/</guid>
       <description>測試 Rclone 伺服機端傳輸時發覺 macOS 並無 iftop 指令, 習慣性地用 brew 安裝了.
 $ brew install iftop ... ... iftop requires root privileges so you will need to run `sudo iftop`. You should be certain that you trust any software you grant root privileges. 安裝完成後提示 iftop 這個指令需要用 root 權限執行.
 然而使用 sudo iftop 之後卻出現 command not found 的錯誤.

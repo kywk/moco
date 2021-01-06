@@ -1,131 +1,16 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
-  <url>
-    <loc>https://kywk.github.io/moco/categories/</loc>
-    <lastmod>2020-12-10T17:31:07+08:00</lastmod>
-  </url>
+  <sitemap>
+    <loc>https://kywk.github.io/moco/en/sitemap.xml</loc>
+    
+      <lastmod>2020-12-10T17:31:07+08:00</lastmod>
+    
+  </sitemap>
   
-  <url>
-    <loc>https://kywk.github.io/moco/tags/cli/</loc>
-    <lastmod>2020-12-10T17:31:07+08:00</lastmod>
-  </url>
+  <sitemap>
+    <loc>https://kywk.github.io/moco/fr/sitemap.xml</loc>
+    
+  </sitemap>
   
-  <url>
-    <loc>https://kywk.github.io/moco/categories/cli/</loc>
-    <lastmod>2020-12-10T17:31:07+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://kywk.github.io/moco/</loc>
-    <lastmod>2020-12-10T17:31:07+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://kywk.github.io/moco/posts/</loc>
-    <lastmod>2020-12-10T17:31:07+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://kywk.github.io/moco/tags/</loc>
-    <lastmod>2020-12-10T17:31:07+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://kywk.github.io/moco/posts/tool/cli_encrypt-tarball/</loc>
-    <lastmod>2020-12-10T17:31:07+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://kywk.github.io/moco/tags/unix/</loc>
-    <lastmod>2020-12-10T17:31:07+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://kywk.github.io/moco/tags/google-drive/</loc>
-    <lastmod>2020-12-07T17:35:35+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://kywk.github.io/moco/categories/google-drive/</loc>
-    <lastmod>2020-12-07T17:35:35+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://kywk.github.io/moco/tags/rclone/</loc>
-    <lastmod>2020-12-07T17:35:35+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://kywk.github.io/moco/posts/tool/gd_rclone-config/</loc>
-    <lastmod>2020-12-07T17:35:35+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://kywk.github.io/moco/tags/homebrew/</loc>
-    <lastmod>2020-12-07T16:48:04+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://kywk.github.io/moco/tags/macos/</loc>
-    <lastmod>2020-12-07T16:48:04+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://kywk.github.io/moco/categories/macos/</loc>
-    <lastmod>2020-12-07T16:48:04+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://kywk.github.io/moco/posts/macos/macos_install-iftop/</loc>
-    <lastmod>2020-12-07T16:48:04+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://kywk.github.io/moco/posts/tool/gd_team-drive-signup/</loc>
-    <lastmod>2020-12-07T11:35:05+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://kywk.github.io/moco/tags/hugo/</loc>
-    <lastmod>2020-10-24T17:05:52+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://kywk.github.io/moco/categories/hugo/</loc>
-    <lastmod>2020-10-24T17:05:52+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://kywk.github.io/moco/posts/hugo/porting-hexo-tags/</loc>
-    <lastmod>2020-10-24T17:05:52+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://kywk.github.io/moco/tags/tutorial/</loc>
-    <lastmod>2020-10-24T17:05:52+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://kywk.github.io/moco/posts/hugo/from-hexo-to-hugo/</loc>
-    <lastmod>2020-10-14T15:08:05+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://kywk.github.io/moco/snippets/first/</loc>
-  </url>
-  
-  <url>
-    <loc>https://kywk.github.io/moco/snippets/second/</loc>
-  </url>
-  
-  <url>
-    <loc>https://kywk.github.io/moco/series/</loc>
-  </url>
-  
-  <url>
-    <loc>https://kywk.github.io/moco/snippets/</loc>
-  </url>
-  
-</urlset>
+</sitemapindex>
