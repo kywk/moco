@@ -201,8 +201,8 @@ y/n&gt;
 If your browser doesn't open automatically go to the following link: http://127.0.0.1:53682/auth?state=qQkpxmh1iDjj0kmwp4weGw
 Log in and authorize rclone for access
 Waiting for code...
-</code></pre><p>進階設定和自動設定都直接按 Enter 以預設值即可, 接著會自動打開網頁, 需要網站上同意 rclone 存取 Google Drive.
-<img src="https://lh3.googleusercontent.com/pw/ACtC-3ecAsml5AprwhfVG3ZFgUqwPlOzVd5imrLPKzUTeQPTGusvxLr556E5_SKQTvPwhyM1i14luzwrycNlSaEncdDfdT7HP8x6siJlsHkMZUz30KAqtMSttstvpJO_ysjLgL-BttXGvvdxbiwFfkcuOt1iZA=w469-h624-no?authuser=0" alt=""></p>
+</code></pre><p>進階設定和自動設定都直接按 Enter 以預設值即可, 接著會自動打開網頁, 需要網站上同意 rclone 存取 Google Drive.</p>
+<p><img src="https://lh3.googleusercontent.com/pw/ACtC-3ecAsml5AprwhfVG3ZFgUqwPlOzVd5imrLPKzUTeQPTGusvxLr556E5_SKQTvPwhyM1i14luzwrycNlSaEncdDfdT7HP8x6siJlsHkMZUz30KAqtMSttstvpJO_ysjLgL-BttXGvvdxbiwFfkcuOt1iZA=w469-h624-no?authuser=0" alt=""></p>
 <pre><code>Log in and authorize rclone for access
 Waiting for code...
 Got code
@@ -244,8 +244,8 @@ $ rclone lsd it-if-bimgo:                                                       
           -1 2020-12-08 17:25:56        -1 Test
 </code></pre><p>測試方式很簡單, 先透過 rclone mkdir 建立一個空資料夾,
 再透過 rclone lsd 確認該資料夾是否存在.
-亦可開網頁確認:
-<img src="https://lh3.googleusercontent.com/pw/ACtC-3cNRVBXgzQV003vslOd5Ms4tIA_w_VcT6Z-6t_vm4BMxy-cDnDETos5QyNXCpNnONFWp5uNhpw046yRyNwmTchdaNY5QttX3IiYhb8Ve8bBlPEgK0Nhx5P15WXEmoUgofpudjZYTLwYhLXXdgZ6N-nEfw=w545-h148-no?authuser=0" alt=""></p>
+亦可開網頁確認:</p>
+<p><img src="https://lh3.googleusercontent.com/pw/ACtC-3cNRVBXgzQV003vslOd5Ms4tIA_w_VcT6Z-6t_vm4BMxy-cDnDETos5QyNXCpNnONFWp5uNhpw046yRyNwmTchdaNY5QttX3IiYhb8Ve8bBlPEgK0Nhx5P15WXEmoUgofpudjZYTLwYhLXXdgZ6N-nEfw=w545-h148-no?authuser=0" alt=""></p>
 <p>這篇文章有更多 rclone 常用指令的介紹: <a href="http://jdev.tw/blog/4746/rclone-cloud-storage-command-line">用rclone命令行指令簡化雲端儲存服務的各項檔案操作 | 簡睿隨筆 | 學習過程的紀錄與備忘</a></p>
 <h3 id="drive-server-side-across">drive-server-side-across</h3>
 <p>Rclone 在 Google 雲端硬碟有支援一項<a href="https://rclone.org/drive/#drive-server-side-across-configs">特殊的設定</a>, 可以直接在伺服器端進行傳輸:</p>
@@ -308,7 +308,7 @@ team_drive = xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 </code></pre><p>接著進行傳輸, 同時透過 iftop 觀察網路頻寬.
 可以發現到 rclone 回報的速度數百 MBps 左右, 但是 iftop 回報的流量只有數十 kbps.
 代表成功的直接在伺服器端進行傳輸, 而不消耗本機頻寬, 速度快多了.</p>
-<p><img src="https://lh3.googleusercontent.com/7iZtKqnmydWubdHMGbOhPKRi8EXEgJERJgVth-CGb0XNCOsBcDnuTRf55r1wiYXiMOw55nG6vnoBhA7PUiHtbEJeuOnPQ1t3Z9TJsysCosdwxI9mdFK01DZIk7ptx8HDyQTxyHMl3OPSqCU8ZTMlsOmxFgbXUEZ5qAOJri8hAf_chZu14hbIG5jV_vmzsLMpklYKlwP2Z5CAzkSTc8UVwIKUT4HlQUEpZ4MUCrSiK_zyU3NnuCiPbjuxYf6DWDLYiqlfoXBF0CkraJILc9ZprI_Z1d1EMtdSrgioVn7S1nTaQt980KEGWBYLneKezD9ze7K-JGbwWJtqYq-zl3ZjTZV6Ihh4l8LuNNjw7p5v4Xl94kmvOfU72BSGhvEc_j3QBzP1qNengq1V7qEK1-4bRkeF4dgVmKEIBo0IUw5ePKj5qS37pqPks0W2WZZzHVtI93gh8VLoddSVjt4-FvvgWYIU5ERwoNyOFwPCbz6d_dUKlJ8mgcUSHoLcOwAejOkowg2un0WJ-irWtmoEbJOpOb_peHV0Tq_h4ZzjJMqppwMxLZxQ7KK_nYJQDHYVvGYt9ZwaaWc9Dj6S4xJ_w0S9zfG7N4Lha6bT2kBKlqV4blLJol5_LXb5QD_J8OKtodUmlqHj0J66b0KLwSJMFThevVp6V4Ig0wJ46KBQVKjNQ11TmsBQiE-qwmlfWcZGe9c=w730-h588-no?authuser=0" alt=""></p>
+<p><img src="https://lh3.googleusercontent.com/pw/ACtC-3fSS4nQZkkvujw8YtBCcYlw8sgyp9Xtc5f_fBKrsc96NMsTWCtAp8nRjho0i7uoj7f8kJOBaDDNbA7W4h3k3uJ8aTOD908TfYTZlmFflQXwyU7oLsE96ChT13uc0a48h2do9s6GdhdcsHgnFcbodSmriQ=w730-h588-no?authuser=0" alt=""></p>
 <p><strong>伺服器端檔案傳輸僅限於同一帳戶下的不同資料夾 (包含共享硬碟), 操作前需先把相關資料夾分享並加到相同帳戶下才不會出錯</strong></p>
 <p>BTW, 在 macOS 安裝 iftop 發生了小問題, 解決紀錄於此: <a href="https://kywk.github.io/moco/posts/macos/macos_install-iftop/">macOS 安裝 iftop 失敗與解決方式 · moco</a></p>
 <h2 id="see-also">See Also</h2>
