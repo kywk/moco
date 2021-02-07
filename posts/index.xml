@@ -6,8 +6,72 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
         <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-        <lastBuildDate>Thu, 10 Dec 2020 17:31:07 +0800</lastBuildDate>
+        <lastBuildDate>Sun, 07 Feb 2021 11:46:48 +0800</lastBuildDate>
         <atom:link href="https://kywk.github.io/moco/posts/index.xml" rel="self" type="application/rss+xml" />
+        
+        <item>
+            <title>利用 youtube-dl 下載 Youtube 影片</title>
+            <link>https://kywk.github.io/moco/posts/2021/02/cli_youtube-dl/</link>
+            <pubDate>Sun, 07 Feb 2021 11:46:48 +0800</pubDate>
+            
+            <guid>https://kywk.github.io/moco/posts/2021/02/cli_youtube-dl/</guid>
+            <description>一直都是利用播放清單和 Like 來當作 Youtube 影片的書籤. 不過陸續發現有些影片會無預期被刪除或改為私人影片, 也有些頻道會莫名消失.
+單純音樂類的播放清單就算了, 但有些專業參考性質的影片需要時找不到, 故發起把影片下載保存的念頭,
+網路上有不少下載 Youtube 影片的線上網站和 App, 試用過後最後回到最適合工程師的 youtube-dl
+youtube-dl youtube-dl 是個 OpenSource 專案, 有興趣研究的可在 GitHub 上 Fork 專案.
+日前曾因可能違反 DMCA 而導致 GitHub 上所有 youtube-dl 專案都被下架. (是的, 不單 youtube 影片可能下架, 連下載工具都可能被下架) 所幸後來在眾多熱心法律專業人士協助下, 確認並不違反 DMCA 而恢復專案. 完整故事可到官方 blog 查看.
+install Mac 上透過 brew 安裝 youtube-dl 相當簡單.
+$ brew install youtube-dl ffmpeg youtube-dl 是 python script, 利用 python 適合寫爬蟲的特性, 解析 youtube 影片位置並下載. 目前 youtube 網站中高畫質格式多為 video-only 或 audio-only 的 webm 格式, 傳統 mp4 格式大多只到 720p.</description>
+            <content type="html"><![CDATA[<p>一直都是利用播放清單和 Like 來當作 Youtube 影片的書籤.
+不過陸續發現有些影片會無預期被刪除或改為私人影片, 也有些頻道會莫名消失.</p>
+<p>單純音樂類的播放清單就算了, 但有些專業參考性質的影片需要時找不到,
+故發起把影片下載保存的念頭,</p>
+<p>網路上有不少下載 Youtube 影片的線上網站和 App,
+試用過後最後回到最適合工程師的 <a href="https://youtube-dl.org/">youtube-dl</a></p>
+<h2 id="youtube-dl">youtube-dl</h2>
+<p><a href="https://youtube-dl.org/">youtube-dl</a> 是個 OpenSource 專案,
+有興趣研究的可在 <a href="https://github.com/ytdl-org/youtube-dl/">GitHub</a> 上 Fork 專案.</p>
+<p>日前曾因可能違反 DMCA 而導致 GitHub 上所有 youtube-dl 專案都被下架.
+(是的, 不單 youtube 影片可能下架, 連下載工具都可能被下架)
+所幸後來在眾多熱心法律專業人士協助下, 確認並不違反 DMCA 而恢復專案.
+<a href="https://github.blog/2020-11-16-standing-up-for-developers-youtube-dl-is-back/">完整故事可到官方 blog 查看</a>.</p>
+<h3 id="install">install</h3>
+<p>Mac 上透過 brew 安裝 youtube-dl 相當簡單.</p>
+<pre><code>$ brew install youtube-dl
+</code></pre><h3 id="ffmpeg">ffmpeg</h3>
+<p>youtube-dl 是 python script, 利用 python 適合寫爬蟲的特性, 解析 youtube 影片位置並下載.
+目前 youtube 網站中高畫質格式多為 video-only 或 audio-only 的 webm 格式,
+傳統 mp4 格式大多只到 720p.
+而 youtube-dl 只能下載影片, 無法轉換影片格式, 若想下載更高畫質的影片,
+則需安裝 <a href="https://www.ffmpeg.org/">ffmpeg</a> 來轉檔, 嵌入字幕, 提取音頻, 加入專輯封面等等 Post-processing.</p>
+<pre><code>$ brew install ffmpeg
+</code></pre><h2 id="usage">Usage</h2>
+<h3 id="下載指定格式">下載指定格式</h3>
+<h3 id="下載播放清單">下載播放清單</h3>
+<h2 id="see-also">See Also</h2>
+<p>以上筆記為超濃縮版, youtube-dl 還有更多強大的功能和參數可供使用.
+如果要更詳細的參考文件, 可以直接參考官方文件: <a href="https://github.com/rg3/youtube-dl">https://github.com/rg3/youtube-dl</a></p>
+<h3 id="reference">Reference</h3>
+<ul>
+<li><a href="https://ianwu.tw/press/topic/command_line_program/youtube-dl.html">youtube-dl | 院長的筆記本</a></li>
+<li><a href="https://yogapan.github.io/2017/08/16/Youtube-dl%E6%BF%83%E7%B8%AE%E6%95%99%E5%AD%B8%E7%AD%86%E8%A8%98/">Youtube-dl濃縮教學筆記 | 小蛇蛇的筆記</a></li>
+<li><a href="https://askubuntu.com/questions/673442/downloading-youtube-playlist-with-youtube-dl-skipping-existing-files">Downloading youtube playlist with youtube-dl, skipping existing files - Ask Ubuntu</a></li>
+</ul>
+<h3 id="gui-downloader">GUI Downloader</h3>
+<ul>
+<li><a href="https://freetubeapp.io/">FreeTube - The Private YouTube Client</a>
+<ul>
+<li><a href="https://www.kocpc.com.tw/archives/355689">FreeTube 免費 YouTube 播放工具，無廣告、支援影片與音樂下載、訂閱功能 - 電腦王阿達</a></li>
+</ul>
+</li>
+<li><a href="http://www.gihosoft.com/free-youtube-downloader.html">Gihosoft TubeGet - Free YouTube Downloader for PC &amp; Mac</a>
+<ul>
+<li><a href="https://applefans.today/gihosoft-tubeget-download-youtube/">如何在 Mac 下載 YouTube 1080P 高清影片 – APPLEFANS 蘋果迷</a></li>
+</ul>
+</li>
+</ul>
+]]></content>
+        </item>
         
         <item>
             <title>Tar 加密打包語法</title>
