@@ -11,10 +11,10 @@
         
         <item>
             <title>利用 youtube-dl 下載 Youtube 影片</title>
-            <link>https://kywk.github.io/moco/posts/2021/02/cli_youtube-dl/</link>
+            <link>https://kywk.github.io/moco/posts/2021/02/yt_youtube-dl/</link>
             <pubDate>Sun, 07 Feb 2021 11:46:48 +0800</pubDate>
             
-            <guid>https://kywk.github.io/moco/posts/2021/02/cli_youtube-dl/</guid>
+            <guid>https://kywk.github.io/moco/posts/2021/02/yt_youtube-dl/</guid>
             <description>一直都是利用播放清單和 Like 來當作 Youtube 影片的書籤. 不過陸續發現有些影片會無預期被刪除或改為私人影片, 也有些頻道會莫名消失.
 單純音樂類的播放清單就算了, 但有些專業參考性質的影片需要時找不到, 故發起把影片下載保存的念頭,
 網路上有不少下載 Youtube 影片的線上網站和 App, 試用過後最後回到最適合工程師的 youtube-dl

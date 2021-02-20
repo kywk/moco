@@ -2,12 +2,12 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>youtube on moco</title>
-    <link>https://kywk.github.io/moco/tags/youtube/</link>
+    <link>https://kywk.github.io/moco/categories/youtube/</link>
     <description>Recent content in youtube on moco</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Sun, 07 Feb 2021 11:46:48 +0800</lastBuildDate><atom:link href="https://kywk.github.io/moco/tags/youtube/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 07 Feb 2021 11:46:48 +0800</lastBuildDate><atom:link href="https://kywk.github.io/moco/categories/youtube/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>利用 youtube-dl 下載 Youtube 影片</title>
       <link>https://kywk.github.io/moco/posts/2021/02/yt_youtube-dl/</link>
