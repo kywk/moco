@@ -4,7 +4,7 @@
   
   <url>
     <loc>https://kywk.github.io/moco/categories/</loc>
-    <lastmod>2021-02-07T11:46:48+08:00</lastmod>
+    <lastmod>2021-02-19T11:35:05+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="fr"
@@ -18,13 +18,23 @@
   </url>
   
   <url>
-    <loc>https://kywk.github.io/moco/tags/cli/</loc>
-    <lastmod>2021-02-07T11:46:48+08:00</lastmod>
+    <loc>https://kywk.github.io/moco/posts/2021/02/gd_team-drive-signup/</loc>
+    <lastmod>2021-02-19T11:35:05+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kywk.github.io/moco/tags/google-drive/</loc>
+    <lastmod>2021-02-19T11:35:05+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kywk.github.io/moco/categories/google-drive/</loc>
+    <lastmod>2021-02-19T11:35:05+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://kywk.github.io/moco/</loc>
-    <lastmod>2021-02-07T11:46:48+08:00</lastmod>
+    <lastmod>2021-02-19T11:35:05+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="fr"
@@ -39,12 +49,12 @@
   
   <url>
     <loc>https://kywk.github.io/moco/posts/</loc>
-    <lastmod>2021-02-07T11:46:48+08:00</lastmod>
+    <lastmod>2021-02-19T11:35:05+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://kywk.github.io/moco/tags/</loc>
-    <lastmod>2021-02-07T11:46:48+08:00</lastmod>
+    <lastmod>2021-02-19T11:35:05+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="fr"
@@ -55,6 +65,11 @@
                 hreflang="en"
                 href="https://kywk.github.io/moco/tags/"
                 />
+  </url>
+  
+  <url>
+    <loc>https://kywk.github.io/moco/tags/cli/</loc>
+    <lastmod>2021-02-07T11:46:48+08:00</lastmod>
   </url>
   
   <url>
@@ -88,16 +103,6 @@
   </url>
   
   <url>
-    <loc>https://kywk.github.io/moco/tags/google-drive/</loc>
-    <lastmod>2020-12-07T17:35:35+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://kywk.github.io/moco/categories/google-drive/</loc>
-    <lastmod>2020-12-07T17:35:35+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://kywk.github.io/moco/tags/rclone/</loc>
     <lastmod>2020-12-07T17:35:35+08:00</lastmod>
   </url>
@@ -125,11 +130,6 @@
   <url>
     <loc>https://kywk.github.io/moco/posts/2020/12/macos_install-iftop/</loc>
     <lastmod>2020-12-07T16:48:04+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://kywk.github.io/moco/posts/2020/12/gd_team-drive-signup/</loc>
-    <lastmod>2020-12-07T11:35:05+08:00</lastmod>
   </url>
   
   <url>
