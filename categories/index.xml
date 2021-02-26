@@ -7,7 +7,25 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Fri, 19 Feb 2021 11:35:05 +0800</lastBuildDate><atom:link href="https://kywk.github.io/moco/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 26 Feb 2021 14:53:37 +0800</lastBuildDate><atom:link href="https://kywk.github.io/moco/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>macos</title>
+      <link>https://kywk.github.io/moco/categories/macos/</link>
+      <pubDate>Fri, 26 Feb 2021 14:53:37 +0800</pubDate>
+      
+      <guid>https://kywk.github.io/moco/categories/macos/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>cli</title>
+      <link>https://kywk.github.io/moco/categories/cli/</link>
+      <pubDate>Mon, 22 Feb 2021 16:56:31 +0800</pubDate>
+      
+      <guid>https://kywk.github.io/moco/categories/cli/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>google-drive</title>
       <link>https://kywk.github.io/moco/categories/google-drive/</link>
@@ -23,24 +41,6 @@
       <pubDate>Sun, 07 Feb 2021 11:46:48 +0800</pubDate>
       
       <guid>https://kywk.github.io/moco/categories/youtube/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>cli</title>
-      <link>https://kywk.github.io/moco/categories/cli/</link>
-      <pubDate>Thu, 10 Dec 2020 17:31:07 +0800</pubDate>
-      
-      <guid>https://kywk.github.io/moco/categories/cli/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>macos</title>
-      <link>https://kywk.github.io/moco/categories/macos/</link>
-      <pubDate>Mon, 07 Dec 2020 16:48:04 +0800</pubDate>
-      
-      <guid>https://kywk.github.io/moco/categories/macos/</guid>
       <description></description>
     </item>
     

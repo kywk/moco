@@ -5,28 +5,20 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="author" content="Moo Cow ">
-<meta name="description" content="Hexo 標籤 Hexo 標籤外掛是用於在文章中快速插入特定內容的外掛, 有幾種方式擴充:
-  內建標籤:
-Hexo 內建標籤有常用的 Block Quote, Gist, iframe, Youtube, &amp;hellip; 包含 Markdown 不支援但常用的 HTML 語法, 影音嵌入, 程式片斷嵌入&amp;hellip;等.
-文章使用內建標籤的相容性最高, 不容易因更換主題而導致生成錯誤的情況. 但不同 Hexo 版本的內建標籤還是可能不同而發生相容性問題.
-  標籤外掛:
-Hexo 有強大的外掛系統, 能輕鬆擴展功能而不用修改核心模組的原始碼.
-標籤亦可透過外掛擴充, 如何製作標籤外掛 官方有詳細說明.
-Plugins | Hexo 是官方收集的外掛列表, hexo-tag 開頭為標籤外掛. 通常透過 npm install PACKAGE_NAME 來安裝外掛.
-標籤外掛安裝在站台根目錄, 文章使用外掛的標籤和內建標籤一樣是不分主題皆可使用, 通常和 Hexo 版本無關, 不會因 Hexo 升版而出現相容問題.
-  主題支援:
-Hexo 主題可以提供該主題內建支援的標籤, 主題內透過外掛的方式提供擴充的標籤提供文章使用.
-主題支援的標籤產生的網頁風格型態通常比較美觀. 但更換主題時可能會不支援的問題.
-  Hugo shortcode Hugo shortcode 和 Hexo tags 很像, 也有內建 / 站台外掛 / 主題支援三種方式." />
-<meta name="keywords" content="blog,developer, hugo, tutorial" />
+<meta name="description" content="CLI Environment iTerm2 $ brew install iterm2 zsh and oh-my-zsh macOS Mojave (10.14.x) 開始內建 zsh, 而 Catalina (10.15.x) 以後預設 Shell 改為 zsh.
+在 macOS Mojave 系統要把預設 shell 改為 zsh 以及配置 zsh 最方便也推薦的方式就是透過 Oh My Zsh
+Oh My Zsh
+macOS Mojave 以後已經內建 Zsh, 所以直接安裝 Oh My Zsh 即可.
+$ sh -c &amp;#34;$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)&amp;#34; $ brew install zsh-completion Powerline Font $ brew tap homebrew/cask-fonts $ brew install font-fira-code font-fira-mono font-fira-sans $ brew install font-source-code-pro $ brew install font-hack-nerd-font Base Environment Docker $ brew install docker Brew formulae $ brew install git tig tmux ncdu htop lesspipe tldr diff-so-fancy fd ripgrep thefuck ag Program Language Node." />
+<meta name="keywords" content="blog,developer, macos, homebrew, dev" />
 <meta name="robots" content="noodp" />
 <meta name="theme-color" content="#252627" />
-<link rel="canonical" href="https://kywk.github.io/moco/posts/2020/10/porting-hexo-tags/" />
+<link rel="canonical" href="https://kywk.github.io/moco/posts/2021/02/macos_dev-env-2021-feb/" />
 
 
     <title>
         
-            Porting Hexo tags to Hugo shortcode :: moco  — Backend Engineer in node.js and Go
+            macOS 開發環境建構 2021 Feb :: moco  — Backend Engineer in node.js and Go
         
     </title>
 
@@ -53,72 +45,48 @@ Hexo 主題可以提供該主題內建支援的標籤, 主題內透過外掛的�
 
 
 
-<meta itemprop="name" content="Porting Hexo tags to Hugo shortcode">
-<meta itemprop="description" content="Hexo 標籤 Hexo 標籤外掛是用於在文章中快速插入特定內容的外掛, 有幾種方式擴充:
-  內建標籤:
-Hexo 內建標籤有常用的 Block Quote, Gist, iframe, Youtube, &hellip; 包含 Markdown 不支援但常用的 HTML 語法, 影音嵌入, 程式片斷嵌入&hellip;等.
-文章使用內建標籤的相容性最高, 不容易因更換主題而導致生成錯誤的情況. 但不同 Hexo 版本的內建標籤還是可能不同而發生相容性問題.
-  標籤外掛:
-Hexo 有強大的外掛系統, 能輕鬆擴展功能而不用修改核心模組的原始碼.
-標籤亦可透過外掛擴充, 如何製作標籤外掛 官方有詳細說明.
-Plugins | Hexo 是官方收集的外掛列表, hexo-tag 開頭為標籤外掛. 通常透過 npm install PACKAGE_NAME 來安裝外掛.
-標籤外掛安裝在站台根目錄, 文章使用外掛的標籤和內建標籤一樣是不分主題皆可使用, 通常和 Hexo 版本無關, 不會因 Hexo 升版而出現相容問題.
-  主題支援:
-Hexo 主題可以提供該主題內建支援的標籤, 主題內透過外掛的方式提供擴充的標籤提供文章使用.
-主題支援的標籤產生的網頁風格型態通常比較美觀. 但更換主題時可能會不支援的問題.
-  Hugo shortcode Hugo shortcode 和 Hexo tags 很像, 也有內建 / 站台外掛 / 主題支援三種方式."><meta itemprop="datePublished" content="2020-10-24T17:05:52&#43;08:00" />
-<meta itemprop="dateModified" content="2020-10-24T17:05:52&#43;08:00" />
-<meta itemprop="wordCount" content="499"><meta itemprop="image" content="https://kywk.github.io/moco"/>
-<meta itemprop="keywords" content="hugo,tutorial," />
+<meta itemprop="name" content="macOS 開發環境建構 2021 Feb">
+<meta itemprop="description" content="CLI Environment iTerm2 $ brew install iterm2 zsh and oh-my-zsh macOS Mojave (10.14.x) 開始內建 zsh, 而 Catalina (10.15.x) 以後預設 Shell 改為 zsh.
+在 macOS Mojave 系統要把預設 shell 改為 zsh 以及配置 zsh 最方便也推薦的方式就是透過 Oh My Zsh
+Oh My Zsh
+macOS Mojave 以後已經內建 Zsh, 所以直接安裝 Oh My Zsh 即可.
+$ sh -c &#34;$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)&#34; $ brew install zsh-completion Powerline Font $ brew tap homebrew/cask-fonts $ brew install font-fira-code font-fira-mono font-fira-sans $ brew install font-source-code-pro $ brew install font-hack-nerd-font Base Environment Docker $ brew install docker Brew formulae $ brew install git tig tmux ncdu htop lesspipe tldr diff-so-fancy fd ripgrep thefuck ag Program Language Node."><meta itemprop="datePublished" content="2021-02-26T14:53:37&#43;08:00" />
+<meta itemprop="dateModified" content="2021-02-26T14:53:37&#43;08:00" />
+<meta itemprop="wordCount" content="453"><meta itemprop="image" content="https://kywk.github.io/moco"/>
+<meta itemprop="keywords" content="macos,homebrew,dev," />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://kywk.github.io/moco"/>
 
-<meta name="twitter:title" content="Porting Hexo tags to Hugo shortcode"/>
-<meta name="twitter:description" content="Hexo 標籤 Hexo 標籤外掛是用於在文章中快速插入特定內容的外掛, 有幾種方式擴充:
-  內建標籤:
-Hexo 內建標籤有常用的 Block Quote, Gist, iframe, Youtube, &hellip; 包含 Markdown 不支援但常用的 HTML 語法, 影音嵌入, 程式片斷嵌入&hellip;等.
-文章使用內建標籤的相容性最高, 不容易因更換主題而導致生成錯誤的情況. 但不同 Hexo 版本的內建標籤還是可能不同而發生相容性問題.
-  標籤外掛:
-Hexo 有強大的外掛系統, 能輕鬆擴展功能而不用修改核心模組的原始碼.
-標籤亦可透過外掛擴充, 如何製作標籤外掛 官方有詳細說明.
-Plugins | Hexo 是官方收集的外掛列表, hexo-tag 開頭為標籤外掛. 通常透過 npm install PACKAGE_NAME 來安裝外掛.
-標籤外掛安裝在站台根目錄, 文章使用外掛的標籤和內建標籤一樣是不分主題皆可使用, 通常和 Hexo 版本無關, 不會因 Hexo 升版而出現相容問題.
-  主題支援:
-Hexo 主題可以提供該主題內建支援的標籤, 主題內透過外掛的方式提供擴充的標籤提供文章使用.
-主題支援的標籤產生的網頁風格型態通常比較美觀. 但更換主題時可能會不支援的問題.
-  Hugo shortcode Hugo shortcode 和 Hexo tags 很像, 也有內建 / 站台外掛 / 主題支援三種方式."/>
+<meta name="twitter:title" content="macOS 開發環境建構 2021 Feb"/>
+<meta name="twitter:description" content="CLI Environment iTerm2 $ brew install iterm2 zsh and oh-my-zsh macOS Mojave (10.14.x) 開始內建 zsh, 而 Catalina (10.15.x) 以後預設 Shell 改為 zsh.
+在 macOS Mojave 系統要把預設 shell 改為 zsh 以及配置 zsh 最方便也推薦的方式就是透過 Oh My Zsh
+Oh My Zsh
+macOS Mojave 以後已經內建 Zsh, 所以直接安裝 Oh My Zsh 即可.
+$ sh -c &#34;$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)&#34; $ brew install zsh-completion Powerline Font $ brew tap homebrew/cask-fonts $ brew install font-fira-code font-fira-mono font-fira-sans $ brew install font-source-code-pro $ brew install font-hack-nerd-font Base Environment Docker $ brew install docker Brew formulae $ brew install git tig tmux ncdu htop lesspipe tldr diff-so-fancy fd ripgrep thefuck ag Program Language Node."/>
 
 
 
 
-    <meta property="og:title" content="Porting Hexo tags to Hugo shortcode" />
-<meta property="og:description" content="Hexo 標籤 Hexo 標籤外掛是用於在文章中快速插入特定內容的外掛, 有幾種方式擴充:
-  內建標籤:
-Hexo 內建標籤有常用的 Block Quote, Gist, iframe, Youtube, &hellip; 包含 Markdown 不支援但常用的 HTML 語法, 影音嵌入, 程式片斷嵌入&hellip;等.
-文章使用內建標籤的相容性最高, 不容易因更換主題而導致生成錯誤的情況. 但不同 Hexo 版本的內建標籤還是可能不同而發生相容性問題.
-  標籤外掛:
-Hexo 有強大的外掛系統, 能輕鬆擴展功能而不用修改核心模組的原始碼.
-標籤亦可透過外掛擴充, 如何製作標籤外掛 官方有詳細說明.
-Plugins | Hexo 是官方收集的外掛列表, hexo-tag 開頭為標籤外掛. 通常透過 npm install PACKAGE_NAME 來安裝外掛.
-標籤外掛安裝在站台根目錄, 文章使用外掛的標籤和內建標籤一樣是不分主題皆可使用, 通常和 Hexo 版本無關, 不會因 Hexo 升版而出現相容問題.
-  主題支援:
-Hexo 主題可以提供該主題內建支援的標籤, 主題內透過外掛的方式提供擴充的標籤提供文章使用.
-主題支援的標籤產生的網頁風格型態通常比較美觀. 但更換主題時可能會不支援的問題.
-  Hugo shortcode Hugo shortcode 和 Hexo tags 很像, 也有內建 / 站台外掛 / 主題支援三種方式." />
+    <meta property="og:title" content="macOS 開發環境建構 2021 Feb" />
+<meta property="og:description" content="CLI Environment iTerm2 $ brew install iterm2 zsh and oh-my-zsh macOS Mojave (10.14.x) 開始內建 zsh, 而 Catalina (10.15.x) 以後預設 Shell 改為 zsh.
+在 macOS Mojave 系統要把預設 shell 改為 zsh 以及配置 zsh 最方便也推薦的方式就是透過 Oh My Zsh
+Oh My Zsh
+macOS Mojave 以後已經內建 Zsh, 所以直接安裝 Oh My Zsh 即可.
+$ sh -c &#34;$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)&#34; $ brew install zsh-completion Powerline Font $ brew tap homebrew/cask-fonts $ brew install font-fira-code font-fira-mono font-fira-sans $ brew install font-source-code-pro $ brew install font-hack-nerd-font Base Environment Docker $ brew install docker Brew formulae $ brew install git tig tmux ncdu htop lesspipe tldr diff-so-fancy fd ripgrep thefuck ag Program Language Node." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://kywk.github.io/moco/posts/2020/10/porting-hexo-tags/" /><meta property="og:image" content="https://kywk.github.io/moco"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2020-10-24T17:05:52&#43;08:00" />
-<meta property="article:modified_time" content="2020-10-24T17:05:52&#43;08:00" />
+<meta property="og:url" content="https://kywk.github.io/moco/posts/2021/02/macos_dev-env-2021-feb/" /><meta property="og:image" content="https://kywk.github.io/moco"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-02-26T14:53:37&#43;08:00" />
+<meta property="article:modified_time" content="2021-02-26T14:53:37&#43;08:00" />
 
 
 
 
 
-    <meta property="article:section" content="hugo" />
+    <meta property="article:section" content="macos" />
 
 
 
-    <meta property="article:published_time" content="2020-10-24 17:05:52 &#43;0800 CST" />
+    <meta property="article:published_time" content="2021-02-26 14:53:37 &#43;0800 CST" />
 
 
 
@@ -188,7 +156,7 @@ Hexo 主題可以提供該主題內建支援的標籤, 主題內透過外掛的�
 
     <article>
       <h1 class="post-title">
-        <a href="https://kywk.github.io/moco/posts/2020/10/porting-hexo-tags/">Porting Hexo tags to Hugo shortcode</a>
+        <a href="https://kywk.github.io/moco/posts/2021/02/macos_dev-env-2021-feb/">macOS 開發環境建構 2021 Feb</a>
       </h1>
 
       
@@ -196,425 +164,102 @@ Hexo 主題可以提供該主題內建支援的標籤, 主題內透過外掛的�
       
 
       <div class="post-content">
-        <h2 id="hexo-標籤">Hexo 標籤</h2>
-<p>Hexo 標籤外掛是用於在文章中快速插入特定內容的外掛, 有幾種方式擴充:</p>
-<ol>
-<li>
-<p><strong>內建標籤:</strong><br>
-Hexo <a href="(https://hexo.io/zh-tw/docs/tag-plugins)">內建標籤</a>有常用的 Block Quote, Gist, iframe, Youtube, &hellip;
-包含 Markdown 不支援但常用的 HTML 語法, 影音嵌入, 程式片斷嵌入&hellip;等.</p>
-<p>文章使用內建標籤的相容性最高, 不容易因更換主題而導致生成錯誤的情況.
-但不同 Hexo 版本的內建標籤還是可能不同而發生相容性問題.</p>
-</li>
-<li>
-<p><strong>標籤外掛:</strong><br>
-Hexo 有強大的<a href="https://hexo.io/zh-tw/docs/plugins">外掛系統</a>, 能輕鬆擴展功能而不用修改核心模組的原始碼.<br>
-標籤亦可透過外掛擴充, <a href="https://hexo.io/zh-tw/api/tag.html">如何製作標籤外掛</a> 官方有詳細說明.<br>
-<a href="https://hexo.io/plugins/">Plugins | Hexo</a> 是官方收集的外掛列表, <code>hexo-tag</code> 開頭為標籤外掛.
-通常透過 <code>npm install PACKAGE_NAME</code> 來安裝外掛.</p>
-<p>標籤外掛安裝在站台根目錄, 文章使用外掛的標籤和內建標籤一樣是不分主題皆可使用,
-通常和 Hexo 版本無關, 不會因 Hexo 升版而出現相容問題.</p>
-</li>
-<li>
-<p><strong>主題支援:</strong><br>
-Hexo 主題可以提供該主題內建支援的標籤, 主題內透過外掛的方式提供擴充的標籤提供文章使用.<br>
-主題支援的標籤產生的網頁風格型態通常比較美觀. 但更換主題時可能會不支援的問題.</p>
-</li>
-</ol>
-<h2 id="hugo-shortcode">Hugo shortcode</h2>
-<p>Hugo shortcode 和 Hexo tags 很像, 也有<a href="https://gohugo.io/content-management/shortcodes/">內建</a> / 站台外掛 / 主題支援三種方式.
-官方有編寫 shortcode 教學 - <a href="https://gohugo.io/templates/shortcode-templates/">Create Your Own Shortcodes | Hugo</a>.</p>
-<p>而 Hugo 安裝 shortcode 站台外掛比 Hexo 簡單些, 把相關檔案放在站台 <code>layouts/shortcodes</code> 即可,
-不像 Hexo 需透過 <code>npm install package</code>.</p>
-<h2 id="kywkhugo-shortcodeshttpsgithubcomkywkhugo-shortcodes"><a href="https://github.com/kywk/hugo-shortcodes">kywk/hugo-shortcodes</a></h2>
-<p>一些 Hexo 內建或常見的 Tag 移植到 Hugo shortcodes 的收集.</p>
-<h3 id="block-quote">Block Quote</h3>
-<p>在文章中插入引言，可包含作者、來源和標題。</p>
+        <!-- raw HTML omitted -->
+<h2 id="cli-environment">CLI Environment</h2>
+<h3 id="iterm2">iTerm2</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ brew install iterm2
+</code></pre></div><h3 id="zsh-and-oh-my-zsh">zsh and oh-my-zsh</h3>
+<p>macOS Mojave (10.14.x) 開始內建 zsh, 而 Catalina (10.15.x) 以後預設 Shell 改為 zsh.</p>
+<p>在 macOS Mojave 系統要把預設 shell 改為 zsh 以及配置 zsh 最方便也推薦的方式就是透過 <a href="https://ohmyz.sh">Oh My Zsh</a></p>
+<p><strong>Oh My Zsh</strong></p>
+<p>macOS Mojave 以後已經內建 Zsh, 所以直接安裝 Oh My Zsh 即可.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ sh -c <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ brew install zsh-completion 
+</code></pre></div><h3 id="powerline-font">Powerline Font</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ brew tap homebrew/cask-fonts
+$ brew install font-fira-code font-fira-mono font-fira-sans
+$ brew install font-source-code-pro
+$ brew install font-hack-nerd-font
+</code></pre></div><h2 id="base-environment">Base Environment</h2>
+<h3 id="docker">Docker</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ brew install docker
+</code></pre></div><h3 id="brew-formulae">Brew formulae</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ brew install git tig tmux ncdu htop lesspipe tldr diff-so-fancy fd ripgrep thefuck ag
+</code></pre></div><h2 id="program-language">Program Language</h2>
+<h3 id="nodejshttpsnodejsorg"><a href="https://nodejs.org/">Node.js</a></h3>
+<p><a href="http://goo.gl/26nHDf">Installing Node.js or io.js with nvm</a></p>
+<p><strong>NVM Manual install</strong></p>
+<pre><code>git clone https://github.com/creationix/nvm.git ~/.nvm &amp;&amp; cd ~/.nvm &amp;&amp; git checkout `git describe --abbrev=0 --tags`  
+cat &quot;. ~/.nvm/nvm.sh&quot; &gt;&gt; .bashrc
+</code></pre><p><strong>Install node.js</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ nvm install v8.11.1
+$ nvm alias default tls
+$ nvm use default
+</code></pre></div><h3 id="go">Go</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ brew install go
+</code></pre></div><h2 id="ide--gui-tools">IDE &amp; GUI Tools</h2>
+<h3 id="vscode">VSCode</h3>
+<h3 id="goland">GoLand</h3>
+<h3 id="webstorm">WebStorm</h3>
+<h3 id="others">Others</h3>
+<p><strong><a href="https://git-fork.com/">Fork</a></strong></p>
+<p>Fork - a fast and friendly git client for Mac</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ brew install fork
+</code></pre></div><p><strong>Postman</strong></p>
+<p>The Collaboration Platform for API Development.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ brew install postman
+</code></pre></div><p><strong><a href="http://www.sequelpro.com/">Sequel Pro</a></strong></p>
+<p>Sequel Pro is a fast, easy-to-use Mac database management application for working with MySQL databases.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ brew install sequel-pro
+</code></pre></div><p><strong><a href="https://tableplus.com">TablePlus</a></strong></p>
+<p>Modern, Native Tool for Database Management.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ brew install tableplus
+</code></pre></div><p><strong><a href="https://rdm.dev">Redis Desktop Manager</a></strong></p>
+<p>Redis GUI management tool for Windows, Mac OS X, Ubuntu and Debian.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ brew install tableplus
+</code></pre></div><p><strong><a href="https://robomongo.org">Robo3T</a></strong></p>
+<p>Robo 3T. Free, open-source MongoDB GUI</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ brew install tableplus
+</code></pre></div><h2 id="see-also">See Also</h2>
+<h3 id="遺珠">遺珠</h3>
+<p>以下是曾為個人熱愛, 但因故越來越少用的軟體. 暫列於此&hellip;</p>
 <ul>
-<li>
-<p>Normal quote:</p>
-<pre><code>{{&lt; blockquote &gt;}}
-  This is a simple quote.
-{{&lt; /blockquote &gt;}}
-</code></pre>
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-
-<blockquote>
-  <p><pre><code>  This is a simple quote.
-</code></pre>
-</p>
-  <footer>
-    <strong></strong>
-    
-      
-        
-      
-    
-  </footer>
-</blockquote>
-
-</li>
-<li>
-<p>Quote with author</p>
-<pre><code>{{&lt; blockquote author=&quot;Author2&quot; &gt;}}
-  This is a quote with only an Author named Author2.
-{{&lt; /blockquote &gt;}}
-</code></pre>
-
-
-
-
-
-
-
-
-
-
-  
-  
-  
-  
-
-
-
-
-
-  
-
-
-<blockquote>
-  <p><pre><code>  This is a quote with only an Author named Author2.
-</code></pre>
-</p>
-  <footer>
-    <strong>Author2</strong>
-    
-      
-        
-      
-    
-  </footer>
-</blockquote>
-
-</li>
-<li>
-<p>Quote with author and source</p>
-<pre><code>{{&lt; blockquote author=&quot;Author3&quot; source=&quot;Source&quot; &gt;}}
-  This is a quote from Author3 and source &quot;source.&quot;
-{{&lt; /blockquote &gt;}}
-</code></pre>
-
-
-
-
-
-
-
-
-
-
-  
-  
-  
-  
-
-
-
-
-
-  
-
-
-<blockquote>
-  <p><pre><code>  This is a quote from Author3 and source &quot;source.&quot;
-</code></pre>
-</p>
-  <footer>
-    <strong>Author3</strong>
-    
-      <cite>Source</cite>
-    
-  </footer>
-</blockquote>
-
-</li>
-<li>
-<p>Quote with author and link</p>
-<pre><code>{{&lt; blockquote author=&quot;Author4&quot; link=&quot;https://www.google.com&quot; &gt;}}
-  This is a quote from Author4 and links to https://www.google.com.
-{{&lt; /blockquote &gt;}}
-</code></pre>
-
-
-
-
-
-
-
-
-
-
-  
-  
-  
-  
-
-
-
-
-
-      
-      
-      
-    
-     
-      
-    
-    
-
-    
-    
-  
-
-
-<blockquote>
-  <p><pre><code>  This is a quote from Author4 and links to https://www.google.com.
-</code></pre>
-</p>
-  <footer>
-    <strong>Author4</strong>
-    
-      
-        <cite>
-          <a href="https://www.google.com" title="https://www.google.com" rel="noopener noreferrer">google.com</a> 
-        </cite>
-      
-    
-  </footer>
-</blockquote>
-
-</li>
-<li>
-<p>Quote with author, link and title</p>
-<pre><code>{{&lt; blockquote author=&quot;Author5&quot; link=&quot;https://www.google.com&quot; title=&quot;Google&quot; &gt;}}
-  This is a quote from Author5 and links to https://www.google.com with title &quot;Google.&quot;
-{{&lt; /blockquote &gt;}}
-</code></pre>
-
-
-
-
-
-
-
-
-
-
-  
-  
-  
-  
-
-
-
-
-
-  
-
-
-<blockquote>
-  <p><pre><code>  This is a quote from Author5 and links to https://www.google.com with title &quot;Google.&quot;
-</code></pre>
-</p>
-  <footer>
-    <strong>Author5</strong>
-    
-      
-        <cite>
-          <a href="https://www.google.com" title="https://www.google.com" rel="noopener noreferrer">Google</a> 
-        </cite>
-      
-    
-  </footer>
-</blockquote>
-
-</li>
-<li>
-<p>Quote with author and a link longer than 32 characters, string is first cut at 32 characters then everything after the last forward slash is removed</p>
-<pre><code>{{&lt; blockquote author=&quot;Author6&quot; link=&quot;https://twitter.com/CryptoGangsta/status/716427930126196737&quot; &gt;}}
-  This is a quote from Author5 and links to https://twitter.com/CryptoGangsta/status/716427930126196737 which is longer than 32 characters.
-  &lt;br&gt;And this is a new line in the quote with the HTML br tag.
-{{&lt; /blockquote &gt;}}
-</code></pre>
-
-
-
-
-
-
-
-
-
-
-  
-  
-  
-  
-
-
-
-
-
-      
-      
-      
-    
-     
-      
-    
-    
-
-    
-    
-         
-         
-         
-
-         
-        
-        
-        
-        
-      
-      
-    
-  
-
-
-<blockquote>
-  <p><pre><code>  This is a quote from Author5 and links to https://twitter.com/CryptoGangsta/status/716427930126196737 which is longer than 32 characters.
-  &lt;br&gt;And this is a new line in the quote with the HTML br tag.
-</code></pre>
-</p>
-  <footer>
-    <strong>Author6</strong>
-    
-      
-        <cite>
-          <a href="https://twitter.com/CryptoGangsta/status/716427930126196737" title="https://twitter.com/CryptoGangsta/status/716427930126196737" rel="noopener noreferrer">twitter.com/CryptoGangsta/...</a> 
-        </cite>
-      
-    
-  </footer>
-</blockquote>
-
-</li>
-<li>
-<p>Test from the Octopress blockquote page at: <a href="http://octopress.org/docs/plugins/blockquote/">http://octopress.org/docs/plugins/blockquote/</a></p>
-<pre><code>{{&lt; blockquote author=&quot;@allanbranch&quot; link=&quot;https://twitter.com/allanbranch/status/90766146063712256&quot; &gt;}}
-  Over the past 24 hours I've been reflecting on my life &amp; I've realized only one thing. I need a medieval battle axe.
-{{&lt; /blockquote &gt;}}
-</code></pre>
-
-
-
-
-
-
-
-
-
-
-  
-  
-  
-  
-
-
-
-
-
-      
-      
-      
-    
-     
-      
-    
-    
-
-    
-    
-         
-         
-         
-
-         
-        
-        
-        
-        
-        
-        
-      
-      
-    
-  
-
-
-<blockquote>
-  <p><pre><code>  Over the past 24 hours I've been reflecting on my life &amp; I've realized only one thing. I need a medieval battle axe.
-</code></pre>
-</p>
-  <footer>
-    <strong>@allanbranch</strong>
-    
-      
-        <cite>
-          <a href="https://twitter.com/allanbranch/status/90766146063712256" title="https://twitter.com/allanbranch/status/90766146063712256" rel="noopener noreferrer">twitter.com/allanbranch/status/...</a> 
-        </cite>
-      
-    
-  </footer>
-</blockquote>
-
-</li>
+<li><a href="https://atom.io/">Atom</a><br>
+A hackable text editor for the 21st Century by github.</li>
+<li><a href="http://sourcetreeapp.com/">SourceTree</a><br>
+Free Mercurial and Git Client for Windows and Mac</li>
+<li><a href="https://www.gitkraken.com/">GitKraken</a><br>
+The downright luxurious Git client, for Windows, Mac &amp; Linux</li>
+<li><a href="https://hyperterm.org/">HyperTerm</a>
+JS/HTML/CSS Terminal</li>
 </ul>
-<p><em>2020.10.24 Hexo blockquote 參數部分陸續補齊</em></p>
-<h3 id="obsidian-invisible-block">Obsidian (Invisible Block)</h3>
-<p>如<a href="https://kywk.github.io/moco/posts/hugo/from-hexo-to-hugo/">從 Hexo 到 Hugo</a>
-中所提及的, 我的 blog 資料夾是放在 Obsidian Vault 中,
-為了可以正常使用 Obsidian 標籤, 區塊連結, 反向連結等功能, 文章中穿插了不少 Obsidian 的語法.
-這些語法雖不會造成 Hugo 錯誤, 但部落格文章中有奇怪的語法總是怪.</p>
-<p>做了個 Obsidian shortcode, 區塊內容將放在 <code>display:disable</code> 的 div block 中.
-只要把 Obsidian 的語法標示放在 Obsidian 區塊中,
-既可享受 Obsidian 帶來的便利功能, 也不影響部落格的閱讀.</p>
-<pre><code>{{&lt; obsidian &gt;}}
-  Obsidian tag, link, block id, ... etc here.
-{{&lt; /obsidian &gt;}}
-</code></pre><div style="display:none">
-  
-  Obsidian tag, link, block id, ... etc here.
-
-</div>
-
+<h3 id="reference">Reference</h3>
+<p><strong>Zsh</strong></p>
+<ul>
+<li><a href="https://sspai.com/post/55176">让你的 Mac 提前用上 macOS Catalina 的 Shell——Oh My Zsh 配置指南 - 少数派</a></li>
+<li><a href="https://cyeninesky3.medium.com/bin-to-zsh-%E8%A8%AD%E5%AE%9A%E6%B5%81%E7%A8%8B-d29fe60a4121">bash to zsh 設定流程. 參考這篇一步一步執行，因為我已裝過 homebrew以及 iterm2… | by Youngmi huang | Medium</a></li>
+</ul>
+<p><strong>iTerm2 + Oh My Zsh</strong></p>
+<ul>
+<li><a href="https://ithelp.ithome.com.tw/articles/10192874">[Tool] Mac + iTerm 2 + Oh My Zsh + Powerlevel9k 設定 - iT 邦幫忙::一起幫忙解決難題，拯救 IT 人的一天</a></li>
+<li><a href="https://medium.com/statementdog-engineering/prettify-your-zsh-command-line-prompt-3ca2acc967f">超簡單！十分鐘打造漂亮又好用的 zsh command line 環境 | by Gary Chu | 財報狗技術部落格 | Medium</a></li>
+<li><a href="https://medium.com/@hazelwu/%E7%94%A8oh-my-zsh%E6%8A%8Aiterm%E8%AE%8A%E7%BE%8E%E7%BE%8E-8a18daa8eac">用Oh My Zsh把iTerm變美美. 使用終端機操作時常密密麻麻的，看一兩個小時還好，但如果長期這樣下去真的會眼殘，畫… | by Hazel Wu | Medium</a></li>
+<li><a href="https://medium.com/@h86991868/%E7%9C%8B%E8%86%A9%E4%BA%86%E4%B8%80%E6%88%90%E4%B8%8D%E8%AE%8A%E7%9A%84%E5%B0%8F%E9%BB%91%E7%AA%97-%E6%94%B9%E7%94%A8iterm2-oh-my-zsh%E5%90%A7-cc2b0683acb">看膩了一成不變的小黑窗？改用iterm2 + oh-my-zsh吧 | by Nathan Chou | Medium</a></li>
+</ul>
+<p><strong>VS Code</strong></p>
+<p><strong>Mac Dev</strong></p>
+<ul>
+<li><a href="https://goo.gl/ZDYqar">How to set up your Mac for Web Development – freeCodeCamp.org</a></li>
+<li><a href="http://goo.gl/XOrSV6">homebrew - Mac OS X Yosemite 10.10 開発環境構築 - Qiita</a>
+<ul>
+<li><a href="http://goo.gl/8JkuvS">Python Development Environment on Mac OS X Mavericks 10.9 | Hacker Codex</a></li>
+<li><a href="http://goo.gl/5yhNGk">Set Up Python and Install Django on Mac OS X Lion 10.7 | Hacker Codex</a></li>
+</ul>
+</li>
+<li><a href="http://goo.gl/YkCvoT">Setting Up a Mac Dev Machine From Zero to Hero With Dotfiles - Tuts+ Code Tutorial</a></li>
+<li><a href="http://goo.gl/gSnCRv">MacOS 編輯器快捷建設定, short key of editor</a></li>
+<li><a href="https://goo.gl/YZfREq">2018 最新 MacBook 必裝程式與設定 – Ryan Hsu – Medium</a></li>
+</ul>
 
       </div>
     </article>
@@ -626,8 +271,9 @@ Hexo 主題可以提供該主題內建支援的標籤, 主題內透過外掛的�
     <p>
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg>
 
-        <span class="tag"><a href="https://kywk.github.io/moco/tags/hugo/">hugo</a></span>
-        <span class="tag"><a href="https://kywk.github.io/moco/tags/tutorial/">tutorial</a></span>
+        <span class="tag"><a href="https://kywk.github.io/moco/tags/macos/">macos</a></span>
+        <span class="tag"><a href="https://kywk.github.io/moco/tags/homebrew/">homebrew</a></span>
+        <span class="tag"><a href="https://kywk.github.io/moco/tags/dev/">dev</a></span>
         
     </p>
 
@@ -635,7 +281,7 @@ Hexo 主題可以提供該主題內建支援的標籤, 主題內透過外掛的�
     <p>
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-folder meta-icon"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
 
-        <span class="tag"><a href="https://kywk.github.io/moco/categories/hugo/">hugo</a></span>
+        <span class="tag"><a href="https://kywk.github.io/moco/categories/macos/">macos</a></span>
         
     </p>
 
@@ -648,7 +294,7 @@ Hexo 主題可以提供該主題內建支援的標籤, 主題內透過外掛的�
           <line x1="16" y1="17" x2="8" y2="17"></line>
           <polyline points="10 9 9 9 8 9"></polyline>
         </svg>
-        499 Words
+        453 Words
       </p>
 
       <p>
@@ -659,7 +305,7 @@ Hexo 主題可以提供該主題內建支援的標籤, 主題內透過外掛的�
           <line x1="3" y1="10" x2="21" y2="10"></line>
         </svg>
         
-          2020-10-24 17:05
+          2021-02-26 14:53
         
 
          
@@ -911,18 +557,11 @@ background-color: #FF6600
 
         <div class="pagination__buttons">
           
-            <span class="button previous">
-              <a href="https://kywk.github.io/moco/posts/2020/12/macos_install-iftop/">
-                <span class="button__icon">←</span>
-                <span class="button__text">macOS 安裝 iftop 失敗與解決方式</span>
-              </a>
-            </span>
-          
 
           
             <span class="button next">
-              <a href="https://kywk.github.io/moco/posts/2020/10/from-hexo-to-hugo/">
-                <span class="button__text">從 Hexo 到 Hugo</span>
+              <a href="https://kywk.github.io/moco/posts/2021/02/macos_setup-note-2021-feb/">
+                <span class="button__text">macOS 系統安裝紀錄 2021.Feb</span>
                 <span class="button__icon">→</span>
               </a>
             </span>
