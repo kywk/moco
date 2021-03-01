@@ -18,7 +18,7 @@
 在 macOS Mojave 系統要把預設 shell 改為 zsh 以及配置 zsh 最方便也推薦的方式就是透過 Oh My Zsh
 Oh My Zsh
 macOS Mojave 以後已經內建 Zsh, 所以直接安裝 Oh My Zsh 即可.
-$ sh -c &amp;#34;$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)&amp;#34; $ brew install zsh-completion Powerline Font $ brew tap homebrew/cask-fonts $ brew install font-fira-code font-fira-mono font-fira-sans $ brew install font-source-code-pro $ brew install font-hack-nerd-font Base Environment Docker $ brew install docker Brew formulae $ brew install git tig tmux ncdu htop lesspipe tldr diff-so-fancy fd ripgrep thefuck ag Program Language Node.</description>
+$ sh -c &amp;#34;$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)&amp;#34; $ brew install zsh-completion Powerline Font $ brew tap homebrew/cask-fonts $ brew install font-fira-code font-fira-mono font-fira-sans $ brew install font-source-code-pro $ brew install font-hack-nerd-font Base Environment Docker $ brew install --cask docker Brew formulae $ brew install git tig tmux ncdu htop lesspipe tldr diff-so-fancy fd ripgrep thefuck ag Program Language Node.</description>
     </item>
     
   </channel>

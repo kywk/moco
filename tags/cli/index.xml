@@ -7,16 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Mon, 22 Feb 2021 16:56:31 +0800</lastBuildDate><atom:link href="https://kywk.github.io/moco/tags/cli/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>uniq</title>
-      <link>https://kywk.github.io/moco/posts/2021/02/cli_uniq/</link>
-      <pubDate>Mon, 22 Feb 2021 16:56:31 +0800</pubDate>
-      
-      <guid>https://kywk.github.io/moco/posts/2021/02/cli_uniq/</guid>
-      <description>  </description>
-    </item>
-    
+    <lastBuildDate>Sun, 07 Feb 2021 11:46:48 +0800</lastBuildDate><atom:link href="https://kywk.github.io/moco/tags/cli/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>利用 youtube-dl 下載 Youtube 影片</title>
       <link>https://kywk.github.io/moco/posts/2021/02/yt_youtube-dl/</link>
@@ -44,6 +35,19 @@ TarBall Tar 支援 gzip, bz2, xz&amp;hellip; 等多種壓縮方式, 但 tar 並�
 $ tar cvf - FILE_NAME | openssl des3 -salt -k passw0rd -out /path/to/file.tar 這個指令主要分成兩部分
 第一部分是 tar cvf - FILE_NAME, 意思是針對 FILE_NAME 進行打包, 其中三個參數的意思是:
  c: create 創建一個新的 tarball 文件 v: verbose 輸出詳細的處理過程 f:file 需要打包的檔案 (Unix 下一切都是檔案, 資料夾也屬於檔案)  第二部分是 openssl des3 -salt -k passw0rd -out /path/to/file.</description>
+    </item>
+    
+    <item>
+      <title>Setup Rclone for Google Team Drive on macOS</title>
+      <link>https://kywk.github.io/moco/posts/2020/12/gd_rclone-config/</link>
+      <pubDate>Mon, 07 Dec 2020 17:35:35 +0800</pubDate>
+      
+      <guid>https://kywk.github.io/moco/posts/2020/12/gd_rclone-config/</guid>
+      <description>針對 Google Drive 個人與商業用戶, Google 分別提供了 Backup and Sync 以及 DriveFS 兩個桌面軟體以便操作, 但無論是 Backup and Sync 還是 DriveFS 都不支援 Team Drive, 無法在桌面環境下操作 Team Drive, 只能透過網頁端處理.
+所幸萬能的 Rclone 有支援 Team Drive. Rclone Rclone 是一個非常好用的雲端硬碟管理工具, 在命令模式下直接針對多數雲端硬碟服務進行操作, 搭配其他系統工具, 可自動化雲端硬碟的管理, 包括異地備份, 打包, 移除老舊檔案&amp;hellip; 等等.
+目前 Rclone 支援的雲端硬碟服務多達 38 種, 其中本篇的重點在第 13 項 &amp;ldquo;Google Drive&amp;rdquo;.
+注意: 第 12 項的 Google Cloud Storage 並不是 Google Drive, 而是 GCP 中類似 AWS S3 的服務.
+Install rclone on macOS 在 macOS 透過 homebrew 安裝的 rclone 目前不支援 mount 命令.</description>
     </item>
     
   </channel>

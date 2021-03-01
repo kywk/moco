@@ -18,7 +18,7 @@
 在 macOS Mojave 系統要把預設 shell 改為 zsh 以及配置 zsh 最方便也推薦的方式就是透過 Oh My Zsh
 Oh My Zsh
 macOS Mojave 以後已經內建 Zsh, 所以直接安裝 Oh My Zsh 即可.
-$ sh -c &amp;#34;$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)&amp;#34; $ brew install zsh-completion Powerline Font $ brew tap homebrew/cask-fonts $ brew install font-fira-code font-fira-mono font-fira-sans $ brew install font-source-code-pro $ brew install font-hack-nerd-font Base Environment Docker $ brew install docker Brew formulae $ brew install git tig tmux ncdu htop lesspipe tldr diff-so-fancy fd ripgrep thefuck ag Program Language Node.</description>
+$ sh -c &amp;#34;$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)&amp;#34; $ brew install zsh-completion Powerline Font $ brew tap homebrew/cask-fonts $ brew install font-fira-code font-fira-mono font-fira-sans $ brew install font-source-code-pro $ brew install font-hack-nerd-font Base Environment Docker $ brew install --cask docker Brew formulae $ brew install git tig tmux ncdu htop lesspipe tldr diff-so-fancy fd ripgrep thefuck ag Program Language Node.</description>
     </item>
     
     <item>
@@ -33,15 +33,6 @@ $ /bin/bash -c &amp;#34;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/
 Google Chrome 雖已漸漸棄用 Chrome, 改用 Safari 和 Edge. 但在 Chrome 長期使用習慣, 仍無法馬上改變. 導致先安裝 Chrome 也是安裝系統的必備之一.
 Sublime Text 其實開發程式的主力已經轉為 VSCode, GoLand, WebStorm&amp;hellip; 等. 但 Sublime Text 啟動速度快, 基本作業順暢, 仍是我必然安裝的工具.
 因安裝時 setup.</description>
-    </item>
-    
-    <item>
-      <title>uniq</title>
-      <link>https://kywk.github.io/moco/posts/2021/02/cli_uniq/</link>
-      <pubDate>Mon, 22 Feb 2021 16:56:31 +0800</pubDate>
-      
-      <guid>https://kywk.github.io/moco/posts/2021/02/cli_uniq/</guid>
-      <description>  </description>
     </item>
     
     <item>
@@ -154,6 +145,16 @@ Hexo 主題可以提供該主題內建支援的標籤, 主題內透過外掛的�
 自己工作上的開發也漸漸從 node.js 轉移到 go lang, 部落格平台轉移似乎天注定.
 建制環境 官方有提供如何安裝及設定 Hugo 的說明文件, 網路上也找得到中文版文件.
 使用Hugo+Github Pages建置Blog 這篇寫得挺詳細, 部分內容架構會參考該文, 再以自己的歷程增減補充.</description>
+    </item>
+    
+    <item>
+      <title>First snippet</title>
+      <link>https://kywk.github.io/moco/snippets/first/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://kywk.github.io/moco/snippets/first/</guid>
+      <description>This content is in snippets/first/index.md
+pwd </description>
     </item>
     
   </channel>

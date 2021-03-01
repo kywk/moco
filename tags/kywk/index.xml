@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>macos on moco</title>
-    <link>https://kywk.github.io/moco/tags/macos/</link>
-    <description>Recent content in macos on moco</description>
+    <title>kywk on moco</title>
+    <link>https://kywk.github.io/moco/tags/kywk/</link>
+    <description>Recent content in kywk on moco</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Fri, 26 Feb 2021 14:53:37 +0800</lastBuildDate><atom:link href="https://kywk.github.io/moco/tags/macos/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 26 Feb 2021 14:53:37 +0800</lastBuildDate><atom:link href="https://kywk.github.io/moco/tags/kywk/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>macOS 開發環境建構 2021 Feb</title>
       <link>https://kywk.github.io/moco/posts/2021/02/macos_dev-env-2021-feb/</link>
@@ -33,19 +33,6 @@ $ /bin/bash -c &amp;#34;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/
 Google Chrome 雖已漸漸棄用 Chrome, 改用 Safari 和 Edge. 但在 Chrome 長期使用習慣, 仍無法馬上改變. 導致先安裝 Chrome 也是安裝系統的必備之一.
 Sublime Text 其實開發程式的主力已經轉為 VSCode, GoLand, WebStorm&amp;hellip; 等. 但 Sublime Text 啟動速度快, 基本作業順暢, 仍是我必然安裝的工具.
 因安裝時 setup.</description>
-    </item>
-    
-    <item>
-      <title>macOS 安裝 iftop 失敗與解決方式</title>
-      <link>https://kywk.github.io/moco/posts/2020/12/macos_install-iftop/</link>
-      <pubDate>Mon, 07 Dec 2020 16:48:04 +0800</pubDate>
-      
-      <guid>https://kywk.github.io/moco/posts/2020/12/macos_install-iftop/</guid>
-      <description>測試 Rclone 伺服機端傳輸時發覺 macOS 並無 iftop 指令, 習慣性地用 brew 安裝了.
-$ brew install iftop ... ... iftop requires root privileges so you will need to run `sudo iftop`. You should be certain that you trust any software you grant root privileges. 安裝完成後提示 iftop 這個指令需要用 root 權限執行.
-然而使用 sudo iftop 之後卻出現 command not found 的錯誤.
-$sudo iftop sudo: iftop: command not found 上網查了查, 看到這篇 一次macbook安装iftop失败的经历及解决方式_偷懒的加菲-CSDN博客
-跟著該文敘述一一確認後, 發覺我電腦上只存在著 sbin 不在 path 環境變數的問題.</description>
     </item>
     
   </channel>
