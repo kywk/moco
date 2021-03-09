@@ -6,8 +6,167 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
         <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-        <lastBuildDate>Fri, 26 Feb 2021 14:53:37 +0800</lastBuildDate>
+        <lastBuildDate>Tue, 09 Mar 2021 14:37:59 +0800</lastBuildDate>
         <atom:link href="https://kywk.github.io/moco/posts/index.xml" rel="self" type="application/rss+xml" />
+        
+        <item>
+            <title>Chrome Extension List, 2021.Mar</title>
+            <link>https://kywk.github.io/moco/posts/2021/03/chrome_extension-2021-mar/</link>
+            <pubDate>Tue, 09 Mar 2021 14:37:59 +0800</pubDate>
+            
+            <guid>https://kywk.github.io/moco/posts/2021/03/chrome_extension-2021-mar/</guid>
+            <description>翻出存檔紀錄, 上次整理 Chrome extension 已三四年前了, 一開始紀錄 Chrome extension 是重灌電腦前整理列表, 以方便重灌後使用. 但後來 Chrome 把 extension, bookmark&amp;hellip; 紀錄在雲端上, 只需要登入個人帳號, 就可以還原之前的 extension, bookmark&amp;hellip; 等, 也就不再整理列表了.
+再次整理列表, 因為有些喜歡的 extension 已在 Chrome Store 下架, 無法還原. 尋找如何安裝該擴充時, 發現網路上有人把常用的擴充下載備份, 被下架時可以利用開發者模式安裝本地端擴充. 覺得是個不錯的方法.
+最近已經越來越感受到雲端除了方便外, 也帶來許多的不定因素. 別人分享的檔案, 上傳的影片, 發布的軟體, 都隨時可能被下架. 而本地備份法律上必然有模糊之地, 個人低調使用.
+這邊整理個人喜歡的擴充, 以及介紹連結. 也為了若 Chrome 在省電與記憶體管理上繼續積弱不振的話, 可能移師 Edge 作準備.
+Browser enhance Dream Afar New Tab (遠方) 「每天打開新分頁都是一段不期而遇的旅行」
+新分頁美化, 目前最愛的一個新分頁功能.
+曾用過一陣子強調 Tab 與 WorkSpace 管理的新分頁, 後來因工作流程取捨與簡化, 過於強調分頁管理反而會擾亂流程. 故回頭使用這個以美觀優先的新分頁.
+目前這個擴充已在 Chrome Store 下架, 需自行尋找 crx 安裝.</description>
+            <content type="html"><![CDATA[<p>翻出存檔紀錄, 上次整理 Chrome extension 已三四年前了,
+一開始紀錄 Chrome extension 是重灌電腦前整理列表, 以方便重灌後使用.
+但後來 Chrome 把 extension, bookmark&hellip; 紀錄在雲端上,
+只需要登入個人帳號, 就可以還原之前的 extension, bookmark&hellip; 等, 也就不再整理列表了.</p>
+<p>再次整理列表, 因為有些喜歡的 extension 已在 Chrome Store 下架, 無法還原.
+尋找如何安裝該擴充時, 發現網路上有人把常用的擴充下載備份, 被下架時可以利用開發者模式安裝本地端擴充. 覺得是個不錯的方法.</p>
+<p>最近已經越來越感受到雲端除了方便外, 也帶來許多的不定因素.
+別人分享的檔案, 上傳的影片, 發布的軟體, 都隨時可能被下架.
+而本地備份法律上必然有模糊之地, 個人低調使用.</p>
+<p>這邊整理個人喜歡的擴充, 以及介紹連結.
+也為了若 Chrome 在省電與記憶體管理上繼續積弱不振的話, 可能移師 Edge 作準備.</p>
+<!-- raw HTML omitted -->
+<h2 id="browser-enhance">Browser enhance</h2>
+<h3 id="dream-afar-new-tab-遠方">Dream Afar New Tab (遠方)</h3>
+<p><strong>「每天打開新分頁都是一段不期而遇的旅行」</strong></p>
+<p>新分頁美化, 目前最愛的一個新分頁功能.<br>
+曾用過一陣子強調 Tab 與 WorkSpace 管理的新分頁, 後來因工作流程取捨與簡化, 過於強調分頁管理反而會擾亂流程.
+故回頭使用這個以美觀優先的新分頁.</p>
+<p><em>目前這個擴充已在 Chrome Store 下架, 需自行尋找 crx 安裝.</em></p>
+<ul>
+<li><a href="https://free.com.tw/dream-afar/">Dream Afar 遠方：每次打開新分頁都是一段不期而遇的旅行（Chrome 擴充功能）</a></li>
+<li><a href="https://www.playpcesor.com/2014/06/google-chrome-Dream-After-New-Tab.html">一生必去的旅遊景點放入 Google Chrome 新分頁召喚夢想</a></li>
+</ul>
+<h3 id="dark-readerhttpschromegooglecomwebstoredetaildark-readereimadpbcbfnmbkopoojfekhnkhdbieehhlzh-tw"><a href="https://chrome.google.com/webstore/detail/dark-reader/eimadpbcbfnmbkopoojfekhnkhdbieeh?hl=zh-TW">Dark Reader</a></h3>
+<p><strong>關愛眼睛，使用Dark Reader進行夜間和日間瀏覽</strong></p>
+<p>Dark Reader 能將所有網站或你設定的某些網站轉為暗色背景.
+不僅如此, Dark Reader 還允許使用者自己調整各項顏色數值, 例如亮度, 對比, 灰階, 墨色及字型等等. 找出讓自己舒服閱讀的色調, 提升網站易讀性.</p>
+<p>個人最愛的功能是他可以針對不同網站, 選擇是否啟用深色功能.
+對於一些已提供深色模式的網站, 相容度更高.</p>
+<ul>
+<li><a href="https://github.com/darkreader/darkreader">GitHub - darkreader/darkreader: Dark Reader Chrome and Firefox extension</a></li>
+<li><a href="https://free.com.tw/dark-reader/">Dark Reader 讓網站使用深色夜間瀏覽模式，解決白色背景造成的眼睛疲勞</a></li>
+<li><a href="https://www.playpcesor.com/2016/07/dark-reader.html">Dark Reader 所有網頁轉成深黑夜讀模式，效果極佳</a></li>
+</ul>
+<h3 id="google-dictionary-by-googlehttpschromegooglecomwebstoredetailgoogle-dictionary-by-googmgijmajocgfcbeboacabfgobmjgjcoja"><a href="https://chrome.google.com/webstore/detail/google-dictionary-by-goog/mgijmajocgfcbeboacabfgobmjgjcoja">Google Dictionary (by Google)</a></h3>
+<p><strong>網頁即時英翻中, 滑鼠選取單字自動翻譯</strong></p>
+<p>Google Dictionary 瀏覽器外掛可以直接讓使用者在 Google Chrome 快速進行英文單字翻譯, 查詢.
+遇到不懂的單字時, 只要以滑鼠選取, 會立即跳出翻譯搜尋結果, 還能直接發音, 在閱讀時可以更得心應手.</p>
+<ul>
+<li><a href="https://free.com.tw/google-dictionary-chrome-extension/">Google Dictionary 網頁即時英翻中，滑鼠選取單字自動翻譯（Chrome 擴充功能）</a></li>
+<li><a href="https://www.tech-girlz.com/2020/09/chrome-google-dictionary.html">想快速查詢或翻譯網頁上的單字？用 Chrome 套件 Google Dictionary - 塔科女子</a></li>
+</ul>
+<h3 id="mercury-readerhttpschromegooglecomwebstoredetailmercury-readeroknpjjbmpnndlpmnhmekjpocelpnlfdi"><a href="https://chrome.google.com/webstore/detail/mercury-reader/oknpjjbmpnndlpmnhmekjpocelpnlfdi">Mercury Reader</a></h3>
+<p><strong>更乾淨閱讀空間, 讓文章更好讀</strong></p>
+<p>Safari 和部分瀏覽器有閱讀模式, 會移除廣告, 調整字形間距等, 提供文章更適合的閱讀體驗.
+但 Chrome 沒有內建閱讀模式, 比較一些類似擴充後, 目前選用 Mercury Reader.
+這款簡單的閱讀器, 能在需要時開啟「閱讀模式」來瀏覽內容, 將所有不相干的部份通通移除隱藏, 更容易聚焦於閱讀, 特別是長篇內容.</p>
+<ul>
+<li><a href="https://free.com.tw/mercury-reader/">Mercury Reader 給你更乾淨閱讀空間！替代 Readability 外掛讓文章更好讀</a></li>
+</ul>
+<h3 id="print-friendly--pdfhttpswwwprintfriendlycom"><a href="https://www.printfriendly.com/">Print Friendly &amp; PDF</a></h3>
+<p><strong>移除側邊欄或廣告讓網頁適合列印</strong></p>
+<p>Print Friendly &amp; PDF 是個免費線上服務, 自動清除網頁廣告和不必要的元素只保留文字和圖片內容, 將網頁轉換成乾淨的閱讀模式.
+使用者還能手動刪除不想保留的資料, 在列印網頁時可減少紙張和墨水用量, 或是轉存乾淨簡潔的 PDF 文件.</p>
+<ul>
+<li><a href="https://free.com.tw/printfriendly/">PrintFriendly 讓網頁適合列印或轉 PDF，移除側邊欄或廣告更省紙張墨水</a></li>
+<li><a href="https://www.xiaoyao.tw/2020/09/printfriendly.html">要列印網頁或轉存 PDF 可先使用 Print Friendly &amp; PDF 清除廣告和刪除不必要的內容 - 逍遙の窩</a></li>
+</ul>
+<h3 id="save-to-pockethttpschromegooglecomwebstoredetailsave-to-pocketniloccemoadcdkdjlinkgdfekeahmfljhlzh-tw"><a href="https://chrome.google.com/webstore/detail/save-to-pocket/niloccemoadcdkdjlinkgdfekeahmflj?hl=zh-TW">Save to Pocket</a></h3>
+<p><strong>把沒時間讀的網頁先存起來, 有空再看</strong></p>
+<ul>
+<li><a href="https://kkplay3c.net/save-to-pocket/">(Chrome 擴充) 來不及看的網頁「稍後再看」，Save to Pocket 幫你全紀錄|KK3C狂想曲</a></li>
+<li><a href="https://free.com.tw/pocket-read-it-later/">Pocket：把沒時間讀的網頁先存起來，有空再看</a></li>
+</ul>
+<h3 id="simpleundoclosehttpschromegooglecomwebstoredetailsimpleundocloseemhohdghchmjepmigjojkehidlielknj"><a href="https://chrome.google.com/webstore/detail/simpleundoclose/emhohdghchmjepmigjojkehidlielknj">SimpleUndoClose</a></h3>
+<p><strong>輕鬆地還原已關閉的分頁</strong></p>
+<p>SimpleUndoClose 輕鬆找回過去 Chrome 已關閉的分頁, 最多可紀錄 99999</p>
+<ul>
+<li><a href="https://www.kocpc.com.tw/archives/287768">SimpleUndoClose 輕鬆找回過去 Chrome 已關閉的分頁，最多可紀錄 99999 - 電腦王阿達</a></li>
+</ul>
+<h3 id="unblock-youkuhttpschromegooglecomwebstoredetailunblock-youkupdnfnkhpgegpcingjbfihlkjeighnddk"><a href="https://chrome.google.com/webstore/detail/unblock-youku/pdnfnkhpgegpcingjbfihlkjeighnddk">Unblock Youku</a></h3>
+<p><strong>Access Youku while outside mainland China.</strong></p>
+<h3 id="url-shortenerhttpschromegooglecomwebstoredetailurl-shorteneroodfdmglhbbkkcngodjjagblikmoegpa"><a href="https://chrome.google.com/webstore/detail/url-shortener/oodfdmglhbbkkcngodjjagblikmoegpa">Url Shortener</a></h3>
+<h2 id="develop-tools">Develop Tools</h2>
+<h3 id="json-formatterhttpsgithubcomcallumlockejson-formatter"><a href="https://github.com/callumlocke/json-formatter">JSON Formatter</a></h3>
+<p><strong>格式化輸出顯示 JSON</strong></p>
+<p>針 JSON 格式進行格式化, 並以樹狀結構進行呈現.
+透過樹狀結構, 更容易了解整個 JSON 資料的關聯性.</p>
+<ul>
+<li><a href="https://www.minwt.com/webdesign-dev/html/19189.html">Chrome外掛－JSON Formatter讓JSON格式以樹狀呈現，不再像天書一樣密密碼碼的 | 梅問題．教學網</a></li>
+<li><a href="https://www.ewdna.com/2013/01/chrome-plugin-json-formatter.html">Chrome Plugin：JSON Formatter 格式化輸出顯示json @ 符碼記憶</a></li>
+</ul>
+<h2 id="trello">Trello</h2>
+<h3 id="add-to-trellohttpschromegooglecomwebstoredetailadd-to-trelloengmocckoohpopiacajolojeobefbcec"><a href="https://chrome.google.com/webstore/detail/add-to-trello/engmocckoohpopiacajolojeobefbcec">Add to Trello</a></h3>
+<p>在看網頁資料時, 可以快速將資料放入Trello卡片中.
+喜歡用 Trello 當作 inbox 或 reference collect box 的話, 是個相當方便的工具.</p>
+<h3 id="pro-for-trello-free-trello-tweakshttpschromegooglecomwebstoredetailpro-for-trello-free-trellhcjkfaengbcfeckhjgjdldmhjpoglecc"><a href="https://chrome.google.com/webstore/detail/pro-for-trello-free-trell/hcjkfaengbcfeckhjgjdldmhjpoglecc">Pro for Trello, FREE Trello tweaks</a></h3>
+<ul>
+<li><a href="https://daimom3020.blogspot.com/2020/06/trello-chrome-plugin.html">[網站心得]Trello chrome Plugin ~ 度估記事本</a></li>
+</ul>
+<h2 id="github">GitHub</h2>
+<h3 id="gistbox-clipperhttpschromegooglecomwebstoredetailgistbox-clippercejmhmbmafamjegaebkjhnckhepgmido"><a href="https://chrome.google.com/webstore/detail/gistbox-clipper/cejmhmbmafamjegaebkjhnckhepgmido">GistBox Clipper</a></h3>
+<p>快速讓 Gist 變成網頁資料保存夾, 還可以建立個人的 code snippet 資料庫.</p>
+<ul>
+<li><a href="https://longzeping.github.io/2018/08/05/GistBox%E8%AE%A9%E4%BD%A0%E7%9A%84Github-gist%E6%9B%B4%E5%A5%BD%E7%94%A8/">Github gist最佳伴侣之一：GistBox Clipper - 龙泽平的博客 | LZP Blog</a></li>
+<li><a href="https://ithelp.ithome.com.tw/articles/10206277">原來 Github Gist 還可以&hellip; （下） - iT 邦幫忙::一起幫忙解決難題，拯救 IT 人的一天</a></li>
+</ul>
+<h3 id="octolinkerhttpsoctolinkernowsh"><a href="https://octolinker.now.sh/">OctoLinker</a></h3>
+<p><strong>快速在 GitHub 不同專案間跳轉瀏覽</strong></p>
+<p>OctoLinker 能將特定語言的加載語句轉為連結, 如: include, require, import&hellip; 等.
+透過 OctoLinker 可以快速在 GitHub 不同專案間跳轉瀏覽.</p>
+<ul>
+<li><a href="https://www.oschina.net/p/octolinker">OctoLinker首页、文档和下载 - 高效阅读 GitHub 代码插件 - OSCHINA - 中文开源技术交流社区</a></li>
+<li><a href="https://iter01.com/1617.html">搜尋和線上閱讀 Github 程式碼的外掛推薦 | IT人</a></li>
+</ul>
+<h3 id="octotree---github-code-treehttpswwwoctotreeio"><a href="https://www.octotree.io/">Octotree - GitHub code tree</a></h3>
+<p><strong>在 GitHub 左側呈現專案樹狀圖, 以便瀏覽</strong></p>
+<ul>
+<li><a href="https://xenby.com/b/232-%E6%8E%A8%E8%96%A6-%E6%A8%B9%E7%8B%80%E7%B5%90%E6%A7%8B%E9%A1%AF%E7%A4%BAgithub%E5%B0%88%E6%A1%88%E7%B5%90%E6%A7%8B%E7%80%8F%E8%A6%BD%E5%99%A8%E5%B7%A5%E5%85%B7-octotree">[推薦] 樹狀結構顯示Github專案結構瀏覽器工具-Octotree | 辛比誌</a></li>
+<li><a href="https://cloud.tencent.com/developer/article/1584725">推荐几个我常用的Chrome插件 —— 让你使用Github效率翻倍 - 云+社区 - 腾讯云</a></li>
+</ul>
+<h3 id="refined-githubhttpsgithubcomsindresorhusrefined-github"><a href="https://github.com/sindresorhus/refined-github">Refined GitHub</a></h3>
+<p><strong>Refined Github 簡化 GitHub 的介面</strong></p>
+<p>Refined Github 插件簡化了 GitHub 的介面, 添加了一些有用的功能, 比如將 issue 或者 PR 設置成未讀, 快速複製文件內容, 查看 markdown 文件的原始代碼等.</p>
+<ul>
+<li><a href="https://kknews.cc/zh-tw/code/bmmz9bo.html">9 大實用瀏覽器插件 網絡開發者必備 - 每日頭條</a></li>
+</ul>
+<h3 id="sourcegraphhttpschromegooglecomwebstoredetailsourcegraphdgjhfomjieaadpoljlnidmbgkdffpack"><a href="https://chrome.google.com/webstore/detail/sourcegraph/dgjhfomjieaadpoljlnidmbgkdffpack">Sourcegraph</a></h3>
+<ul>
+<li><a href="https://www.mdeditor.tw/pl/29dx/zh-hk">瀏覽 GitHub 太卡了？教你兩招！江南一點雨 - MdEditor</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/27620085">使用 Sourcegraph 更好地搜索和浏览 GitHub上的代码 - 知乎</a></li>
+</ul>
+<h2 id="violentmonkeyhttpschromegooglecomwebstoredetailviolentmonkeyjinjaccalgkegednnccohejagnlnfdag"><a href="https://chrome.google.com/webstore/detail/violentmonkey/jinjaccalgkegednnccohejagnlnfdag">Violentmonkey</a></h2>
+<h2 id="chrome-apps">Chrome Apps</h2>
+<h3 id="carethttpschromegooglecomwebstoredetailcaretfljalecfjciodhpcledpamjachpmelml"><a href="https://chrome.google.com/webstore/detail/caret/fljalecfjciodhpcledpamjachpmelml">Caret</a></h3>
+<h3 id="json-editorhttpschromegooglecomwebstoredetailjson-editorlhkmoheomjbkfloacpgllgjcamhihfaj"><a href="https://chrome.google.com/webstore/detail/json-editor/lhkmoheomjbkfloacpgllgjcamhihfaj">JSON Editor</a></h3>
+<h3 id="polarr-photo-editorhttpschromegooglecomwebstoredetailpolarr-photo-editordjonnbgfieijldcieafgjcnhmpcfpmgg"><a href="https://chrome.google.com/webstore/detail/polarr-photo-editor/djonnbgfieijldcieafgjcnhmpcfpmgg">Polarr Photo Editor</a></h3>
+<h3 id="secure-shell-apphttpschromegooglecomwebstoredetailsecure-shell-apppnhechapfaindjhompbnflcldabbghjo"><a href="https://chrome.google.com/webstore/detail/secure-shell-app/pnhechapfaindjhompbnflcldabbghjo">Secure Shell App</a></h3>
+<h3 id="uml-diagram-editorhttpschromegooglecomwebstoredetailuml-diagram-editorhoepdgfgogmeofkgkpapbdpdjkplcode"><a href="https://chrome.google.com/webstore/detail/uml-diagram-editor/hoepdgfgogmeofkgkpapbdpdjkplcode">UML Diagram Editor</a></h3>
+<h2 id="see-also">See Also</h2>
+<h3 id="遺珠">遺珠</h3>
+<p>以下是曾為個人熱愛, 但因故棄用的擴充. 暫列於此&hellip;</p>
+<ul>
+<li><a href="https://chrome.google.com/webstore/detail/drag-and-go/jaikcnhlohebodlpkmjepipngegjbfpg">Drag and Go</a><br>
+拖拉鏈結在新分頁開啟, 拖拉文字搜尋引擎找資料</li>
+<li><a href="https://www.fika.io/">Fika - Reader Mode</a><br>
+Kindle 閱讀效果，設定更符合習慣的瀏覽模式
+<ul>
+<li><a href="https://free.com.tw/fika-reader-mode/">Fika 為瀏覽器加入 Kindle 閱讀效果，設定更符合習慣的瀏覽模式</a></li>
+</ul>
+</li>
+</ul>
+]]></content>
+        </item>
         
         <item>
             <title>macOS 開發環境建構 2021 Feb</title>
@@ -169,18 +328,20 @@ Sublime Text 其實開發程式的主力已經轉為 VSCode, GoLand, WebStorm&am
 編改檢查後再行安裝各項軟體或依安裝情況修改配置.</p>
 <p>Sublime Text 已可以用 brew 安裝.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ brew install sublime-text
-</code></pre></div><h2 id="生產力工具">生產力工具</h2>
+</code></pre></div><h2 id="開發工具">開發工具</h2>
+<p><strong>參考 <a href="#">macOS 開發環境建構</a></strong></p>
+<h2 id="生產力工具">生產力工具</h2>
 <h3 id="alfredhttpsgooglmd9k61"><a href="https://goo.gl/mD9K61">Alfred</a></h3>
 <p>類似 Spotlight 的軟體, 但功能遠遠不止這樣.
 能大大減少離開來回鍵盤和觸控板的時間, 可以參考<a href="https://goo.gl/SHsXkH">這篇教學</a></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ brew install alfred
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ brew install --cask alfred
 </code></pre></div><h3 id="itsycalhttpswwwmowgliicomitsycal"><a href="https://www.mowglii.com/itsycal/">Itsycal</a></h3>
 <p>在功能表列上便捷地查看日曆, 可以查看月曆和事件列表, 還能快速創建新事件.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ brew install itsycal
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ brew install --cask itsycal
 </code></pre></div><h3 id="xmind-zenhttpwwwxmindnet"><a href="http://www.xmind.net/">XMind Zen</a></h3>
 <p>不得不說, 重新開發的 XMind Zen 不但跟原本的 XMind 一樣好用,
 而且更美觀, 快速. 值得更換.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ brew install xmind-zen
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ brew install --cask xmind-zen
 </code></pre></div><h2 id="網路通訊">網路通訊</h2>
 <h3 id="wellyhttpsgithubcomclyangwelly"><a href="https://github.com/clyang/welly">Welly</a></h3>
 <p>Welly 是一套運行在 Mac 上功能豐富的BBS軟體</p>
@@ -318,6 +479,7 @@ $ brew install youtube-dl ffmpeg youtube-dl 是 python script, 利用 python 適
 故發起把影片下載保存的念頭,</p>
 <p>網路上有不少下載 Youtube 影片的線上網站和 App,
 試用過後最後回到最適合工程師的 <a href="https://youtube-dl.org/">youtube-dl</a></p>
+<!-- raw HTML omitted -->
 <h2 id="youtube-dl">youtube-dl</h2>
 <p><a href="https://youtube-dl.org/">youtube-dl</a> 是個 OpenSource 專案,
 有興趣研究的可在 <a href="https://github.com/ytdl-org/youtube-dl/">GitHub</a> 上 Fork 專案.</p>
@@ -539,6 +701,7 @@ zsh completions have been installed to:
 Add it by following these steps:
   https://docs.brew.sh/Shell-Completion#configuring-completions-in-zsh
 </code></pre><h3 id="zsh-auto-completion">zsh auto completion</h3>
+<p>T.B.C</p>
 <h2 id="configure-team-drive">Configure team drive</h2>
 <p>透過 brew 安裝 rclone 通常不會出錯, 安裝完後可以準備進行設定.
 輸入 <code>rclone config</code> 後會進入設定模式.</p>
@@ -816,6 +979,7 @@ $ brew install iftop ... ... iftop requires root privileges so you will need to 
 $sudo iftop sudo: iftop: command not found 上網查了查, 看到這篇 一次macbook安装iftop失败的经历及解决方式_偷懒的加菲-CSDN博客
 跟著該文敘述一一確認後, 發覺我電腦上只存在著 sbin 不在 path 環境變數的問題.</description>
             <content type="html"><![CDATA[<p>測試 Rclone 伺服機端傳輸時發覺 macOS 並無 iftop 指令, 習慣性地用 brew 安裝了.</p>
+<!-- raw HTML omitted -->
 <pre><code>$ brew install iftop
 ...
 ...

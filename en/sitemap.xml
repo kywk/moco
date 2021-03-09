@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://kywk.github.io/moco/categories/</loc>
-    <lastmod>2021-02-26T14:53:37+08:00</lastmod>
+    <lastmod>2021-03-09T14:37:59+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="fr"
@@ -15,20 +15,20 @@
                 href="https://kywk.github.io/moco/categories/"
                 />
   </url><url>
+    <loc>https://kywk.github.io/moco/tags/chrome/</loc>
+    <lastmod>2021-03-09T14:37:59+08:00</lastmod>
+  </url><url>
+    <loc>https://kywk.github.io/moco/categories/chrome/</loc>
+    <lastmod>2021-03-09T14:37:59+08:00</lastmod>
+  </url><url>
+    <loc>https://kywk.github.io/moco/posts/2021/03/chrome_extension-2021-mar/</loc>
+    <lastmod>2021-03-09T14:37:59+08:00</lastmod>
+  </url><url>
     <loc>https://kywk.github.io/moco/tags/kywk/</loc>
-    <lastmod>2021-02-26T14:53:37+08:00</lastmod>
-  </url><url>
-    <loc>https://kywk.github.io/moco/tags/macos/</loc>
-    <lastmod>2021-02-26T14:53:37+08:00</lastmod>
-  </url><url>
-    <loc>https://kywk.github.io/moco/categories/macos/</loc>
-    <lastmod>2021-02-26T14:53:37+08:00</lastmod>
-  </url><url>
-    <loc>https://kywk.github.io/moco/posts/2021/02/macos_dev-env-2021-feb/</loc>
-    <lastmod>2021-02-26T14:53:37+08:00</lastmod>
+    <lastmod>2021-03-09T14:37:59+08:00</lastmod>
   </url><url>
     <loc>https://kywk.github.io/moco/</loc>
-    <lastmod>2021-02-26T14:53:37+08:00</lastmod>
+    <lastmod>2021-03-09T14:37:59+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="fr"
@@ -41,10 +41,10 @@
                 />
   </url><url>
     <loc>https://kywk.github.io/moco/posts/</loc>
-    <lastmod>2021-02-26T14:53:37+08:00</lastmod>
+    <lastmod>2021-03-09T14:37:59+08:00</lastmod>
   </url><url>
     <loc>https://kywk.github.io/moco/tags/</loc>
-    <lastmod>2021-02-26T14:53:37+08:00</lastmod>
+    <lastmod>2021-03-09T14:37:59+08:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="fr"
@@ -55,6 +55,15 @@
                 hreflang="en"
                 href="https://kywk.github.io/moco/tags/"
                 />
+  </url><url>
+    <loc>https://kywk.github.io/moco/tags/macos/</loc>
+    <lastmod>2021-02-26T14:53:37+08:00</lastmod>
+  </url><url>
+    <loc>https://kywk.github.io/moco/categories/macos/</loc>
+    <lastmod>2021-02-26T14:53:37+08:00</lastmod>
+  </url><url>
+    <loc>https://kywk.github.io/moco/posts/2021/02/macos_dev-env-2021-feb/</loc>
+    <lastmod>2021-02-26T14:53:37+08:00</lastmod>
   </url><url>
     <loc>https://kywk.github.io/moco/posts/2021/02/macos_setup-note-2021-feb/</loc>
     <lastmod>2021-02-26T14:05:03+08:00</lastmod>
