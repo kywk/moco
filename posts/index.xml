@@ -6,99 +6,13 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
         <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-        <lastBuildDate>Mon, 15 Mar 2021 15:33:18 +0800</lastBuildDate>
+        <lastBuildDate>Tue, 16 Mar 2021 16:58:20 +0800</lastBuildDate>
         <atom:link href="https://kywk.github.io/moco/posts/index.xml" rel="self" type="application/rss+xml" />
-        
-        <item>
-            <title>Setup shadowsocks on macOS</title>
-            <link>https://kywk.github.io/moco/posts/2021/03/macos_shadowsocks/</link>
-            <pubDate>Mon, 15 Mar 2021 15:33:18 +0800</pubDate>
-            
-            <guid>https://kywk.github.io/moco/posts/2021/03/macos_shadowsocks/</guid>
-            <description>因大陸案子關係, 接觸了些大陸網路環境, 也因此接觸到 shadowsocks. Shadowsocks（簡稱SS） 是一種基於Socks5代理方式的加密傳輸協定, 也可以指實現這個協定的各種開發包. 在中國大陸, SS 廣泛用於突破防火長城（GFW）, 以瀏覽被封鎖, 遮蔽或干擾的內容.
-Shadowsocks 需找個 VPS 跑 server, 再透過本地端 client 連線. server 端的設定這篇不談, 僅紀錄 macOS 上安裝與設定 client 的過程.
-安裝 shadowsocks-libev Shadowsocks 有不少 client 可用, 我選用 shadowsocks-libev. 他可以當系統服務, 也可以透過不少 plugin 來擴充功能, 相當強大方便.
-透過套件管理工具 homebrew 即可安裝 shadowsocks-libev.
-$ brew update $ brew install shadowsocks-libev ... To have launchd start shadowsocks-libev now and restart at login: brew services start shadowsocks-libev Or, if you don&amp;#39;t want/need a background service you can just run: /usr/local/opt/shadowsocks-libev/bin/ss-local -c /usr/local/etc/shadowsocks-libev.</description>
-            <content type="html"><![CDATA[<p>因大陸案子關係, 接觸了些大陸網路環境, 也因此接觸到 shadowsocks.
-<a href="https://zh.wikipedia.org/wiki/Shadowsocks">Shadowsocks（簡稱SS）</a>
-是一種基於Socks5代理方式的加密傳輸協定, 也可以指實現這個協定的各種開發包.
-在中國大陸, SS 廣泛用於突破防火長城（GFW）, 以瀏覽被封鎖, 遮蔽或干擾的內容.</p>
-<p>Shadowsocks 需找個 VPS 跑 server, 再透過本地端 client 連線.
-server 端的設定這篇不談, 僅紀錄 macOS 上安裝與設定 client 的過程.</p>
-<h2 id="安裝-shadowsocks-libev">安裝 shadowsocks-libev</h2>
-<p>Shadowsocks 有不少 client 可用, 我選用 shadowsocks-libev.
-他可以當系統服務, 也可以透過不少 plugin 來擴充功能, 相當強大方便.</p>
-<p>透過套件管理工具 homebrew 即可安裝 shadowsocks-libev.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ brew update
-$ brew install shadowsocks-libev
-...
-To have launchd start shadowsocks-libev now and restart at login:
-  brew services start shadowsocks-libev
-Or, <span style="color:#66d9ef">if</span> you don<span style="color:#960050;background-color:#1e0010">&#39;</span>t want/need a background service you can just run:
-  /usr/local/opt/shadowsocks-libev/bin/ss-local -c /usr/local/etc/shadowsocks-libev.json
-</code></pre></div><p>出現後面這些訊息表示安裝成功, 先透過 CLI 確認 SS 連線可以正確 work.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ ss-local -s &lt;SERVER_IP&gt; -p &lt;SERVER_PORT&gt; -k &lt;PASSWORD&gt; -b 0.0.0.0 -l 1080-m aes-256-gcm
-
-
- 2021-03-15 17:28:36 INFO: initializing ciphers... aes-256-gcm
- 2021-03-15 17:28:36 INFO: listening at 0.0.0.0:1080
-</code></pre></div><p>出現 <code>listening at 0.0.0.0:1080</code> 表示 SS 連線成功,
-可參考後面段落設置 Socks Proxy, 連線上網確認是否正確.</p>
-<h2 id="設定-shadowsocks-libev">設定 shadowsocks-libev</h2>
-<p>shadowsocks-libev 可以服務方式運行,
-配置文件在 <code>/usr/local/etc/shadowsocks-libev.json</code></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
-    <span style="color:#f92672">&#34;server&#34;</span>:<span style="color:#e6db74">&#34;abc.xyz.com&#34;</span>,
-    <span style="color:#f92672">&#34;server_port&#34;</span>:<span style="color:#ae81ff">8888</span>,
-    <span style="color:#f92672">&#34;local_port&#34;</span>:<span style="color:#ae81ff">1080</span>,
-    <span style="color:#f92672">&#34;password&#34;</span>:<span style="color:#e6db74">&#34;AbCdEfGhIjKlMn&#34;</span>,
-    <span style="color:#f92672">&#34;timeout&#34;</span>:<span style="color:#ae81ff">5</span>,
-    <span style="color:#f92672">&#34;method&#34;</span>:<span style="color:#e6db74">&#34;chacha20-ietf-poly1305&#34;</span>,
-    <span style="color:#f92672">&#34;mode&#34;</span>:<span style="color:#e6db74">&#34;tcp_and_udp&#34;</span>,
-} 
-</code></pre></div><p>修改後可透過 brew services 啟動服務.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ brew services start shadowsocks-libev 
-<span style="color:#f92672">==</span>&gt; Successfully started <span style="color:#e6db74">`</span>shadowsocks-libev<span style="color:#e6db74">`</span> <span style="color:#f92672">(</span>label: homebrew.mxcl.shadowsocks-libev<span style="color:#f92672">)</span>
-</code></pre></div><h2 id="全區代理設定">全區代理設定</h2>
-<p>macOS 可透過全區代理的方式, 讓所有連線都使用 SS 當跳板. 設定方式在:
-<code>系統偏好設定 &gt; 網路 &gt; Wi-Fi &gt; 進階 &gt; 代理</code></p>
-<p><img src="https://lh3.googleusercontent.com/pw/ACtC-3du9pQkxgcpbedOxgve86--0UEyEQFCL63vTq-lq2xKJTunRbwdnK9KYniQK3fCcgXeYznijbOQjGTEowRbOwhgbYrILrh1NIsfm_6vskx_413Bt8-s8dVsoJP1LETT0NuInrjXbT_AiYnTEbe2IDEkuQ=w1336-h1154-no?authuser=0" alt=""></p>
-<p><img src="https://lh3.googleusercontent.com/pw/ACtC-3fnJwLdyl7XqvApKymmHyElVZckPBgMyCaTeSEdmX-mCrTRh3XzRP8z0g9DUcbb0dOkMSTVIXNBqfJZcfwgwaNygIE0vAFjcIkj-Rq8tdVAKGmtodCz-Wc9vnjWPB0zEcaLcDm3UFMe4gpfpMKGEWTFig=w1336-h1154-no?authuser=0" alt=""></p>
-<p>在 SOCKS 欄位填上本地端對應的資訊即可.</p>
-<h2 id="快速開關代理">快速開關代理</h2>
-<p>一般來說不會設定為全區代理, 會透過 PAC 來設定白名單等自動代理.
-但我個人需求比較簡單, 需要處理公務時開啟代理連線管理後台, 處理完畢即可關閉代理.</p>
-<p>因此設定了簡單的 alias, 透過 CLI 來快速開關代理.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">alias proxyon<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;brew services restart shadowsocks-libev; networksetup -setsocksfirewallproxy wi-fi localhost 1080&#39;</span>
-alias proxyoff<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;brew services stop shadowsocks-libev; networksetup -setsocksfirewallproxystate wi-fi off&#39;</span>
-</code></pre></div><p>之後需要連線後台時, 在 Ternimal 打 <code>poxyon</code> 即可透過代理連線.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$  proxyon
-
-<span style="color:#f92672">==</span>&gt; Successfully started <span style="color:#e6db74">`</span>shadowsocks-libev<span style="color:#e6db74">`</span> <span style="color:#f92672">(</span>label: homebrew.mxcl.shadowsocks-libev<span style="color:#f92672">)</span>
-</code></pre></div><p>處理完畢後, 打 <code>proxyoff</code> 關閉代理, 回到原生網魯環境.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ proxyoff
-
-Stopping <span style="color:#e6db74">`</span>shadowsocks-libev<span style="color:#e6db74">`</span>... <span style="color:#f92672">(</span>might take a <span style="color:#66d9ef">while</span><span style="color:#f92672">)</span>
-<span style="color:#f92672">==</span>&gt; Successfully stopped <span style="color:#e6db74">`</span>shadowsocks-libev<span style="color:#e6db74">`</span> <span style="color:#f92672">(</span>label: homebrew.mxcl.shadowsocks-libev<span style="color:#f92672">)</span>
-</code></pre></div><h2 id="see-also">See Also</h2>
-<h3 id="reference">Reference</h3>
-<ul>
-<li><a href="https://medium.com/@yanlong/macos%E4%BD%BF%E7%94%A8shadowsocks-libev-simple-obfs%E6%95%99%E7%A8%8B-c10eba9c0758">MacOS使用shadowsocks-libev+Simple-OBFS教程 - YAN LONG - Medium</a></li>
-<li><a href="https://marvinsblog.net/post/2017-01-15-use-shadowsocks-on-macos/">ShadowSocks助力macOS科学上网 | Marvin&rsquo;s Blog【程式人生】</a></li>
-<li><a href="https://wild-flame.github.io/guides/docs/mac-os-x-setup-guide/shadowsocks">Shadowsocks · Mac OS X 配置指南</a></li>
-<li><a href="https://placeless.net/blog/shadowsocks-libev-&amp;-acl-on-macos">shadowsocks-libev &amp; acl on macOS</a></li>
-<li><a href="https://www.wumingx.com/tools/shadowsocks_obfs.html">&lsquo;shadowsocks-libev+simple-obfs流量混淆的两种方案&rsquo; | 无名老卒BLOG</a></li>
-<li><a href="https://shadowsockshelp.github.io/Shadowsocks/mac.html">苹果 macOS 使用 Shadowsocks 设置教程 | Shadowsocks</a></li>
-<li><a href="https://apple.stackexchange.com/questions/226544/how-to-set-proxy-on-os-x-terminal-permanently">macos - How to set proxy on OS X Terminal permanently? - Ask Different</a></li>
-</ul>
-]]></content>
-        </item>
         
         <item>
             <title>在 Ubuntu Server 利用 Nginx 伺服器執行 PHP 程式</title>
             <link>https://kywk.github.io/moco/posts/2021/03/ubuntu_nginx-php/</link>
-            <pubDate>Thu, 11 Mar 2021 16:58:20 +0800</pubDate>
+            <pubDate>Tue, 16 Mar 2021 16:58:20 +0800</pubDate>
             
             <guid>https://kywk.github.io/moco/posts/2021/03/ubuntu_nginx-php/</guid>
             <description>Nginx + PHP on ubuntu 長期以來 Apache Server 的效能與承載數低落, 加上層出不窮的漏洞, 許多人陸續投向 Event-based Server 的懷抱, 例如 Nginx.
@@ -267,11 +181,152 @@ http {
 </li>
 </ul>
 <h3 id="設定-fpm">設定 FPM</h3>
+<p>FPM 設定檔放置於 <code>/etc/php/&lt;PHP版本號碼&gt;/fpm/</code> 目錄下,
+例如 PHP 7.4 就是在 <code>/etc/php/7.4/fpm/</code> 目錄.</p>
+<p>FPM 設定檔目錄中有個 <code>pool.d</code> 目錄, 用來放置每個「池」 (Pool) 的設定檔.
+一個池就是一個 FastCGI 的管理區域(或者說管理員).
+預設為 <code>www</code> 池, 設定檔檔名為 <code>www.conf</code>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ sudo vim /etc/php/7.4/fpm/pool.d/www.conf
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ini" data-lang="ini"><span style="color:#66d9ef">[www]</span>
+<span style="color:#a6e22e">user</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">www-data</span>
+<span style="color:#a6e22e">group</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">www-data</span>
+ 
+<span style="color:#a6e22e">listen</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">127.0.0.1:9000</span>
+<span style="color:#a6e22e">listen.backlog</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">65535</span>
+<span style="color:#a6e22e">listen.owner</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">www-data</span>
+<span style="color:#a6e22e">listen.group</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">www-data</span>
+ 
+<span style="color:#a6e22e">request_terminate_timeout</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">600s</span>
+ 
+<span style="color:#a6e22e">pm</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">dynamic</span>
+<span style="color:#a6e22e">pm.max_children</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">5</span>
+<span style="color:#a6e22e">pm.start_servers</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">2</span>
+<span style="color:#a6e22e">pm.min_spare_servers</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">1</span>
+<span style="color:#a6e22e">pm.max_spare_servers</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">3</span>
+</code></pre></div><ul>
+<li><strong>listen</strong>: 設定從哪個地方接收 Nginx fastcgi_pass 請求, 要和前面 Nginx 的設定相同.
+預設是 <code>/run/php/php&lt;PHP版本號碼&gt;-fpm.sock</code>.
+PHP-FPM 可以透過 TCP Socket 或者是 UNIX Kernel Socket.
+Kernel Socket 速度會比較快, 但是經過壓力測試後 Kernel Socket 反而常常掉包,
+穩定性不如 TCP Socket 來的優異. 故這邊設為本地端的 TCP Socket.</li>
+<li><strong>request_terminate_timeout</strong>: 設定表示 PHP 的執行時間, 超過這個週期就會結束.
+設太短容易遇到檔案上傳時間比較久就 GG 了.</li>
+<li><strong>pm</strong>: 設定子行程的數量要固定還是浮動.
+<ul>
+<li>static 是固定為最大數量(pm.max_children).</li>
+<li>dynamic 是動態調整, 預設是 dynamic.</li>
+<li>ondemand 是行程開完就關.</li>
+</ul>
+</li>
+<li><strong>pm.max_children</strong>: 設定子行程的最大數量, 預設是5.
+這個數量建議設為處理器的數量再根據每個子行程的記憶體用量乘上某個倍數 (例如記憶體剩得少就乘2，記憶體剩得多就乘4).</li>
+</ul>
+<h3 id="start-nginx--php">Start Nginx + PHP</h3>
+<p>最後啟動 Nginx 與 PHP-FPM 服務:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ sudo service php7.4-fpm restart
+$ sudo service nginx restart
+</code></pre></div><p>開啟瀏覽器試看看, Ubuntu 裝起來的 Nginx Welcome 畫面如下：</p>
+<p><img src="https://lh3.googleusercontent.com/pw/ACtC-3euV0DG5x_6NEszyLYrW1cW8cFj6p7qapfHbldw0am_PCAEX3lYENsxrPIBCA4gCCt37f-GBJv5Gs6138SYf8sf4l_wmKGbv1HbnmUH-q8uUWMHCnZ7cylYvCLxiXSwrzIgQ3K2EgX8Ido8J0jd0ZTbLw=w1088-h508-no?authuser=0" alt=""></p>
 <h2 id="see-also">See Also</h2>
+<p>整體來說 Nginx 安裝蠻容易的, 但要調校的好又是另外一件事.
+設定的不洽當, 在高流量時 Nginx 常會送你 502 Bad Gateway.</p>
+<p>又例如 Nginx 可以將 FastCGI 服務回應的資料快取成檔案,
+這樣下次如果又有一樣的請求，Nginx 就直接從檔案系統中撈出來回應，
+不必再轉送給 FastCGI 服務處理, 可加快反應.
+Cache 的設置相當考驗 SRE 對 PHP 服務了解程度, 並非所有服務都適合開設 Cache.
+這另篇再討論了.</p>
+<p>需要花蠻多時間嘗試調整參數, 搭配效能測試工具來檢查, 讓伺服器發揮最大效用.</p>
 <h3 id="reference">Reference</h3>
 <ul>
 <li><a href="https://magiclen.org/ubuntu-server-nginx-php/">使用Ubuntu Server透過Nginx伺服器執行PHP程式 | MagicLen</a></li>
 <li><a href="https://blog.toright.com/posts/3890/%E7%84%A1%E5%A0%85%E4%B8%8D%E6%91%A7%EF%BC%8C%E5%94%AF%E5%BF%AB%E4%B8%8D%E7%A0%B4%EF%BC%81%E5%BF%AB%E6%94%B9%E7%94%A8-nginx-php-fpm-%E5%8F%96%E4%BB%A3-apache-%E5%90%A7%EF%BC%81.html">無堅不摧，唯快不破！快改用 Nginx + PHP-FPM 取代 Apache 吧！ - Soul &amp; Shell Blog</a></li>
+</ul>
+]]></content>
+        </item>
+        
+        <item>
+            <title>Setup shadowsocks on macOS</title>
+            <link>https://kywk.github.io/moco/posts/2021/03/macos_shadowsocks/</link>
+            <pubDate>Mon, 15 Mar 2021 15:33:18 +0800</pubDate>
+            
+            <guid>https://kywk.github.io/moco/posts/2021/03/macos_shadowsocks/</guid>
+            <description>因大陸案子關係, 接觸了些大陸網路環境, 也因此接觸到 shadowsocks.
+Shadowsocks（簡稱SS） 是一種基於Socks5代理方式的加密傳輸協定, 也可以指實現這個協定的各種開發包. 在中國大陸, SS 廣泛用於突破防火長城（GFW）, 以瀏覽被封鎖, 遮蔽或干擾的內容.
+Shadowsocks 需找個 VPS 跑 server, 再透過本地端 client 連線. server 端的設定這篇不談, 僅紀錄 macOS 上安裝與設定 client 的過程.
+安裝 shadowsocks-libev Shadowsocks 有不少 client 可用, 我選用 shadowsocks-libev. 他可以當系統服務, 也可以透過不少 plugin 來擴充功能, 相當強大方便.
+透過套件管理工具 homebrew 即可安裝 shadowsocks-libev.
+$ brew update $ brew install shadowsocks-libev ... To have launchd start shadowsocks-libev now and restart at login: brew services start shadowsocks-libev Or, if you don&amp;#39;t want/need a background service you can just run: /usr/local/opt/shadowsocks-libev/bin/ss-local -c /usr/local/etc/shadowsocks-libev.</description>
+            <content type="html"><![CDATA[<p>因大陸案子關係, 接觸了些大陸網路環境, 也因此接觸到 shadowsocks.<br>
+<a href="https://zh.wikipedia.org/wiki/Shadowsocks">Shadowsocks（簡稱SS）</a>
+是一種基於Socks5代理方式的加密傳輸協定, 也可以指實現這個協定的各種開發包.
+在中國大陸, SS 廣泛用於突破防火長城（GFW）, 以瀏覽被封鎖, 遮蔽或干擾的內容.</p>
+<p>Shadowsocks 需找個 VPS 跑 server, 再透過本地端 client 連線.
+server 端的設定這篇不談, 僅紀錄 macOS 上安裝與設定 client 的過程.</p>
+<h2 id="安裝-shadowsocks-libev">安裝 shadowsocks-libev</h2>
+<p>Shadowsocks 有不少 client 可用, 我選用 shadowsocks-libev.
+他可以當系統服務, 也可以透過不少 plugin 來擴充功能, 相當強大方便.</p>
+<p>透過套件管理工具 homebrew 即可安裝 shadowsocks-libev.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ brew update
+$ brew install shadowsocks-libev
+...
+To have launchd start shadowsocks-libev now and restart at login:
+  brew services start shadowsocks-libev
+Or, <span style="color:#66d9ef">if</span> you don<span style="color:#960050;background-color:#1e0010">&#39;</span>t want/need a background service you can just run:
+  /usr/local/opt/shadowsocks-libev/bin/ss-local -c /usr/local/etc/shadowsocks-libev.json
+</code></pre></div><p>出現後面這些訊息表示安裝成功, 先透過 CLI 確認 SS 連線可以正確 work.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ ss-local -s &lt;SERVER_IP&gt; -p &lt;SERVER_PORT&gt; -k &lt;PASSWORD&gt; -b 0.0.0.0 -l 1080-m aes-256-gcm
+
+
+ 2021-03-15 17:28:36 INFO: initializing ciphers... aes-256-gcm
+ 2021-03-15 17:28:36 INFO: listening at 0.0.0.0:1080
+</code></pre></div><p>出現 <code>listening at 0.0.0.0:1080</code> 表示 SS 連線成功,
+可參考後面段落設置 Socks Proxy, 連線上網確認是否正確.</p>
+<h2 id="設定-shadowsocks-libev">設定 shadowsocks-libev</h2>
+<p>shadowsocks-libev 可以服務方式運行,
+配置文件在 <code>/usr/local/etc/shadowsocks-libev.json</code></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
+    <span style="color:#f92672">&#34;server&#34;</span>:<span style="color:#e6db74">&#34;abc.xyz.com&#34;</span>,
+    <span style="color:#f92672">&#34;server_port&#34;</span>:<span style="color:#ae81ff">8888</span>,
+    <span style="color:#f92672">&#34;local_port&#34;</span>:<span style="color:#ae81ff">1080</span>,
+    <span style="color:#f92672">&#34;password&#34;</span>:<span style="color:#e6db74">&#34;AbCdEfGhIjKlMn&#34;</span>,
+    <span style="color:#f92672">&#34;timeout&#34;</span>:<span style="color:#ae81ff">5</span>,
+    <span style="color:#f92672">&#34;method&#34;</span>:<span style="color:#e6db74">&#34;chacha20-ietf-poly1305&#34;</span>,
+    <span style="color:#f92672">&#34;mode&#34;</span>:<span style="color:#e6db74">&#34;tcp_and_udp&#34;</span>,
+} 
+</code></pre></div><p>修改後可透過 brew services 啟動服務.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ brew services start shadowsocks-libev 
+<span style="color:#f92672">==</span>&gt; Successfully started <span style="color:#e6db74">`</span>shadowsocks-libev<span style="color:#e6db74">`</span> <span style="color:#f92672">(</span>label: homebrew.mxcl.shadowsocks-libev<span style="color:#f92672">)</span>
+</code></pre></div><h2 id="全區代理設定">全區代理設定</h2>
+<p>macOS 可透過全區代理的方式, 讓所有連線都使用 SS 當跳板. 設定方式在:
+<code>系統偏好設定 &gt; 網路 &gt; Wi-Fi &gt; 進階 &gt; 代理</code></p>
+<p><img src="https://lh3.googleusercontent.com/pw/ACtC-3du9pQkxgcpbedOxgve86--0UEyEQFCL63vTq-lq2xKJTunRbwdnK9KYniQK3fCcgXeYznijbOQjGTEowRbOwhgbYrILrh1NIsfm_6vskx_413Bt8-s8dVsoJP1LETT0NuInrjXbT_AiYnTEbe2IDEkuQ=w1336-h1154-no?authuser=0" alt=""></p>
+<p><img src="https://lh3.googleusercontent.com/pw/ACtC-3fnJwLdyl7XqvApKymmHyElVZckPBgMyCaTeSEdmX-mCrTRh3XzRP8z0g9DUcbb0dOkMSTVIXNBqfJZcfwgwaNygIE0vAFjcIkj-Rq8tdVAKGmtodCz-Wc9vnjWPB0zEcaLcDm3UFMe4gpfpMKGEWTFig=w1336-h1154-no?authuser=0" alt=""></p>
+<p>在 SOCKS 欄位填上本地端對應的資訊即可.</p>
+<h2 id="快速開關代理">快速開關代理</h2>
+<p>一般來說不會設定為全區代理, 會透過 PAC 來設定白名單等自動代理.
+但我個人需求比較簡單, 需要處理公務時開啟代理連線管理後台, 處理完畢即可關閉代理.</p>
+<p>因此設定了簡單的 alias, 透過 CLI 來快速開關代理.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">alias proxyon<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;brew services restart shadowsocks-libev; networksetup -setsocksfirewallproxy wi-fi localhost 1080&#39;</span>
+alias proxyoff<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;brew services stop shadowsocks-libev; networksetup -setsocksfirewallproxystate wi-fi off&#39;</span>
+</code></pre></div><p>之後需要連線後台時, 在 Ternimal 打 <code>poxyon</code> 即可透過代理連線.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$  proxyon
+
+<span style="color:#f92672">==</span>&gt; Successfully started <span style="color:#e6db74">`</span>shadowsocks-libev<span style="color:#e6db74">`</span> <span style="color:#f92672">(</span>label: homebrew.mxcl.shadowsocks-libev<span style="color:#f92672">)</span>
+</code></pre></div><p>處理完畢後, 打 <code>proxyoff</code> 關閉代理, 回到原生網魯環境.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ proxyoff
+
+Stopping <span style="color:#e6db74">`</span>shadowsocks-libev<span style="color:#e6db74">`</span>... <span style="color:#f92672">(</span>might take a <span style="color:#66d9ef">while</span><span style="color:#f92672">)</span>
+<span style="color:#f92672">==</span>&gt; Successfully stopped <span style="color:#e6db74">`</span>shadowsocks-libev<span style="color:#e6db74">`</span> <span style="color:#f92672">(</span>label: homebrew.mxcl.shadowsocks-libev<span style="color:#f92672">)</span>
+</code></pre></div><h2 id="see-also">See Also</h2>
+<h3 id="reference">Reference</h3>
+<ul>
+<li><a href="https://medium.com/@yanlong/macos%E4%BD%BF%E7%94%A8shadowsocks-libev-simple-obfs%E6%95%99%E7%A8%8B-c10eba9c0758">MacOS使用shadowsocks-libev+Simple-OBFS教程 - YAN LONG - Medium</a></li>
+<li><a href="https://marvinsblog.net/post/2017-01-15-use-shadowsocks-on-macos/">ShadowSocks助力macOS科学上网 | Marvin&rsquo;s Blog【程式人生】</a></li>
+<li><a href="https://wild-flame.github.io/guides/docs/mac-os-x-setup-guide/shadowsocks">Shadowsocks · Mac OS X 配置指南</a></li>
+<li><a href="https://placeless.net/blog/shadowsocks-libev-&amp;-acl-on-macos">shadowsocks-libev &amp; acl on macOS</a></li>
+<li><a href="https://www.wumingx.com/tools/shadowsocks_obfs.html">&lsquo;shadowsocks-libev+simple-obfs流量混淆的两种方案&rsquo; | 无名老卒BLOG</a></li>
+<li><a href="https://shadowsockshelp.github.io/Shadowsocks/mac.html">苹果 macOS 使用 Shadowsocks 设置教程 | Shadowsocks</a></li>
+<li><a href="https://apple.stackexchange.com/questions/226544/how-to-set-proxy-on-os-x-terminal-permanently">macos - How to set proxy on OS X Terminal permanently? - Ask Different</a></li>
 </ul>
 ]]></content>
         </item>

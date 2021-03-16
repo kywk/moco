@@ -7,24 +7,11 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Mon, 15 Mar 2021 15:33:18 +0800</lastBuildDate><atom:link href="https://kywk.github.io/moco/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Setup shadowsocks on macOS</title>
-      <link>https://kywk.github.io/moco/posts/2021/03/macos_shadowsocks/</link>
-      <pubDate>Mon, 15 Mar 2021 15:33:18 +0800</pubDate>
-      
-      <guid>https://kywk.github.io/moco/posts/2021/03/macos_shadowsocks/</guid>
-      <description>因大陸案子關係, 接觸了些大陸網路環境, 也因此接觸到 shadowsocks. Shadowsocks（簡稱SS） 是一種基於Socks5代理方式的加密傳輸協定, 也可以指實現這個協定的各種開發包. 在中國大陸, SS 廣泛用於突破防火長城（GFW）, 以瀏覽被封鎖, 遮蔽或干擾的內容.
-Shadowsocks 需找個 VPS 跑 server, 再透過本地端 client 連線. server 端的設定這篇不談, 僅紀錄 macOS 上安裝與設定 client 的過程.
-安裝 shadowsocks-libev Shadowsocks 有不少 client 可用, 我選用 shadowsocks-libev. 他可以當系統服務, 也可以透過不少 plugin 來擴充功能, 相當強大方便.
-透過套件管理工具 homebrew 即可安裝 shadowsocks-libev.
-$ brew update $ brew install shadowsocks-libev ... To have launchd start shadowsocks-libev now and restart at login: brew services start shadowsocks-libev Or, if you don&amp;#39;t want/need a background service you can just run: /usr/local/opt/shadowsocks-libev/bin/ss-local -c /usr/local/etc/shadowsocks-libev.</description>
-    </item>
-    
+    <lastBuildDate>Tue, 16 Mar 2021 16:58:20 +0800</lastBuildDate><atom:link href="https://kywk.github.io/moco/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>在 Ubuntu Server 利用 Nginx 伺服器執行 PHP 程式</title>
       <link>https://kywk.github.io/moco/posts/2021/03/ubuntu_nginx-php/</link>
-      <pubDate>Thu, 11 Mar 2021 16:58:20 +0800</pubDate>
+      <pubDate>Tue, 16 Mar 2021 16:58:20 +0800</pubDate>
       
       <guid>https://kywk.github.io/moco/posts/2021/03/ubuntu_nginx-php/</guid>
       <description>Nginx + PHP on ubuntu 長期以來 Apache Server 的效能與承載數低落, 加上層出不窮的漏洞, 許多人陸續投向 Event-based Server 的懷抱, 例如 Nginx.
@@ -32,6 +19,20 @@ Nginx 是一個免費開源且穩定高效的 Web 伺服器程式, 擁有反向�
 但是 Nginx 只是單純的 HTTP Server, 如果要執行程式, 還得藉助 CGI 的幫忙. Nginx 可以透過 FastCGI 去執行 PHP 程式, 且內建 FastCGI 快取功能. 而第一步需要實現的是如何讓 Nginx 正確的呼叫 PHP.
 CGI CGI (Common Gateway Interface) 是用於網頁伺服器的介面標準, 支援 CGI 的網頁伺服器會將其所接收到的 HTTP 請求的內容設成環境變數, 作為某支程式時的環境變數以及標準輸入 (stdin) 輸入的資料. 而該程式標準輸出 (stdout) 的資料則會被網頁伺服器拿來回應給客戶端.
 網頁伺服器每次使用 CGI 執行程式時, 都需要建立出新的行程 (fork process), 就像在終端機直接用檔案路徑去執行某支程式.</description>
+    </item>
+    
+    <item>
+      <title>Setup shadowsocks on macOS</title>
+      <link>https://kywk.github.io/moco/posts/2021/03/macos_shadowsocks/</link>
+      <pubDate>Mon, 15 Mar 2021 15:33:18 +0800</pubDate>
+      
+      <guid>https://kywk.github.io/moco/posts/2021/03/macos_shadowsocks/</guid>
+      <description>因大陸案子關係, 接觸了些大陸網路環境, 也因此接觸到 shadowsocks.
+Shadowsocks（簡稱SS） 是一種基於Socks5代理方式的加密傳輸協定, 也可以指實現這個協定的各種開發包. 在中國大陸, SS 廣泛用於突破防火長城（GFW）, 以瀏覽被封鎖, 遮蔽或干擾的內容.
+Shadowsocks 需找個 VPS 跑 server, 再透過本地端 client 連線. server 端的設定這篇不談, 僅紀錄 macOS 上安裝與設定 client 的過程.
+安裝 shadowsocks-libev Shadowsocks 有不少 client 可用, 我選用 shadowsocks-libev. 他可以當系統服務, 也可以透過不少 plugin 來擴充功能, 相當強大方便.
+透過套件管理工具 homebrew 即可安裝 shadowsocks-libev.
+$ brew update $ brew install shadowsocks-libev ... To have launchd start shadowsocks-libev now and restart at login: brew services start shadowsocks-libev Or, if you don&amp;#39;t want/need a background service you can just run: /usr/local/opt/shadowsocks-libev/bin/ss-local -c /usr/local/etc/shadowsocks-libev.</description>
     </item>
     
     <item>

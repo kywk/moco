@@ -7,11 +7,11 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Thu, 11 Mar 2021 16:58:20 +0800</lastBuildDate><atom:link href="https://kywk.github.io/moco/tags/php/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 16 Mar 2021 16:58:20 +0800</lastBuildDate><atom:link href="https://kywk.github.io/moco/tags/php/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>在 Ubuntu Server 利用 Nginx 伺服器執行 PHP 程式</title>
       <link>https://kywk.github.io/moco/posts/2021/03/ubuntu_nginx-php/</link>
-      <pubDate>Thu, 11 Mar 2021 16:58:20 +0800</pubDate>
+      <pubDate>Tue, 16 Mar 2021 16:58:20 +0800</pubDate>
       
       <guid>https://kywk.github.io/moco/posts/2021/03/ubuntu_nginx-php/</guid>
       <description>Nginx + PHP on ubuntu 長期以來 Apache Server 的效能與承載數低落, 加上層出不窮的漏洞, 許多人陸續投向 Event-based Server 的懷抱, 例如 Nginx.
