@@ -7,7 +7,25 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Tue, 09 Mar 2021 14:37:59 +0800</lastBuildDate><atom:link href="https://kywk.github.io/moco/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 15 Mar 2021 15:33:18 +0800</lastBuildDate><atom:link href="https://kywk.github.io/moco/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>macos</title>
+      <link>https://kywk.github.io/moco/categories/macos/</link>
+      <pubDate>Mon, 15 Mar 2021 15:33:18 +0800</pubDate>
+      
+      <guid>https://kywk.github.io/moco/categories/macos/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ubuntu</title>
+      <link>https://kywk.github.io/moco/categories/ubuntu/</link>
+      <pubDate>Thu, 11 Mar 2021 16:58:20 +0800</pubDate>
+      
+      <guid>https://kywk.github.io/moco/categories/ubuntu/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>chrome</title>
       <link>https://kywk.github.io/moco/categories/chrome/</link>
@@ -18,11 +36,11 @@
     </item>
     
     <item>
-      <title>macos</title>
-      <link>https://kywk.github.io/moco/categories/macos/</link>
-      <pubDate>Fri, 26 Feb 2021 14:53:37 +0800</pubDate>
+      <title>sublime-text</title>
+      <link>https://kywk.github.io/moco/categories/sublime-text/</link>
+      <pubDate>Mon, 01 Mar 2021 14:37:45 +0800</pubDate>
       
-      <guid>https://kywk.github.io/moco/categories/macos/</guid>
+      <guid>https://kywk.github.io/moco/categories/sublime-text/</guid>
       <description></description>
     </item>
     

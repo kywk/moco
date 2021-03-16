@@ -7,7 +7,33 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Tue, 09 Mar 2021 14:37:59 +0800</lastBuildDate><atom:link href="https://kywk.github.io/moco/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 15 Mar 2021 15:33:18 +0800</lastBuildDate><atom:link href="https://kywk.github.io/moco/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Setup shadowsocks on macOS</title>
+      <link>https://kywk.github.io/moco/posts/2021/03/macos_shadowsocks/</link>
+      <pubDate>Mon, 15 Mar 2021 15:33:18 +0800</pubDate>
+      
+      <guid>https://kywk.github.io/moco/posts/2021/03/macos_shadowsocks/</guid>
+      <description>因大陸案子關係, 接觸了些大陸網路環境, 也因此接觸到 shadowsocks. Shadowsocks（簡稱SS） 是一種基於Socks5代理方式的加密傳輸協定, 也可以指實現這個協定的各種開發包. 在中國大陸, SS 廣泛用於突破防火長城（GFW）, 以瀏覽被封鎖, 遮蔽或干擾的內容.
+Shadowsocks 需找個 VPS 跑 server, 再透過本地端 client 連線. server 端的設定這篇不談, 僅紀錄 macOS 上安裝與設定 client 的過程.
+安裝 shadowsocks-libev Shadowsocks 有不少 client 可用, 我選用 shadowsocks-libev. 他可以當系統服務, 也可以透過不少 plugin 來擴充功能, 相當強大方便.
+透過套件管理工具 homebrew 即可安裝 shadowsocks-libev.
+$ brew update $ brew install shadowsocks-libev ... To have launchd start shadowsocks-libev now and restart at login: brew services start shadowsocks-libev Or, if you don&amp;#39;t want/need a background service you can just run: /usr/local/opt/shadowsocks-libev/bin/ss-local -c /usr/local/etc/shadowsocks-libev.</description>
+    </item>
+    
+    <item>
+      <title>在 Ubuntu Server 利用 Nginx 伺服器執行 PHP 程式</title>
+      <link>https://kywk.github.io/moco/posts/2021/03/ubuntu_nginx-php/</link>
+      <pubDate>Thu, 11 Mar 2021 16:58:20 +0800</pubDate>
+      
+      <guid>https://kywk.github.io/moco/posts/2021/03/ubuntu_nginx-php/</guid>
+      <description>Nginx + PHP on ubuntu 長期以來 Apache Server 的效能與承載數低落, 加上層出不窮的漏洞, 許多人陸續投向 Event-based Server 的懷抱, 例如 Nginx.
+Nginx 是一個免費開源且穩定高效的 Web 伺服器程式, 擁有反向代理及負載平衡的功能, 藉由 Non-blocking 與 epool 的特性, 大幅提昇了連線服務量與速度, 成為近年來最為廣泛運用的選擇.
+但是 Nginx 只是單純的 HTTP Server, 如果要執行程式, 還得藉助 CGI 的幫忙. Nginx 可以透過 FastCGI 去執行 PHP 程式, 且內建 FastCGI 快取功能. 而第一步需要實現的是如何讓 Nginx 正確的呼叫 PHP.
+CGI CGI (Common Gateway Interface) 是用於網頁伺服器的介面標準, 支援 CGI 的網頁伺服器會將其所接收到的 HTTP 請求的內容設成環境變數, 作為某支程式時的環境變數以及標準輸入 (stdin) 輸入的資料. 而該程式標準輸出 (stdout) 的資料則會被網頁伺服器拿來回應給客戶端.
+網頁伺服器每次使用 CGI 執行程式時, 都需要建立出新的行程 (fork process), 就像在終端機直接用檔案路徑去執行某支程式.</description>
+    </item>
+    
     <item>
       <title>Chrome Extension List, 2021.Mar</title>
       <link>https://kywk.github.io/moco/posts/2021/03/chrome_extension-2021-mar/</link>
@@ -22,6 +48,15 @@ Browser enhance Dream Afar New Tab (遠方) 「每天打開新分頁都是一段
 新分頁美化, 目前最愛的一個新分頁功能.
 曾用過一陣子強調 Tab 與 WorkSpace 管理的新分頁, 後來因工作流程取捨與簡化, 過於強調分頁管理反而會擾亂流程. 故回頭使用這個以美觀優先的新分頁.
 目前這個擴充已在 Chrome Store 下架, 需自行尋找 crx 安裝.</description>
+    </item>
+    
+    <item>
+      <title>Sublime Text 3 Package List, 2021.Feb</title>
+      <link>https://kywk.github.io/moco/posts/2021/03/subl_packages-2021-feb/</link>
+      <pubDate>Mon, 01 Mar 2021 14:37:45 +0800</pubDate>
+      
+      <guid>https://kywk.github.io/moco/posts/2021/03/subl_packages-2021-feb/</guid>
+      <description></description>
     </item>
     
     <item>
@@ -109,58 +144,6 @@ $ tar cvf - FILE_NAME | openssl des3 -salt -k passw0rd -out /path/to/file.tar �
 目前 Rclone 支援的雲端硬碟服務多達 38 種, 其中本篇的重點在第 13 項 &amp;ldquo;Google Drive&amp;rdquo;.
 注意: 第 12 項的 Google Cloud Storage 並不是 Google Drive, 而是 GCP 中類似 AWS S3 的服務.
 Install rclone on macOS 在 macOS 透過 homebrew 安裝的 rclone 目前不支援 mount 命令.</description>
-    </item>
-    
-    <item>
-      <title>macOS 安裝 iftop 失敗與解決方式</title>
-      <link>https://kywk.github.io/moco/posts/2020/12/macos_install-iftop/</link>
-      <pubDate>Mon, 07 Dec 2020 16:48:04 +0800</pubDate>
-      
-      <guid>https://kywk.github.io/moco/posts/2020/12/macos_install-iftop/</guid>
-      <description>測試 Rclone 伺服機端傳輸時發覺 macOS 並無 iftop 指令, 習慣性地用 brew 安裝了.
-$ brew install iftop ... ... iftop requires root privileges so you will need to run `sudo iftop`. You should be certain that you trust any software you grant root privileges. 安裝完成後提示 iftop 這個指令需要用 root 權限執行.
-然而使用 sudo iftop 之後卻出現 command not found 的錯誤.
-$sudo iftop sudo: iftop: command not found 上網查了查, 看到這篇 一次macbook安装iftop失败的经历及解决方式_偷懒的加菲-CSDN博客
-跟著該文敘述一一確認後, 發覺我電腦上只存在著 sbin 不在 path 環境變數的問題.</description>
-    </item>
-    
-    <item>
-      <title>Porting Hexo tags to Hugo shortcode</title>
-      <link>https://kywk.github.io/moco/posts/2020/10/porting-hexo-tags/</link>
-      <pubDate>Sat, 24 Oct 2020 17:05:52 +0800</pubDate>
-      
-      <guid>https://kywk.github.io/moco/posts/2020/10/porting-hexo-tags/</guid>
-      <description>Hexo 標籤 Hexo 標籤外掛是用於在文章中快速插入特定內容的外掛, 有幾種方式擴充:
-  內建標籤:
-Hexo 內建標籤有常用的 Block Quote, Gist, iframe, Youtube, &amp;hellip; 包含 Markdown 不支援但常用的 HTML 語法, 影音嵌入, 程式片斷嵌入&amp;hellip;等.
-文章使用內建標籤的相容性最高, 不容易因更換主題而導致生成錯誤的情況. 但不同 Hexo 版本的內建標籤還是可能不同而發生相容性問題.
-  標籤外掛:
-Hexo 有強大的外掛系統, 能輕鬆擴展功能而不用修改核心模組的原始碼.
-標籤亦可透過外掛擴充, 如何製作標籤外掛 官方有詳細說明.
-Plugins | Hexo 是官方收集的外掛列表, hexo-tag 開頭為標籤外掛. 通常透過 npm install PACKAGE_NAME 來安裝外掛.
-標籤外掛安裝在站台根目錄, 文章使用外掛的標籤和內建標籤一樣是不分主題皆可使用, 通常和 Hexo 版本無關, 不會因 Hexo 升版而出現相容問題.
-  主題支援:
-Hexo 主題可以提供該主題內建支援的標籤, 主題內透過外掛的方式提供擴充的標籤提供文章使用.
-主題支援的標籤產生的網頁風格型態通常比較美觀. 但更換主題時可能會不支援的問題.
-  Hugo shortcode Hugo shortcode 和 Hexo tags 很像, 也有內建 / 站台外掛 / 主題支援三種方式.</description>
-    </item>
-    
-    <item>
-      <title>從 Hexo 到 Hugo</title>
-      <link>https://kywk.github.io/moco/posts/2020/10/from-hexo-to-hugo/</link>
-      <pubDate>Wed, 14 Oct 2020 15:08:05 +0800</pubDate>
-      
-      <guid>https://kywk.github.io/moco/posts/2020/10/from-hexo-to-hugo/</guid>
-      <description>本文以 Hugo v0.76.2 編寫介紹, 其他版本若步驟或訊息內容不符, 請以官方文件為準
-從 Hexo 到 Hugo 沒想過會再次開始寫 Blog, 多事的 2020 太多意外, 覺得需要即時一一進行想做的事.
-於是重新開始了 Blog, 把想做的事完成, 紀錄, 然後放水流, 繼續&amp;hellip;
-雖一直使用 Hexo, 但脫節的這些年 Hexo 改了不少. 繼續沿用 Hexo 還是換個平台重新來過, 評估了許久.
-之前使用自行修改過後的 Hexi, 和 Hexo 已越來越不相容, 偶爾升版都需解決衝突.
-用 從 Hexo 到 Hugo 餵狗, 多數人棄坑 Hexo 原因多為效能落差大, 及轉移無痛.
-這些文章中, 個人心路歷程則和 从 Hexo 到 Hugo - ouuan的博客 較為接近.
-自己工作上的開發也漸漸從 node.js 轉移到 go lang, 部落格平台轉移似乎天注定.
-建制環境 官方有提供如何安裝及設定 Hugo 的說明文件, 網路上也找得到中文版文件.
-使用Hugo+Github Pages建置Blog 這篇寫得挺詳細, 部分內容架構會參考該文, 再以自己的歷程增減補充.</description>
     </item>
     
   </channel>

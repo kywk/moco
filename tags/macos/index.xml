@@ -7,7 +7,20 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Fri, 26 Feb 2021 14:53:37 +0800</lastBuildDate><atom:link href="https://kywk.github.io/moco/tags/macos/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 15 Mar 2021 15:33:18 +0800</lastBuildDate><atom:link href="https://kywk.github.io/moco/tags/macos/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Setup shadowsocks on macOS</title>
+      <link>https://kywk.github.io/moco/posts/2021/03/macos_shadowsocks/</link>
+      <pubDate>Mon, 15 Mar 2021 15:33:18 +0800</pubDate>
+      
+      <guid>https://kywk.github.io/moco/posts/2021/03/macos_shadowsocks/</guid>
+      <description>因大陸案子關係, 接觸了些大陸網路環境, 也因此接觸到 shadowsocks. Shadowsocks（簡稱SS） 是一種基於Socks5代理方式的加密傳輸協定, 也可以指實現這個協定的各種開發包. 在中國大陸, SS 廣泛用於突破防火長城（GFW）, 以瀏覽被封鎖, 遮蔽或干擾的內容.
+Shadowsocks 需找個 VPS 跑 server, 再透過本地端 client 連線. server 端的設定這篇不談, 僅紀錄 macOS 上安裝與設定 client 的過程.
+安裝 shadowsocks-libev Shadowsocks 有不少 client 可用, 我選用 shadowsocks-libev. 他可以當系統服務, 也可以透過不少 plugin 來擴充功能, 相當強大方便.
+透過套件管理工具 homebrew 即可安裝 shadowsocks-libev.
+$ brew update $ brew install shadowsocks-libev ... To have launchd start shadowsocks-libev now and restart at login: brew services start shadowsocks-libev Or, if you don&amp;#39;t want/need a background service you can just run: /usr/local/opt/shadowsocks-libev/bin/ss-local -c /usr/local/etc/shadowsocks-libev.</description>
+    </item>
+    
     <item>
       <title>macOS 開發環境建構 2021 Feb</title>
       <link>https://kywk.github.io/moco/posts/2021/02/macos_dev-env-2021-feb/</link>

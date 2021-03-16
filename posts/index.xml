@@ -6,8 +6,275 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
         <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-        <lastBuildDate>Tue, 09 Mar 2021 14:37:59 +0800</lastBuildDate>
+        <lastBuildDate>Mon, 15 Mar 2021 15:33:18 +0800</lastBuildDate>
         <atom:link href="https://kywk.github.io/moco/posts/index.xml" rel="self" type="application/rss+xml" />
+        
+        <item>
+            <title>Setup shadowsocks on macOS</title>
+            <link>https://kywk.github.io/moco/posts/2021/03/macos_shadowsocks/</link>
+            <pubDate>Mon, 15 Mar 2021 15:33:18 +0800</pubDate>
+            
+            <guid>https://kywk.github.io/moco/posts/2021/03/macos_shadowsocks/</guid>
+            <description>因大陸案子關係, 接觸了些大陸網路環境, 也因此接觸到 shadowsocks. Shadowsocks（簡稱SS） 是一種基於Socks5代理方式的加密傳輸協定, 也可以指實現這個協定的各種開發包. 在中國大陸, SS 廣泛用於突破防火長城（GFW）, 以瀏覽被封鎖, 遮蔽或干擾的內容.
+Shadowsocks 需找個 VPS 跑 server, 再透過本地端 client 連線. server 端的設定這篇不談, 僅紀錄 macOS 上安裝與設定 client 的過程.
+安裝 shadowsocks-libev Shadowsocks 有不少 client 可用, 我選用 shadowsocks-libev. 他可以當系統服務, 也可以透過不少 plugin 來擴充功能, 相當強大方便.
+透過套件管理工具 homebrew 即可安裝 shadowsocks-libev.
+$ brew update $ brew install shadowsocks-libev ... To have launchd start shadowsocks-libev now and restart at login: brew services start shadowsocks-libev Or, if you don&amp;#39;t want/need a background service you can just run: /usr/local/opt/shadowsocks-libev/bin/ss-local -c /usr/local/etc/shadowsocks-libev.</description>
+            <content type="html"><![CDATA[<p>因大陸案子關係, 接觸了些大陸網路環境, 也因此接觸到 shadowsocks.
+<a href="https://zh.wikipedia.org/wiki/Shadowsocks">Shadowsocks（簡稱SS）</a>
+是一種基於Socks5代理方式的加密傳輸協定, 也可以指實現這個協定的各種開發包.
+在中國大陸, SS 廣泛用於突破防火長城（GFW）, 以瀏覽被封鎖, 遮蔽或干擾的內容.</p>
+<p>Shadowsocks 需找個 VPS 跑 server, 再透過本地端 client 連線.
+server 端的設定這篇不談, 僅紀錄 macOS 上安裝與設定 client 的過程.</p>
+<h2 id="安裝-shadowsocks-libev">安裝 shadowsocks-libev</h2>
+<p>Shadowsocks 有不少 client 可用, 我選用 shadowsocks-libev.
+他可以當系統服務, 也可以透過不少 plugin 來擴充功能, 相當強大方便.</p>
+<p>透過套件管理工具 homebrew 即可安裝 shadowsocks-libev.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ brew update
+$ brew install shadowsocks-libev
+...
+To have launchd start shadowsocks-libev now and restart at login:
+  brew services start shadowsocks-libev
+Or, <span style="color:#66d9ef">if</span> you don<span style="color:#960050;background-color:#1e0010">&#39;</span>t want/need a background service you can just run:
+  /usr/local/opt/shadowsocks-libev/bin/ss-local -c /usr/local/etc/shadowsocks-libev.json
+</code></pre></div><p>出現後面這些訊息表示安裝成功, 先透過 CLI 確認 SS 連線可以正確 work.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ ss-local -s &lt;SERVER_IP&gt; -p &lt;SERVER_PORT&gt; -k &lt;PASSWORD&gt; -b 0.0.0.0 -l 1080-m aes-256-gcm
+
+
+ 2021-03-15 17:28:36 INFO: initializing ciphers... aes-256-gcm
+ 2021-03-15 17:28:36 INFO: listening at 0.0.0.0:1080
+</code></pre></div><p>出現 <code>listening at 0.0.0.0:1080</code> 表示 SS 連線成功,
+可參考後面段落設置 Socks Proxy, 連線上網確認是否正確.</p>
+<h2 id="設定-shadowsocks-libev">設定 shadowsocks-libev</h2>
+<p>shadowsocks-libev 可以服務方式運行,
+配置文件在 <code>/usr/local/etc/shadowsocks-libev.json</code></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
+    <span style="color:#f92672">&#34;server&#34;</span>:<span style="color:#e6db74">&#34;abc.xyz.com&#34;</span>,
+    <span style="color:#f92672">&#34;server_port&#34;</span>:<span style="color:#ae81ff">8888</span>,
+    <span style="color:#f92672">&#34;local_port&#34;</span>:<span style="color:#ae81ff">1080</span>,
+    <span style="color:#f92672">&#34;password&#34;</span>:<span style="color:#e6db74">&#34;AbCdEfGhIjKlMn&#34;</span>,
+    <span style="color:#f92672">&#34;timeout&#34;</span>:<span style="color:#ae81ff">5</span>,
+    <span style="color:#f92672">&#34;method&#34;</span>:<span style="color:#e6db74">&#34;chacha20-ietf-poly1305&#34;</span>,
+    <span style="color:#f92672">&#34;mode&#34;</span>:<span style="color:#e6db74">&#34;tcp_and_udp&#34;</span>,
+} 
+</code></pre></div><p>修改後可透過 brew services 啟動服務.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ brew services start shadowsocks-libev 
+<span style="color:#f92672">==</span>&gt; Successfully started <span style="color:#e6db74">`</span>shadowsocks-libev<span style="color:#e6db74">`</span> <span style="color:#f92672">(</span>label: homebrew.mxcl.shadowsocks-libev<span style="color:#f92672">)</span>
+</code></pre></div><h2 id="全區代理設定">全區代理設定</h2>
+<p>macOS 可透過全區代理的方式, 讓所有連線都使用 SS 當跳板. 設定方式在:
+<code>系統偏好設定 &gt; 網路 &gt; Wi-Fi &gt; 進階 &gt; 代理</code></p>
+<p><img src="https://lh3.googleusercontent.com/pw/ACtC-3du9pQkxgcpbedOxgve86--0UEyEQFCL63vTq-lq2xKJTunRbwdnK9KYniQK3fCcgXeYznijbOQjGTEowRbOwhgbYrILrh1NIsfm_6vskx_413Bt8-s8dVsoJP1LETT0NuInrjXbT_AiYnTEbe2IDEkuQ=w1336-h1154-no?authuser=0" alt=""></p>
+<p><img src="https://lh3.googleusercontent.com/pw/ACtC-3fnJwLdyl7XqvApKymmHyElVZckPBgMyCaTeSEdmX-mCrTRh3XzRP8z0g9DUcbb0dOkMSTVIXNBqfJZcfwgwaNygIE0vAFjcIkj-Rq8tdVAKGmtodCz-Wc9vnjWPB0zEcaLcDm3UFMe4gpfpMKGEWTFig=w1336-h1154-no?authuser=0" alt=""></p>
+<p>在 SOCKS 欄位填上本地端對應的資訊即可.</p>
+<h2 id="快速開關代理">快速開關代理</h2>
+<p>一般來說不會設定為全區代理, 會透過 PAC 來設定白名單等自動代理.
+但我個人需求比較簡單, 需要處理公務時開啟代理連線管理後台, 處理完畢即可關閉代理.</p>
+<p>因此設定了簡單的 alias, 透過 CLI 來快速開關代理.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">alias proxyon<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;brew services restart shadowsocks-libev; networksetup -setsocksfirewallproxy wi-fi localhost 1080&#39;</span>
+alias proxyoff<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;brew services stop shadowsocks-libev; networksetup -setsocksfirewallproxystate wi-fi off&#39;</span>
+</code></pre></div><p>之後需要連線後台時, 在 Ternimal 打 <code>poxyon</code> 即可透過代理連線.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$  proxyon
+
+<span style="color:#f92672">==</span>&gt; Successfully started <span style="color:#e6db74">`</span>shadowsocks-libev<span style="color:#e6db74">`</span> <span style="color:#f92672">(</span>label: homebrew.mxcl.shadowsocks-libev<span style="color:#f92672">)</span>
+</code></pre></div><p>處理完畢後, 打 <code>proxyoff</code> 關閉代理, 回到原生網魯環境.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ proxyoff
+
+Stopping <span style="color:#e6db74">`</span>shadowsocks-libev<span style="color:#e6db74">`</span>... <span style="color:#f92672">(</span>might take a <span style="color:#66d9ef">while</span><span style="color:#f92672">)</span>
+<span style="color:#f92672">==</span>&gt; Successfully stopped <span style="color:#e6db74">`</span>shadowsocks-libev<span style="color:#e6db74">`</span> <span style="color:#f92672">(</span>label: homebrew.mxcl.shadowsocks-libev<span style="color:#f92672">)</span>
+</code></pre></div><h2 id="see-also">See Also</h2>
+<h3 id="reference">Reference</h3>
+<ul>
+<li><a href="https://medium.com/@yanlong/macos%E4%BD%BF%E7%94%A8shadowsocks-libev-simple-obfs%E6%95%99%E7%A8%8B-c10eba9c0758">MacOS使用shadowsocks-libev+Simple-OBFS教程 - YAN LONG - Medium</a></li>
+<li><a href="https://marvinsblog.net/post/2017-01-15-use-shadowsocks-on-macos/">ShadowSocks助力macOS科学上网 | Marvin&rsquo;s Blog【程式人生】</a></li>
+<li><a href="https://wild-flame.github.io/guides/docs/mac-os-x-setup-guide/shadowsocks">Shadowsocks · Mac OS X 配置指南</a></li>
+<li><a href="https://placeless.net/blog/shadowsocks-libev-&amp;-acl-on-macos">shadowsocks-libev &amp; acl on macOS</a></li>
+<li><a href="https://www.wumingx.com/tools/shadowsocks_obfs.html">&lsquo;shadowsocks-libev+simple-obfs流量混淆的两种方案&rsquo; | 无名老卒BLOG</a></li>
+<li><a href="https://shadowsockshelp.github.io/Shadowsocks/mac.html">苹果 macOS 使用 Shadowsocks 设置教程 | Shadowsocks</a></li>
+<li><a href="https://apple.stackexchange.com/questions/226544/how-to-set-proxy-on-os-x-terminal-permanently">macos - How to set proxy on OS X Terminal permanently? - Ask Different</a></li>
+</ul>
+]]></content>
+        </item>
+        
+        <item>
+            <title>在 Ubuntu Server 利用 Nginx 伺服器執行 PHP 程式</title>
+            <link>https://kywk.github.io/moco/posts/2021/03/ubuntu_nginx-php/</link>
+            <pubDate>Thu, 11 Mar 2021 16:58:20 +0800</pubDate>
+            
+            <guid>https://kywk.github.io/moco/posts/2021/03/ubuntu_nginx-php/</guid>
+            <description>Nginx + PHP on ubuntu 長期以來 Apache Server 的效能與承載數低落, 加上層出不窮的漏洞, 許多人陸續投向 Event-based Server 的懷抱, 例如 Nginx.
+Nginx 是一個免費開源且穩定高效的 Web 伺服器程式, 擁有反向代理及負載平衡的功能, 藉由 Non-blocking 與 epool 的特性, 大幅提昇了連線服務量與速度, 成為近年來最為廣泛運用的選擇.
+但是 Nginx 只是單純的 HTTP Server, 如果要執行程式, 還得藉助 CGI 的幫忙. Nginx 可以透過 FastCGI 去執行 PHP 程式, 且內建 FastCGI 快取功能. 而第一步需要實現的是如何讓 Nginx 正確的呼叫 PHP.
+CGI CGI (Common Gateway Interface) 是用於網頁伺服器的介面標準, 支援 CGI 的網頁伺服器會將其所接收到的 HTTP 請求的內容設成環境變數, 作為某支程式時的環境變數以及標準輸入 (stdin) 輸入的資料. 而該程式標準輸出 (stdout) 的資料則會被網頁伺服器拿來回應給客戶端.
+網頁伺服器每次使用 CGI 執行程式時, 都需要建立出新的行程 (fork process), 就像在終端機直接用檔案路徑去執行某支程式.</description>
+            <content type="html"><![CDATA[<h2 id="nginx--php-on-ubuntu">Nginx + PHP on ubuntu</h2>
+<p>長期以來 Apache Server 的效能與承載數低落, 加上層出不窮的漏洞,
+許多人陸續投向 Event-based Server 的懷抱, 例如 Nginx.</p>
+<p>Nginx 是一個免費開源且穩定高效的 Web 伺服器程式, 擁有反向代理及負載平衡的功能,
+藉由 Non-blocking 與 epool 的特性, 大幅提昇了連線服務量與速度, 成為近年來最為廣泛運用的選擇.</p>
+<p>但是 Nginx 只是單純的 HTTP Server, 如果要執行程式, 還得藉助 CGI 的幫忙.
+Nginx 可以透過 FastCGI 去執行 PHP 程式, 且內建 FastCGI 快取功能.
+而第一步需要實現的是如何讓 Nginx 正確的呼叫 PHP.</p>
+<h3 id="cgi">CGI</h3>
+<p>CGI (Common Gateway Interface) 是用於網頁伺服器的介面標準,
+支援 CGI 的網頁伺服器會將其所接收到的 HTTP 請求的內容設成環境變數,
+作為某支程式時的環境變數以及標準輸入 (stdin) 輸入的資料.
+而該程式標準輸出 (stdout) 的資料則會被網頁伺服器拿來回應給客戶端.</p>
+<p>網頁伺服器每次使用 CGI 執行程式時, 都需要建立出新的行程 (fork process),
+就像在終端機直接用檔案路徑去執行某支程式.
+可想而知, 這樣的方式在應付多個 HTTP 請求時是沒有效率的。</p>
+<h3 id="fastcgi">FastCGI</h3>
+<p>FastCGI 則是在網頁伺服器和 CGI程式之間再加一個管理員.</p>
+<p>網頁伺服器要把 HTTP 請求交給管理員處理, 管理員負責分配 CGI 程式的執行資源,
+使系統不會每次遇到請求就開一個行程去跑 CGI 程式, 以改善運作效率.</p>
+<h3 id="fpmfastcgi-process-manager">FPM(FastCGI Process Manager)</h3>
+<p>FPM(php-fpm) 是 PHP 目前的 FastCGI 實作.</p>
+<h2 id="installation">Installation</h2>
+<h3 id="nginx">Nginx</h3>
+<p>在 Ubuntu 上安裝 Nginx 和安裝其他軟體一樣, 直接透過 <code>apt</code> 安裝即可.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ sudo apt install nginx
+</code></pre></div><p>Nginx 預設會啟用 HTTP, 佔用 TCP 連接埠為 HTTP 預設的 80.
+可以使用以下指令來查看 Nginx 是否有確實安裝成功.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ sudo netstat -tlnp | grep nginx
+</code></pre></div><p><img src="https://lh3.googleusercontent.com/pw/ACtC-3dV-nWgkfyACFUd4j0DDN0tmvWuOrhO8zprZsVWg7MbXfwzDYPOzYQtdvB0cqqPozf_-yzMW55AfkWGDc0sbFfm19rltX5FBkYcCP-qZ4T2JCl5auRbEaftoxXWyAKw5p4oIaCCGdpZGFuLr-vAcpO0Gg=w1214-h130-no?authuser=0" alt="">
+如上圖, 如果有看到連接埠 80 有被監聽, 就表示 Nginx 安裝成功.</p>
+<p>Nginx 所以監聽任意網路介面上的 80 連接埠, 是因為預設的設定檔 <code>(/etc/nginx/sites-available/default)</code> 中,
+有設一個會去監聽任意網路介面, 且連接埠為 80 的 <strong>虛擬主機 (Virtual Host)</strong>.
+有關於 Nginx 進一步的設定與配置說明, 可以參考
+<a href="https://magiclen.org/ubuntu-server-nginx/">使用Ubuntu Server架設Nginx伺服器 | MagicLen</a></p>
+<h3 id="php">PHP</h3>
+<p>PHP 是腳本式程式語言, 需要有 PHP 執行環境才可以被執行.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ sudo apt install php-cli
+</code></pre></div><p>安裝完 <code>php-cli</code> 套件後, 可以使用 <code>php</code> 指令來執行 PHP 程式.</p>
+<ul>
+<li>
+<p>查看 PHP 的版本:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ php -v
+</code></pre></div><p><img src="https://lh3.googleusercontent.com/pw/ACtC-3eYw_TsLcSEZ9pglabIbB0nJqs0KKJNq9y9qjjhZgWAAxpQ2LdxFH0eGKnc1Tjsr9h_0lDQhgYKvfGp0XSovF8ZsNVLA5IOJHWxZvjL1M_5YZWlbORRURJDRo7LkpWc-r9QB18sx9aYqDVEoF0Qms0jnQ=w802-h172-no?authuser=0" alt=""></p>
+</li>
+<li>
+<p>執行 PHP 程式:
+<img src="https://lh3.googleusercontent.com/pw/ACtC-3eOPeyqs8L6qvl7AxoPmInMY2pLWaoHAys9miug_nA6ACVhHqGbeHiBduAsPlWu_Rtb7iL-q4fM_2v25jmURV33rzqQvaxCRDHhshKE3RLSNlDAV8ESb4iy59NV7sbosIDFrpnSU7u3rHyNBK_Mktb50w=w784-h326-no?authuser=0" alt=""></p>
+</li>
+</ul>
+<p><code>php</code> 設定檔的路徑是 <code>/etc/php/&lt;PHP版本號碼&gt;/cli/php.ini</code>,
+詳細設定說明可參考官方文件或 <a href="https://magiclen.org/ubuntu-server-nginx-php/">使用Ubuntu Server透過Nginx伺服器執行PHP程式 | MagicLen</a>.</p>
+<h3 id="php-fpm">PHP-FPM</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ sudo apt install php-fpm
+</code></pre></div><p>FPM 預設只會監聽 Unix Domain Socket(UDS，或稱 IPC Socket), UDS 檔案路徑為 <code>/run/php/php&lt;PHP版本號碼&gt;-fpm.sock</code>.
+例如 PHP 7.4 UDS 檔案路徑就是 <code>/run/php/php7.4-fpm.sock</code>.</p>
+<p>如果要確認 FPM 有沒有安裝並啟用成功, 可以利用 <code>socat</code> 這個指令工具來進行.
+安裝 socat：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ sudo apt install socat
+</code></pre></div><p>執行以下指令來判斷 FPM 是否正常工作:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ echo /dev/null | sudo socat unix:/var/run/php/php-fpm.sock - <span style="color:#f92672">&amp;&amp;</span> echo <span style="color:#e6db74">&#34;Working!&#34;</span> <span style="color:#f92672">||</span> echo <span style="color:#e6db74">&#34;Not working!&#34;</span>
+</code></pre></div><p><img src="https://lh3.googleusercontent.com/pw/ACtC-3fQR-dRGQoBBDsbMbaJLBMuWu4qRTgsg6AVJaQ8nxsL1268iPR1UTrC3-4EhX8IQee8-v0rWO_ZAhvMja7kwfLB0UcnMwu24oRcChfdJ2FkzNWfe7vxR2p9EIZtf5c5WqaeD7X-PzxQGewrE7qp8A7bXw=w928-h128-no?authuser=0" alt=""></p>
+<h2 id="configuration">Configuration</h2>
+<h3 id="nginx-1">Nginx</h3>
+<p>順利安裝完之後開始修改 Nginx Server 設定檔, 如下:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ sudo vim /etc/nginx/nginx.conf
+</code></pre></div><pre><code>user www-data;
+worker_processes auto;
+pid /run/nginx.pid;
+include /etc/nginx/modules-enabled/*.conf;
+
+events {
+    use epoll;
+    worker_connections 2048;
+}
+
+http {
+    sendfile on;
+    tcp_nopush on;
+    tcp_nodelay on;
+    keepalive_timeout 65;
+    types_hash_max_size 2048;
+    server_tokens off;
+
+    include /etc/nginx/mime.types;
+    default_type application/octet-stream;
+
+    ssl_protocols TLSv1 TLSv1.1 TLSv1.2 TLSv1.3; # Dropping SSLv3, ref: POODLE
+    ssl_prefer_server_ciphers on;
+
+    access_log /var/log/nginx/access.log;
+    error_log /var/log/nginx/error.log;
+
+    gzip on;
+
+    include /etc/nginx/conf.d/*.conf;
+    include /etc/nginx/sites-enabled/*;
+}
+</code></pre><p>幾個重要的參數:</p>
+<ul>
+<li><strong>user</strong>: Nginx Server 啟動所使用的使用者 (ubuntu 預設用 www-data)</li>
+<li><strong>pid</strong>: ProcessID 存放位置 ( ubuntu 預設在 /run/nginx.pid)</li>
+<li><strong>worker_processes</strong>: 開啟的程序數量, 請對應 CPU 核心數進行調整, 或維持預設的 auto</li>
+<li><strong>use epoll</strong>: 啟動 epoll 會快很多，效果不錯</li>
+<li><strong>worker_connections</strong>: 每個程序最高可以開啟的連線數</li>
+<li><strong>server_tokens off</strong>: 移除 Nginx 版本資訊</li>
+<li><strong>access_log, error_log</strong>: HTTP Log 存放的位置</li>
+</ul>
+<p>上面是 Ngnix Server 整體的設定, 接下來要進行 Virtual Host 配置.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ sudo vim /etc/nginx/sites-available/default
+</code></pre></div><pre><code>server {
+    listen 80 default_server;
+    listen [::]:80 default_server;
+
+    root /var/www/html;
+
+    # Add index.php to the list if you are using PHP
+    index index.html index.htm index.php index.nginx-debian.html;
+
+    server_name _;
+
+    # set expiration of assets to MAX for caching
+    location ~* \.(ico|css|js|gif|jpe?g|png|ogg|ogv|svg|svgz|eot|otf|woff)(\?.+)?$ {
+        expires max;
+        log_not_found off;
+    }
+
+    # framework rewrite
+    location / {
+        try_files $uri $uri/ /index.php =404;
+    }
+
+    # pass PHP scripts to FastCGI server
+    location ~* \.php$ {
+        #include snippets/fastcgi-php.conf;
+        fastcgi_pass 127.0.0.1:9000;
+        fastcgi_index index.php;
+        fastcgi_split_path_info ^(.+\.php)(.*)$;
+        include fastcgi_params;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+    }
+}
+</code></pre><p>幾個參數設定說明:</p>
+<ul>
+<li><strong>server_name</strong>: 同 Apache ServerName 可以用來指定 Virtual Host (虛擬主機)</li>
+<li><strong>root</strong>: 網頁所擺放的位置</li>
+<li><strong>location /</strong> Selection (framework rewrite):
+用 <code>try_files $uri $uri/ /index.php;</code> 來嘗試讀取開啟.
+如果檔案不存在就轉為呼叫 index.php.
+做的事情與常用的 Apache Rewrite Module 差不多.
+主要是為了將 Request 導給 Framework (如 Codeigniter, Zend Framework 等等),
+若沒有使用 PHP Framwwork, 可以無須設定.</li>
+<li><strong>location ~ .php$</strong> Selection (pass PHP scripts to FastCGI server):
+設定要將 <code>.php</code> 檔案直接交由 FPM 來處理.
+詳細的設定說明可以參考 <a href="https://www.nginx.com/resources/wiki/">Nginx WIKI</a>.
+<ul>
+<li><strong>fastcgi_pass</strong> 指向 PHP-FPM 開啟的服務位置, 需和後面的 PHP-FPM 設定相同,</li>
+</ul>
+</li>
+</ul>
+<h3 id="設定-fpm">設定 FPM</h3>
+<h2 id="see-also">See Also</h2>
+<h3 id="reference">Reference</h3>
+<ul>
+<li><a href="https://magiclen.org/ubuntu-server-nginx-php/">使用Ubuntu Server透過Nginx伺服器執行PHP程式 | MagicLen</a></li>
+<li><a href="https://blog.toright.com/posts/3890/%E7%84%A1%E5%A0%85%E4%B8%8D%E6%91%A7%EF%BC%8C%E5%94%AF%E5%BF%AB%E4%B8%8D%E7%A0%B4%EF%BC%81%E5%BF%AB%E6%94%B9%E7%94%A8-nginx-php-fpm-%E5%8F%96%E4%BB%A3-apache-%E5%90%A7%EF%BC%81.html">無堅不摧，唯快不破！快改用 Nginx + PHP-FPM 取代 Apache 吧！ - Soul &amp; Shell Blog</a></li>
+</ul>
+]]></content>
+        </item>
         
         <item>
             <title>Chrome Extension List, 2021.Mar</title>
@@ -172,6 +439,16 @@ Kindle 閱讀效果，設定更符合習慣的瀏覽模式
 <li><a href="https://chrome.google.com/webstore/detail/caret/fljalecfjciodhpcledpamjachpmelml">Caret</a></li>
 </ul>
 ]]></content>
+        </item>
+        
+        <item>
+            <title>Sublime Text 3 Package List, 2021.Feb</title>
+            <link>https://kywk.github.io/moco/posts/2021/03/subl_packages-2021-feb/</link>
+            <pubDate>Mon, 01 Mar 2021 14:37:45 +0800</pubDate>
+            
+            <guid>https://kywk.github.io/moco/posts/2021/03/subl_packages-2021-feb/</guid>
+            <description></description>
+            <content type="html"><![CDATA[]]></content>
         </item>
         
         <item>
@@ -694,8 +971,8 @@ Install rclone on macOS 在 macOS 透過 homebrew 安裝的 rclone 目前不支�
 但無論是 Backup and Sync 還是 DriveFS 都不支援 Team Drive,
 無法在桌面環境下操作 Team Drive, 只能透過網頁端處理.</p>
 <p>所幸萬能的 Rclone 有支援 Team Drive.  </p>
-<h2 id="rclonehttpsrcloneorg"><a href="https://rclone.org/">Rclone</a></h2>
-<p>Rclone 是一個非常好用的雲端硬碟管理工具, 在命令模式下直接針對多數雲端硬碟服務進行操作,
+<h2 id="rclone">Rclone</h2>
+<p><strong><a href="https://rclone.org/">Rclone</a></strong> 是一個非常好用的雲端硬碟管理工具, 在命令模式下直接針對多數雲端硬碟服務進行操作,
 搭配其他系統工具, 可自動化雲端硬碟的管理, 包括異地備份, 打包, 移除老舊檔案&hellip; 等等.</p>
 <p>目前 Rclone 支援的雲端硬碟服務多達 38 種, 其中本篇的重點在第 13 項 &ldquo;Google Drive&rdquo;.</p>
 <p><strong>注意:</strong> 第 12 項的 Google Cloud Storage 並不是 Google Drive, 而是 GCP 中類似 AWS S3 的服務.</p>
@@ -1061,8 +1338,8 @@ Hexo 主題可以提供該主題內建支援的標籤, 主題內透過外掛的�
 官方有編寫 shortcode 教學 - <a href="https://gohugo.io/templates/shortcode-templates/">Create Your Own Shortcodes | Hugo</a>.</p>
 <p>而 Hugo 安裝 shortcode 站台外掛比 Hexo 簡單些, 把相關檔案放在站台 <code>layouts/shortcodes</code> 即可,
 不像 Hexo 需透過 <code>npm install package</code>.</p>
-<h2 id="kywkhugo-shortcodeshttpsgithubcomkywkhugo-shortcodes"><a href="https://github.com/kywk/hugo-shortcodes">kywk/hugo-shortcodes</a></h2>
-<p>一些 Hexo 內建或常見的 Tag 移植到 Hugo shortcodes 的收集.</p>
+<h2 id="kywkhugo-shortcodes">kywk/hugo-shortcodes</h2>
+<p><a href="https://github.com/kywk/hugo-shortcodes">kywk/hugo-shortcodes</a>, 一些 Hexo 內建或常見的 Tag 移植到 Hugo shortcodes 的收集.</p>
 <h3 id="block-quote">Block Quote</h3>
 <p>在文章中插入引言，可包含作者、來源和標題。</p>
 <ul>

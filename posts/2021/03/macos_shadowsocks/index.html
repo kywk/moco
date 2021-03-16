@@ -5,20 +5,20 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="author" content="Moo Cow ">
-<meta name="description" content="過去重灌電腦最麻煩的就是還原設定檔, 雖然 Mac 有 TimeMachine 可無痛轉移, 但個人癖好還是喜歡重新檢視與安裝設定. 但越來越多軟體可以把配置設定存在雲端, 不但保持多台電腦間的同步, 重灌也只需登入帳號就可還原配置, 個人以為比 TimeMachine 方便.
-但仍有些開發或 CLI 工具, 是將配置檔存放於家目錄下的隱藏檔 (.files), 無法透過雲端同步. 我是把這些檔案搬移到 Dropbox 資料夾下, 再建立 Symbolic Link, 如此就可透過 Dropbox 來同步設定檔.
-現在重灌電腦要安裝設定環境, 僅需透過 shell script 安裝軟體與建立 Symbolic Link, 相當無痛.
-CLI Environment iTerm2 $ brew install iterm2 zsh and oh-my-zsh macOS Mojave (10.14.x) 開始內建 zsh, 而 Catalina (10.15.x) 以後預設 Shell 改為 zsh.
-在 macOS Mojave 系統要把預設 shell 改為 zsh 以及配置 zsh 最方便也推薦的方式就是透過 Oh My Zsh" />
-<meta name="keywords" content="blog,developer, kywk, macos" />
+<meta name="description" content="因大陸案子關係, 接觸了些大陸網路環境, 也因此接觸到 shadowsocks. Shadowsocks（簡稱SS） 是一種基於Socks5代理方式的加密傳輸協定, 也可以指實現這個協定的各種開發包. 在中國大陸, SS 廣泛用於突破防火長城（GFW）, 以瀏覽被封鎖, 遮蔽或干擾的內容.
+Shadowsocks 需找個 VPS 跑 server, 再透過本地端 client 連線. server 端的設定這篇不談, 僅紀錄 macOS 上安裝與設定 client 的過程.
+安裝 shadowsocks-libev Shadowsocks 有不少 client 可用, 我選用 shadowsocks-libev. 他可以當系統服務, 也可以透過不少 plugin 來擴充功能, 相當強大方便.
+透過套件管理工具 homebrew 即可安裝 shadowsocks-libev.
+$ brew update $ brew install shadowsocks-libev ... To have launchd start shadowsocks-libev now and restart at login: brew services start shadowsocks-libev Or, if you don&amp;#39;t want/need a background service you can just run: /usr/local/opt/shadowsocks-libev/bin/ss-local -c /usr/local/etc/shadowsocks-libev." />
+<meta name="keywords" content="blog,developer, macos" />
 <meta name="robots" content="noodp" />
 <meta name="theme-color" content="#252627" />
-<link rel="canonical" href="https://kywk.github.io/moco/posts/2021/02/macos_dev-env-2021-feb/" />
+<link rel="canonical" href="https://kywk.github.io/moco/posts/2021/03/macos_shadowsocks/" />
 
 
     <title>
         
-            macOS 開發環境建構 2021 Feb :: moco  — Backend Engineer in node.js and Go
+            Setup shadowsocks on macOS :: moco  — Backend Engineer in node.js and Go
         
     </title>
 
@@ -45,38 +45,38 @@ CLI Environment iTerm2 $ brew install iterm2 zsh and oh-my-zsh macOS Mojave (10.
 
 
 
-<meta itemprop="name" content="macOS 開發環境建構 2021 Feb">
-<meta itemprop="description" content="過去重灌電腦最麻煩的就是還原設定檔, 雖然 Mac 有 TimeMachine 可無痛轉移, 但個人癖好還是喜歡重新檢視與安裝設定. 但越來越多軟體可以把配置設定存在雲端, 不但保持多台電腦間的同步, 重灌也只需登入帳號就可還原配置, 個人以為比 TimeMachine 方便.
-但仍有些開發或 CLI 工具, 是將配置檔存放於家目錄下的隱藏檔 (.files), 無法透過雲端同步. 我是把這些檔案搬移到 Dropbox 資料夾下, 再建立 Symbolic Link, 如此就可透過 Dropbox 來同步設定檔.
-現在重灌電腦要安裝設定環境, 僅需透過 shell script 安裝軟體與建立 Symbolic Link, 相當無痛.
-CLI Environment iTerm2 $ brew install iterm2 zsh and oh-my-zsh macOS Mojave (10.14.x) 開始內建 zsh, 而 Catalina (10.15.x) 以後預設 Shell 改為 zsh.
-在 macOS Mojave 系統要把預設 shell 改為 zsh 以及配置 zsh 最方便也推薦的方式就是透過 Oh My Zsh"><meta itemprop="datePublished" content="2021-02-26T14:53:37&#43;08:00" />
-<meta itemprop="dateModified" content="2021-02-26T14:53:37&#43;08:00" />
-<meta itemprop="wordCount" content="509"><meta itemprop="image" content="https://kywk.github.io/moco"/>
-<meta itemprop="keywords" content="kywk,macos," />
+<meta itemprop="name" content="Setup shadowsocks on macOS">
+<meta itemprop="description" content="因大陸案子關係, 接觸了些大陸網路環境, 也因此接觸到 shadowsocks. Shadowsocks（簡稱SS） 是一種基於Socks5代理方式的加密傳輸協定, 也可以指實現這個協定的各種開發包. 在中國大陸, SS 廣泛用於突破防火長城（GFW）, 以瀏覽被封鎖, 遮蔽或干擾的內容.
+Shadowsocks 需找個 VPS 跑 server, 再透過本地端 client 連線. server 端的設定這篇不談, 僅紀錄 macOS 上安裝與設定 client 的過程.
+安裝 shadowsocks-libev Shadowsocks 有不少 client 可用, 我選用 shadowsocks-libev. 他可以當系統服務, 也可以透過不少 plugin 來擴充功能, 相當強大方便.
+透過套件管理工具 homebrew 即可安裝 shadowsocks-libev.
+$ brew update $ brew install shadowsocks-libev ... To have launchd start shadowsocks-libev now and restart at login: brew services start shadowsocks-libev Or, if you don&#39;t want/need a background service you can just run: /usr/local/opt/shadowsocks-libev/bin/ss-local -c /usr/local/etc/shadowsocks-libev."><meta itemprop="datePublished" content="2021-03-15T15:33:18&#43;08:00" />
+<meta itemprop="dateModified" content="2021-03-15T15:33:18&#43;08:00" />
+<meta itemprop="wordCount" content="286"><meta itemprop="image" content="https://kywk.github.io/moco"/>
+<meta itemprop="keywords" content="macos," />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://kywk.github.io/moco"/>
 
-<meta name="twitter:title" content="macOS 開發環境建構 2021 Feb"/>
-<meta name="twitter:description" content="過去重灌電腦最麻煩的就是還原設定檔, 雖然 Mac 有 TimeMachine 可無痛轉移, 但個人癖好還是喜歡重新檢視與安裝設定. 但越來越多軟體可以把配置設定存在雲端, 不但保持多台電腦間的同步, 重灌也只需登入帳號就可還原配置, 個人以為比 TimeMachine 方便.
-但仍有些開發或 CLI 工具, 是將配置檔存放於家目錄下的隱藏檔 (.files), 無法透過雲端同步. 我是把這些檔案搬移到 Dropbox 資料夾下, 再建立 Symbolic Link, 如此就可透過 Dropbox 來同步設定檔.
-現在重灌電腦要安裝設定環境, 僅需透過 shell script 安裝軟體與建立 Symbolic Link, 相當無痛.
-CLI Environment iTerm2 $ brew install iterm2 zsh and oh-my-zsh macOS Mojave (10.14.x) 開始內建 zsh, 而 Catalina (10.15.x) 以後預設 Shell 改為 zsh.
-在 macOS Mojave 系統要把預設 shell 改為 zsh 以及配置 zsh 最方便也推薦的方式就是透過 Oh My Zsh"/>
+<meta name="twitter:title" content="Setup shadowsocks on macOS"/>
+<meta name="twitter:description" content="因大陸案子關係, 接觸了些大陸網路環境, 也因此接觸到 shadowsocks. Shadowsocks（簡稱SS） 是一種基於Socks5代理方式的加密傳輸協定, 也可以指實現這個協定的各種開發包. 在中國大陸, SS 廣泛用於突破防火長城（GFW）, 以瀏覽被封鎖, 遮蔽或干擾的內容.
+Shadowsocks 需找個 VPS 跑 server, 再透過本地端 client 連線. server 端的設定這篇不談, 僅紀錄 macOS 上安裝與設定 client 的過程.
+安裝 shadowsocks-libev Shadowsocks 有不少 client 可用, 我選用 shadowsocks-libev. 他可以當系統服務, 也可以透過不少 plugin 來擴充功能, 相當強大方便.
+透過套件管理工具 homebrew 即可安裝 shadowsocks-libev.
+$ brew update $ brew install shadowsocks-libev ... To have launchd start shadowsocks-libev now and restart at login: brew services start shadowsocks-libev Or, if you don&#39;t want/need a background service you can just run: /usr/local/opt/shadowsocks-libev/bin/ss-local -c /usr/local/etc/shadowsocks-libev."/>
 
 
 
 
-    <meta property="og:title" content="macOS 開發環境建構 2021 Feb" />
-<meta property="og:description" content="過去重灌電腦最麻煩的就是還原設定檔, 雖然 Mac 有 TimeMachine 可無痛轉移, 但個人癖好還是喜歡重新檢視與安裝設定. 但越來越多軟體可以把配置設定存在雲端, 不但保持多台電腦間的同步, 重灌也只需登入帳號就可還原配置, 個人以為比 TimeMachine 方便.
-但仍有些開發或 CLI 工具, 是將配置檔存放於家目錄下的隱藏檔 (.files), 無法透過雲端同步. 我是把這些檔案搬移到 Dropbox 資料夾下, 再建立 Symbolic Link, 如此就可透過 Dropbox 來同步設定檔.
-現在重灌電腦要安裝設定環境, 僅需透過 shell script 安裝軟體與建立 Symbolic Link, 相當無痛.
-CLI Environment iTerm2 $ brew install iterm2 zsh and oh-my-zsh macOS Mojave (10.14.x) 開始內建 zsh, 而 Catalina (10.15.x) 以後預設 Shell 改為 zsh.
-在 macOS Mojave 系統要把預設 shell 改為 zsh 以及配置 zsh 最方便也推薦的方式就是透過 Oh My Zsh" />
+    <meta property="og:title" content="Setup shadowsocks on macOS" />
+<meta property="og:description" content="因大陸案子關係, 接觸了些大陸網路環境, 也因此接觸到 shadowsocks. Shadowsocks（簡稱SS） 是一種基於Socks5代理方式的加密傳輸協定, 也可以指實現這個協定的各種開發包. 在中國大陸, SS 廣泛用於突破防火長城（GFW）, 以瀏覽被封鎖, 遮蔽或干擾的內容.
+Shadowsocks 需找個 VPS 跑 server, 再透過本地端 client 連線. server 端的設定這篇不談, 僅紀錄 macOS 上安裝與設定 client 的過程.
+安裝 shadowsocks-libev Shadowsocks 有不少 client 可用, 我選用 shadowsocks-libev. 他可以當系統服務, 也可以透過不少 plugin 來擴充功能, 相當強大方便.
+透過套件管理工具 homebrew 即可安裝 shadowsocks-libev.
+$ brew update $ brew install shadowsocks-libev ... To have launchd start shadowsocks-libev now and restart at login: brew services start shadowsocks-libev Or, if you don&#39;t want/need a background service you can just run: /usr/local/opt/shadowsocks-libev/bin/ss-local -c /usr/local/etc/shadowsocks-libev." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://kywk.github.io/moco/posts/2021/02/macos_dev-env-2021-feb/" /><meta property="og:image" content="https://kywk.github.io/moco"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2021-02-26T14:53:37&#43;08:00" />
-<meta property="article:modified_time" content="2021-02-26T14:53:37&#43;08:00" />
+<meta property="og:url" content="https://kywk.github.io/moco/posts/2021/03/macos_shadowsocks/" /><meta property="og:image" content="https://kywk.github.io/moco"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-03-15T15:33:18&#43;08:00" />
+<meta property="article:modified_time" content="2021-03-15T15:33:18&#43;08:00" />
 
 
 
@@ -86,7 +86,7 @@ CLI Environment iTerm2 $ brew install iterm2 zsh and oh-my-zsh macOS Mojave (10.
 
 
 
-    <meta property="article:published_time" content="2021-02-26 14:53:37 &#43;0800 CST" />
+    <meta property="article:published_time" content="2021-03-15 15:33:18 &#43;0800 CST" />
 
 
 
@@ -148,7 +148,7 @@ CLI Environment iTerm2 $ brew install iterm2 zsh and oh-my-zsh macOS Mojave (10.
           <circle cx="12" cy="12" r="10"></circle>
           <polyline points="12 6 12 12 16 14"></polyline>
         </svg>
-        3 minutes
+        2 minutes
 
         
       </p>
@@ -156,7 +156,7 @@ CLI Environment iTerm2 $ brew install iterm2 zsh and oh-my-zsh macOS Mojave (10.
 
     <article>
       <h1 class="post-title">
-        <a href="https://kywk.github.io/moco/posts/2021/02/macos_dev-env-2021-feb/">macOS 開發環境建構 2021 Feb</a>
+        <a href="https://kywk.github.io/moco/posts/2021/03/macos_shadowsocks/">Setup shadowsocks on macOS</a>
       </h1>
 
       
@@ -164,115 +164,77 @@ CLI Environment iTerm2 $ brew install iterm2 zsh and oh-my-zsh macOS Mojave (10.
       
 
       <div class="post-content">
-        <p>過去重灌電腦最麻煩的就是還原設定檔, 雖然 Mac 有 TimeMachine 可無痛轉移, 但個人癖好還是喜歡重新檢視與安裝設定.
-但越來越多軟體可以把配置設定存在雲端, 不但保持多台電腦間的同步, 重灌也只需登入帳號就可還原配置, 個人以為比 TimeMachine 方便.</p>
-<p>但仍有些開發或 CLI 工具, 是將配置檔存放於家目錄下的隱藏檔 (.files),
-無法透過雲端同步.
-我是把這些檔案搬移到 Dropbox 資料夾下, 再建立 Symbolic Link,
-如此就可透過 Dropbox 來同步設定檔.</p>
-<p>現在重灌電腦要安裝設定環境, 僅需透過 shell script 安裝軟體與建立 Symbolic Link, 相當無痛.</p>
-<!-- raw HTML omitted -->
-<h2 id="cli-environment">CLI Environment</h2>
-<h3 id="iterm2">iTerm2</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ brew install iterm2
-</code></pre></div><h3 id="zsh-and-oh-my-zsh">zsh and oh-my-zsh</h3>
-<p>macOS Mojave (10.14.x) 開始內建 zsh, 而 Catalina (10.15.x) 以後預設 Shell 改為 zsh.</p>
-<p>在 macOS Mojave 系統要把預設 shell 改為 zsh 以及配置 zsh 最方便也推薦的方式就是透過 <a href="https://ohmyz.sh">Oh My Zsh</a></p>
-<p><strong>Oh My Zsh</strong></p>
-<p>macOS Mojave 以後已經內建 Zsh, 所以直接安裝 Oh My Zsh 即可.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ sh -c <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ brew install zsh-completion 
-</code></pre></div><h3 id="powerline-font">Powerline Font</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ brew tap homebrew/cask-fonts
-$ brew install font-fira-code font-fira-mono font-fira-sans
-$ brew install font-source-code-pro
-$ brew install font-hack-nerd-font
-</code></pre></div><h2 id="base-environment">Base Environment</h2>
-<h3 id="docker">Docker</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ brew install --cask docker
-</code></pre></div><h3 id="brew-formulae">Brew formulae</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ brew install git tig tmux ncdu htop lesspipe tldr diff-so-fancy fd ripgrep thefuck ag
-</code></pre></div><h2 id="program-language">Program Language</h2>
-<h3 id="nodejs">Node.js</h3>
-<p><strong><a href="https://nodejs.org/">Node.js</a></strong></p>
-<p><a href="http://goo.gl/26nHDf">Installing Node.js or io.js with nvm</a></p>
-<p><strong>NVM Manual install</strong></p>
-<pre><code>git clone https://github.com/creationix/nvm.git ~/.nvm &amp;&amp; cd ~/.nvm &amp;&amp; git checkout `git describe --abbrev=0 --tags`  
-cat &quot;. ~/.nvm/nvm.sh&quot; &gt;&gt; .bashrc
-</code></pre><p><strong>Install node.js</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ nvm install v8.11.1
-$ nvm alias default tls
-$ nvm use default
-</code></pre></div><h3 id="go">Go</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ brew install go
-</code></pre></div><h2 id="ide--gui-tools">IDE &amp; GUI Tools</h2>
-<h3 id="vscode">VSCode</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ brew install --cask visual-studio-code
-</code></pre></div><h3 id="goland">GoLand</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ brew install --cask goland
-</code></pre></div><h3 id="webstorm">WebStorm</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ brew install --cask webstorm
-</code></pre></div><h3 id="others">Others</h3>
-<p><strong><a href="https://git-fork.com/">Fork</a></strong></p>
-<p>Fork - a fast and friendly git client for Mac</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ brew install fork
-</code></pre></div><p><strong>Postman</strong></p>
-<p>The Collaboration Platform for API Development.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ brew install postman
-</code></pre></div><p><strong><a href="http://www.sequelpro.com/">Sequel Pro</a></strong></p>
-<p>Sequel Pro is a fast, easy-to-use Mac database management application for working with MySQL databases.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ brew install sequel-pro
-</code></pre></div><p><strong><a href="https://tableplus.com">TablePlus</a></strong></p>
-<p>Modern, Native Tool for Database Management.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ brew install tableplus
-</code></pre></div><p><strong><a href="https://rdm.dev">Redis Desktop Manager</a></strong></p>
-<p>Redis GUI management tool for Windows, Mac OS X, Ubuntu and Debian.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ brew install tableplus
-</code></pre></div><p><strong><a href="https://robomongo.org">Robo3T</a></strong></p>
-<p>Robo 3T. Free, open-source MongoDB GUI</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ brew install tableplus
+        <p>因大陸案子關係, 接觸了些大陸網路環境, 也因此接觸到 shadowsocks.
+<a href="https://zh.wikipedia.org/wiki/Shadowsocks">Shadowsocks（簡稱SS）</a>
+是一種基於Socks5代理方式的加密傳輸協定, 也可以指實現這個協定的各種開發包.
+在中國大陸, SS 廣泛用於突破防火長城（GFW）, 以瀏覽被封鎖, 遮蔽或干擾的內容.</p>
+<p>Shadowsocks 需找個 VPS 跑 server, 再透過本地端 client 連線.
+server 端的設定這篇不談, 僅紀錄 macOS 上安裝與設定 client 的過程.</p>
+<h2 id="安裝-shadowsocks-libev">安裝 shadowsocks-libev</h2>
+<p>Shadowsocks 有不少 client 可用, 我選用 shadowsocks-libev.
+他可以當系統服務, 也可以透過不少 plugin 來擴充功能, 相當強大方便.</p>
+<p>透過套件管理工具 homebrew 即可安裝 shadowsocks-libev.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ brew update
+$ brew install shadowsocks-libev
+...
+To have launchd start shadowsocks-libev now and restart at login:
+  brew services start shadowsocks-libev
+Or, <span style="color:#66d9ef">if</span> you don<span style="color:#960050;background-color:#1e0010">&#39;</span>t want/need a background service you can just run:
+  /usr/local/opt/shadowsocks-libev/bin/ss-local -c /usr/local/etc/shadowsocks-libev.json
+</code></pre></div><p>出現後面這些訊息表示安裝成功, 先透過 CLI 確認 SS 連線可以正確 work.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ ss-local -s &lt;SERVER_IP&gt; -p &lt;SERVER_PORT&gt; -k &lt;PASSWORD&gt; -b 0.0.0.0 -l 1080-m aes-256-gcm
+
+
+ 2021-03-15 17:28:36 INFO: initializing ciphers... aes-256-gcm
+ 2021-03-15 17:28:36 INFO: listening at 0.0.0.0:1080
+</code></pre></div><p>出現 <code>listening at 0.0.0.0:1080</code> 表示 SS 連線成功,
+可參考後面段落設置 Socks Proxy, 連線上網確認是否正確.</p>
+<h2 id="設定-shadowsocks-libev">設定 shadowsocks-libev</h2>
+<p>shadowsocks-libev 可以服務方式運行,
+配置文件在 <code>/usr/local/etc/shadowsocks-libev.json</code></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
+    <span style="color:#f92672">&#34;server&#34;</span>:<span style="color:#e6db74">&#34;abc.xyz.com&#34;</span>,
+    <span style="color:#f92672">&#34;server_port&#34;</span>:<span style="color:#ae81ff">8888</span>,
+    <span style="color:#f92672">&#34;local_port&#34;</span>:<span style="color:#ae81ff">1080</span>,
+    <span style="color:#f92672">&#34;password&#34;</span>:<span style="color:#e6db74">&#34;AbCdEfGhIjKlMn&#34;</span>,
+    <span style="color:#f92672">&#34;timeout&#34;</span>:<span style="color:#ae81ff">5</span>,
+    <span style="color:#f92672">&#34;method&#34;</span>:<span style="color:#e6db74">&#34;chacha20-ietf-poly1305&#34;</span>,
+    <span style="color:#f92672">&#34;mode&#34;</span>:<span style="color:#e6db74">&#34;tcp_and_udp&#34;</span>,
+} 
+</code></pre></div><p>修改後可透過 brew services 啟動服務.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ brew services start shadowsocks-libev 
+<span style="color:#f92672">==</span>&gt; Successfully started <span style="color:#e6db74">`</span>shadowsocks-libev<span style="color:#e6db74">`</span> <span style="color:#f92672">(</span>label: homebrew.mxcl.shadowsocks-libev<span style="color:#f92672">)</span>
+</code></pre></div><h2 id="全區代理設定">全區代理設定</h2>
+<p>macOS 可透過全區代理的方式, 讓所有連線都使用 SS 當跳板. 設定方式在:
+<code>系統偏好設定 &gt; 網路 &gt; Wi-Fi &gt; 進階 &gt; 代理</code></p>
+<p><img src="https://lh3.googleusercontent.com/pw/ACtC-3du9pQkxgcpbedOxgve86--0UEyEQFCL63vTq-lq2xKJTunRbwdnK9KYniQK3fCcgXeYznijbOQjGTEowRbOwhgbYrILrh1NIsfm_6vskx_413Bt8-s8dVsoJP1LETT0NuInrjXbT_AiYnTEbe2IDEkuQ=w1336-h1154-no?authuser=0" alt=""></p>
+<p><img src="https://lh3.googleusercontent.com/pw/ACtC-3fnJwLdyl7XqvApKymmHyElVZckPBgMyCaTeSEdmX-mCrTRh3XzRP8z0g9DUcbb0dOkMSTVIXNBqfJZcfwgwaNygIE0vAFjcIkj-Rq8tdVAKGmtodCz-Wc9vnjWPB0zEcaLcDm3UFMe4gpfpMKGEWTFig=w1336-h1154-no?authuser=0" alt=""></p>
+<p>在 SOCKS 欄位填上本地端對應的資訊即可.</p>
+<h2 id="快速開關代理">快速開關代理</h2>
+<p>一般來說不會設定為全區代理, 會透過 PAC 來設定白名單等自動代理.
+但我個人需求比較簡單, 需要處理公務時開啟代理連線管理後台, 處理完畢即可關閉代理.</p>
+<p>因此設定了簡單的 alias, 透過 CLI 來快速開關代理.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">alias proxyon<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;brew services restart shadowsocks-libev; networksetup -setsocksfirewallproxy wi-fi localhost 1080&#39;</span>
+alias proxyoff<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;brew services stop shadowsocks-libev; networksetup -setsocksfirewallproxystate wi-fi off&#39;</span>
+</code></pre></div><p>之後需要連線後台時, 在 Ternimal 打 <code>poxyon</code> 即可透過代理連線.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$  proxyon
+
+<span style="color:#f92672">==</span>&gt; Successfully started <span style="color:#e6db74">`</span>shadowsocks-libev<span style="color:#e6db74">`</span> <span style="color:#f92672">(</span>label: homebrew.mxcl.shadowsocks-libev<span style="color:#f92672">)</span>
+</code></pre></div><p>處理完畢後, 打 <code>proxyoff</code> 關閉代理, 回到原生網魯環境.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ proxyoff
+
+Stopping <span style="color:#e6db74">`</span>shadowsocks-libev<span style="color:#e6db74">`</span>... <span style="color:#f92672">(</span>might take a <span style="color:#66d9ef">while</span><span style="color:#f92672">)</span>
+<span style="color:#f92672">==</span>&gt; Successfully stopped <span style="color:#e6db74">`</span>shadowsocks-libev<span style="color:#e6db74">`</span> <span style="color:#f92672">(</span>label: homebrew.mxcl.shadowsocks-libev<span style="color:#f92672">)</span>
 </code></pre></div><h2 id="see-also">See Also</h2>
-<h3 id="遺珠">遺珠</h3>
-<p>以下是曾為個人熱愛, 但因故越來越少用的軟體. 暫列於此&hellip;</p>
-<ul>
-<li><a href="https://atom.io/">Atom</a><br>
-A hackable text editor for the 21st Century by github.</li>
-<li><a href="http://sourcetreeapp.com/">SourceTree</a><br>
-Free Mercurial and Git Client for Windows and Mac</li>
-<li><a href="https://www.gitkraken.com/">GitKraken</a><br>
-The downright luxurious Git client, for Windows, Mac &amp; Linux</li>
-<li><a href="https://hyperterm.org/">HyperTerm</a>
-JS/HTML/CSS Terminal</li>
-</ul>
 <h3 id="reference">Reference</h3>
-<p><strong>Zsh</strong></p>
 <ul>
-<li><a href="https://sspai.com/post/55176">让你的 Mac 提前用上 macOS Catalina 的 Shell——Oh My Zsh 配置指南 - 少数派</a></li>
-<li><a href="https://cyeninesky3.medium.com/bin-to-zsh-%E8%A8%AD%E5%AE%9A%E6%B5%81%E7%A8%8B-d29fe60a4121">bash to zsh 設定流程. 參考這篇一步一步執行，因為我已裝過 homebrew以及 iterm2… | by Youngmi huang | Medium</a></li>
-</ul>
-<p><strong>iTerm2 + Oh My Zsh</strong></p>
-<ul>
-<li><a href="https://ithelp.ithome.com.tw/articles/10192874">[Tool] Mac + iTerm 2 + Oh My Zsh + Powerlevel9k 設定 - iT 邦幫忙::一起幫忙解決難題，拯救 IT 人的一天</a></li>
-<li><a href="https://medium.com/statementdog-engineering/prettify-your-zsh-command-line-prompt-3ca2acc967f">超簡單！十分鐘打造漂亮又好用的 zsh command line 環境 | by Gary Chu | 財報狗技術部落格 | Medium</a></li>
-<li><a href="https://medium.com/@hazelwu/%E7%94%A8oh-my-zsh%E6%8A%8Aiterm%E8%AE%8A%E7%BE%8E%E7%BE%8E-8a18daa8eac">用Oh My Zsh把iTerm變美美. 使用終端機操作時常密密麻麻的，看一兩個小時還好，但如果長期這樣下去真的會眼殘，畫… | by Hazel Wu | Medium</a></li>
-<li><a href="https://medium.com/@h86991868/%E7%9C%8B%E8%86%A9%E4%BA%86%E4%B8%80%E6%88%90%E4%B8%8D%E8%AE%8A%E7%9A%84%E5%B0%8F%E9%BB%91%E7%AA%97-%E6%94%B9%E7%94%A8iterm2-oh-my-zsh%E5%90%A7-cc2b0683acb">看膩了一成不變的小黑窗？改用iterm2 + oh-my-zsh吧 | by Nathan Chou | Medium</a></li>
-</ul>
-<p><strong>WebStorm</strong></p>
-<ul>
-<li><a href="https://fpjs.fun/webstorm/general/setup/">WebStorm 安裝與設定 | 點燈坊</a></li>
-</ul>
-<p><strong>Mac Dev</strong></p>
-<ul>
-<li><a href="https://goo.gl/ZDYqar">How to set up your Mac for Web Development – freeCodeCamp.org</a></li>
-<li><a href="http://goo.gl/XOrSV6">homebrew - Mac OS X Yosemite 10.10 開発環境構築 - Qiita</a>
-<ul>
-<li><a href="http://goo.gl/8JkuvS">Python Development Environment on Mac OS X Mavericks 10.9 | Hacker Codex</a></li>
-<li><a href="http://goo.gl/5yhNGk">Set Up Python and Install Django on Mac OS X Lion 10.7 | Hacker Codex</a></li>
-</ul>
-</li>
-<li><a href="http://goo.gl/YkCvoT">Setting Up a Mac Dev Machine From Zero to Hero With Dotfiles - Tuts+ Code Tutorial</a></li>
-<li><a href="http://goo.gl/gSnCRv">MacOS 編輯器快捷建設定, short key of editor</a></li>
-<li><a href="https://goo.gl/YZfREq">2018 最新 MacBook 必裝程式與設定 – Ryan Hsu – Medium</a></li>
+<li><a href="https://medium.com/@yanlong/macos%E4%BD%BF%E7%94%A8shadowsocks-libev-simple-obfs%E6%95%99%E7%A8%8B-c10eba9c0758">MacOS使用shadowsocks-libev+Simple-OBFS教程 - YAN LONG - Medium</a></li>
+<li><a href="https://marvinsblog.net/post/2017-01-15-use-shadowsocks-on-macos/">ShadowSocks助力macOS科学上网 | Marvin&rsquo;s Blog【程式人生】</a></li>
+<li><a href="https://wild-flame.github.io/guides/docs/mac-os-x-setup-guide/shadowsocks">Shadowsocks · Mac OS X 配置指南</a></li>
+<li><a href="https://placeless.net/blog/shadowsocks-libev-&amp;-acl-on-macos">shadowsocks-libev &amp; acl on macOS</a></li>
+<li><a href="https://www.wumingx.com/tools/shadowsocks_obfs.html">&lsquo;shadowsocks-libev+simple-obfs流量混淆的两种方案&rsquo; | 无名老卒BLOG</a></li>
+<li><a href="https://shadowsockshelp.github.io/Shadowsocks/mac.html">苹果 macOS 使用 Shadowsocks 设置教程 | Shadowsocks</a></li>
+<li><a href="https://apple.stackexchange.com/questions/226544/how-to-set-proxy-on-os-x-terminal-permanently">macos - How to set proxy on OS X Terminal permanently? - Ask Different</a></li>
 </ul>
 
       </div>
@@ -285,7 +247,6 @@ JS/HTML/CSS Terminal</li>
     <p>
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg>
 
-        <span class="tag"><a href="https://kywk.github.io/moco/tags/kywk/">kywk</a></span>
         <span class="tag"><a href="https://kywk.github.io/moco/tags/macos/">macos</a></span>
         
     </p>
@@ -307,7 +268,7 @@ JS/HTML/CSS Terminal</li>
           <line x1="16" y1="17" x2="8" y2="17"></line>
           <polyline points="10 9 9 9 8 9"></polyline>
         </svg>
-        509 Words
+        286 Words
       </p>
 
       <p>
@@ -318,7 +279,7 @@ JS/HTML/CSS Terminal</li>
           <line x1="3" y1="10" x2="21" y2="10"></line>
         </svg>
         
-          2021-02-26 14:53
+          2021-03-15 15:33
         
 
          
@@ -570,18 +531,11 @@ background-color: #FF6600
 
         <div class="pagination__buttons">
             
-            <span class="button previous">
-                <a href="https://kywk.github.io/moco/posts/2021/03/subl_packages-2021-feb/">
-                    <span class="button__icon">←</span>
-                    <span class="button__text">Sublime Text 3 Package List, 2021.Feb</span>
-                </a>
-            </span>
-            
 
             
             <span class="button next">
-                <a href="https://kywk.github.io/moco/posts/2021/02/macos_setup-note-2021-feb/">
-                    <span class="button__text">macOS 系統安裝紀錄 2021.Feb</span>
+                <a href="https://kywk.github.io/moco/posts/2021/03/ubuntu_nginx-php/">
+                    <span class="button__text">在 Ubuntu Server 利用 Nginx 伺服器執行 PHP 程式</span>
                     <span class="button__icon">→</span>
                 </a>
             </span>
