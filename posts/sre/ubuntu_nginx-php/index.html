@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh-tw">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="theme-color" content="#1da1f2">
+	<title>在 Ubuntu Server 利用 Nginx 伺服器執行 PHP 程式 |  moco </title>
+	<meta name="description"
+		content="Nginx &#43; PHP on ubuntu # 長期以來 Apache Server 的效能與承載數低落, 加上層出不窮的漏洞, 許多人陸續投向 Event-based Server 的懷抱, 例如 Nginx.">
+	<meta property="og:title" content="在 Ubuntu Server 利用 Nginx 伺服器執行 PHP 程式" />
+<meta property="og:description" content="Nginx &#43; PHP on ubuntu # 長期以來 Apache Server 的效能與承載數低落, 加上層出不窮的漏洞, 許多人陸續投向 Event-based Server 的懷抱, 例如 Nginx." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://kywk.github.io/moco/posts/sre/ubuntu_nginx-php/" /><meta property="og:image" content="https://kywk.github.io/moco/img/avatar.webp"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-03-16T16:58:20&#43;08:00" />
+<meta property="article:modified_time" content="2021-03-16T16:58:20&#43;08:00" />
+
+
+	<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://kywk.github.io/moco/img/avatar.webp"/>
+
+<meta name="twitter:title" content="在 Ubuntu Server 利用 Nginx 伺服器執行 PHP 程式"/>
+<meta name="twitter:description" content="Nginx &#43; PHP on ubuntu # 長期以來 Apache Server 的效能與承載數低落, 加上層出不窮的漏洞, 許多人陸續投向 Event-based Server 的懷抱, 例如 Nginx."/>
+
+	<meta name="twitter:site" content="@wisnuwiry" />
+	<meta itemprop="name" content="在 Ubuntu Server 利用 Nginx 伺服器執行 PHP 程式">
+<meta itemprop="description" content="Nginx &#43; PHP on ubuntu # 長期以來 Apache Server 的效能與承載數低落, 加上層出不窮的漏洞, 許多人陸續投向 Event-based Server 的懷抱, 例如 Nginx."><meta itemprop="datePublished" content="2021-03-16T16:58:20&#43;08:00" />
+<meta itemprop="dateModified" content="2021-03-16T16:58:20&#43;08:00" />
+<meta itemprop="wordCount" content="742"><meta itemprop="image" content="https://kywk.github.io/moco/img/avatar.webp"/>
+<meta itemprop="keywords" content="ubuntu,nginx,php,SRE," />
+	<link rel="stylesheet" href="/moco/css/bundle.min.css">
+	<link rel="apple-touch-icon" sizes="180x180" href="https://kywk.github.io/icons/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="https://kywk.github.io/icons/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="https://kywk.github.io/icons/favicon-16x16.png">
+	<link rel="shortcut icon" href="https://kywk.github.io/icons/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="https://kywk.github.io/icons/favicon.ico" type="image/x-icon">
+	<meta name="msapplication-TileColor" content="#1da1f2">
+	<link rel="manifest" href="https://kywk.github.io/moco/manifest.json">
+	
+	<script type="application/ld+json">
+{
+	"@context":"http://schema.org",
+	"@type":"WebSite",
+	"name":"moco",
+	"url":"https:\/\/kywk.github.io\/moco",
+	"sameAs":[
+		"https://twitter.com/kywkid",
+		"https://gitlab.com/",
+		"https://linkedin.com/in/kywk",
+		"https://t.me/"
+		],
+	"potentialAction": {
+		"@type": "SearchAction",
+		"target": "https://wisnuwiry.space/search?q={search_term}",
+		"query-input": "required name=search_term"
+	}
+}
+</script>
+
+<script type='application/ld+json'>
+{
+	"@context": "http://www.schema.org",
+	"@type": "person",
+	"name": "Moo Cow",
+	"jobTitle": "Software Engineer",
+	"gender": "male",
+	"url": "https:\/\/kywk.github.io\/moco",
+	"sameAs":[
+		"https://twitter.com/kywkid",
+		"https://gitlab.com/",
+		"https://linkedin.com/in/kywk",
+		"https://t.me/"
+		],
+	"image": "https:\/\/kywk.github.io\/moco\/img\/avatar.webp",
+	"address": {
+		"@type": "PostalAddress",
+		"streetAddress": "Mayong, Jepara",
+		"addressLocality": "Jepara",
+		"addressRegion": "Jawa Tengah",
+		"addressCountry": "Indonesia"
+	},
+	"email": "kywk.id@gmail.com",
+	"birthDate": "2003-01-31",
+	"birthPlace": "Jepara",
+	"nationality": "Indonesian"
+}
+</script>
+
+<script type="application/ld+json">
+{
+	"@context":"http://schema.org",
+	"@type":"BlogPosting",
+	"mainEntityOfPage":{
+		"@type":"WebPage",
+		"@id":"https:\/\/kywk.github.io\/mocohttps:\/\/kywk.github.io\/moco\/posts\/sre\/ubuntu_nginx-php\/"
+	},
+	"headline":"在 Ubuntu Server 利用 Nginx 伺服器執行 PHP 程式",
+	"datePublished":"2021-03-16T16",
+	"dateModified":"2021-03-16T16",
+	"description":"Nginx \u002b PHP on ubuntu # 長期以來 Apache Server 的效能與承載數低落, 加上層出不窮的漏洞, 許多人陸續投向 Event-based Server 的懷抱, 例如 Nginx.",
+	"isFamilyFriendly": "true",
+	"image": ["https://kywk.github.io/moco/img/avatar.webp"],
+	"wordCount" : "742",
+	"keywords": ["ubuntu","nginx","php","SRE"],
+	"genre": ["ubuntu","nginx","php","SRE"],
+	"accountablePerson": {
+		"@type": "Person",
+		"name": "Moo Cow",
+		"url": ""
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Moo Cow",
+		"url": ""
+	},
+	"creator": {
+		"@type": "Person",
+		"name": "Moo Cow",
+		"url": ""
+	},
+	"publisher":{
+		"@type":"Organization",
+		"name":"Moo Cow", 
+		"logo": {
+			"@type": "imageObject",
+			"url": "https:\/\/kywk.github.io\/moco\/img\/avatar.webp"
+		}
+	}
+}</script>
+
+
+	<meta content="" property="fb:admins">
+	<meta content="" property="fb:app_id">
+	<meta content="index,follow" name="googlebot">
+	<meta content="follow, all" name="Googlebot-Image">
+	<meta content="follow, all" name="Scooter">
+	<meta content="follow, all" name="msnbot">
+	<meta content="follow, all" name="alexabot">
+	<meta content="follow, all" name="Slurp">
+	<meta content="follow, all" name="ZyBorg">
+	<meta content="follow, all" name="Scooter">
+	<meta content="true" name="MSSmartTagsPreventParsing">
+	<meta content="ALL" name="SPIDERS">
+	<meta content="ALL" name="WEBCRAWLERS">
+	<meta
+		content="aeiwi, alexa, alltheWeb, altavista, aol netfind, anzwers, canada, directhit, euroseek, excite, overture, go, google, hotbot. infomak, kanoodle, lycos, mastersite, national directory, northern light, searchit, simplesearch, Websmostlinked, webtop, what-u-seek, aol, yahoo, webcrawler, infoseek, excite, magellan, looksmart, bing, cnet, googlebot"
+		name="search engines">
+	
+</head>
+
+<body class="">
+	<div class="site-container">
+		<header class="top" id="js-header">
+	<a class="logo" href="/moco" title="moco">
+    <img src="/img/placeholder.svg" alt="moco" class="lazyload" data-src="/moco/img/avatar.webp">
+</a>
+	
+	<nav class="navbar js-navbar">
+		<ul class="navbar__menu">
+			
+			
+				
+				<li>
+					<a href="/moco/posts" target="_self">
+						📝 Post
+					</a>
+				</li>
+				
+				
+				<li>
+					<a href="/moco/project" target="_self">
+						🗃 Project
+					</a>
+				</li>
+				
+				
+				<li>
+					<a href="/moco/about" target="_self">
+						🐮 About
+					</a>
+				</li>
+				
+				
+				<li>
+					<a href="/moco/contact" target="_self">
+						🤙 Contact
+					</a>
+				</li>
+				
+		</ul>
+		<button class="navbar__toggle js-toggle" aria-label="Menu" aria-haspopup="true" aria-expanded="false"><span class="navbar__toggle-box"><span class="navbar__toggle-inner">Menu</span></span>
+		</button>
+	</nav>
+	<div class="search">
+	<a class="search__btn btn" aria-label="Search" href="/search" title="Search">
+		<svg viewBox="0 0 15 15">
+<path d="M14.81,13.14l-3-3h0a6.52,6.52,0,1,0-1.67,1.67h0l3,3a1.06,1.06,0,0,0,1.43-.24A1.06,1.06,0,0,0,14.81,13.14ZM6.5,11A4.5,4.5,0,1,1,11,6.5,4.51,4.51,0,0,1,6.5,11Z"/>
+</svg>
+
+	</a>
+	<button class="search__btn large" aria-label="Switch Theme" id="toggle-theme">
+		<svg viewBox="0 0 24 24">
+			<path id="icon-theme"></path>
+		</svg>
+	</button>
+</div>
+</header>
+
+		<main>
+			
+<div class="hero">
+	
+	<header class="hero__content" >
+	<div class="wrapper">
+		<h1 itemprop="name" >
+	
+		在 Ubuntu Server 利用 Nginx 伺服器執行 PHP 程式
+	
+		</h1>
+	
+		</div>
+	</header>
+</div>
+
+	
+	<div class="progress-container" >
+    <div class="scroll-indicator-bar" id="indicator"></div>
+</div>
+
+	<div class="content ">
+		
+
+		<div class="wrapper post__entry">
+			<div class='property outline'>
+    <p>📅️ Published: 
+        <time itemprop="datePublished" datetime="2021-03-16T16:58:20&#43;08:00">March 16, 2021</time>
+    </p>
+    <p>🔄 Updated: 
+        <time itemprop="dateModified" datetime="2021-03-16T16:58:20&#43;08:00">March 16, 2021</time>
+    </p>
+    <p>🕔 4 min read ∙ 742 words</p></div>
+			
+<nav class="breadcrumb block" aria-label="breadcrumb">
+	<ol class="breadcrumb__list">
+		
+		<li class="breadcrumb__item">
+			<a class="breadcrumbs__link" href="/moco/">Home</a> &nbsp;
+		</li>
+		<li class="breadcrumb__item">
+			<a class="breadcrumbs__link" href="/moco/posts/">Posts</a> &nbsp;
+		</li>
+		<li class="breadcrumbs__item breadcrumb__item--active" aria-current="page">在 Ubuntu Server 利用 Nginx 伺服器執行 PHP 程式</li>
+	</ol>
+</nav>
+			<div class="single block">
+				<article class="entry" id="article">
+					<div class="entry__content">
+					<h2 id="nginx--php-on-ubuntu" itemprop="headline" class="heading">Nginx + PHP on ubuntu <a class="anchor-link" href="#nginx--php-on-ubuntu">#</a></h2>
+<p>長期以來 Apache Server 的效能與承載數低落, 加上層出不窮的漏洞,
+許多人陸續投向 Event-based Server 的懷抱, 例如 Nginx.</p>
+<p>Nginx 是一個免費開源且穩定高效的 Web 伺服器程式, 擁有反向代理及負載平衡的功能,
+藉由 Non-blocking 與 epool 的特性, 大幅提昇了連線服務量與速度, 成為近年來最為廣泛運用的選擇.</p>
+<p>但是 Nginx 只是單純的 HTTP Server, 如果要執行程式, 還得藉助 CGI 的幫忙.
+Nginx 可以透過 FastCGI 去執行 PHP 程式, 且內建 FastCGI 快取功能.
+而第一步需要實現的是如何讓 Nginx 正確的呼叫 PHP.</p>
+<h3 id="cgi" itemprop="headline" class="heading">CGI <a class="anchor-link" href="#cgi">#</a></h3>
+<p>CGI (Common Gateway Interface) 是用於網頁伺服器的介面標準,
+支援 CGI 的網頁伺服器會將其所接收到的 HTTP 請求的內容設成環境變數,
+作為某支程式時的環境變數以及標準輸入 (stdin) 輸入的資料.
+而該程式標準輸出 (stdout) 的資料則會被網頁伺服器拿來回應給客戶端.</p>
+<p>網頁伺服器每次使用 CGI 執行程式時, 都需要建立出新的行程 (fork process),
+就像在終端機直接用檔案路徑去執行某支程式.
+可想而知, 這樣的方式在應付多個 HTTP 請求時是沒有效率的。</p>
+<h3 id="fastcgi" itemprop="headline" class="heading">FastCGI <a class="anchor-link" href="#fastcgi">#</a></h3>
+<p>FastCGI 則是在網頁伺服器和 CGI程式之間再加一個管理員.</p>
+<p>網頁伺服器要把 HTTP 請求交給管理員處理, 管理員負責分配 CGI 程式的執行資源,
+使系統不會每次遇到請求就開一個行程去跑 CGI 程式, 以改善運作效率.</p>
+<h3 id="fpmfastcgi-process-manager" itemprop="headline" class="heading">FPM(FastCGI Process Manager) <a class="anchor-link" href="#fpmfastcgi-process-manager">#</a></h3>
+<p>FPM(php-fpm) 是 PHP 目前的 FastCGI 實作.</p>
+<h2 id="installation" itemprop="headline" class="heading">Installation <a class="anchor-link" href="#installation">#</a></h2>
+<h3 id="nginx" itemprop="headline" class="heading">Nginx <a class="anchor-link" href="#nginx">#</a></h3>
+<p>在 Ubuntu 上安裝 Nginx 和安裝其他軟體一樣, 直接透過 <code>apt</code> 安裝即可.</p>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">$ sudo apt install nginx
+</code></pre></div><p>Nginx 預設會啟用 HTTP, 佔用 TCP 連接埠為 HTTP 預設的 80.
+可以使用以下指令來查看 Nginx 是否有確實安裝成功.</p>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">$ sudo netstat -tlnp <span class="p">|</span> grep nginx
+</code></pre></div><p><figure class="post__image">
+	<img 
+	itemprop="image"
+	class="lazyload post__image" 
+    data-sizes="auto"
+    src="/img/placeholder.svg"
+    data-src='https://lh3.googleusercontent.com/pw/ACtC-3dV-nWgkfyACFUd4j0DDN0tmvWuOrhO8zprZsVWg7MbXfwzDYPOzYQtdvB0cqqPozf_-yzMW55AfkWGDc0sbFfm19rltX5FBkYcCP-qZ4T2JCl5auRbEaftoxXWyAKw5p4oIaCCGdpZGFuLr-vAcpO0Gg=w1214-h130-no?authuser=0'
+    alt=''
+    
+ 	/>
+</figure>
+
+如上圖, 如果有看到連接埠 80 有被監聽, 就表示 Nginx 安裝成功.</p>
+<p>Nginx 所以監聽任意網路介面上的 80 連接埠, 是因為預設的設定檔 <code>(/etc/nginx/sites-available/default)</code> 中,
+有設一個會去監聽任意網路介面, 且連接埠為 80 的 <strong>虛擬主機 (Virtual Host)</strong>.
+有關於 Nginx 進一步的設定與配置說明, 可以參考
+<a href="https://magiclen.org/ubuntu-server-nginx/" target="_blank" rel="noopener">使用Ubuntu Server架設Nginx伺服器 | MagicLen</a></p>
+<h3 id="php" itemprop="headline" class="heading">PHP <a class="anchor-link" href="#php">#</a></h3>
+<p>PHP 是腳本式程式語言, 需要有 PHP 執行環境才可以被執行.</p>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">$ sudo apt install php-cli
+</code></pre></div><p>安裝完 <code>php-cli</code> 套件後, 可以使用 <code>php</code> 指令來執行 PHP 程式.</p>
+<ul>
+<li>
+<p>查看 PHP 的版本:</p>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">$ php -v
+</code></pre></div><p><figure class="post__image">
+	<img 
+	itemprop="image"
+	class="lazyload post__image" 
+    data-sizes="auto"
+    src="/img/placeholder.svg"
+    data-src='https://lh3.googleusercontent.com/pw/ACtC-3eYw_TsLcSEZ9pglabIbB0nJqs0KKJNq9y9qjjhZgWAAxpQ2LdxFH0eGKnc1Tjsr9h_0lDQhgYKvfGp0XSovF8ZsNVLA5IOJHWxZvjL1M_5YZWlbORRURJDRo7LkpWc-r9QB18sx9aYqDVEoF0Qms0jnQ=w802-h172-no?authuser=0'
+    alt=''
+    
+ 	/>
+</figure>
+</p>
+</li>
+<li>
+<p>執行 PHP 程式:
+<figure class="post__image">
+	<img 
+	itemprop="image"
+	class="lazyload post__image" 
+    data-sizes="auto"
+    src="/img/placeholder.svg"
+    data-src='https://lh3.googleusercontent.com/pw/ACtC-3eOPeyqs8L6qvl7AxoPmInMY2pLWaoHAys9miug_nA6ACVhHqGbeHiBduAsPlWu_Rtb7iL-q4fM_2v25jmURV33rzqQvaxCRDHhshKE3RLSNlDAV8ESb4iy59NV7sbosIDFrpnSU7u3rHyNBK_Mktb50w=w784-h326-no?authuser=0'
+    alt=''
+    
+ 	/>
+</figure>
+</p>
+</li>
+</ul>
+<p><code>php</code> 設定檔的路徑是 <code>/etc/php/&lt;PHP版本號碼&gt;/cli/php.ini</code>,
+詳細設定說明可參考官方文件或 <a href="https://magiclen.org/ubuntu-server-nginx-php/" target="_blank" rel="noopener">使用Ubuntu Server透過Nginx伺服器執行PHP程式 | MagicLen</a>.</p>
+<h3 id="php-fpm" itemprop="headline" class="heading">PHP-FPM <a class="anchor-link" href="#php-fpm">#</a></h3>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">$ sudo apt install php-fpm
+</code></pre></div><p>FPM 預設只會監聽 Unix Domain Socket(UDS，或稱 IPC Socket), UDS 檔案路徑為 <code>/run/php/php&lt;PHP版本號碼&gt;-fpm.sock</code>.
+例如 PHP 7.4 UDS 檔案路徑就是 <code>/run/php/php7.4-fpm.sock</code>.</p>
+<p>如果要確認 FPM 有沒有安裝並啟用成功, 可以利用 <code>socat</code> 這個指令工具來進行.
+安裝 socat：</p>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">$ sudo apt install socat
+</code></pre></div><p>執行以下指令來判斷 FPM 是否正常工作:</p>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">$ <span class="nb">echo</span> /dev/null <span class="p">|</span> sudo socat unix:/var/run/php/php-fpm.sock - <span class="o">&amp;&amp;</span> <span class="nb">echo</span> <span class="s2">&#34;Working!&#34;</span> <span class="o">||</span> <span class="nb">echo</span> <span class="s2">&#34;Not working!&#34;</span>
+</code></pre></div><p><figure class="post__image">
+	<img 
+	itemprop="image"
+	class="lazyload post__image" 
+    data-sizes="auto"
+    src="/img/placeholder.svg"
+    data-src='https://lh3.googleusercontent.com/pw/ACtC-3fQR-dRGQoBBDsbMbaJLBMuWu4qRTgsg6AVJaQ8nxsL1268iPR1UTrC3-4EhX8IQee8-v0rWO_ZAhvMja7kwfLB0UcnMwu24oRcChfdJ2FkzNWfe7vxR2p9EIZtf5c5WqaeD7X-PzxQGewrE7qp8A7bXw=w928-h128-no?authuser=0'
+    alt=''
+    
+ 	/>
+</figure>
+</p>
+<h2 id="configuration" itemprop="headline" class="heading">Configuration <a class="anchor-link" href="#configuration">#</a></h2>
+<h3 id="nginx-1" itemprop="headline" class="heading">Nginx <a class="anchor-link" href="#nginx-1">#</a></h3>
+<p>順利安裝完之後開始修改 Nginx Server 設定檔, 如下:</p>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">$ sudo vim /etc/nginx/nginx.conf
+</code></pre></div><pre><code>user www-data;
+worker_processes auto;
+pid /run/nginx.pid;
+include /etc/nginx/modules-enabled/*.conf;
+
+events {
+    use epoll;
+    worker_connections 2048;
+}
+
+http {
+    sendfile on;
+    tcp_nopush on;
+    tcp_nodelay on;
+    keepalive_timeout 65;
+    types_hash_max_size 2048;
+    server_tokens off;
+
+    include /etc/nginx/mime.types;
+    default_type application/octet-stream;
+
+    ssl_protocols TLSv1 TLSv1.1 TLSv1.2 TLSv1.3; # Dropping SSLv3, ref: POODLE
+    ssl_prefer_server_ciphers on;
+
+    access_log /var/log/nginx/access.log;
+    error_log /var/log/nginx/error.log;
+
+    gzip on;
+
+    include /etc/nginx/conf.d/*.conf;
+    include /etc/nginx/sites-enabled/*;
+}
+</code></pre><p>幾個重要的參數:</p>
+<ul>
+<li><strong>user</strong>: Nginx Server 啟動所使用的使用者 (ubuntu 預設用 www-data)</li>
+<li><strong>pid</strong>: ProcessID 存放位置 ( ubuntu 預設在 /run/nginx.pid)</li>
+<li><strong>worker_processes</strong>: 開啟的程序數量, 請對應 CPU 核心數進行調整, 或維持預設的 auto</li>
+<li><strong>use epoll</strong>: 啟動 epoll 會快很多，效果不錯</li>
+<li><strong>worker_connections</strong>: 每個程序最高可以開啟的連線數</li>
+<li><strong>server_tokens off</strong>: 移除 Nginx 版本資訊</li>
+<li><strong>access_log, error_log</strong>: HTTP Log 存放的位置</li>
+</ul>
+<p>上面是 Ngnix Server 整體的設定, 接下來要進行 Virtual Host 配置.</p>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">$ sudo vim /etc/nginx/sites-available/default
+</code></pre></div><pre><code>server {
+    listen 80 default_server;
+    listen [::]:80 default_server;
+
+    root /var/www/html;
+
+    # Add index.php to the list if you are using PHP
+    index index.html index.htm index.php index.nginx-debian.html;
+
+    server_name _;
+
+    # set expiration of assets to MAX for caching
+    location ~* \.(ico|css|js|gif|jpe?g|png|ogg|ogv|svg|svgz|eot|otf|woff)(\?.+)?$ {
+        expires max;
+        log_not_found off;
+    }
+
+    # framework rewrite
+    location / {
+        try_files $uri $uri/ /index.php =404;
+    }
+
+    # pass PHP scripts to FastCGI server
+    location ~* \.php$ {
+        #include snippets/fastcgi-php.conf;
+        fastcgi_pass 127.0.0.1:9000;
+        fastcgi_index index.php;
+        fastcgi_split_path_info ^(.+\.php)(.*)$;
+        include fastcgi_params;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+    }
+}
+</code></pre><p>幾個參數設定說明:</p>
+<ul>
+<li><strong>server_name</strong>: 同 Apache ServerName 可以用來指定 Virtual Host (虛擬主機)</li>
+<li><strong>root</strong>: 網頁所擺放的位置</li>
+<li><strong>location /</strong> Selection (framework rewrite):
+用 <code>try_files $uri $uri/ /index.php;</code> 來嘗試讀取開啟.
+如果檔案不存在就轉為呼叫 index.php.
+做的事情與常用的 Apache Rewrite Module 差不多.
+主要是為了將 Request 導給 Framework (如 Codeigniter, Zend Framework 等等),
+若沒有使用 PHP Framwwork, 可以無須設定.</li>
+<li><strong>location ~ .php$</strong> Selection (pass PHP scripts to FastCGI server):
+設定要將 <code>.php</code> 檔案直接交由 FPM 來處理.
+詳細的設定說明可以參考 <a href="https://www.nginx.com/resources/wiki/" target="_blank" rel="noopener">Nginx WIKI</a>.
+<ul>
+<li><strong>fastcgi_pass</strong> 指向 PHP-FPM 開啟的服務位置, 需和後面的 PHP-FPM 設定相同,</li>
+</ul>
+</li>
+</ul>
+<h3 id="設定-fpm" itemprop="headline" class="heading">設定 FPM <a class="anchor-link" href="#%e8%a8%ad%e5%ae%9a-fpm">#</a></h3>
+<p>FPM 設定檔放置於 <code>/etc/php/&lt;PHP版本號碼&gt;/fpm/</code> 目錄下,
+例如 PHP 7.4 就是在 <code>/etc/php/7.4/fpm/</code> 目錄.</p>
+<p>FPM 設定檔目錄中有個 <code>pool.d</code> 目錄, 用來放置每個「池」 (Pool) 的設定檔.
+一個池就是一個 FastCGI 的管理區域 (或者說管理員).
+預設為 <code>www</code> 池, 設定檔檔名為 <code>www.conf</code>:</p>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">$ sudo vim /etc/php/7.4/fpm/pool.d/www.conf
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-ini" data-lang="ini"><span class="k">[www]</span>
+<span class="na">user</span> <span class="o">=</span> <span class="s">www-data</span>
+<span class="na">group</span> <span class="o">=</span> <span class="s">www-data</span>
+ 
+<span class="na">listen</span> <span class="o">=</span> <span class="s">127.0.0.1:9000</span>
+<span class="na">listen.backlog</span> <span class="o">=</span> <span class="s">65535</span>
+<span class="na">listen.owner</span> <span class="o">=</span> <span class="s">www-data</span>
+<span class="na">listen.group</span> <span class="o">=</span> <span class="s">www-data</span>
+ 
+<span class="na">request_terminate_timeout</span> <span class="o">=</span> <span class="s">600s</span>
+ 
+<span class="na">pm</span> <span class="o">=</span> <span class="s">dynamic</span>
+<span class="na">pm.max_children</span> <span class="o">=</span> <span class="s">5</span>
+<span class="na">pm.start_servers</span> <span class="o">=</span> <span class="s">2</span>
+<span class="na">pm.min_spare_servers</span> <span class="o">=</span> <span class="s">1</span>
+<span class="na">pm.max_spare_servers</span> <span class="o">=</span> <span class="s">3</span>
+</code></pre></div><ul>
+<li><strong>listen</strong>: 設定從哪個地方接收 Nginx fastcgi_pass 請求, 要和前面 Nginx 的設定相同.
+預設是 <code>/run/php/php&lt;PHP版本號碼&gt;-fpm.sock</code>.
+PHP-FPM 可以透過 TCP Socket 或者是 UNIX Kernel Socket.
+Kernel Socket 速度會比較快, 但是經過壓力測試後 Kernel Socket 反而常常掉包,
+穩定性不如 TCP Socket 來的優異. 故這邊設為本地端的 TCP Socket.</li>
+<li><strong>request_terminate_timeout</strong>: 設定表示 PHP 的執行時間, 超過這個週期就會結束.
+設太短容易遇到檔案上傳時間比較久就 GG 了.</li>
+<li><strong>pm</strong>: 設定子行程的數量要固定還是浮動.
+<ul>
+<li>static 是固定為最大數量(pm.max_children).</li>
+<li>dynamic 是動態調整, 預設是 dynamic.</li>
+<li>ondemand 是行程開完就關.</li>
+</ul>
+</li>
+<li><strong>pm.max_children</strong>: 設定子行程的最大數量, 預設是5.
+這個數量建議設為處理器的數量再根據每個子行程的記憶體用量乘上某個倍數 (例如記憶體剩得少就乘2，記憶體剩得多就乘4).</li>
+</ul>
+<h3 id="start-nginx--php" itemprop="headline" class="heading">Start Nginx + PHP <a class="anchor-link" href="#start-nginx--php">#</a></h3>
+<p>最後啟動 Nginx 與 PHP-FPM 服務:</p>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">$ sudo service php7.4-fpm restart
+$ sudo service nginx restart
+</code></pre></div><p>開啟瀏覽器試看看, Ubuntu 裝起來的 Nginx Welcome 畫面如下：</p>
+<p><figure class="post__image">
+	<img 
+	itemprop="image"
+	class="lazyload post__image" 
+    data-sizes="auto"
+    src="/img/placeholder.svg"
+    data-src='https://lh3.googleusercontent.com/pw/ACtC-3euV0DG5x_6NEszyLYrW1cW8cFj6p7qapfHbldw0am_PCAEX3lYENsxrPIBCA4gCCt37f-GBJv5Gs6138SYf8sf4l_wmKGbv1HbnmUH-q8uUWMHCnZ7cylYvCLxiXSwrzIgQ3K2EgX8Ido8J0jd0ZTbLw=w1088-h508-no?authuser=0'
+    alt=''
+    
+ 	/>
+</figure>
+</p>
+<h2 id="see-also" itemprop="headline" class="heading">See Also <a class="anchor-link" href="#see-also">#</a></h2>
+<p>整體來說 Nginx 安裝蠻容易的, 但要調校的好又是另外一件事.
+設定的不洽當, 在高流量時 Nginx 常會送你 502 Bad Gateway.</p>
+<p>又例如 Nginx 可以將 FastCGI 服務回應的資料快取成檔案,
+這樣下次如果又有一樣的請求，Nginx 就直接從檔案系統中撈出來回應，
+不必再轉送給 FastCGI 服務處理, 可加快反應.
+Cache 的設置相當考驗 SRE 對 PHP 服務了解程度, 並非所有服務都適合開設 Cache.
+這另篇再討論了.</p>
+<p>需要花蠻多時間嘗試調整參數, 搭配效能測試工具來檢查, 讓伺服器發揮最大效用.</p>
+<h3 id="reference" itemprop="headline" class="heading">Reference <a class="anchor-link" href="#reference">#</a></h3>
+<ul>
+<li><a href="https://magiclen.org/ubuntu-server-nginx-php/" target="_blank" rel="noopener">使用Ubuntu Server透過Nginx伺服器執行PHP程式 | MagicLen</a></li>
+<li><a href="https://blog.toright.com/posts/3890/%e7%84%a1%e5%a0%85%e4%b8%8d%e6%91%a7%ef%bc%8c%e5%94%af%e5%bf%ab%e4%b8%8d%e7%a0%b4%ef%bc%81%e5%bf%ab%e6%94%b9%e7%94%a8-nginx-php-fpm-%e5%8f%96%e4%bb%a3-apache-%e5%90%a7%ef%bc%81.html" target="_blank" rel="noopener">無堅不摧，唯快不破！快改用 Nginx + PHP-FPM 取代 Apache 吧！ - Soul &amp; Shell Blog</a></li>
+<li><a href="https://xenby.com/b/137-%e6%95%99%e5%ad%b8-%e5%ae%89%e8%a3%9dlemplinuxnginxmysqlphp%e7%92%b0%e5%a2%83" target="_blank" rel="noopener">[教學] 安裝LEMP(Linux+Nginx+Mysql+PHP)環境 | 辛比誌</a></li>
+</ul>
+
+					
+    <hr>
+    <p>Wrong content?  <a href="https://github.com/wisnuwiry/blog-v2/edit/master/content/posts/sre/ubuntu_nginx-php.md">Edit on Github</a>.</p>
+    <hr>
+
+					
+
+					
+
+					</div>
+					
+					<footer class="entry__footer">
+						
+<div class="post__tag">
+			<a href="/moco/tags/ubuntu/"># ubuntu</a>
+			<a href="/moco/tags/nginx/"># nginx</a>
+			<a href="/moco/tags/php/"># php</a>
+			<a href="/moco/tags/sre/"># SRE</a>
+</div>
+						
+<div class="post__share">
+	<a class="js-share btn" title=" Facebook" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fkywk.github.io%2fmoco%2fposts%2fsre%2fubuntu_nginx-php%2f" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, ' Facebook', 'width=800,height=600,toolbar=0,status=0'); return false">
+		<svg class="share__icon" aria-label="Facebook" role="img" width="32" height="32" viewBox="0 0 512 512"><path d="M330 512V322h64l9-74h-73v-47c0-22 6-36 37-36h39V99c-7-1-30-3-57-3-57 0-95 34-95 98v54h-64v74h64v190z"/></svg>
+	</a>
+	<a class="js-share btn" title=" Twitter" href="https://twitter.com/intent/tweet/?url=https%3a%2f%2fkywk.github.io%2fmoco%2fposts%2fsre%2fubuntu_nginx-php%2f&amp;text=%e5%9c%a8%20Ubuntu%20Server%20%e5%88%a9%e7%94%a8%20Nginx%20%e4%bc%ba%e6%9c%8d%e5%99%a8%e5%9f%b7%e8%a1%8c%20PHP%20%e7%a8%8b%e5%bc%8f" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, ' Twitter', 'width=800,height=450,resizable=yes,toolbar=0,status=0'); return false">
+		<svg class="share__icon" aria-label="Twitter" viewBox="0 0 24.999 20.316"><path d="M25 2.405a10.253 10.253 0 0 1-2.947.808A5.144 5.144 0 0 0 24.308.376 10.27 10.27 0 0 1 21.05 1.62a5.134 5.134 0 0 0-8.74 4.68A14.56 14.56 0 0 1 1.74.94a5.134 5.134 0 0 0 1.587 6.846 5.108 5.108 0 0 1-2.323-.642v.064a5.132 5.132 0 0 0 4.114 5.03 5.142 5.142 0 0 1-2.316.088 5.134 5.134 0 0 0 4.79 3.562 10.29 10.29 0 0 1-6.37 2.2A10.44 10.44 0 0 1 0 18.012a14.586 14.586 0 0 0 22.454-12.29q0-.333-.015-.662A10.423 10.423 0 0 0 25 2.405z" /></svg>
+
+	</a>
+	<a class="js-share btn" title=" Reddit" href="https://www.reddit.com/submit?url=https%3a%2f%2fkywk.github.io%2fmoco%2fposts%2fsre%2fubuntu_nginx-php%2f&amp;title=%e5%9c%a8%20Ubuntu%20Server%20%e5%88%a9%e7%94%a8%20Nginx%20%e4%bc%ba%e6%9c%8d%e5%99%a8%e5%9f%b7%e8%a1%8c%20PHP%20%e7%a8%8b%e5%bc%8f" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, ' Reddit', 'width=832,height=624,toolbar=0,status=0'); return false">
+		<svg class="share__icon" aria-label="Reddit" role="img" width="32" height="32" viewBox="0 0 512 512"><path fill-rule="evenodd" d="M375 146a32 32 0 1 0-29-46l-65-13c-5-1-9 2-10 6l-22 97c-45 1-85 15-113 36a42 42 0 1 0-45 69l-1 12c0 65 74 117 166 117s166-52 166-117l-1-11a42 42 0 1 0-44-69c-28-21-67-35-111-37l19-86 58 13a32 32 0 0 0 32 29zM190 353c2-1 4 0 5 1 15 11 38 18 61 18s46-6 61-18a7 7 0 0 1 8 10c-18 14-44 21-69 21-25-1-51-7-69-21a6 6 0 0 1 3-11zm23-44a31 31 0 1 1-44-44 31 31 0 0 1 44 44zm130 0a31 31 0 1 0-44-44 31 31 0 0 0 44 44z"/></svg>
+	</a>
+	<a class="js-share btn" title=" Telegram" href="https://t.me/share/url?url=https%3a%2f%2fkywk.github.io%2fmoco%2fposts%2fsre%2fubuntu_nginx-php%2f&amp;title=%e5%9c%a8%20Ubuntu%20Server%20%e5%88%a9%e7%94%a8%20Nginx%20%e4%bc%ba%e6%9c%8d%e5%99%a8%e5%9f%b7%e8%a1%8c%20PHP%20%e7%a8%8b%e5%bc%8f" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, ' Telegram', 'width=800,height=600,toolbar=0,status=0'); return false">
+		<svg class="share__icon" aria-label="Telegram" role="img" viewBox="0 0 25 25"><path d="m9.417 15.181-.397 5.584c.568 0 .814-.244 1.109-.537l2.663-2.545 5.518 4.041c1.012.564 1.725.267 1.998-.931l3.622-16.972.001-.001c.321-1.496-.541-2.081-1.527-1.714l-21.29 8.151c-1.453.564-1.431 1.374-.247 1.741l5.443 1.693 12.643-7.911c.595-.394 1.136-.176.691.218z"/></svg>
+
+	</a>
+	<a class="js-share btn" title=" LinkedIn" href="https://www.linkedin.com/shareArticle?mini=true&url=https%3a%2f%2fkywk.github.io%2fmoco%2fposts%2fsre%2fubuntu_nginx-php%2f&title=%e5%9c%a8%20Ubuntu%20Server%20%e5%88%a9%e7%94%a8%20Nginx%20%e4%bc%ba%e6%9c%8d%e5%99%a8%e5%9f%b7%e8%a1%8c%20PHP%20%e7%a8%8b%e5%bc%8f" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, ' LinkedIn', 'width=640,height=480,toolbar=0,status=0'); return false">
+		<svg class="share__icon" aria-label="LinkedIn" role="img" viewBox="0 0 34.48 32"><path d="M29.632,0H2.362A2.336,2.336,0,0,0,0,2.306V29.691A2.337,2.337,0,0,0,2.362,32h27.27A2.342,2.342,0,0,0,32,29.691V2.306A2.34,2.34,0,0,0,29.632,0ZM9.491,27.268H4.744V12H9.491ZM7.119,9.909a2.752,2.752,0,1,1,2.75-2.753A2.753,2.753,0,0,1,7.119,9.909ZM27.268,27.268H22.525V19.842c0-1.772-.033-4.05-2.466-4.05-2.47,0-2.848,1.929-2.848,3.921v7.555H12.468V12h4.553v2.086h.063a4.986,4.986,0,0,1,4.491-2.467c4.806,0,5.694,3.163,5.694,7.275Z"/></svg>
+
+	</a>
+	<a class="js-share btn" title=" Pinterest" href="https://pinterest.com/pin/create/button/?url=https%3a%2f%2fkywk.github.io%2fmoco%2fposts%2fsre%2fubuntu_nginx-php%2f&description=%e5%9c%a8%20Ubuntu%20Server%20%e5%88%a9%e7%94%a8%20Nginx%20%e4%bc%ba%e6%9c%8d%e5%99%a8%e5%9f%b7%e8%a1%8c%20PHP%20%e7%a8%8b%e5%bc%8f" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, ' Pocket', 'width=800,height=720,toolbar=0,status=0'); return false">
+		<svg class="share__icon" aria-label="Pinterest" role="img" width="32" height="32" viewBox="0 0 512 512"><path d="m265 65c-104 0-157 75-157 138 0 37 14 71 45 83 5 2 10 0 12-5l3-18c2-6 1-7-2-12-9-11-15-24-15-43 0-56 41-106 108-106 60 0 92 37 92 85 0 64-28 116-70 116-23 0-40-18-34-42 6-27 19-57 19-77 0-18-9-34-30-34-24 0-42 25-42 58 0 20 7 34 7 34l-29 120a249 249 0 0 0 2 86l3-1c2-3 31-37 40-72l16-61c7 15 29 28 53 28 71 0 119-64 119-151 0-66-56-126-140-126z"/></svg>
+	</a>
+</div>
+						
+<div class="post__bio bio" >
+		<img class="lazyload bio__avatar" alt="Moo Cow avatar" data-src="/moco/img/avatar.webp" height="90" width="90" src="/moco/img/placeholder.svg">
+	<div class="bio__info">
+		<a class="bio__name invert" href="/about">
+			<p itemprop="author">Moo Cow</p>
+		</a>
+		
+	</div>
+</div>
+
+					</footer>
+					
+				</article>
+				
+			</div>
+		</div>
+	</div>
+	
+
+
+
+<div class="post__related related">
+	<div class="wrapper">
+		<h2 class="h5 related__title">You should also read:</h2>
+		
+		<article class="related__item">
+			<div class="feed__meta">
+				
+	<time itemprop="datePublished" class="feed__date" datetime="2021-04-06T11:18:48&#43;08:00">April 06, 2021</time>
+			</div>
+			<h3><a class="invert" href="/moco/posts/tool/macos_make-installer-iso/">製作 macOS 安裝 ISO 檔</a></h3></article>
+		
+		<article class="related__item">
+			<div class="feed__meta">
+				
+	<time itemprop="datePublished" class="feed__date" datetime="2021-03-15T15:33:18&#43;08:00">March 15, 2021</time>
+			</div>
+			<h3><a class="invert" href="/moco/posts/tool/macos_shadowsocks/">Setup shadowsocks on macOS</a></h3></article>
+		
+		<article class="related__item">
+			<div class="feed__meta">
+				
+	<time itemprop="datePublished" class="feed__date" datetime="2021-03-09T14:37:59&#43;08:00">March 09, 2021</time>
+			</div>
+			<h3><a class="invert" href="/moco/posts/tool/chrome_extension-2021-mar/">Chrome Extension List, 2021.Mar</a></h3></article>
+		
+		<article class="related__item">
+			<div class="feed__meta">
+				
+	<time itemprop="datePublished" class="feed__date" datetime="2021-03-01T14:37:45&#43;08:00">March 01, 2021</time>
+			</div>
+			<h3><a class="invert" href="/moco/posts/tool/subl_packages-2021-feb/">Sublime Text 3 Package List, 2021.Feb</a></h3></article>
+		
+		<article class="related__item">
+			<div class="feed__meta">
+				
+	<time itemprop="datePublished" class="feed__date" datetime="2021-02-26T14:53:37&#43;08:00">February 26, 2021</time>
+			</div>
+			<h3><a class="invert" href="/moco/posts/tool/macos_dev-env-2021-feb/">macOS 開發環境建構 2021 Feb</a></h3></article>
+		
+	</div>
+</div>
+
+	
+<section class="post__comments">
+	<div class="wrapper">
+		<h5>💬 Comment: </h5>
+		<div id="comment"></div>
+		
+	</div>
+	<script>
+		var commentId = document.getElementById('comment');
+		var commentLoaded = false;
+		window.addEventListener('scroll', loadComment());
+
+		function loadComment(){
+			window.addEventListener('DOMContentLoaded', () => {
+				var top = commentId.offsetTop;
+				
+				if (!commentLoaded) {
+					commentLoaded = true;
+					(function () {
+						var d = document, s = d.createElement('script');
+						s.src = 'https://utteranc.es/client.js';
+						s.setAttribute('repo', '');
+						s.setAttribute('issue-term', 'title');
+						var currentTheme = localStorage.getItem("w-theme");
+						if(currentTheme == 'light'){
+							s.setAttribute('theme', 'github-light');
+						}else{
+							s.setAttribute('theme', 'photon-dark');
+						}
+						s.setAttribute('crossorigin', 'anonymous');
+						s.async = !0;
+						commentId.appendChild(s);
+					})();
+				}
+			});		
+		}
+	</script>
+</section>
+
+	
+
+		</main>
+		<footer class="footer">
+<div class="footer__social">
+		<a itemprop="sameAs" class="social__link" target="_blank" rel="noopener noreferrer" href="https://twitter.com/kywkid">
+			<svg class="social__icon" aria-label="Twitter" viewBox="0 0 24.999 20.316"><path d="M25 2.405a10.253 10.253 0 0 1-2.947.808A5.144 5.144 0 0 0 24.308.376 10.27 10.27 0 0 1 21.05 1.62a5.134 5.134 0 0 0-8.74 4.68A14.56 14.56 0 0 1 1.74.94a5.134 5.134 0 0 0 1.587 6.846 5.108 5.108 0 0 1-2.323-.642v.064a5.132 5.132 0 0 0 4.114 5.03 5.142 5.142 0 0 1-2.316.088 5.134 5.134 0 0 0 4.79 3.562 10.29 10.29 0 0 1-6.37 2.2A10.44 10.44 0 0 1 0 18.012a14.586 14.586 0 0 0 22.454-12.29q0-.333-.015-.662A10.423 10.423 0 0 0 25 2.405z" /></svg>
+
+		</a>
+		<a itemprop="sameAs" class="social__link" target="_blank" rel="noopener noreferrer" href="https://linkedin.com/in/kywk">
+			<svg class="social__icon" aria-label="LinkedIn" role="img" viewBox="0 0 34.48 32"><path d="M29.632,0H2.362A2.336,2.336,0,0,0,0,2.306V29.691A2.337,2.337,0,0,0,2.362,32h27.27A2.342,2.342,0,0,0,32,29.691V2.306A2.34,2.34,0,0,0,29.632,0ZM9.491,27.268H4.744V12H9.491ZM7.119,9.909a2.752,2.752,0,1,1,2.75-2.753A2.753,2.753,0,0,1,7.119,9.909ZM27.268,27.268H22.525V19.842c0-1.772-.033-4.05-2.466-4.05-2.47,0-2.848,1.929-2.848,3.921v7.555H12.468V12h4.553v2.086h.063a4.986,4.986,0,0,1,4.491-2.467c4.806,0,5.694,3.163,5.694,7.275Z"/></svg>
+
+		</a>
+		<a itemprop="sameAs" class="social__link" target="_blank" rel="noopener noreferrer" href="https://github.com/kywk">
+			<svg class="social__icon" aria-label="Github" role="img" viewBox="0 0 25 25"><path d="m12 .5c-6.63 0-12 5.28-12 11.792 0 5.211 3.438 9.63 8.205 11.188.6.111.82-.254.82-.567 0-.28-.01-1.022-.015-2.005-3.338.711-4.042-1.582-4.042-1.582-.546-1.361-1.335-1.725-1.335-1.725-1.087-.731.084-.716.084-.716 1.205.082 1.838 1.215 1.838 1.215 1.07 1.803 2.809 1.282 3.495.981.108-.763.417-1.282.76-1.577-2.665-.295-5.466-1.309-5.466-5.827 0-1.287.465-2.339 1.235-3.164-.135-.298-.54-1.497.105-3.121 0 0 1.005-.316 3.3 1.209.96-.262 1.98-.392 3-.398 1.02.006 2.04.136 3 .398 2.28-1.525 3.285-1.209 3.285-1.209.645 1.624.24 2.823.12 3.121.765.825 1.23 1.877 1.23 3.164 0 4.53-2.805 5.527-5.475 5.817.42.354.81 1.077.81 2.182 0 1.578-.015 2.846-.015 3.229 0 .309.21.678.825.56 4.801-1.548 8.236-5.97 8.236-11.173 0-6.512-5.373-11.792-12-11.792z" /></svg>
+
+		</a>
+</div>
+	<div class="footer__copyright">© 2021 <a href="https://wisnuwiry.space">MooCow</a> <span class="footer__copyright-credits"></span> | Created with ❤️ <a href="//gohugo.io">Hugo</a></div>
+</footer>
+	</div>
+	
+
+
+
+<script type="text/javascript" src="/moco/js/bundle.min.js" defer></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.2.0/lazysizes.min.js"></script>
+<script>(function (d, e) { d[e] = d[e].replace("no-js", "js"); })(document.documentElement, "className");</script>
+<script>
+    
+
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker
+            .register('/sw.js', { scope: '/' })
+            .then(function (registration) {
+                console.log('Service Worker Registered');
+            });
+
+        navigator.serviceWorker
+            .ready
+            .then(function (registration) {
+                console.log('Service Worker Ready');
+            });
+    }
+</script>
+
+</body>
+
+</html>

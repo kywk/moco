@@ -1,190 +1,293 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="no-js" lang="zh-tw">
 
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Language" content="en">
-
-    <meta name="author" content="Moo Cow">
-    <meta name="description" content="Google Drive 團隊硬碟 Google 針對商業和教育用戶推出了 Team Drive (團隊硬碟), 上傳到團隊硬碟中的檔案, 所有權屬於該團隊硬碟管理員和團隊管理員, 可解決員工離職後員工所存放的檔案失效的問題. 團隊硬碟也可以分享給團隊外的成員, 和外部廠商合作時可以讓廠商上傳檔案. 由於檔案所有權屬於管理員, 也可避免廠商擅自移除檔案.
-Google Drive 團隊硬碟在線自助領取 目前團隊硬碟的容量為無限容量, 也未限制每個用戶能開設的團隊硬碟數量, 故有些企業或教育用戶管理員開放大眾使用該組織的團隊硬碟.
-這樣的使用並不完全符合 Google 規範, 且管理員也有權隨時取消團隊硬碟. 使用前還是要先評估.
-近來 Google 對於無限容量服務策略有不少調整, 無限空間可能隨時會被 Google 取消收回, 使用相關服務請三思. 可以拿來存放網路資源, 加密異地備份, 但避免存放個人重要資料.
-系列文還在編寫的同時, 之前申請的某個團隊營碟就硬生生消失了. 別把重要資料放團隊碟, 多申請幾組, 設定備份才是使用團隊硬碟較為保險的方式.
-下列申請網址隨時可能失效, 有些達到 API 單日上限, 隔日再試即可.
- 無限次免費Google TeamDrive: https://td.fastio.me 英國老牌名校謝菲爾德大學團隊盤: https://gdrive.zppcw.cn  failed at 2020-12-17
- yesyesxx.me: https://gd.zxd.workers.dev/ 台灣中正大學團隊盤: https://gd.404edu.workers.dev/ 404 NOT FOUND團隊盤: http://leon.educationhost.cloud  Google Drive 團隊硬碟領取方式 發文時只剩第一組連結能成功申請, 以下說明以該服務為例, 其他連結申請方式大同小異.">
-    <meta name="keywords" content="blog,developer">
-
-    <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Google Team Drive 無限空間申請"/>
-<meta name="twitter:description" content="Google Drive 團隊硬碟 Google 針對商業和教育用戶推出了 Team Drive (團隊硬碟), 上傳到團隊硬碟中的檔案, 所有權屬於該團隊硬碟管理員和團隊管理員, 可解決員工離職後員工所存放的檔案失效的問題. 團隊硬碟也可以分享給團隊外的成員, 和外部廠商合作時可以讓廠商上傳檔案. 由於檔案所有權屬於管理員, 也可避免廠商擅自移除檔案.
-Google Drive 團隊硬碟在線自助領取 目前團隊硬碟的容量為無限容量, 也未限制每個用戶能開設的團隊硬碟數量, 故有些企業或教育用戶管理員開放大眾使用該組織的團隊硬碟.
-這樣的使用並不完全符合 Google 規範, 且管理員也有權隨時取消團隊硬碟. 使用前還是要先評估.
-近來 Google 對於無限容量服務策略有不少調整, 無限空間可能隨時會被 Google 取消收回, 使用相關服務請三思. 可以拿來存放網路資源, 加密異地備份, 但避免存放個人重要資料.
-系列文還在編寫的同時, 之前申請的某個團隊營碟就硬生生消失了. 別把重要資料放團隊碟, 多申請幾組, 設定備份才是使用團隊硬碟較為保險的方式.
-下列申請網址隨時可能失效, 有些達到 API 單日上限, 隔日再試即可.
- 無限次免費Google TeamDrive: https://td.fastio.me 英國老牌名校謝菲爾德大學團隊盤: https://gdrive.zppcw.cn  failed at 2020-12-17
- yesyesxx.me: https://gd.zxd.workers.dev/ 台灣中正大學團隊盤: https://gd.404edu.workers.dev/ 404 NOT FOUND團隊盤: http://leon.educationhost.cloud  Google Drive 團隊硬碟領取方式 發文時只剩第一組連結能成功申請, 以下說明以該服務為例, 其他連結申請方式大同小異."/>
-
-    <meta property="og:title" content="Google Team Drive 無限空間申請" />
-<meta property="og:description" content="Google Drive 團隊硬碟 Google 針對商業和教育用戶推出了 Team Drive (團隊硬碟), 上傳到團隊硬碟中的檔案, 所有權屬於該團隊硬碟管理員和團隊管理員, 可解決員工離職後員工所存放的檔案失效的問題. 團隊硬碟也可以分享給團隊外的成員, 和外部廠商合作時可以讓廠商上傳檔案. 由於檔案所有權屬於管理員, 也可避免廠商擅自移除檔案.
-Google Drive 團隊硬碟在線自助領取 目前團隊硬碟的容量為無限容量, 也未限制每個用戶能開設的團隊硬碟數量, 故有些企業或教育用戶管理員開放大眾使用該組織的團隊硬碟.
-這樣的使用並不完全符合 Google 規範, 且管理員也有權隨時取消團隊硬碟. 使用前還是要先評估.
-近來 Google 對於無限容量服務策略有不少調整, 無限空間可能隨時會被 Google 取消收回, 使用相關服務請三思. 可以拿來存放網路資源, 加密異地備份, 但避免存放個人重要資料.
-系列文還在編寫的同時, 之前申請的某個團隊營碟就硬生生消失了. 別把重要資料放團隊碟, 多申請幾組, 設定備份才是使用團隊硬碟較為保險的方式.
-下列申請網址隨時可能失效, 有些達到 API 單日上限, 隔日再試即可.
- 無限次免費Google TeamDrive: https://td.fastio.me 英國老牌名校謝菲爾德大學團隊盤: https://gdrive.zppcw.cn  failed at 2020-12-17
- yesyesxx.me: https://gd.zxd.workers.dev/ 台灣中正大學團隊盤: https://gd.404edu.workers.dev/ 404 NOT FOUND團隊盤: http://leon.educationhost.cloud  Google Drive 團隊硬碟領取方式 發文時只剩第一組連結能成功申請, 以下說明以該服務為例, 其他連結申請方式大同小異." />
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="theme-color" content="#1da1f2">
+	<title>Google Team Drive 無限空間申請 |  moco </title>
+	<meta name="description"
+		content="!!!!! 重要更新 !!!!! # Google 已經公告 2021/07/01 起不再提供教育版無限空間.
+以下免費團隊硬碟多為教育版空間, 勢必會陸續被收回. 本篇文章不再更新.">
+	<meta property="og:title" content="Google Team Drive 無限空間申請" />
+<meta property="og:description" content="!!!!! 重要更新 !!!!! # Google 已經公告 2021/07/01 起不再提供教育版無限空間.
+以下免費團隊硬碟多為教育版空間, 勢必會陸續被收回. 本篇文章不再更新." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://kywk.github.io/moco/posts/tool/gd_team-drive-signup/" />
-<meta property="article:published_time" content="2020-12-07T11:35:05+08:00" />
-<meta property="article:modified_time" content="2020-12-07T11:35:05+08:00" />
+<meta property="og:url" content="https://kywk.github.io/moco/posts/tool/gd_team-drive-signup/" /><meta property="og:image" content="https://kywk.github.io/moco/img/avatar.webp"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-02-19T11:35:05&#43;08:00" />
+<meta property="article:modified_time" content="2021-02-19T11:35:05&#43;08:00" />
 
 
-    <title>
-  Google Team Drive 無限空間申請 · moco
-</title>
+	<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://kywk.github.io/moco/img/avatar.webp"/>
 
-    
-      <link rel="canonical" href="https://kywk.github.io/moco/posts/tool/gd_team-drive-signup/">
-    
+<meta name="twitter:title" content="Google Team Drive 無限空間申請"/>
+<meta name="twitter:description" content="!!!!! 重要更新 !!!!! # Google 已經公告 2021/07/01 起不再提供教育版無限空間.
+以下免費團隊硬碟多為教育版空間, 勢必會陸續被收回. 本篇文章不再更新."/>
 
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather:300,700%7CSource+Code+Pro:400,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css"
-      integrity="sha256-gsmEoJAws/Kd3CjuOQzLie5Q3yshhvmo7YNtBG7aaEY=" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8/normalize.min.css">
-    
-      
-      
-      <link rel="stylesheet" href="/moco/css/coder.min.f01c647a0d25b40da992a37c3376291185eed8a50ced8c26cc2c0bcfe38c97df.css" integrity="sha256-8Bxkeg0ltA2pkqN8M3YpEYXu2KUM7YwmzCwLz&#43;OMl98=" crossorigin="anonymous" media="screen" />
-    
+	<meta name="twitter:site" content="@wisnuwiry" />
+	<meta itemprop="name" content="Google Team Drive 無限空間申請">
+<meta itemprop="description" content="!!!!! 重要更新 !!!!! # Google 已經公告 2021/07/01 起不再提供教育版無限空間.
+以下免費團隊硬碟多為教育版空間, 勢必會陸續被收回. 本篇文章不再更新."><meta itemprop="datePublished" content="2021-02-19T11:35:05&#43;08:00" />
+<meta itemprop="dateModified" content="2021-02-19T11:35:05&#43;08:00" />
+<meta itemprop="wordCount" content="132"><meta itemprop="image" content="https://kywk.github.io/moco/img/avatar.webp"/>
+<meta itemprop="keywords" content="google-drive," />
+	<link rel="stylesheet" href="/moco/css/bundle.min.css">
+	<link rel="apple-touch-icon" sizes="180x180" href="https://kywk.github.io/icons/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="https://kywk.github.io/icons/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="https://kywk.github.io/icons/favicon-16x16.png">
+	<link rel="shortcut icon" href="https://kywk.github.io/icons/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="https://kywk.github.io/icons/favicon.ico" type="image/x-icon">
+	<meta name="msapplication-TileColor" content="#1da1f2">
+	<link rel="manifest" href="https://kywk.github.io/moco/manifest.json">
+	
+	<script type="application/ld+json">
+{
+	"@context":"http://schema.org",
+	"@type":"WebSite",
+	"name":"moco",
+	"url":"https:\/\/kywk.github.io\/moco",
+	"sameAs":[
+		"https://twitter.com/kywkid",
+		"https://gitlab.com/",
+		"https://linkedin.com/in/kywk",
+		"https://t.me/"
+		],
+	"potentialAction": {
+		"@type": "SearchAction",
+		"target": "https://wisnuwiry.space/search?q={search_term}",
+		"query-input": "required name=search_term"
+	}
+}
+</script>
 
-    
+<script type='application/ld+json'>
+{
+	"@context": "http://www.schema.org",
+	"@type": "person",
+	"name": "Moo Cow",
+	"jobTitle": "Software Engineer",
+	"gender": "male",
+	"url": "https:\/\/kywk.github.io\/moco",
+	"sameAs":[
+		"https://twitter.com/kywkid",
+		"https://gitlab.com/",
+		"https://linkedin.com/in/kywk",
+		"https://t.me/"
+		],
+	"image": "https:\/\/kywk.github.io\/moco\/img\/avatar.webp",
+	"address": {
+		"@type": "PostalAddress",
+		"streetAddress": "Mayong, Jepara",
+		"addressLocality": "Jepara",
+		"addressRegion": "Jawa Tengah",
+		"addressCountry": "Indonesia"
+	},
+	"email": "kywk.id@gmail.com",
+	"birthDate": "2003-01-31",
+	"birthPlace": "Jepara",
+	"nationality": "Indonesian"
+}
+</script>
 
-    
-      
-        
-        
-        <link rel="stylesheet" href="/moco/css/coder-dark.min.126ad3988d46bdae6217a11105b53c9662bca05f39d42d3c0fb366919d334620.css" integrity="sha256-EmrTmI1Gva5iF6ERBbU8lmK8oF851C08D7NmkZ0zRiA=" crossorigin="anonymous" media="screen" />
-      
-    
+<script type="application/ld+json">
+{
+	"@context":"http://schema.org",
+	"@type":"BlogPosting",
+	"mainEntityOfPage":{
+		"@type":"WebPage",
+		"@id":"https:\/\/kywk.github.io\/mocohttps:\/\/kywk.github.io\/moco\/posts\/tool\/gd_team-drive-signup\/"
+	},
+	"headline":"Google Team Drive 無限空間申請",
+	"datePublished":"2021-02-19T11",
+	"dateModified":"2021-02-19T11",
+	"description":"!!!!! 重要更新 !!!!! # Google 已經公告 2021\/07\/01 起不再提供教育版無限空間.\n以下免費團隊硬碟多為教育版空間, 勢必會陸續被收回. 本篇文章不再更新.",
+	"isFamilyFriendly": "true",
+	"image": ["https://kywk.github.io/moco/img/avatar.webp"],
+	"wordCount" : "132",
+	"keywords": ["google-drive"],
+	"genre": ["google-drive"],
+	"accountablePerson": {
+		"@type": "Person",
+		"name": "Moo Cow",
+		"url": ""
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Moo Cow",
+		"url": ""
+	},
+	"creator": {
+		"@type": "Person",
+		"name": "Moo Cow",
+		"url": ""
+	},
+	"publisher":{
+		"@type":"Organization",
+		"name":"Moo Cow", 
+		"logo": {
+			"@type": "imageObject",
+			"url": "https:\/\/kywk.github.io\/moco\/img\/avatar.webp"
+		}
+	}
+}</script>
 
-    
 
-    
+	<meta content="" property="fb:admins">
+	<meta content="" property="fb:app_id">
+	<meta content="index,follow" name="googlebot">
+	<meta content="follow, all" name="Googlebot-Image">
+	<meta content="follow, all" name="Scooter">
+	<meta content="follow, all" name="msnbot">
+	<meta content="follow, all" name="alexabot">
+	<meta content="follow, all" name="Slurp">
+	<meta content="follow, all" name="ZyBorg">
+	<meta content="follow, all" name="Scooter">
+	<meta content="true" name="MSSmartTagsPreventParsing">
+	<meta content="ALL" name="SPIDERS">
+	<meta content="ALL" name="WEBCRAWLERS">
+	<meta
+		content="aeiwi, alexa, alltheWeb, altavista, aol netfind, anzwers, canada, directhit, euroseek, excite, overture, go, google, hotbot. infomak, kanoodle, lycos, mastersite, national directory, northern light, searchit, simplesearch, Websmostlinked, webtop, what-u-seek, aol, yahoo, webcrawler, infoseek, excite, magellan, looksmart, bing, cnet, googlebot"
+		name="search engines">
+	
+</head>
 
-    <link rel="icon" type="image/png" href="/moco/images/favicon-32x32.png" sizes="32x32">
-    <link rel="icon" type="image/png" href="/moco/images/favicon-16x16.png" sizes="16x16">
+<body class="">
+	<div class="site-container">
+		<header class="top" id="js-header">
+	<a class="logo" href="/moco" title="moco">
+    <img src="/img/placeholder.svg" alt="moco" class="lazyload" data-src="/moco/img/avatar.webp">
+</a>
+	
+	<nav class="navbar js-navbar">
+		<ul class="navbar__menu">
+			
+			
+				
+				<li>
+					<a href="/moco/posts" target="_self">
+						📝 Post
+					</a>
+				</li>
+				
+				
+				<li>
+					<a href="/moco/project" target="_self">
+						🗃 Project
+					</a>
+				</li>
+				
+				
+				<li>
+					<a href="/moco/about" target="_self">
+						🐮 About
+					</a>
+				</li>
+				
+				
+				<li>
+					<a href="/moco/contact" target="_self">
+						🤙 Contact
+					</a>
+				</li>
+				
+		</ul>
+		<button class="navbar__toggle js-toggle" aria-label="Menu" aria-haspopup="true" aria-expanded="false"><span class="navbar__toggle-box"><span class="navbar__toggle-inner">Menu</span></span>
+		</button>
+	</nav>
+	<div class="search">
+	<a class="search__btn btn" aria-label="Search" href="/search" title="Search">
+		<svg viewBox="0 0 15 15">
+<path d="M14.81,13.14l-3-3h0a6.52,6.52,0,1,0-1.67,1.67h0l3,3a1.06,1.06,0,0,0,1.43-.24A1.06,1.06,0,0,0,14.81,13.14ZM6.5,11A4.5,4.5,0,1,1,11,6.5,4.51,4.51,0,0,1,6.5,11Z"/>
+</svg>
 
-    <link rel="apple-touch-icon" href="/moco/images/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/moco/images/apple-touch-icon.png">
+	</a>
+	<button class="search__btn large" aria-label="Switch Theme" id="toggle-theme">
+		<svg viewBox="0 0 24 24">
+			<path id="icon-theme"></path>
+		</svg>
+	</button>
+</div>
+</header>
 
-    
-      <script defer src="https://twemoji.maxcdn.com/v/13.0.1/twemoji.min.js"
-        integrity="sha384-5f4X0lBluNY/Ib4VhGx0Pf6iDCF99VGXJIyYy7dDLY5QlEd7Ap0hICSSZA1XYbc4" crossorigin="anonymous"></script>
-    
-
-    <meta name="generator" content="Hugo 0.80.0" />
-  </head>
-
-  
-  
-    
-  
-  <body class="colorscheme-auto"
-        onload=" twemoji.parse(document.body); "
-  >
-    
-<div class="float-container">
-    <a id="dark-mode-toggle" class="colorscheme-toggle">
-        <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
-    </a>
+		<main>
+			
+<div class="hero">
+	
+	<header class="hero__content" >
+	<div class="wrapper">
+		<h1 itemprop="name" >
+	
+		Google Team Drive 無限空間申請
+	
+		</h1>
+	
+		</div>
+	</header>
 </div>
 
+	
+	<div class="progress-container" >
+    <div class="scroll-indicator-bar" id="indicator"></div>
+</div>
 
-    <main class="wrapper">
-      <nav class="navigation">
-  <section class="container">
-    <a class="navigation-title" href="/moco">
-      moco
-    </a>
-    
-      <input type="checkbox" id="menu-toggle" />
-      <label class="menu-button float-right" for="menu-toggle">
-        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
-      </label>
-      <ul class="navigation-list">
-        
-          
-            <li class="navigation-item">
-              <a class="navigation-link" href="/moco/about/">About</a>
-            </li>
-          
-            <li class="navigation-item">
-              <a class="navigation-link" href="/moco/posts/">Blog</a>
-            </li>
-          
-            <li class="navigation-item">
-              <a class="navigation-link" href="/moco/projects/">Projects</a>
-            </li>
-          
-            <li class="navigation-item">
-              <a class="navigation-link" href="/moco/contact/">Contact me</a>
-            </li>
-          
-        
-        
-      </ul>
-    
-  </section>
+	<div class="content  grid ">
+		
+<aside class="tableOfContentContainer" id="tableOfContentContainer">
+	<nav id="TableOfContents">
+  <ul>
+    <li><a href="#-重要更新-">!!!!! 重要更新 !!!!!</a></li>
+    <li><a href="#google-drive-團隊硬碟">Google Drive 團隊硬碟</a></li>
+    <li><a href="#google-drive-團隊硬碟在線自助領取">Google Drive 團隊硬碟在線自助領取</a></li>
+    <li><a href="#google-drive-團隊硬碟領取方式">Google Drive 團隊硬碟領取方式</a></li>
+    <li><a href="#reference">Reference</a></li>
+  </ul>
 </nav>
+</aside>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        enableStickyToc();
+    });
+</script>
 
-
-      <div class="content">
-        
-  <section class="container post">
-    <article>
-      <header>
-        <div class="post-title">
-          <h1 class="title">Google Team Drive 無限空間申請</h1>
-        </div>
-        <div class="post-meta">
-          <div class="date">
-            <span class="posted-on">
-              <i class="fa fa-calendar" aria-hidden="true"></i>
-              <time datetime='2020-12-07T11:35:05&#43;08:00'>
-                Dec 7, 2020
-              </time>
-            </span>
-            <span class="reading-time">
-              <i class="fa fa-clock-o" aria-hidden="true"></i>
-              One-minute read
-            </span>
-          </div>
-          
-          <div class="categories">
-  <i class="fa fa-folder" aria-hidden="true"></i>
-    <a href="/moco/categories/google-drive/">google-drive</a></div>
-
-          <div class="tags">
-  <i class="fa fa-tag" aria-hidden="true"></i>
-    <a href="/moco/tags/google-drive/">google-drive</a></div>
-
-        </div>
-      </header>
-
-      <div>
-        
-        <h2 id="google-drive-團隊硬碟">Google Drive 團隊硬碟</h2>
+		<div class="wrapper post__entry">
+			<div class='property outline'>
+    <p>📅️ Published: 
+        <time itemprop="datePublished" datetime="2021-02-19T11:35:05&#43;08:00">February 19, 2021</time>
+    </p>
+    <p>🔄 Updated: 
+        <time itemprop="dateModified" datetime="2021-02-19T11:35:05&#43;08:00">February 19, 2021</time>
+    </p>
+    <p>🕔 1 min read ∙ 132 words</p></div>
+			
+<nav class="breadcrumb block" aria-label="breadcrumb">
+	<ol class="breadcrumb__list">
+		
+		<li class="breadcrumb__item">
+			<a class="breadcrumbs__link" href="/moco/">Home</a> &nbsp;
+		</li>
+		<li class="breadcrumb__item">
+			<a class="breadcrumbs__link" href="/moco/posts/">Posts</a> &nbsp;
+		</li>
+		<li class="breadcrumbs__item breadcrumb__item--active" aria-current="page">Google Team Drive 無限空間申請</li>
+	</ol>
+</nav>
+			<div class="single block">
+				<article class="entry" id="article">
+					<div class="entry__content">
+					<h2 id="-重要更新-" itemprop="headline" class="heading">!!!!! 重要更新 !!!!! <a class="anchor-link" href="#-%e9%87%8d%e8%a6%81%e6%9b%b4%e6%96%b0-">#</a></h2>
+<p>Google 已經公告 2021/07/01 起不再提供教育版無限空間.<br>
+以下免費團隊硬碟多為教育版空間, 勢必會陸續被收回. 本篇文章不再更新.</p>
+<p>個人在 Team Drive 上的資料該如何逃難, 方案還在比較.
+等資料移轉順利後再另發文了.</p>
+<h2 id="google-drive-團隊硬碟" itemprop="headline" class="heading">Google Drive 團隊硬碟 <a class="anchor-link" href="#google-drive-%e5%9c%98%e9%9a%8a%e7%a1%ac%e7%a2%9f">#</a></h2>
 <p>Google 針對商業和教育用戶推出了 Team Drive (團隊硬碟),
 上傳到團隊硬碟中的檔案, 所有權屬於該團隊硬碟管理員和團隊管理員,
 可解決員工離職後員工所存放的檔案失效的問題.
 團隊硬碟也可以分享給團隊外的成員, 和外部廠商合作時可以讓廠商上傳檔案.
 由於檔案所有權屬於管理員, 也可避免廠商擅自移除檔案.</p>
-<h2 id="google-drive-團隊硬碟在線自助領取">Google Drive 團隊硬碟在線自助領取</h2>
+<h2 id="google-drive-團隊硬碟在線自助領取" itemprop="headline" class="heading">Google Drive 團隊硬碟在線自助領取 <a class="anchor-link" href="#google-drive-%e5%9c%98%e9%9a%8a%e7%a1%ac%e7%a2%9f%e5%9c%a8%e7%b7%9a%e8%87%aa%e5%8a%a9%e9%a0%98%e5%8f%96">#</a></h2>
 <p>目前團隊硬碟的容量為無限容量, 也未限制每個用戶能開設的團隊硬碟數量,
 故有些企業或教育用戶管理員開放大眾使用該組織的團隊硬碟.</p>
 <p><strong>這樣的使用並不完全符合 Google 規範, 且管理員也有權隨時取消團隊硬碟. 使用前還是要先評估.</strong></p>
@@ -194,132 +297,281 @@ Google Drive 團隊硬碟在線自助領取 目前團隊硬碟的容量為無限
 <strong>別把重要資料放團隊碟, 多申請幾組, 設定備份才是使用團隊硬碟較為保險的方式.</strong></p>
 <p><em>下列申請網址隨時可能失效, 有些達到 API 單日上限, 隔日再試即可.</em></p>
 <ul>
-<li>無限次免費Google TeamDrive: <a href="https://td.fastio.me">https://td.fastio.me</a></li>
-<li>英國老牌名校謝菲爾德大學團隊盤: <a href="https://gdrive.zppcw.cn">https://gdrive.zppcw.cn</a></li>
+<li>绿野蓬莱岛 多合一: <a href="https://penglai.ga/" target="_blank" rel="noopener">https://penglai.ga/</a></li>
+<li>英國老牌名校謝菲爾德大學團隊盤: <a href="https://gdrive.zppcw.cn" target="_blank" rel="noopener">https://gdrive.zppcw.cn</a></li>
 </ul>
-<p><em>failed at 2020-12-17</em></p>
+<p><em>failed at 2021-01-14</em></p>
 <ul>
-<li>yesyesxx.me: <a href="https://gd.zxd.workers.dev/">https://gd.zxd.workers.dev/</a></li>
-<li>台灣中正大學團隊盤: <a href="https://gd.404edu.workers.dev/">https://gd.404edu.workers.dev/</a></li>
-<li>404 NOT FOUND團隊盤: <a href="http://leon.educationhost.cloud">http://leon.educationhost.cloud</a></li>
+<li><del>無限次免費Google TeamDrive: <a href="https://td.fastio.me" target="_blank" rel="noopener">https://td.fastio.me</a></del></li>
+<li><del>yesyesxx.me: <a href="https://gd.zxd.workers.dev/" target="_blank" rel="noopener">https://gd.zxd.workers.dev/</a></del></li>
+<li><del>台灣中正大學團隊盤: <a href="https://gd.404edu.workers.dev/" target="_blank" rel="noopener">https://gd.404edu.workers.dev/</a></del></li>
+<li><del>404 NOT FOUND團隊盤: <a href="http://leon.educationhost.cloud" target="_blank" rel="noopener">http://leon.educationhost.cloud</a></del></li>
 </ul>
-<h2 id="google-drive-團隊硬碟領取方式">Google Drive 團隊硬碟領取方式</h2>
+<h2 id="google-drive-團隊硬碟領取方式" itemprop="headline" class="heading">Google Drive 團隊硬碟領取方式 <a class="anchor-link" href="#google-drive-%e5%9c%98%e9%9a%8a%e7%a1%ac%e7%a2%9f%e9%a0%98%e5%8f%96%e6%96%b9%e5%bc%8f">#</a></h2>
 <p>發文時只剩第一組連結能成功申請, 以下說明以該服務為例, 其他連結申請方式大同小異.</p>
 <p>申請方式相當簡單, 僅需提供想創建的團隊硬碟名稱以及一組 GMail 即可.</p>
-<p><img src="https://lh3.googleusercontent.com/pw/ACtC-3ducDNLej9_d4oGUoBSqOyMg0ow3SZE2ata_nVHjAM3Leq-JJbOAk_I4CR37NGuAAFVdDLW1cB_umiXPiN2CycbPHCJI_HLzKhrNKoQbL3lGyCS-ivjdI4zCLmjr3_vI9Aroq1zZzhQhDwLfBwdxgWL0g=w557-h637-no?authuser=0" alt=""></p>
+<p><figure class="post__image">
+	<img 
+	itemprop="image"
+	class="lazyload post__image" 
+    data-sizes="auto"
+    src="/img/placeholder.svg"
+    data-src='https://lh3.googleusercontent.com/pw/ACtC-3ducDNLej9_d4oGUoBSqOyMg0ow3SZE2ata_nVHjAM3Leq-JJbOAk_I4CR37NGuAAFVdDLW1cB_umiXPiN2CycbPHCJI_HLzKhrNKoQbL3lGyCS-ivjdI4zCLmjr3_vI9Aroq1zZzhQhDwLfBwdxgWL0g=w557-h637-no?authuser=0'
+    alt=''
+    
+ 	/>
+</figure>
+</p>
 <p><strong>再次強調, 這樣的使用並不完全符合 Google 規範, 建議使用小號申請該服務</strong></p>
 <p>申請成功後即可在 Google Drive 裡共用雲端硬碟看到剛剛新增的團隊硬碟.</p>
-<p><img src="https://lh3.googleusercontent.com/pw/ACtC-3f3uGznIhBHl6wx59Q-9Uw3-lKdZhkACvQ3lJ7V_jDuFgikirN1WLBoobSFPfhwR2vtLmfaxeOCTIKzGB6c93uH9eIoYGBN6_wk_eECrTH2Nu5amz6vsPeez0QjwiJQ_UHERMPQUiC13JhQhE3Si39Luw=w603-h730-no?authuser=0" alt=""></p>
+<p><figure class="post__image">
+	<img 
+	itemprop="image"
+	class="lazyload post__image" 
+    data-sizes="auto"
+    src="/img/placeholder.svg"
+    data-src='https://lh3.googleusercontent.com/pw/ACtC-3f3uGznIhBHl6wx59Q-9Uw3-lKdZhkACvQ3lJ7V_jDuFgikirN1WLBoobSFPfhwR2vtLmfaxeOCTIKzGB6c93uH9eIoYGBN6_wk_eECrTH2Nu5amz6vsPeez0QjwiJQ_UHERMPQUiC13JhQhE3Si39Luw=w603-h730-no?authuser=0'
+    alt=''
+    
+ 	/>
+</figure>
+</p>
 <p>因為是用小號申請的, 使用時需切換帳號.<br>
 若希望不切換帳號快速存取硬碟, 可透過管理成員, 把主要帳號加入團隊硬碟管理員.</p>
-<p><img src="https://lh3.googleusercontent.com/pw/ACtC-3cCntHjbyEr94JMuqlB0GgTe2dZqSclbCnxOAtiWGT-dqN0XsX25gtv-TXTxs3ZeD6EGQNN2Z_9Owg_EGg5uiT6LO6HzkvEPA0W5vvPVZ0dDMGwltGY70cMf0dqZQOPiLIjSVs-8mF-0zR5OOIVX9GvFg=w694-h722-no?authuser=0" alt=""></p>
-<p><img src="https://lh3.googleusercontent.com/pw/ACtC-3cqIiXDLMJiRwGZxgOk1YKqe8zLTPZN71U0JlaCEtT79PsIjT3DSwSR_RVQASOsoI4T9M-clemg5g2pOcxaIgSE_hxCZFQWKFLhEKRSUzN_Wd6SB8BgIc3bDWzI7ijarA391IrcHF1fqIWwsbjq1J6H9g=w652-h356-no?authuser=0" alt=""></p>
+<p><figure class="post__image">
+	<img 
+	itemprop="image"
+	class="lazyload post__image" 
+    data-sizes="auto"
+    src="/img/placeholder.svg"
+    data-src='https://lh3.googleusercontent.com/pw/ACtC-3cCntHjbyEr94JMuqlB0GgTe2dZqSclbCnxOAtiWGT-dqN0XsX25gtv-TXTxs3ZeD6EGQNN2Z_9Owg_EGg5uiT6LO6HzkvEPA0W5vvPVZ0dDMGwltGY70cMf0dqZQOPiLIjSVs-8mF-0zR5OOIVX9GvFg=w694-h722-no?authuser=0'
+    alt=''
+    
+ 	/>
+</figure>
+</p>
+<p><figure class="post__image">
+	<img 
+	itemprop="image"
+	class="lazyload post__image" 
+    data-sizes="auto"
+    src="/img/placeholder.svg"
+    data-src='https://lh3.googleusercontent.com/pw/ACtC-3cqIiXDLMJiRwGZxgOk1YKqe8zLTPZN71U0JlaCEtT79PsIjT3DSwSR_RVQASOsoI4T9M-clemg5g2pOcxaIgSE_hxCZFQWKFLhEKRSUzN_Wd6SB8BgIc3bDWzI7ijarA391IrcHF1fqIWwsbjq1J6H9g=w652-h356-no?authuser=0'
+    alt=''
+    
+ 	/>
+</figure>
+</p>
 <p>這樣一來, 主帳號的共用雲端硬碟中就可看到剛剛新增的團隊硬碟, 方便直接使用主帳號來管理檔案.</p>
-<p><img src="https://lh3.googleusercontent.com/pw/ACtC-3eGG1rB0uw5DD4qaNDlSYTVzISkevn8c7ImHyhkvpd8YQLnfyi7sNJ1ZiDPJGt54Nw3rFkWOgCBuJImhwyRVSRDwFFUZ58Nc79xeorNR66sBL4NFkNypuD0Xu4j-vYt61lo8HmoqSFf2LkoGdFDd7TE8g=w467-h307-no?authuser=0" alt=""></p>
+<p><figure class="post__image">
+	<img 
+	itemprop="image"
+	class="lazyload post__image" 
+    data-sizes="auto"
+    src="/img/placeholder.svg"
+    data-src='https://lh3.googleusercontent.com/pw/ACtC-3eGG1rB0uw5DD4qaNDlSYTVzISkevn8c7ImHyhkvpd8YQLnfyi7sNJ1ZiDPJGt54Nw3rFkWOgCBuJImhwyRVSRDwFFUZ58Nc79xeorNR66sBL4NFkNypuD0Xu4j-vYt61lo8HmoqSFf2LkoGdFDd7TE8g=w467-h307-no?authuser=0'
+    alt=''
+    
+ 	/>
+</figure>
+</p>
 <p>當然, 如果對帳號安全性比較敏感的, 不要關聯到主帳號比較妥當.<br>
 畢竟生殺大權在 Google 手上, 誰也不敢保證未來的變化會如何.</p>
 <p>且後續要介紹的 rclone / autorclone 用小號就可以進行操作, 無須使用主帳號.</p>
-<h2 id="reference">Reference</h2>
+<h2 id="reference" itemprop="headline" class="heading">Reference <a class="anchor-link" href="#reference">#</a></h2>
 <ul>
-<li><a href="https://zh.vpnclub.cc/get-google-drive-unlimited-storage-plan/">Google Drive 雲端硬碟無限容量不用購買免費取得開通教學文 | 跳板俱樂部</a></li>
+<li><a href="https://zh.vpnclub.cc/get-google-drive-unlimited-storage-plan/" target="_blank" rel="noopener">Google Drive 雲端硬碟無限容量不用購買免費取得開通教學文 | 跳板俱樂部</a></li>
 </ul>
 
-      </div>
+					
+    <hr>
+    <p>Wrong content?  <a href="https://github.com/wisnuwiry/blog-v2/edit/master/content/posts/tool/gd_team-drive-signup.md">Edit on Github</a>.</p>
+    <hr>
+
+					
+
+					
+
+					</div>
+					
+					<footer class="entry__footer">
+						
+<div class="post__tag">
+			<a href="/moco/tags/google-drive/"># google-drive</a>
+</div>
+						
+<div class="post__share">
+	<a class="js-share btn" title=" Facebook" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fkywk.github.io%2fmoco%2fposts%2ftool%2fgd_team-drive-signup%2f" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, ' Facebook', 'width=800,height=600,toolbar=0,status=0'); return false">
+		<svg class="share__icon" aria-label="Facebook" role="img" width="32" height="32" viewBox="0 0 512 512"><path d="M330 512V322h64l9-74h-73v-47c0-22 6-36 37-36h39V99c-7-1-30-3-57-3-57 0-95 34-95 98v54h-64v74h64v190z"/></svg>
+	</a>
+	<a class="js-share btn" title=" Twitter" href="https://twitter.com/intent/tweet/?url=https%3a%2f%2fkywk.github.io%2fmoco%2fposts%2ftool%2fgd_team-drive-signup%2f&amp;text=Google%20Team%20Drive%20%e7%84%a1%e9%99%90%e7%a9%ba%e9%96%93%e7%94%b3%e8%ab%8b" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, ' Twitter', 'width=800,height=450,resizable=yes,toolbar=0,status=0'); return false">
+		<svg class="share__icon" aria-label="Twitter" viewBox="0 0 24.999 20.316"><path d="M25 2.405a10.253 10.253 0 0 1-2.947.808A5.144 5.144 0 0 0 24.308.376 10.27 10.27 0 0 1 21.05 1.62a5.134 5.134 0 0 0-8.74 4.68A14.56 14.56 0 0 1 1.74.94a5.134 5.134 0 0 0 1.587 6.846 5.108 5.108 0 0 1-2.323-.642v.064a5.132 5.132 0 0 0 4.114 5.03 5.142 5.142 0 0 1-2.316.088 5.134 5.134 0 0 0 4.79 3.562 10.29 10.29 0 0 1-6.37 2.2A10.44 10.44 0 0 1 0 18.012a14.586 14.586 0 0 0 22.454-12.29q0-.333-.015-.662A10.423 10.423 0 0 0 25 2.405z" /></svg>
+
+	</a>
+	<a class="js-share btn" title=" Reddit" href="https://www.reddit.com/submit?url=https%3a%2f%2fkywk.github.io%2fmoco%2fposts%2ftool%2fgd_team-drive-signup%2f&amp;title=Google%20Team%20Drive%20%e7%84%a1%e9%99%90%e7%a9%ba%e9%96%93%e7%94%b3%e8%ab%8b" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, ' Reddit', 'width=832,height=624,toolbar=0,status=0'); return false">
+		<svg class="share__icon" aria-label="Reddit" role="img" width="32" height="32" viewBox="0 0 512 512"><path fill-rule="evenodd" d="M375 146a32 32 0 1 0-29-46l-65-13c-5-1-9 2-10 6l-22 97c-45 1-85 15-113 36a42 42 0 1 0-45 69l-1 12c0 65 74 117 166 117s166-52 166-117l-1-11a42 42 0 1 0-44-69c-28-21-67-35-111-37l19-86 58 13a32 32 0 0 0 32 29zM190 353c2-1 4 0 5 1 15 11 38 18 61 18s46-6 61-18a7 7 0 0 1 8 10c-18 14-44 21-69 21-25-1-51-7-69-21a6 6 0 0 1 3-11zm23-44a31 31 0 1 1-44-44 31 31 0 0 1 44 44zm130 0a31 31 0 1 0-44-44 31 31 0 0 0 44 44z"/></svg>
+	</a>
+	<a class="js-share btn" title=" Telegram" href="https://t.me/share/url?url=https%3a%2f%2fkywk.github.io%2fmoco%2fposts%2ftool%2fgd_team-drive-signup%2f&amp;title=Google%20Team%20Drive%20%e7%84%a1%e9%99%90%e7%a9%ba%e9%96%93%e7%94%b3%e8%ab%8b" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, ' Telegram', 'width=800,height=600,toolbar=0,status=0'); return false">
+		<svg class="share__icon" aria-label="Telegram" role="img" viewBox="0 0 25 25"><path d="m9.417 15.181-.397 5.584c.568 0 .814-.244 1.109-.537l2.663-2.545 5.518 4.041c1.012.564 1.725.267 1.998-.931l3.622-16.972.001-.001c.321-1.496-.541-2.081-1.527-1.714l-21.29 8.151c-1.453.564-1.431 1.374-.247 1.741l5.443 1.693 12.643-7.911c.595-.394 1.136-.176.691.218z"/></svg>
+
+	</a>
+	<a class="js-share btn" title=" LinkedIn" href="https://www.linkedin.com/shareArticle?mini=true&url=https%3a%2f%2fkywk.github.io%2fmoco%2fposts%2ftool%2fgd_team-drive-signup%2f&title=Google%20Team%20Drive%20%e7%84%a1%e9%99%90%e7%a9%ba%e9%96%93%e7%94%b3%e8%ab%8b" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, ' LinkedIn', 'width=640,height=480,toolbar=0,status=0'); return false">
+		<svg class="share__icon" aria-label="LinkedIn" role="img" viewBox="0 0 34.48 32"><path d="M29.632,0H2.362A2.336,2.336,0,0,0,0,2.306V29.691A2.337,2.337,0,0,0,2.362,32h27.27A2.342,2.342,0,0,0,32,29.691V2.306A2.34,2.34,0,0,0,29.632,0ZM9.491,27.268H4.744V12H9.491ZM7.119,9.909a2.752,2.752,0,1,1,2.75-2.753A2.753,2.753,0,0,1,7.119,9.909ZM27.268,27.268H22.525V19.842c0-1.772-.033-4.05-2.466-4.05-2.47,0-2.848,1.929-2.848,3.921v7.555H12.468V12h4.553v2.086h.063a4.986,4.986,0,0,1,4.491-2.467c4.806,0,5.694,3.163,5.694,7.275Z"/></svg>
+
+	</a>
+	<a class="js-share btn" title=" Pinterest" href="https://pinterest.com/pin/create/button/?url=https%3a%2f%2fkywk.github.io%2fmoco%2fposts%2ftool%2fgd_team-drive-signup%2f&description=Google%20Team%20Drive%20%e7%84%a1%e9%99%90%e7%a9%ba%e9%96%93%e7%94%b3%e8%ab%8b" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, ' Pocket', 'width=800,height=720,toolbar=0,status=0'); return false">
+		<svg class="share__icon" aria-label="Pinterest" role="img" width="32" height="32" viewBox="0 0 512 512"><path d="m265 65c-104 0-157 75-157 138 0 37 14 71 45 83 5 2 10 0 12-5l3-18c2-6 1-7-2-12-9-11-15-24-15-43 0-56 41-106 108-106 60 0 92 37 92 85 0 64-28 116-70 116-23 0-40-18-34-42 6-27 19-57 19-77 0-18-9-34-30-34-24 0-42 25-42 58 0 20 7 34 7 34l-29 120a249 249 0 0 0 2 86l3-1c2-3 31-37 40-72l16-61c7 15 29 28 53 28 71 0 119-64 119-151 0-66-56-126-140-126z"/></svg>
+	</a>
+</div>
+						
+<div class="post__bio bio" >
+		<img class="lazyload bio__avatar" alt="Moo Cow avatar" data-src="/moco/img/avatar.webp" height="90" width="90" src="/moco/img/placeholder.svg">
+	<div class="bio__info">
+		<a class="bio__name invert" href="/about">
+			<p itemprop="author">Moo Cow</p>
+		</a>
+		
+	</div>
+</div>
+
+					</footer>
+					
+				</article>
+				
+			</div>
+		</div>
+	</div>
+	
 
 
-      <footer>
-        
+
+<div class="post__related related">
+	<div class="wrapper">
+		<h2 class="h5 related__title">You should also read:</h2>
+		
+		<article class="related__item">
+			<div class="feed__meta">
+				
+	<time itemprop="datePublished" class="feed__date" datetime="2020-12-07T17:35:35&#43;08:00">December 07, 2020</time>
+			</div>
+			<h3><a class="invert" href="/moco/posts/tool/gd_rclone-config/">Setup Rclone for Google Team Drive on macOS</a></h3></article>
+		
+		<article class="related__item">
+			<div class="feed__meta">
+				
+	<time itemprop="datePublished" class="feed__date" datetime="2021-04-06T11:18:48&#43;08:00">April 06, 2021</time>
+			</div>
+			<h3><a class="invert" href="/moco/posts/tool/macos_make-installer-iso/">製作 macOS 安裝 ISO 檔</a></h3></article>
+		
+		<article class="related__item">
+			<div class="feed__meta">
+				
+	<time itemprop="datePublished" class="feed__date" datetime="2021-03-16T16:58:20&#43;08:00">March 16, 2021</time>
+			</div>
+			<h3><a class="invert" href="/moco/posts/sre/ubuntu_nginx-php/">在 Ubuntu Server 利用 Nginx 伺服器執行 PHP 程式</a></h3></article>
+		
+		<article class="related__item">
+			<div class="feed__meta">
+				
+	<time itemprop="datePublished" class="feed__date" datetime="2021-03-15T15:33:18&#43;08:00">March 15, 2021</time>
+			</div>
+			<h3><a class="invert" href="/moco/posts/tool/macos_shadowsocks/">Setup shadowsocks on macOS</a></h3></article>
+		
+		<article class="related__item">
+			<div class="feed__meta">
+				
+	<time itemprop="datePublished" class="feed__date" datetime="2021-03-09T14:37:59&#43;08:00">March 09, 2021</time>
+			</div>
+			<h3><a class="invert" href="/moco/posts/tool/chrome_extension-2021-mar/">Chrome Extension List, 2021.Mar</a></h3></article>
+		
+	</div>
+</div>
+
+	
+<section class="post__comments">
+	<div class="wrapper">
+		<h5>💬 Comment: </h5>
+		<div id="comment"></div>
+		
+	</div>
+	<script>
+		var commentId = document.getElementById('comment');
+		var commentLoaded = false;
+		window.addEventListener('scroll', loadComment());
+
+		function loadComment(){
+			window.addEventListener('DOMContentLoaded', () => {
+				var top = commentId.offsetTop;
+				
+				if (!commentLoaded) {
+					commentLoaded = true;
+					(function () {
+						var d = document, s = d.createElement('script');
+						s.src = 'https://utteranc.es/client.js';
+						s.setAttribute('repo', '');
+						s.setAttribute('issue-term', 'title');
+						var currentTheme = localStorage.getItem("w-theme");
+						if(currentTheme == 'light'){
+							s.setAttribute('theme', 'github-light');
+						}else{
+							s.setAttribute('theme', 'photon-dark');
+						}
+						s.setAttribute('crossorigin', 'anonymous');
+						s.async = !0;
+						commentId.appendChild(s);
+					})();
+				}
+			});		
+		}
+	</script>
+</section>
+
+	
+
+		</main>
+		<footer class="footer">
+<div class="footer__social">
+		<a itemprop="sameAs" class="social__link" target="_blank" rel="noopener noreferrer" href="https://twitter.com/kywkid">
+			<svg class="social__icon" aria-label="Twitter" viewBox="0 0 24.999 20.316"><path d="M25 2.405a10.253 10.253 0 0 1-2.947.808A5.144 5.144 0 0 0 24.308.376 10.27 10.27 0 0 1 21.05 1.62a5.134 5.134 0 0 0-8.74 4.68A14.56 14.56 0 0 1 1.74.94a5.134 5.134 0 0 0 1.587 6.846 5.108 5.108 0 0 1-2.323-.642v.064a5.132 5.132 0 0 0 4.114 5.03 5.142 5.142 0 0 1-2.316.088 5.134 5.134 0 0 0 4.79 3.562 10.29 10.29 0 0 1-6.37 2.2A10.44 10.44 0 0 1 0 18.012a14.586 14.586 0 0 0 22.454-12.29q0-.333-.015-.662A10.423 10.423 0 0 0 25 2.405z" /></svg>
+
+		</a>
+		<a itemprop="sameAs" class="social__link" target="_blank" rel="noopener noreferrer" href="https://linkedin.com/in/kywk">
+			<svg class="social__icon" aria-label="LinkedIn" role="img" viewBox="0 0 34.48 32"><path d="M29.632,0H2.362A2.336,2.336,0,0,0,0,2.306V29.691A2.337,2.337,0,0,0,2.362,32h27.27A2.342,2.342,0,0,0,32,29.691V2.306A2.34,2.34,0,0,0,29.632,0ZM9.491,27.268H4.744V12H9.491ZM7.119,9.909a2.752,2.752,0,1,1,2.75-2.753A2.753,2.753,0,0,1,7.119,9.909ZM27.268,27.268H22.525V19.842c0-1.772-.033-4.05-2.466-4.05-2.47,0-2.848,1.929-2.848,3.921v7.555H12.468V12h4.553v2.086h.063a4.986,4.986,0,0,1,4.491-2.467c4.806,0,5.694,3.163,5.694,7.275Z"/></svg>
+
+		</a>
+		<a itemprop="sameAs" class="social__link" target="_blank" rel="noopener noreferrer" href="https://github.com/kywk">
+			<svg class="social__icon" aria-label="Github" role="img" viewBox="0 0 25 25"><path d="m12 .5c-6.63 0-12 5.28-12 11.792 0 5.211 3.438 9.63 8.205 11.188.6.111.82-.254.82-.567 0-.28-.01-1.022-.015-2.005-3.338.711-4.042-1.582-4.042-1.582-.546-1.361-1.335-1.725-1.335-1.725-1.087-.731.084-.716.084-.716 1.205.082 1.838 1.215 1.838 1.215 1.07 1.803 2.809 1.282 3.495.981.108-.763.417-1.282.76-1.577-2.665-.295-5.466-1.309-5.466-5.827 0-1.287.465-2.339 1.235-3.164-.135-.298-.54-1.497.105-3.121 0 0 1.005-.316 3.3 1.209.96-.262 1.98-.392 3-.398 1.02.006 2.04.136 3 .398 2.28-1.525 3.285-1.209 3.285-1.209.645 1.624.24 2.823.12 3.121.765.825 1.23 1.877 1.23 3.164 0 4.53-2.805 5.527-5.475 5.817.42.354.81 1.077.81 2.182 0 1.578-.015 2.846-.015 3.229 0 .309.21.678.825.56 4.801-1.548 8.236-5.97 8.236-11.173 0-6.512-5.373-11.792-12-11.792z" /></svg>
+
+		</a>
+</div>
+	<div class="footer__copyright">© 2021 <a href="https://wisnuwiry.space">MooCow</a> <span class="footer__copyright-credits"></span> | Created with ❤️ <a href="//gohugo.io">Hugo</a></div>
+</footer>
+	</div>
+	
 
 
-        <div id="disqus_thread"></div>
-<script type="application/javascript">
-    var disqus_config = function () {
+
+<script type="text/javascript" src="/moco/js/bundle.min.js" defer></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.2.0/lazysizes.min.js"></script>
+<script>(function (d, e) { d[e] = d[e].replace("no-js", "js"); })(document.documentElement, "className");</script>
+<script>
     
-    
-    
-    };
-    (function() {
-        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
-            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
-            return;
-        }
-        var d = document, s = d.createElement('script'); s.async = true;
-        s.src = '//' + "kywk-moco" + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
+
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker
+            .register('/sw.js', { scope: '/' })
+            .then(function (registration) {
+                console.log('Service Worker Registered');
+            });
+
+        navigator.serviceWorker
+            .ready
+            .then(function (registration) {
+                console.log('Service Worker Ready');
+            });
+    }
 </script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-        
-        
-      </footer>
-    </article>
 
-    
-  </section>
-
-      </div>
-
-      
-  <footer class="footer">
-    <section class="container">
-      
-        <p>Write programs that do one thing and do it well. Write programs to work together. Write programs to handle text streams, because that is a universal interface.</p>
-      
-      
-        ©
-        
-          2020 -
-        
-        2021
-         Moo Cow 
-      
-      
-         · 
-        Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
-      
-      
-        
-      
-    </section>
-  </footer>
-
-
-    </main>
-
-    
-      
-        
-        <script src="/moco/js/dark-mode.min.0213e1773e6d1c5a644f847c67a6f8abac49a3776e2976f6008038af8c5b76a1.js"></script>
-      
-    
-
-    
-
-    
-
-    <script>
-(function(f, a, t, h, o, m){
-	a[h]=a[h]||function(){
-		(a[h].q=a[h].q||[]).push(arguments)
-	};
-	o=f.createElement('script'),
-	m=f.getElementsByTagName('script')[0];
-	o.async=1; o.src=t; o.id='fathom-script';
-	m.parentNode.insertBefore(o,m)
-})(document, window, '//analytics.example.com/tracker.js', 'fathom');
-fathom('set', 'siteId', 'ABCDE');
-fathom('trackPageview');
-</script>
-
-
-    <script async defer data-domain="example.com" src="https://analytics.example.com/js/plausible.js"></script>
-
-
-    
-
-    
-  </body>
+</body>
 
 </html>

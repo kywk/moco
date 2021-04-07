@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh-tw">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="theme-color" content="#1da1f2">
+	<title>利用 youtube-dl 下載 Youtube 影片 |  moco </title>
+	<meta name="description"
+		content="一直都是利用播放清單和 Like 來當作 Youtube 影片的書籤. 不過陸續發現有些影片會無預期被刪除或改為私人影片, 也有些頻道會莫名消失.
+單純音樂類的播放清單就算了, 但有些專業參考性質的影片需要時找不到, 故發起把影片下載保存的念頭,">
+	<meta property="og:title" content="利用 youtube-dl 下載 Youtube 影片" />
+<meta property="og:description" content="一直都是利用播放清單和 Like 來當作 Youtube 影片的書籤. 不過陸續發現有些影片會無預期被刪除或改為私人影片, 也有些頻道會莫名消失.
+單純音樂類的播放清單就算了, 但有些專業參考性質的影片需要時找不到, 故發起把影片下載保存的念頭," />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://kywk.github.io/moco/posts/tool/yt_youtube-dl/" /><meta property="og:image" content="https://kywk.github.io/moco/img/avatar.webp"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-02-07T11:46:48&#43;08:00" />
+<meta property="article:modified_time" content="2021-02-07T11:46:48&#43;08:00" />
+
+
+	<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://kywk.github.io/moco/img/avatar.webp"/>
+
+<meta name="twitter:title" content="利用 youtube-dl 下載 Youtube 影片"/>
+<meta name="twitter:description" content="一直都是利用播放清單和 Like 來當作 Youtube 影片的書籤. 不過陸續發現有些影片會無預期被刪除或改為私人影片, 也有些頻道會莫名消失.
+單純音樂類的播放清單就算了, 但有些專業參考性質的影片需要時找不到, 故發起把影片下載保存的念頭,"/>
+
+	<meta name="twitter:site" content="@wisnuwiry" />
+	<meta itemprop="name" content="利用 youtube-dl 下載 Youtube 影片">
+<meta itemprop="description" content="一直都是利用播放清單和 Like 來當作 Youtube 影片的書籤. 不過陸續發現有些影片會無預期被刪除或改為私人影片, 也有些頻道會莫名消失.
+單純音樂類的播放清單就算了, 但有些專業參考性質的影片需要時找不到, 故發起把影片下載保存的念頭,"><meta itemprop="datePublished" content="2021-02-07T11:46:48&#43;08:00" />
+<meta itemprop="dateModified" content="2021-02-07T11:46:48&#43;08:00" />
+<meta itemprop="wordCount" content="734"><meta itemprop="image" content="https://kywk.github.io/moco/img/avatar.webp"/>
+<meta itemprop="keywords" content="youtube,cli," />
+	<link rel="stylesheet" href="/moco/css/bundle.min.css">
+	<link rel="apple-touch-icon" sizes="180x180" href="https://kywk.github.io/icons/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="https://kywk.github.io/icons/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="https://kywk.github.io/icons/favicon-16x16.png">
+	<link rel="shortcut icon" href="https://kywk.github.io/icons/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="https://kywk.github.io/icons/favicon.ico" type="image/x-icon">
+	<meta name="msapplication-TileColor" content="#1da1f2">
+	<link rel="manifest" href="https://kywk.github.io/moco/manifest.json">
+	
+	<script type="application/ld+json">
+{
+	"@context":"http://schema.org",
+	"@type":"WebSite",
+	"name":"moco",
+	"url":"https:\/\/kywk.github.io\/moco",
+	"sameAs":[
+		"https://twitter.com/kywkid",
+		"https://gitlab.com/",
+		"https://linkedin.com/in/kywk",
+		"https://t.me/"
+		],
+	"potentialAction": {
+		"@type": "SearchAction",
+		"target": "https://wisnuwiry.space/search?q={search_term}",
+		"query-input": "required name=search_term"
+	}
+}
+</script>
+
+<script type='application/ld+json'>
+{
+	"@context": "http://www.schema.org",
+	"@type": "person",
+	"name": "Moo Cow",
+	"jobTitle": "Software Engineer",
+	"gender": "male",
+	"url": "https:\/\/kywk.github.io\/moco",
+	"sameAs":[
+		"https://twitter.com/kywkid",
+		"https://gitlab.com/",
+		"https://linkedin.com/in/kywk",
+		"https://t.me/"
+		],
+	"image": "https:\/\/kywk.github.io\/moco\/img\/avatar.webp",
+	"address": {
+		"@type": "PostalAddress",
+		"streetAddress": "Mayong, Jepara",
+		"addressLocality": "Jepara",
+		"addressRegion": "Jawa Tengah",
+		"addressCountry": "Indonesia"
+	},
+	"email": "kywk.id@gmail.com",
+	"birthDate": "2003-01-31",
+	"birthPlace": "Jepara",
+	"nationality": "Indonesian"
+}
+</script>
+
+<script type="application/ld+json">
+{
+	"@context":"http://schema.org",
+	"@type":"BlogPosting",
+	"mainEntityOfPage":{
+		"@type":"WebPage",
+		"@id":"https:\/\/kywk.github.io\/mocohttps:\/\/kywk.github.io\/moco\/posts\/tool\/yt_youtube-dl\/"
+	},
+	"headline":"利用 youtube-dl 下載 Youtube 影片",
+	"datePublished":"2021-02-07T11",
+	"dateModified":"2021-02-07T11",
+	"description":"一直都是利用播放清單和 Like 來當作 Youtube 影片的書籤. 不過陸續發現有些影片會無預期被刪除或改為私人影片, 也有些頻道會莫名消失.\n單純音樂類的播放清單就算了, 但有些專業參考性質的影片需要時找不到, 故發起把影片下載保存的念頭,",
+	"isFamilyFriendly": "true",
+	"image": ["https://kywk.github.io/moco/img/avatar.webp"],
+	"wordCount" : "734",
+	"keywords": ["youtube","cli"],
+	"genre": ["youtube","cli"],
+	"accountablePerson": {
+		"@type": "Person",
+		"name": "Moo Cow",
+		"url": ""
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Moo Cow",
+		"url": ""
+	},
+	"creator": {
+		"@type": "Person",
+		"name": "Moo Cow",
+		"url": ""
+	},
+	"publisher":{
+		"@type":"Organization",
+		"name":"Moo Cow", 
+		"logo": {
+			"@type": "imageObject",
+			"url": "https:\/\/kywk.github.io\/moco\/img\/avatar.webp"
+		}
+	}
+}</script>
+
+
+	<meta content="" property="fb:admins">
+	<meta content="" property="fb:app_id">
+	<meta content="index,follow" name="googlebot">
+	<meta content="follow, all" name="Googlebot-Image">
+	<meta content="follow, all" name="Scooter">
+	<meta content="follow, all" name="msnbot">
+	<meta content="follow, all" name="alexabot">
+	<meta content="follow, all" name="Slurp">
+	<meta content="follow, all" name="ZyBorg">
+	<meta content="follow, all" name="Scooter">
+	<meta content="true" name="MSSmartTagsPreventParsing">
+	<meta content="ALL" name="SPIDERS">
+	<meta content="ALL" name="WEBCRAWLERS">
+	<meta
+		content="aeiwi, alexa, alltheWeb, altavista, aol netfind, anzwers, canada, directhit, euroseek, excite, overture, go, google, hotbot. infomak, kanoodle, lycos, mastersite, national directory, northern light, searchit, simplesearch, Websmostlinked, webtop, what-u-seek, aol, yahoo, webcrawler, infoseek, excite, magellan, looksmart, bing, cnet, googlebot"
+		name="search engines">
+	
+</head>
+
+<body class="">
+	<div class="site-container">
+		<header class="top" id="js-header">
+	<a class="logo" href="/moco" title="moco">
+    <img src="/img/placeholder.svg" alt="moco" class="lazyload" data-src="/moco/img/avatar.webp">
+</a>
+	
+	<nav class="navbar js-navbar">
+		<ul class="navbar__menu">
+			
+			
+				
+				<li>
+					<a href="/moco/posts" target="_self">
+						📝 Post
+					</a>
+				</li>
+				
+				
+				<li>
+					<a href="/moco/project" target="_self">
+						🗃 Project
+					</a>
+				</li>
+				
+				
+				<li>
+					<a href="/moco/about" target="_self">
+						🐮 About
+					</a>
+				</li>
+				
+				
+				<li>
+					<a href="/moco/contact" target="_self">
+						🤙 Contact
+					</a>
+				</li>
+				
+		</ul>
+		<button class="navbar__toggle js-toggle" aria-label="Menu" aria-haspopup="true" aria-expanded="false"><span class="navbar__toggle-box"><span class="navbar__toggle-inner">Menu</span></span>
+		</button>
+	</nav>
+	<div class="search">
+	<a class="search__btn btn" aria-label="Search" href="/search" title="Search">
+		<svg viewBox="0 0 15 15">
+<path d="M14.81,13.14l-3-3h0a6.52,6.52,0,1,0-1.67,1.67h0l3,3a1.06,1.06,0,0,0,1.43-.24A1.06,1.06,0,0,0,14.81,13.14ZM6.5,11A4.5,4.5,0,1,1,11,6.5,4.51,4.51,0,0,1,6.5,11Z"/>
+</svg>
+
+	</a>
+	<button class="search__btn large" aria-label="Switch Theme" id="toggle-theme">
+		<svg viewBox="0 0 24 24">
+			<path id="icon-theme"></path>
+		</svg>
+	</button>
+</div>
+</header>
+
+		<main>
+			
+<div class="hero">
+	
+	<header class="hero__content" >
+	<div class="wrapper">
+		<h1 itemprop="name" >
+	
+		利用 youtube-dl 下載 Youtube 影片
+	
+		</h1>
+	
+		</div>
+	</header>
+</div>
+
+	
+	<div class="progress-container" >
+    <div class="scroll-indicator-bar" id="indicator"></div>
+</div>
+
+	<div class="content  grid ">
+		
+<aside class="tableOfContentContainer" id="tableOfContentContainer">
+	<nav id="TableOfContents">
+  <ul>
+    <li><a href="#youtube-dl">youtube-dl</a>
+      <ul>
+        <li><a href="#install">install</a></li>
+        <li><a href="#ffmpeg">ffmpeg</a></li>
+      </ul>
+    </li>
+    <li><a href="#usage">Usage</a>
+      <ul>
+        <li><a href="#下載指定格式">下載指定格式</a></li>
+        <li><a href="#下載播放清單">下載播放清單</a></li>
+      </ul>
+    </li>
+    <li><a href="#see-also">See Also</a>
+      <ul>
+        <li><a href="#reference">Reference</a></li>
+        <li><a href="#gui-downloader">GUI Downloader</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</aside>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        enableStickyToc();
+    });
+</script>
+
+		<div class="wrapper post__entry">
+			<div class='property outline'>
+    <p>📅️ Published: 
+        <time itemprop="datePublished" datetime="2021-02-07T11:46:48&#43;08:00">February 07, 2021</time>
+    </p>
+    <p>🔄 Updated: 
+        <time itemprop="dateModified" datetime="2021-02-07T11:46:48&#43;08:00">February 07, 2021</time>
+    </p>
+    <p>🕔 4 min read ∙ 734 words</p></div>
+			
+<nav class="breadcrumb block" aria-label="breadcrumb">
+	<ol class="breadcrumb__list">
+		
+		<li class="breadcrumb__item">
+			<a class="breadcrumbs__link" href="/moco/">Home</a> &nbsp;
+		</li>
+		<li class="breadcrumb__item">
+			<a class="breadcrumbs__link" href="/moco/posts/">Posts</a> &nbsp;
+		</li>
+		<li class="breadcrumbs__item breadcrumb__item--active" aria-current="page">利用 youtube-dl 下載 Youtube 影片</li>
+	</ol>
+</nav>
+			<div class="single block">
+				<article class="entry" id="article">
+					<div class="entry__content">
+					<p>一直都是利用播放清單和 Like 來當作 Youtube 影片的書籤.
+不過陸續發現有些影片會無預期被刪除或改為私人影片, 也有些頻道會莫名消失.</p>
+<p>單純音樂類的播放清單就算了, 但有些專業參考性質的影片需要時找不到,
+故發起把影片下載保存的念頭,</p>
+<p>網路上有不少下載 Youtube 影片的線上網站和 App,
+試用過後最後回到最適合工程師的 <a href="https://youtube-dl.org/" target="_blank" rel="noopener">youtube-dl</a></p>
+<!-- more -->
+<h2 id="youtube-dl" itemprop="headline" class="heading">youtube-dl <a class="anchor-link" href="#youtube-dl">#</a></h2>
+<p><a href="https://youtube-dl.org/" target="_blank" rel="noopener">youtube-dl</a> 是個 OpenSource 專案,
+有興趣研究的可在 <a href="https://github.com/ytdl-org/youtube-dl/" target="_blank" rel="noopener">GitHub</a> 上 Fork 專案.</p>
+<p>日前曾因可能違反 DMCA 而導致 GitHub 上所有 youtube-dl 專案都被下架.
+(是的, 不單 youtube 影片可能下架, 連下載工具都可能被下架)
+所幸後來在眾多熱心法律專業人士協助下, 確認並不違反 DMCA 而恢復專案.
+<a href="https://github.blog/2020-11-16-standing-up-for-developers-youtube-dl-is-back/" target="_blank" rel="noopener">完整故事可到官方 blog 查看</a>.</p>
+<h3 id="install" itemprop="headline" class="heading">install <a class="anchor-link" href="#install">#</a></h3>
+<p>Mac 上透過 brew 安裝 youtube-dl 相當簡單.</p>
+<pre><code>$ brew install youtube-dl
+</code></pre><h3 id="ffmpeg" itemprop="headline" class="heading">ffmpeg <a class="anchor-link" href="#ffmpeg">#</a></h3>
+<p>youtube-dl 是 python script, 利用 python 適合寫爬蟲的特性, 解析 youtube 影片位置並下載.
+目前 youtube 網站中高畫質格式多為 video-only 或 audio-only 的 webm 格式,
+傳統 mp4 格式大多只到 720p.
+而 youtube-dl 只能下載影片, 無法轉換影片格式, 若想下載更高畫質的影片,
+則需安裝 <a href="https://www.ffmpeg.org/" target="_blank" rel="noopener">ffmpeg</a> 來轉檔, 嵌入字幕, 提取音頻, 加入專輯封面等等 Post-processing.</p>
+<pre><code>$ brew install ffmpeg
+</code></pre><h2 id="usage" itemprop="headline" class="heading">Usage <a class="anchor-link" href="#usage">#</a></h2>
+<p>基本使用只要輸入 youtube 網址後就會開始下載, 預設是最佳影片格式.
+若沒有安裝 ffmpeg 通常會下載 720p 的 mp4 檔,
+有安裝 ffmpeg 則會下載最佳畫質的 video 和 audio 後合併.</p>
+<pre><code>$ youtube-dl https://www.youtube.com/watch?v=rkAfWfZkfyo
+
+[youtube] rkAfWfZkfyo: Downloading webpage
+[youtube] rkAfWfZkfyo: Downloading video info webpage
+[download] Resuming download at byte 31858886
+[download] Destination: 4K UHD Video power of samsung 4k hdr demo test video for 4k tv-rkAfWfZkfyo.f313.webm
+[download] 100% of 634.40MiB in 01:10
+[download] Destination: 4K UHD Video power of samsung 4k hdr demo test video for 4k tv-rkAfWfZkfyo.f251.webm
+[download] 100% of 5.43MiB in 00:00
+[ffmpeg] Merging formats into &quot;4K UHD Video power of samsung 4k hdr demo test video for 4k tv-rkAfWfZkfyo.webm&quot;
+Deleting original file 4K UHD Video power of samsung 4k hdr demo test video for 4k tv-rkAfWfZkfyo.f313.webm (pass -k to keep)
+Deleting original file 4K UHD Video power of samsung 4k hdr demo test video for 4k tv-rkAfWfZkfyo.f251.webm (pass -k to keep)
+</code></pre><h3 id="下載指定格式" itemprop="headline" class="heading">下載指定格式 <a class="anchor-link" href="#%e4%b8%8b%e8%bc%89%e6%8c%87%e5%ae%9a%e6%a0%bc%e5%bc%8f">#</a></h3>
+<p>Youtube-dl 預設會下載最高畫質的影片, 但可以自己選擇想要的品質</p>
+<p>Ex: 下載解析度不高於 480p 的影片</p>
+<pre><code>$ youtube-dl -f 'bestvideo[height&lt;=480][ext=mp4]+bestaudio/best[height&lt;=480][ext=m4a]' &lt;url&gt;
+</code></pre><p><strong>下載不同畫質與格式</strong></p>
+<p>預設會下載最高畫質的影片, 如果要不同畫質可以先使用 -F, 會列出這個影片所有的畫質與格式</p>
+<pre><code>$ youtube-dl -F https://www.youtube.com/watch?v=rkAfWfZkfyo
+
+[youtube] rkAfWfZkfyo: Downloading webpage
+[youtube] rkAfWfZkfyo: Downloading video info webpage
+[info] Available formats for rkAfWfZkfyo:
+format code  extension  resolution note
+249          webm       audio only DASH audio   56k , opus @ 50k, 2.11MiB
+250          webm       audio only DASH audio   75k , opus @ 70k, 2.79MiB
+140          m4a        audio only DASH audio  128k , m4a_dash container, mp4a.40.2@128k, 5.14MiB
+171          webm       audio only DASH audio  135k , vorbis@128k, 5.05MiB
+251          webm       audio only DASH audio  141k , opus @160k, 5.43MiB
+278          webm       256x144    144p   99k , webm container, vp9, 30fps, video only, 3.57MiB
+160          mp4        256x144    144p  111k , avc1.4d400c, 30fps, video only, 2.79MiB
+242          webm       426x240    240p  229k , vp9, 30fps, video only, 7.42MiB
+133          mp4        426x240    240p  246k , avc1.4d4015, 30fps, video only, 5.85MiB
+243          webm       640x360    360p  453k , vp9, 30fps, video only, 13.89MiB
+134          mp4        640x360    360p  635k , avc1.4d401e, 30fps, video only, 16.18MiB
+244          webm       854x480    480p  858k , vp9, 30fps, video only, 25.31MiB
+135          mp4        854x480    480p 1337k , avc1.4d401f, 30fps, video only, 32.15MiB
+247          webm       1280x720   720p 2100k , vp9, 30fps, video only, 52.51MiB
+136          mp4        1280x720   720p 2673k , avc1.4d401f, 30fps, video only, 62.45MiB
+248          webm       1920x1080  1080p 3857k , vp9, 30fps, video only, 94.03MiB
+137          mp4        1920x1080  1080p 5017k , avc1.640028, 30fps, video only, 110.63MiB
+271          webm       2560x1440  1440p 8886k , vp9, 30fps, video only, 281.05MiB
+313          webm       3840x2160  2160p 18240k , vp9, 30fps, video only, 634.40MiB
+43           webm       640x360    medium , vp8.0, vorbis@128k, 34.71MiB
+18           mp4        640x360    medium  670k , avc1.42001E, mp4a.40.2@ 96k (44100Hz), 27.12MiB
+22           mp4        1280x720   hd720 1670k , avc1.64001F, mp4a.40.2@192k (44100Hz) (best)
+</code></pre><p>要下載不同格式使用 <code>-f 'video code+audio code</code> 就可以抓不同畫質與音質的影片.</p>
+<p>例如要抓 1280x720 的畫質, 就選 video code 136 跟 audio code 140, 這樣 youtube-dl 就會抓對應的畫質與音質的影片下來了</p>
+<pre><code>$ youtube-dl -f '136+140' https://www.youtube.com/watch?v=rkAfWfZkfyo
+</code></pre><h3 id="下載播放清單" itemprop="headline" class="heading">下載播放清單 <a class="anchor-link" href="#%e4%b8%8b%e8%bc%89%e6%92%ad%e6%94%be%e6%b8%85%e5%96%ae">#</a></h3>
+<p>輸入播放清單網址, youtube-dl 則會自動下載清單.
+除了影片網址的部分改成影片清單的網址, 其他部分和下載影片一樣。</p>
+<pre><code>$ youtube-dl -f mp4 &lt;playlist-url&gt;
+</code></pre><p><strong>指定起點和終點</strong></p>
+<ul>
+<li><code>--playlist-start NUMBER</code> 指定起點</li>
+<li><code>—-playlist-end NUMBER</code> 指定終點</li>
+</ul>
+<p>Ex: 從第三個影片開始下載到最後一個影片</p>
+<pre><code>$ youtube-dl --playlist-start 3 -f mp4 &lt;playlist-url&gt;
+</code></pre><p>Ex: 從第一個影片下載到倒數第二個影片</p>
+<pre><code>$ youtube-dl --playlist-end 2 -f mp4 &lt;playlist-url&gt;
+</code></pre><p>Ex: 從第三個影片開始下載到倒數第二個影片</p>
+<pre><code>$ youtube-dl --playlist-start 3 --playlist-end 2 -f mp4 &lt;playlist-url&gt;
+</code></pre><p><strong>使用下載清單</strong></p>
+<p>若播放清單影片太多, 所需下載時間長, 可能必須分次執行時,
+可以使用已下載清單的功能, 已避免重複下載.</p>
+<pre><code>$ youtube-dl --download-archive downloaded.txt -ciw &lt;playlist-url&gt;
+</code></pre><p>With the option <code>--download-archive FILE</code> youtube-dl both reads and adds to a list of files not to download again.
+Every time a file is successfully downloaded, that video id is added to FILE.</p>
+<p><strong>建立已下載清單</strong></p>
+<p>若之前下載時忘了建立清單, 可透過下列 script 把既有的檔案輸出成已下載清單,
+建立完成後再透過上述指令接續下載.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="k">for</span> n in *.*
+  <span class="k">do</span>
+    <span class="k">if</span> <span class="o">[[</span> <span class="s2">&#34;</span><span class="nv">$n</span><span class="s2">&#34;</span> <span class="o">=</span>~ -<span class="o">[</span>-_0-9a-zA-Z<span class="o">]{</span>11<span class="o">}</span>.*$ <span class="o">]]</span>
+      <span class="k">then</span> <span class="nb">echo</span> <span class="s2">&#34;youtube </span><span class="si">${</span><span class="nv">n</span><span class="p">: -15: 11</span><span class="si">}</span><span class="s2">&#34;</span> &gt;&gt; downloaded.txt
+    <span class="k">fi</span>
+<span class="k">done</span>
+</code></pre></div><h2 id="see-also" itemprop="headline" class="heading">See Also <a class="anchor-link" href="#see-also">#</a></h2>
+<p>以上筆記為超濃縮版, youtube-dl 還有更多強大的功能和參數可供使用.
+如果要更詳細的參考文件, 可以直接參考官方文件: <a href="https://github.com/rg3/youtube-dl" target="_blank" rel="noopener">https://github.com/rg3/youtube-dl</a></p>
+<h3 id="reference" itemprop="headline" class="heading">Reference <a class="anchor-link" href="#reference">#</a></h3>
+<ul>
+<li><a href="https://ianwu.tw/press/topic/command_line_program/youtube-dl.html" target="_blank" rel="noopener">youtube-dl | 院長的筆記本</a></li>
+<li><a href="https://yogapan.github.io/2017/08/16/Youtube-dl%E6%BF%83%E7%B8%AE%E6%95%99%E5%AD%B8%E7%AD%86%E8%A8%98/" target="_blank" rel="noopener">Youtube-dl濃縮教學筆記 | 小蛇蛇的筆記</a></li>
+<li><a href="https://askubuntu.com/questions/673442/downloading-youtube-playlist-with-youtube-dl-skipping-existing-files" target="_blank" rel="noopener">Downloading youtube playlist with youtube-dl, skipping existing files - Ask Ubuntu</a></li>
+</ul>
+<h3 id="gui-downloader" itemprop="headline" class="heading">GUI Downloader <a class="anchor-link" href="#gui-downloader">#</a></h3>
+<ul>
+<li><a href="https://freetubeapp.io/" target="_blank" rel="noopener">FreeTube - The Private YouTube Client</a>
+<ul>
+<li><a href="https://www.kocpc.com.tw/archives/355689" target="_blank" rel="noopener">FreeTube 免費 YouTube 播放工具，無廣告、支援影片與音樂下載、訂閱功能 - 電腦王阿達</a></li>
+</ul>
+</li>
+<li><a href="http://www.gihosoft.com/free-youtube-downloader.html" target="_blank" rel="noopener">Gihosoft TubeGet - Free YouTube Downloader for PC &amp; Mac</a>
+<ul>
+<li><a href="https://applefans.today/gihosoft-tubeget-download-youtube/" target="_blank" rel="noopener">如何在 Mac 下載 YouTube 1080P 高清影片 – APPLEFANS 蘋果迷</a></li>
+</ul>
+</li>
+</ul>
+
+					
+    <hr>
+    <p>Wrong content?  <a href="https://github.com/wisnuwiry/blog-v2/edit/master/content/posts/tool/yt_youtube-dl.md">Edit on Github</a>.</p>
+    <hr>
+
+					
+
+					
+
+					</div>
+					
+					<footer class="entry__footer">
+						
+<div class="post__tag">
+			<a href="/moco/tags/youtube/"># youtube</a>
+			<a href="/moco/tags/cli/"># cli</a>
+</div>
+						
+<div class="post__share">
+	<a class="js-share btn" title=" Facebook" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fkywk.github.io%2fmoco%2fposts%2ftool%2fyt_youtube-dl%2f" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, ' Facebook', 'width=800,height=600,toolbar=0,status=0'); return false">
+		<svg class="share__icon" aria-label="Facebook" role="img" width="32" height="32" viewBox="0 0 512 512"><path d="M330 512V322h64l9-74h-73v-47c0-22 6-36 37-36h39V99c-7-1-30-3-57-3-57 0-95 34-95 98v54h-64v74h64v190z"/></svg>
+	</a>
+	<a class="js-share btn" title=" Twitter" href="https://twitter.com/intent/tweet/?url=https%3a%2f%2fkywk.github.io%2fmoco%2fposts%2ftool%2fyt_youtube-dl%2f&amp;text=%e5%88%a9%e7%94%a8%20youtube-dl%20%e4%b8%8b%e8%bc%89%20Youtube%20%e5%bd%b1%e7%89%87" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, ' Twitter', 'width=800,height=450,resizable=yes,toolbar=0,status=0'); return false">
+		<svg class="share__icon" aria-label="Twitter" viewBox="0 0 24.999 20.316"><path d="M25 2.405a10.253 10.253 0 0 1-2.947.808A5.144 5.144 0 0 0 24.308.376 10.27 10.27 0 0 1 21.05 1.62a5.134 5.134 0 0 0-8.74 4.68A14.56 14.56 0 0 1 1.74.94a5.134 5.134 0 0 0 1.587 6.846 5.108 5.108 0 0 1-2.323-.642v.064a5.132 5.132 0 0 0 4.114 5.03 5.142 5.142 0 0 1-2.316.088 5.134 5.134 0 0 0 4.79 3.562 10.29 10.29 0 0 1-6.37 2.2A10.44 10.44 0 0 1 0 18.012a14.586 14.586 0 0 0 22.454-12.29q0-.333-.015-.662A10.423 10.423 0 0 0 25 2.405z" /></svg>
+
+	</a>
+	<a class="js-share btn" title=" Reddit" href="https://www.reddit.com/submit?url=https%3a%2f%2fkywk.github.io%2fmoco%2fposts%2ftool%2fyt_youtube-dl%2f&amp;title=%e5%88%a9%e7%94%a8%20youtube-dl%20%e4%b8%8b%e8%bc%89%20Youtube%20%e5%bd%b1%e7%89%87" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, ' Reddit', 'width=832,height=624,toolbar=0,status=0'); return false">
+		<svg class="share__icon" aria-label="Reddit" role="img" width="32" height="32" viewBox="0 0 512 512"><path fill-rule="evenodd" d="M375 146a32 32 0 1 0-29-46l-65-13c-5-1-9 2-10 6l-22 97c-45 1-85 15-113 36a42 42 0 1 0-45 69l-1 12c0 65 74 117 166 117s166-52 166-117l-1-11a42 42 0 1 0-44-69c-28-21-67-35-111-37l19-86 58 13a32 32 0 0 0 32 29zM190 353c2-1 4 0 5 1 15 11 38 18 61 18s46-6 61-18a7 7 0 0 1 8 10c-18 14-44 21-69 21-25-1-51-7-69-21a6 6 0 0 1 3-11zm23-44a31 31 0 1 1-44-44 31 31 0 0 1 44 44zm130 0a31 31 0 1 0-44-44 31 31 0 0 0 44 44z"/></svg>
+	</a>
+	<a class="js-share btn" title=" Telegram" href="https://t.me/share/url?url=https%3a%2f%2fkywk.github.io%2fmoco%2fposts%2ftool%2fyt_youtube-dl%2f&amp;title=%e5%88%a9%e7%94%a8%20youtube-dl%20%e4%b8%8b%e8%bc%89%20Youtube%20%e5%bd%b1%e7%89%87" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, ' Telegram', 'width=800,height=600,toolbar=0,status=0'); return false">
+		<svg class="share__icon" aria-label="Telegram" role="img" viewBox="0 0 25 25"><path d="m9.417 15.181-.397 5.584c.568 0 .814-.244 1.109-.537l2.663-2.545 5.518 4.041c1.012.564 1.725.267 1.998-.931l3.622-16.972.001-.001c.321-1.496-.541-2.081-1.527-1.714l-21.29 8.151c-1.453.564-1.431 1.374-.247 1.741l5.443 1.693 12.643-7.911c.595-.394 1.136-.176.691.218z"/></svg>
+
+	</a>
+	<a class="js-share btn" title=" LinkedIn" href="https://www.linkedin.com/shareArticle?mini=true&url=https%3a%2f%2fkywk.github.io%2fmoco%2fposts%2ftool%2fyt_youtube-dl%2f&title=%e5%88%a9%e7%94%a8%20youtube-dl%20%e4%b8%8b%e8%bc%89%20Youtube%20%e5%bd%b1%e7%89%87" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, ' LinkedIn', 'width=640,height=480,toolbar=0,status=0'); return false">
+		<svg class="share__icon" aria-label="LinkedIn" role="img" viewBox="0 0 34.48 32"><path d="M29.632,0H2.362A2.336,2.336,0,0,0,0,2.306V29.691A2.337,2.337,0,0,0,2.362,32h27.27A2.342,2.342,0,0,0,32,29.691V2.306A2.34,2.34,0,0,0,29.632,0ZM9.491,27.268H4.744V12H9.491ZM7.119,9.909a2.752,2.752,0,1,1,2.75-2.753A2.753,2.753,0,0,1,7.119,9.909ZM27.268,27.268H22.525V19.842c0-1.772-.033-4.05-2.466-4.05-2.47,0-2.848,1.929-2.848,3.921v7.555H12.468V12h4.553v2.086h.063a4.986,4.986,0,0,1,4.491-2.467c4.806,0,5.694,3.163,5.694,7.275Z"/></svg>
+
+	</a>
+	<a class="js-share btn" title=" Pinterest" href="https://pinterest.com/pin/create/button/?url=https%3a%2f%2fkywk.github.io%2fmoco%2fposts%2ftool%2fyt_youtube-dl%2f&description=%e5%88%a9%e7%94%a8%20youtube-dl%20%e4%b8%8b%e8%bc%89%20Youtube%20%e5%bd%b1%e7%89%87" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, ' Pocket', 'width=800,height=720,toolbar=0,status=0'); return false">
+		<svg class="share__icon" aria-label="Pinterest" role="img" width="32" height="32" viewBox="0 0 512 512"><path d="m265 65c-104 0-157 75-157 138 0 37 14 71 45 83 5 2 10 0 12-5l3-18c2-6 1-7-2-12-9-11-15-24-15-43 0-56 41-106 108-106 60 0 92 37 92 85 0 64-28 116-70 116-23 0-40-18-34-42 6-27 19-57 19-77 0-18-9-34-30-34-24 0-42 25-42 58 0 20 7 34 7 34l-29 120a249 249 0 0 0 2 86l3-1c2-3 31-37 40-72l16-61c7 15 29 28 53 28 71 0 119-64 119-151 0-66-56-126-140-126z"/></svg>
+	</a>
+</div>
+						
+<div class="post__bio bio" >
+		<img class="lazyload bio__avatar" alt="Moo Cow avatar" data-src="/moco/img/avatar.webp" height="90" width="90" src="/moco/img/placeholder.svg">
+	<div class="bio__info">
+		<a class="bio__name invert" href="/about">
+			<p itemprop="author">Moo Cow</p>
+		</a>
+		
+	</div>
+</div>
+
+					</footer>
+					
+				</article>
+				
+			</div>
+		</div>
+	</div>
+	
+
+
+
+<div class="post__related related">
+	<div class="wrapper">
+		<h2 class="h5 related__title">You should also read:</h2>
+		
+		<article class="related__item">
+			<div class="feed__meta">
+				
+	<time itemprop="datePublished" class="feed__date" datetime="2021-04-06T11:18:48&#43;08:00">April 06, 2021</time>
+			</div>
+			<h3><a class="invert" href="/moco/posts/tool/macos_make-installer-iso/">製作 macOS 安裝 ISO 檔</a></h3></article>
+		
+		<article class="related__item">
+			<div class="feed__meta">
+				
+	<time itemprop="datePublished" class="feed__date" datetime="2021-03-16T16:58:20&#43;08:00">March 16, 2021</time>
+			</div>
+			<h3><a class="invert" href="/moco/posts/sre/ubuntu_nginx-php/">在 Ubuntu Server 利用 Nginx 伺服器執行 PHP 程式</a></h3></article>
+		
+		<article class="related__item">
+			<div class="feed__meta">
+				
+	<time itemprop="datePublished" class="feed__date" datetime="2021-03-15T15:33:18&#43;08:00">March 15, 2021</time>
+			</div>
+			<h3><a class="invert" href="/moco/posts/tool/macos_shadowsocks/">Setup shadowsocks on macOS</a></h3></article>
+		
+		<article class="related__item">
+			<div class="feed__meta">
+				
+	<time itemprop="datePublished" class="feed__date" datetime="2021-03-09T14:37:59&#43;08:00">March 09, 2021</time>
+			</div>
+			<h3><a class="invert" href="/moco/posts/tool/chrome_extension-2021-mar/">Chrome Extension List, 2021.Mar</a></h3></article>
+		
+		<article class="related__item">
+			<div class="feed__meta">
+				
+	<time itemprop="datePublished" class="feed__date" datetime="2021-03-01T14:37:45&#43;08:00">March 01, 2021</time>
+			</div>
+			<h3><a class="invert" href="/moco/posts/tool/subl_packages-2021-feb/">Sublime Text 3 Package List, 2021.Feb</a></h3></article>
+		
+	</div>
+</div>
+
+	
+<section class="post__comments">
+	<div class="wrapper">
+		<h5>💬 Comment: </h5>
+		<div id="comment"></div>
+		
+	</div>
+	<script>
+		var commentId = document.getElementById('comment');
+		var commentLoaded = false;
+		window.addEventListener('scroll', loadComment());
+
+		function loadComment(){
+			window.addEventListener('DOMContentLoaded', () => {
+				var top = commentId.offsetTop;
+				
+				if (!commentLoaded) {
+					commentLoaded = true;
+					(function () {
+						var d = document, s = d.createElement('script');
+						s.src = 'https://utteranc.es/client.js';
+						s.setAttribute('repo', '');
+						s.setAttribute('issue-term', 'title');
+						var currentTheme = localStorage.getItem("w-theme");
+						if(currentTheme == 'light'){
+							s.setAttribute('theme', 'github-light');
+						}else{
+							s.setAttribute('theme', 'photon-dark');
+						}
+						s.setAttribute('crossorigin', 'anonymous');
+						s.async = !0;
+						commentId.appendChild(s);
+					})();
+				}
+			});		
+		}
+	</script>
+</section>
+
+	
+
+		</main>
+		<footer class="footer">
+<div class="footer__social">
+		<a itemprop="sameAs" class="social__link" target="_blank" rel="noopener noreferrer" href="https://twitter.com/kywkid">
+			<svg class="social__icon" aria-label="Twitter" viewBox="0 0 24.999 20.316"><path d="M25 2.405a10.253 10.253 0 0 1-2.947.808A5.144 5.144 0 0 0 24.308.376 10.27 10.27 0 0 1 21.05 1.62a5.134 5.134 0 0 0-8.74 4.68A14.56 14.56 0 0 1 1.74.94a5.134 5.134 0 0 0 1.587 6.846 5.108 5.108 0 0 1-2.323-.642v.064a5.132 5.132 0 0 0 4.114 5.03 5.142 5.142 0 0 1-2.316.088 5.134 5.134 0 0 0 4.79 3.562 10.29 10.29 0 0 1-6.37 2.2A10.44 10.44 0 0 1 0 18.012a14.586 14.586 0 0 0 22.454-12.29q0-.333-.015-.662A10.423 10.423 0 0 0 25 2.405z" /></svg>
+
+		</a>
+		<a itemprop="sameAs" class="social__link" target="_blank" rel="noopener noreferrer" href="https://linkedin.com/in/kywk">
+			<svg class="social__icon" aria-label="LinkedIn" role="img" viewBox="0 0 34.48 32"><path d="M29.632,0H2.362A2.336,2.336,0,0,0,0,2.306V29.691A2.337,2.337,0,0,0,2.362,32h27.27A2.342,2.342,0,0,0,32,29.691V2.306A2.34,2.34,0,0,0,29.632,0ZM9.491,27.268H4.744V12H9.491ZM7.119,9.909a2.752,2.752,0,1,1,2.75-2.753A2.753,2.753,0,0,1,7.119,9.909ZM27.268,27.268H22.525V19.842c0-1.772-.033-4.05-2.466-4.05-2.47,0-2.848,1.929-2.848,3.921v7.555H12.468V12h4.553v2.086h.063a4.986,4.986,0,0,1,4.491-2.467c4.806,0,5.694,3.163,5.694,7.275Z"/></svg>
+
+		</a>
+		<a itemprop="sameAs" class="social__link" target="_blank" rel="noopener noreferrer" href="https://github.com/kywk">
+			<svg class="social__icon" aria-label="Github" role="img" viewBox="0 0 25 25"><path d="m12 .5c-6.63 0-12 5.28-12 11.792 0 5.211 3.438 9.63 8.205 11.188.6.111.82-.254.82-.567 0-.28-.01-1.022-.015-2.005-3.338.711-4.042-1.582-4.042-1.582-.546-1.361-1.335-1.725-1.335-1.725-1.087-.731.084-.716.084-.716 1.205.082 1.838 1.215 1.838 1.215 1.07 1.803 2.809 1.282 3.495.981.108-.763.417-1.282.76-1.577-2.665-.295-5.466-1.309-5.466-5.827 0-1.287.465-2.339 1.235-3.164-.135-.298-.54-1.497.105-3.121 0 0 1.005-.316 3.3 1.209.96-.262 1.98-.392 3-.398 1.02.006 2.04.136 3 .398 2.28-1.525 3.285-1.209 3.285-1.209.645 1.624.24 2.823.12 3.121.765.825 1.23 1.877 1.23 3.164 0 4.53-2.805 5.527-5.475 5.817.42.354.81 1.077.81 2.182 0 1.578-.015 2.846-.015 3.229 0 .309.21.678.825.56 4.801-1.548 8.236-5.97 8.236-11.173 0-6.512-5.373-11.792-12-11.792z" /></svg>
+
+		</a>
+</div>
+	<div class="footer__copyright">© 2021 <a href="https://wisnuwiry.space">MooCow</a> <span class="footer__copyright-credits"></span> | Created with ❤️ <a href="//gohugo.io">Hugo</a></div>
+</footer>
+	</div>
+	
+
+
+
+<script type="text/javascript" src="/moco/js/bundle.min.js" defer></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.2.0/lazysizes.min.js"></script>
+<script>(function (d, e) { d[e] = d[e].replace("no-js", "js"); })(document.documentElement, "className");</script>
+<script>
+    
+
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker
+            .register('/sw.js', { scope: '/' })
+            .then(function (registration) {
+                console.log('Service Worker Registered');
+            });
+
+        navigator.serviceWorker
+            .ready
+            .then(function (registration) {
+                console.log('Service Worker Ready');
+            });
+    }
+</script>
+
+</body>
+
+</html>

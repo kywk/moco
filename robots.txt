@@ -1,1 +1,2 @@
 User-agent: *
+Sitemap: https://wisnuwiry.space/sitemap.xml

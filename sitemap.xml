@@ -1,16 +1,618 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
-  <sitemap>
-    <loc>https://kywk.github.io/moco/en/sitemap.xml</loc>
-    
-      <lastmod>2021-03-16T16:58:20+08:00</lastmod>
-    
-  </sitemap>
   
-  <sitemap>
-    <loc>https://kywk.github.io/moco/fr/sitemap.xml</loc>
+  <url>
+    <loc>https://kywk.github.io/moco/categories/</loc>
+    <lastmod>2021-04-06T11:18:48+08:00</lastmod>
     
-  </sitemap>
+    <changefreq>monthly</changefreq>
+    
+     
+    <priority>0.3</priority>
+    
+    
+  </url>
   
-</sitemapindex>
+  
+  
+  <url>
+    <loc>https://kywk.github.io/moco/tags/macos/</loc>
+    <lastmod>2021-04-06T11:18:48+08:00</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    
+     
+    <priority>0.3</priority>
+    
+    
+  </url>
+  
+  
+  
+  <url>
+    <loc>https://kywk.github.io/moco/categories/macos/</loc>
+    <lastmod>2021-04-06T11:18:48+08:00</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    
+     
+    <priority>0.3</priority>
+    
+    
+  </url>
+  
+  
+  
+  <url>
+    <loc>https://kywk.github.io/moco/</loc>
+    <lastmod>2021-04-06T11:18:48+08:00</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    
+     
+    <priority>0.3</priority>
+    
+    
+  </url>
+  
+  
+  
+  <url>
+    <loc>https://kywk.github.io/moco/posts/</loc>
+    <lastmod>2021-04-06T11:18:48+08:00</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    
+     
+    <priority>0.3</priority>
+    
+    
+  </url>
+  
+  
+  
+  <url>
+    <loc>https://kywk.github.io/moco/tags/</loc>
+    <lastmod>2021-04-06T11:18:48+08:00</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    
+     
+    <priority>0.3</priority>
+    
+    
+  </url>
+  
+  
+  
+  <url>
+    <loc>https://kywk.github.io/moco/posts/tool/macos_make-installer-iso/</loc>
+    <lastmod>2021-04-06T11:18:48+08:00</lastmod>
+    
+    
+    
+    
+    <priority>-1</priority>
+    
+    
+  </url>
+  
+  
+  
+  <url>
+    <loc>https://kywk.github.io/moco/tags/nginx/</loc>
+    <lastmod>2021-03-16T16:58:20+08:00</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    
+     
+    <priority>0.3</priority>
+    
+    
+  </url>
+  
+  
+  
+  <url>
+    <loc>https://kywk.github.io/moco/tags/php/</loc>
+    <lastmod>2021-03-16T16:58:20+08:00</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    
+     
+    <priority>0.3</priority>
+    
+    
+  </url>
+  
+  
+  
+  <url>
+    <loc>https://kywk.github.io/moco/tags/sre/</loc>
+    <lastmod>2021-03-16T16:58:20+08:00</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    
+     
+    <priority>0.3</priority>
+    
+    
+  </url>
+  
+  
+  
+  <url>
+    <loc>https://kywk.github.io/moco/tags/ubuntu/</loc>
+    <lastmod>2021-03-16T16:58:20+08:00</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    
+     
+    <priority>0.3</priority>
+    
+    
+  </url>
+  
+  
+  
+  <url>
+    <loc>https://kywk.github.io/moco/categories/ubuntu/</loc>
+    <lastmod>2021-03-16T16:58:20+08:00</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    
+     
+    <priority>0.3</priority>
+    
+    
+  </url>
+  
+  
+  
+  <url>
+    <loc>https://kywk.github.io/moco/posts/sre/ubuntu_nginx-php/</loc>
+    <lastmod>2021-03-16T16:58:20+08:00</lastmod>
+    
+    
+    
+    
+    <priority>-1</priority>
+    
+    
+  </url>
+  
+  
+  
+  <url>
+    <loc>https://kywk.github.io/moco/posts/tool/macos_shadowsocks/</loc>
+    <lastmod>2021-03-15T15:33:18+08:00</lastmod>
+    
+    
+    
+    
+    <priority>-1</priority>
+    
+    
+  </url>
+  
+  
+  
+  <url>
+    <loc>https://kywk.github.io/moco/tags/chrome/</loc>
+    <lastmod>2021-03-09T14:37:59+08:00</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    
+     
+    <priority>0.3</priority>
+    
+    
+  </url>
+  
+  
+  
+  <url>
+    <loc>https://kywk.github.io/moco/categories/chrome/</loc>
+    <lastmod>2021-03-09T14:37:59+08:00</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    
+     
+    <priority>0.3</priority>
+    
+    
+  </url>
+  
+  
+  
+  <url>
+    <loc>https://kywk.github.io/moco/posts/tool/chrome_extension-2021-mar/</loc>
+    <lastmod>2021-03-09T14:37:59+08:00</lastmod>
+    
+    
+    
+    
+    <priority>-1</priority>
+    
+    
+  </url>
+  
+  
+  
+  <url>
+    <loc>https://kywk.github.io/moco/tags/kywk/</loc>
+    <lastmod>2021-03-09T14:37:59+08:00</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    
+     
+    <priority>0.3</priority>
+    
+    
+  </url>
+  
+  
+  
+  <url>
+    <loc>https://kywk.github.io/moco/posts/tool/subl_packages-2021-feb/</loc>
+    <lastmod>2021-03-01T14:37:45+08:00</lastmod>
+    
+    
+    
+    
+    <priority>-1</priority>
+    
+    
+  </url>
+  
+  
+  
+  <url>
+    <loc>https://kywk.github.io/moco/tags/sublime-text/</loc>
+    <lastmod>2021-03-01T14:37:45+08:00</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    
+     
+    <priority>0.3</priority>
+    
+    
+  </url>
+  
+  
+  
+  <url>
+    <loc>https://kywk.github.io/moco/categories/sublime-text/</loc>
+    <lastmod>2021-03-01T14:37:45+08:00</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    
+     
+    <priority>0.3</priority>
+    
+    
+  </url>
+  
+  
+  
+  <url>
+    <loc>https://kywk.github.io/moco/posts/tool/macos_dev-env-2021-feb/</loc>
+    <lastmod>2021-02-26T14:53:37+08:00</lastmod>
+    
+    
+    
+    
+    <priority>-1</priority>
+    
+    
+  </url>
+  
+  
+  
+  <url>
+    <loc>https://kywk.github.io/moco/posts/tool/macos_setup-note-2021-feb/</loc>
+    <lastmod>2021-02-26T14:05:03+08:00</lastmod>
+    
+    
+    
+    
+    <priority>-1</priority>
+    
+    
+  </url>
+  
+  
+  
+  <url>
+    <loc>https://kywk.github.io/moco/posts/tool/gd_team-drive-signup/</loc>
+    <lastmod>2021-02-19T11:35:05+08:00</lastmod>
+    
+    
+    
+    
+    <priority>-1</priority>
+    
+    
+  </url>
+  
+  
+  
+  <url>
+    <loc>https://kywk.github.io/moco/tags/google-drive/</loc>
+    <lastmod>2021-02-19T11:35:05+08:00</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    
+     
+    <priority>0.3</priority>
+    
+    
+  </url>
+  
+  
+  
+  <url>
+    <loc>https://kywk.github.io/moco/categories/google-drive/</loc>
+    <lastmod>2021-02-19T11:35:05+08:00</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    
+     
+    <priority>0.3</priority>
+    
+    
+  </url>
+  
+  
+  
+  <url>
+    <loc>https://kywk.github.io/moco/tags/cli/</loc>
+    <lastmod>2021-02-07T11:46:48+08:00</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    
+     
+    <priority>0.3</priority>
+    
+    
+  </url>
+  
+  
+  
+  <url>
+    <loc>https://kywk.github.io/moco/tags/youtube/</loc>
+    <lastmod>2021-02-07T11:46:48+08:00</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    
+     
+    <priority>0.3</priority>
+    
+    
+  </url>
+  
+  
+  
+  <url>
+    <loc>https://kywk.github.io/moco/categories/youtube/</loc>
+    <lastmod>2021-02-07T11:46:48+08:00</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    
+     
+    <priority>0.3</priority>
+    
+    
+  </url>
+  
+  
+  
+  <url>
+    <loc>https://kywk.github.io/moco/posts/tool/yt_youtube-dl/</loc>
+    <lastmod>2021-02-07T11:46:48+08:00</lastmod>
+    
+    
+    
+    
+    <priority>-1</priority>
+    
+    
+  </url>
+  
+  
+  
+  <url>
+    <loc>https://kywk.github.io/moco/categories/cli/</loc>
+    <lastmod>2020-12-10T17:31:07+08:00</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    
+     
+    <priority>0.3</priority>
+    
+    
+  </url>
+  
+  
+  
+  <url>
+    <loc>https://kywk.github.io/moco/posts/tool/cli_encrypt-tarball/</loc>
+    <lastmod>2020-12-10T17:31:07+08:00</lastmod>
+    
+    
+    
+    
+    <priority>-1</priority>
+    
+    
+  </url>
+  
+  
+  
+  <url>
+    <loc>https://kywk.github.io/moco/tags/unix/</loc>
+    <lastmod>2020-12-10T17:31:07+08:00</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    
+     
+    <priority>0.3</priority>
+    
+    
+  </url>
+  
+  
+  
+  <url>
+    <loc>https://kywk.github.io/moco/tags/rclone/</loc>
+    <lastmod>2020-12-07T17:35:35+08:00</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    
+     
+    <priority>0.3</priority>
+    
+    
+  </url>
+  
+  
+  
+  <url>
+    <loc>https://kywk.github.io/moco/posts/tool/gd_rclone-config/</loc>
+    <lastmod>2020-12-07T17:35:35+08:00</lastmod>
+    
+    
+    
+    
+    <priority>-1</priority>
+    
+    
+  </url>
+  
+  
+  
+  <url>
+    <loc>https://kywk.github.io/moco/posts/tool/macos_install-iftop/</loc>
+    <lastmod>2020-12-07T16:48:04+08:00</lastmod>
+    
+    
+    
+    
+    <priority>-1</priority>
+    
+    
+  </url>
+  
+  
+  
+  <url>
+    <loc>https://kywk.github.io/moco/tags/hugo/</loc>
+    <lastmod>2020-10-24T17:05:52+08:00</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    
+     
+    <priority>0.3</priority>
+    
+    
+  </url>
+  
+  
+  
+  <url>
+    <loc>https://kywk.github.io/moco/categories/hugo/</loc>
+    <lastmod>2020-10-24T17:05:52+08:00</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    
+     
+    <priority>0.3</priority>
+    
+    
+  </url>
+  
+  
+  
+  <url>
+    <loc>https://kywk.github.io/moco/posts/hugo/porting-hexo-tags/</loc>
+    <lastmod>2020-10-24T17:05:52+08:00</lastmod>
+    
+    
+    
+    
+    <priority>-1</priority>
+    
+    
+  </url>
+  
+  
+  
+  <url>
+    <loc>https://kywk.github.io/moco/tags/tutorial/</loc>
+    <lastmod>2020-10-24T17:05:52+08:00</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    
+     
+    <priority>0.3</priority>
+    
+    
+  </url>
+  
+  
+  
+  <url>
+    <loc>https://kywk.github.io/moco/posts/hugo/from-hexo-to-hugo/</loc>
+    <lastmod>2020-10-14T15:08:05+08:00</lastmod>
+    
+    
+    
+    
+    <priority>-1</priority>
+    
+    
+  </url>
+  
+  
+  
+  <url>
+    <loc>https://kywk.github.io/moco/snippets/first/</loc>
+    
+    <changefreq>monthly</changefreq>
+    
+     
+    <priority>0.3</priority>
+    
+    
+  </url>
+  
+  
+  
+  <url>
+    <loc>https://kywk.github.io/moco/snippets/second/</loc>
+    
+    <changefreq>monthly</changefreq>
+    
+     
+    <priority>0.3</priority>
+    
+    
+  </url>
+  
+  
+  
+  <url>
+    <loc>https://kywk.github.io/moco/snippets/</loc>
+    
+    <changefreq>monthly</changefreq>
+    
+     
+    <priority>0.3</priority>
+    
+    
+  </url>
+  
+  
+</urlset>
