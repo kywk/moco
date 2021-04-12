@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>git on moco</title>
+    <link>https://kywk.github.io/moco/categories/git/</link>
+    <description>Recent content in git on moco</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <managingEditor>kywk.id@gmail.com (Moo Cow)</managingEditor>
+    <webMaster>kywk.id@gmail.com (Moo Cow)</webMaster>
+    <lastBuildDate>Mon, 12 Apr 2021 15:13:11 +0800</lastBuildDate><atom:link href="https://kywk.github.io/moco/categories/git/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Git: check if remote branch exists on a given remote repository</title>
+      <link>https://kywk.github.io/moco/posts/tool/git_check-branch-exists/</link>
+      <pubDate>Mon, 12 Apr 2021 15:13:11 +0800</pubDate>
+      <author>kywk.id@gmail.com (Moo Cow)</author>
+      <guid>https://kywk.github.io/moco/posts/tool/git_check-branch-exists/</guid>
+      <description>專案要幫一些舊項目導入 GitLab CI/CD, 案例是有多個項目需參考另一個 Git 共用元件項目, 通常會用 Git SubModule 來引用共用元件項目. 但因舊項目既有開發流程與版控管理已久, 有些需求實作就難以較正確的方式進行.</description>
+    </item>
+    
+  </channel>
+</rss>

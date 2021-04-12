@@ -8,7 +8,16 @@
     <language>zh-tw</language>
     <managingEditor>kywk.id@gmail.com (Moo Cow)</managingEditor>
     <webMaster>kywk.id@gmail.com (Moo Cow)</webMaster>
-    <lastBuildDate>Tue, 06 Apr 2021 11:18:48 +0800</lastBuildDate><atom:link href="https://kywk.github.io/moco/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 12 Apr 2021 15:13:11 +0800</lastBuildDate><atom:link href="https://kywk.github.io/moco/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Git: check if remote branch exists on a given remote repository</title>
+      <link>https://kywk.github.io/moco/posts/tool/git_check-branch-exists/</link>
+      <pubDate>Mon, 12 Apr 2021 15:13:11 +0800</pubDate>
+      <author>kywk.id@gmail.com (Moo Cow)</author>
+      <guid>https://kywk.github.io/moco/posts/tool/git_check-branch-exists/</guid>
+      <description>專案要幫一些舊項目導入 GitLab CI/CD, 案例是有多個項目需參考另一個 Git 共用元件項目, 通常會用 Git SubModule 來引用共用元件項目. 但因舊項目既有開發流程與版控管理已久, 有些需求實作就難以較正確的方式進行.</description>
+    </item>
+    
     <item>
       <title>製作 macOS 安裝 ISO 檔</title>
       <link>https://kywk.github.io/moco/posts/tool/macos_make-installer-iso/</link>

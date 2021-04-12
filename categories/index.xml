@@ -8,7 +8,16 @@
     <language>zh-tw</language>
     <managingEditor>kywk.id@gmail.com (Moo Cow)</managingEditor>
     <webMaster>kywk.id@gmail.com (Moo Cow)</webMaster>
-    <lastBuildDate>Tue, 06 Apr 2021 11:18:48 +0800</lastBuildDate><atom:link href="https://kywk.github.io/moco/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 12 Apr 2021 15:13:11 +0800</lastBuildDate><atom:link href="https://kywk.github.io/moco/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>git</title>
+      <link>https://kywk.github.io/moco/categories/git/</link>
+      <pubDate>Mon, 12 Apr 2021 15:13:11 +0800</pubDate>
+      <author>kywk.id@gmail.com (Moo Cow)</author>
+      <guid>https://kywk.github.io/moco/categories/git/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>macos</title>
       <link>https://kywk.github.io/moco/categories/macos/</link>
