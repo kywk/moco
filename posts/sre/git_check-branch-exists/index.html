@@ -6,29 +6,29 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="theme-color" content="#1da1f2">
-	<title>製作 macOS 安裝 ISO 檔 |  moco </title>
+	<title>Git: check if remote branch exists on a given remote repository |  moco </title>
 	<meta name="description"
-		content="Apple 官方有 如何製作 macOS 啟動安裝程式 的詳盡說明. 在這篇說明中並沒有明指特定開機媒體, 可以為任何可掛載的裝置. 網路上有不少如何 製作 macOS 系統安裝隨身碟 的文章, 主要步驟和指令也和官方一樣, 只是更詳盡的說明如格式化或命名 USB 隨身碟, 避免初學者混淆犯錯.">
-	<meta property="og:title" content="製作 macOS 安裝 ISO 檔" />
-<meta property="og:description" content="Apple 官方有 如何製作 macOS 啟動安裝程式 的詳盡說明. 在這篇說明中並沒有明指特定開機媒體, 可以為任何可掛載的裝置. 網路上有不少如何 製作 macOS 系統安裝隨身碟 的文章, 主要步驟和指令也和官方一樣, 只是更詳盡的說明如格式化或命名 USB 隨身碟, 避免初學者混淆犯錯." />
+		content="專案要幫一些舊項目導入 GitLab CI/CD, 案例是有多個項目需參考另一個 Git 共用元件項目, 通常會用 Git SubModule 來引用共用元件項目. 但因舊項目既有開發流程與版控管理已久, 有些需求實作就難以較正確的方式進行.">
+	<meta property="og:title" content="Git: check if remote branch exists on a given remote repository" />
+<meta property="og:description" content="專案要幫一些舊項目導入 GitLab CI/CD, 案例是有多個項目需參考另一個 Git 共用元件項目, 通常會用 Git SubModule 來引用共用元件項目. 但因舊項目既有開發流程與版控管理已久, 有些需求實作就難以較正確的方式進行." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://kywk.github.io/moco/posts/tool/macos_make-installer-iso/" /><meta property="og:image" content="https://lh3.googleusercontent.com/pw/ACtC-3cYYtkzJjo_oG7Gzqq8T8XQm4V_qLE3wGWVKOahp6YT4lo-on60NJmjrkkatnizX1b-uID-MCM2ztsXH9z27cMRtql3PA5cpYZYbMfSPuM5Yh3MmqnjnnXYkTg6vtIiBL5SGAQRRAI9zEBIOoyP3tZpuA?authuser=0" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2021-04-06T11:18:48&#43;08:00" />
-<meta property="article:modified_time" content="2021-04-06T11:18:48&#43;08:00" />
+<meta property="og:url" content="https://kywk.github.io/moco/posts/sre/git_check-branch-exists/" /><meta property="og:image" content="https://lh3.googleusercontent.com/pw/ACtC-3djQkrvy1aqdMWCu9oEoqndQVIiLE9G5ZtlbDehi8_UcJ9pYib4aWForkHYHSu1voqdKMnCowTwGh1MXSnGeNrFwXRaOUCMD8s4rCZ4IuzWXIZ2khQ8KiJyT6SYlbLrnYYqONwaPZxlR8rReuWWMO7SYw=w8000-no?authuser=0" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-04-12T15:13:11&#43;08:00" />
+<meta property="article:modified_time" content="2021-04-12T15:13:11&#43;08:00" />
 
 
 	<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://lh3.googleusercontent.com/pw/ACtC-3cYYtkzJjo_oG7Gzqq8T8XQm4V_qLE3wGWVKOahp6YT4lo-on60NJmjrkkatnizX1b-uID-MCM2ztsXH9z27cMRtql3PA5cpYZYbMfSPuM5Yh3MmqnjnnXYkTg6vtIiBL5SGAQRRAI9zEBIOoyP3tZpuA?authuser=0"/>
+<meta name="twitter:image" content="https://lh3.googleusercontent.com/pw/ACtC-3djQkrvy1aqdMWCu9oEoqndQVIiLE9G5ZtlbDehi8_UcJ9pYib4aWForkHYHSu1voqdKMnCowTwGh1MXSnGeNrFwXRaOUCMD8s4rCZ4IuzWXIZ2khQ8KiJyT6SYlbLrnYYqONwaPZxlR8rReuWWMO7SYw=w8000-no?authuser=0"/>
 
-<meta name="twitter:title" content="製作 macOS 安裝 ISO 檔"/>
-<meta name="twitter:description" content="Apple 官方有 如何製作 macOS 啟動安裝程式 的詳盡說明. 在這篇說明中並沒有明指特定開機媒體, 可以為任何可掛載的裝置. 網路上有不少如何 製作 macOS 系統安裝隨身碟 的文章, 主要步驟和指令也和官方一樣, 只是更詳盡的說明如格式化或命名 USB 隨身碟, 避免初學者混淆犯錯."/>
+<meta name="twitter:title" content="Git: check if remote branch exists on a given remote repository"/>
+<meta name="twitter:description" content="專案要幫一些舊項目導入 GitLab CI/CD, 案例是有多個項目需參考另一個 Git 共用元件項目, 通常會用 Git SubModule 來引用共用元件項目. 但因舊項目既有開發流程與版控管理已久, 有些需求實作就難以較正確的方式進行."/>
 
 	<meta name="twitter:site" content="@wisnuwiry" />
-	<meta itemprop="name" content="製作 macOS 安裝 ISO 檔">
-<meta itemprop="description" content="Apple 官方有 如何製作 macOS 啟動安裝程式 的詳盡說明. 在這篇說明中並沒有明指特定開機媒體, 可以為任何可掛載的裝置. 網路上有不少如何 製作 macOS 系統安裝隨身碟 的文章, 主要步驟和指令也和官方一樣, 只是更詳盡的說明如格式化或命名 USB 隨身碟, 避免初學者混淆犯錯."><meta itemprop="datePublished" content="2021-04-06T11:18:48&#43;08:00" />
-<meta itemprop="dateModified" content="2021-04-06T11:18:48&#43;08:00" />
-<meta itemprop="wordCount" content="148"><meta itemprop="image" content="https://lh3.googleusercontent.com/pw/ACtC-3cYYtkzJjo_oG7Gzqq8T8XQm4V_qLE3wGWVKOahp6YT4lo-on60NJmjrkkatnizX1b-uID-MCM2ztsXH9z27cMRtql3PA5cpYZYbMfSPuM5Yh3MmqnjnnXYkTg6vtIiBL5SGAQRRAI9zEBIOoyP3tZpuA?authuser=0">
-<meta itemprop="keywords" content="macos," />
+	<meta itemprop="name" content="Git: check if remote branch exists on a given remote repository">
+<meta itemprop="description" content="專案要幫一些舊項目導入 GitLab CI/CD, 案例是有多個項目需參考另一個 Git 共用元件項目, 通常會用 Git SubModule 來引用共用元件項目. 但因舊項目既有開發流程與版控管理已久, 有些需求實作就難以較正確的方式進行."><meta itemprop="datePublished" content="2021-04-12T15:13:11&#43;08:00" />
+<meta itemprop="dateModified" content="2021-04-12T15:13:11&#43;08:00" />
+<meta itemprop="wordCount" content="139"><meta itemprop="image" content="https://lh3.googleusercontent.com/pw/ACtC-3djQkrvy1aqdMWCu9oEoqndQVIiLE9G5ZtlbDehi8_UcJ9pYib4aWForkHYHSu1voqdKMnCowTwGh1MXSnGeNrFwXRaOUCMD8s4rCZ4IuzWXIZ2khQ8KiJyT6SYlbLrnYYqONwaPZxlR8rReuWWMO7SYw=w8000-no?authuser=0">
+<meta itemprop="keywords" content="cli,git," />
 	<link rel="stylesheet" href="/moco/css/bundle.min.css">
 	<link rel="apple-touch-icon" sizes="180x180" href="https://kywk.github.io/icons/apple-touch-icon.png">
 	<link rel="icon" type="image/png" sizes="32x32" href="https://kywk.github.io/icons/favicon-32x32.png">
@@ -93,17 +93,17 @@
 	"@type":"BlogPosting",
 	"mainEntityOfPage":{
 		"@type":"WebPage",
-		"@id":"https:\/\/kywk.github.io\/mocohttps:\/\/kywk.github.io\/moco\/posts\/tool\/macos_make-installer-iso\/"
+		"@id":"https:\/\/kywk.github.io\/mocohttps:\/\/kywk.github.io\/moco\/posts\/sre\/git_check-branch-exists\/"
 	},
-	"headline":"製作 macOS 安裝 ISO 檔",
-	"datePublished":"2021-04-06T11",
-	"dateModified":"2021-04-06T11",
-	"description":"Apple 官方有 如何製作 macOS 啟動安裝程式 的詳盡說明. 在這篇說明中並沒有明指特定開機媒體, 可以為任何可掛載的裝置. 網路上有不少如何 製作 macOS 系統安裝隨身碟 的文章, 主要步驟和指令也和官方一樣, 只是更詳盡的說明如格式化或命名 USB 隨身碟, 避免初學者混淆犯錯.",
+	"headline":"Git: check if remote branch exists on a given remote repository",
+	"datePublished":"2021-04-12T15",
+	"dateModified":"2021-04-12T15",
+	"description":"專案要幫一些舊項目導入 GitLab CI\/CD, 案例是有多個項目需參考另一個 Git 共用元件項目, 通常會用 Git SubModule 來引用共用元件項目. 但因舊項目既有開發流程與版控管理已久, 有些需求實作就難以較正確的方式進行.",
 	"isFamilyFriendly": "true",
-	"image":  ["https://lh3.googleusercontent.com/pw/ACtC-3cYYtkzJjo_oG7Gzqq8T8XQm4V_qLE3wGWVKOahp6YT4lo-on60NJmjrkkatnizX1b-uID-MCM2ztsXH9z27cMRtql3PA5cpYZYbMfSPuM5Yh3MmqnjnnXYkTg6vtIiBL5SGAQRRAI9zEBIOoyP3tZpuA?authuser=0"] ,
-	"wordCount" : "148",
-	"keywords": ["macos"],
-	"genre": ["macos"],
+	"image":  ["https://lh3.googleusercontent.com/pw/ACtC-3djQkrvy1aqdMWCu9oEoqndQVIiLE9G5ZtlbDehi8_UcJ9pYib4aWForkHYHSu1voqdKMnCowTwGh1MXSnGeNrFwXRaOUCMD8s4rCZ4IuzWXIZ2khQ8KiJyT6SYlbLrnYYqONwaPZxlR8rReuWWMO7SYw=w8000-no?authuser=0"] ,
+	"wordCount" : "139",
+	"keywords": ["cli","git"],
+	"genre": ["cli","git"],
 	"accountablePerson": {
 		"@type": "Person",
 		"name": "Moo Cow",
@@ -214,7 +214,7 @@
 
 
 <figure class="hero__image hero__image--overlay">
-	<img class="hero__image-img lazyload" data-src="https://lh3.googleusercontent.com/pw/ACtC-3cYYtkzJjo_oG7Gzqq8T8XQm4V_qLE3wGWVKOahp6YT4lo-on60NJmjrkkatnizX1b-uID-MCM2ztsXH9z27cMRtql3PA5cpYZYbMfSPuM5Yh3MmqnjnnXYkTg6vtIiBL5SGAQRRAI9zEBIOoyP3tZpuA?authuser=0" src="/moco/img/placeholder.svg" alt="製作 macOS 安裝 ISO 檔"/>
+	<img class="hero__image-img lazyload" data-src="https://lh3.googleusercontent.com/pw/ACtC-3djQkrvy1aqdMWCu9oEoqndQVIiLE9G5ZtlbDehi8_UcJ9pYib4aWForkHYHSu1voqdKMnCowTwGh1MXSnGeNrFwXRaOUCMD8s4rCZ4IuzWXIZ2khQ8KiJyT6SYlbLrnYYqONwaPZxlR8rReuWWMO7SYw=w8000-no?authuser=0" src="/moco/img/placeholder.svg" alt="Git: check if remote branch exists on a given remote repository"/>
 </figure>
 
 
@@ -222,7 +222,7 @@
 	<div class="wrapper">
 		<h1 itemprop="name"  style="color: white;" >
 	
-		製作 macOS 安裝 ISO 檔
+		Git: check if remote branch exists on a given remote repository
 	
 		</h1>
 	
@@ -241,12 +241,12 @@
 		<div class="wrapper post__entry">
 			<div class='property outline'>
     <p>📅️ Published: 
-        <time itemprop="datePublished" datetime="2021-04-06T11:18:48&#43;08:00">April 06, 2021</time>
+        <time itemprop="datePublished" datetime="2021-04-12T15:13:11&#43;08:00">April 12, 2021</time>
     </p>
     <p>🔄 Updated: 
-        <time itemprop="dateModified" datetime="2021-04-06T11:18:48&#43;08:00">April 06, 2021</time>
+        <time itemprop="dateModified" datetime="2021-04-12T15:13:11&#43;08:00">April 12, 2021</time>
     </p>
-    <p>🕔 1 min read ∙ 148 words</p></div>
+    <p>🕔 1 min read ∙ 139 words</p></div>
 			
 <nav class="breadcrumb block" aria-label="breadcrumb">
 	<ol class="breadcrumb__list">
@@ -257,53 +257,42 @@
 		<li class="breadcrumb__item">
 			<a class="breadcrumbs__link" href="/moco/posts/">Posts</a> &nbsp;
 		</li>
-		<li class="breadcrumbs__item breadcrumb__item--active" aria-current="page">製作 macOS 安裝 ISO 檔</li>
+		<li class="breadcrumbs__item breadcrumb__item--active" aria-current="page">Git: check if remote branch exists on a given remote repository</li>
 	</ol>
 </nav>
 			<div class="single block">
 				<article class="entry" id="article">
 					<div class="entry__content">
-					<p>Apple 官方有 <a href="https://support.apple.com/zh-hk/HT201372" target="_blank" rel="noopener">如何製作 macOS 啟動安裝程式</a> 的詳盡說明.
-在這篇說明中並沒有明指特定開機媒體, 可以為任何可掛載的裝置.
-網路上有不少如何 <a href="https://mrmad.com.tw/how-to-macos-catalina-usb-installer" target="_blank" rel="noopener">製作 macOS 系統安裝隨身碟</a> 的文章,
-主要步驟和指令也和官方一樣, 只是更詳盡的說明如格式化或命名 USB 隨身碟, 避免初學者混淆犯錯.</p>
-<p>製作 macOS installer ISO 基本概念為, 建立一個 dmg 檔後掛載,
-把下載的 macOS installer 透過官方 <code>createinstallmedia</code> 指令安裝到剛剛掛載的磁碟,
-卸載後再把 dmg 檔轉為 ISO 格式.</p>
-<p>流程與指令如後:</p>
-<ol>
-<li>建立一個 13GB 大小的 dmg 檔，存在 /tmp 目錄<br>
-macOS Big Sur 來講, 大小約 12.5GB.
-以 <code>hdiutil</code> 指令來產生一個 dmg檔.
-<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">$ hdiutil create -o /tmp/bigSur -size 13000m -layout SPUD -fs HFS+J
-</code></pre></div></li>
-<li>掛載 dmg 檔
-<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">$ hdiutil attach /tmp/bigSur.dmg -noverify -mountpoint /Volumes/install_build
-</code></pre></div></li>
-<li>將安裝程式轉到 volume<br>
-透過官方的 <code>createinstallmedia</code> 指令製作 installer media.
-<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">$ <span class="nb">cd</span> /Applications/Install<span class="se">\ </span>macOS<span class="se">\ </span>Big<span class="se">\ </span>Sur.app/Contents/Resources
-$ sudo ./createinstallmedia --volume /Volumes/install_build
-</code></pre></div></li>
-<li>卸載 volume
-<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">$ umount /Volumes/install_build
-</code></pre></div></li>
-<li>將 dmg 轉為 cdr 格式
-<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">$ hdiutil convert /tmp/bigSur.dmg -format UDTO -o /tmp/bigSur
-$ mv /tmp/bigSur.cdr /tmp/bigSur.iso
-</code></pre></div></li>
-</ol>
-<p>在 tmp 目錄裡, 雖然已經轉成 iso 檔, 但 dmg 檔還是會留著.
-可自行評估空間決定是否需要留著 dmg 檔.</p>
-<p><em>Reference</em></p>
-<ul>
-<li><a href="https://medium.com/%e5%bd%bc%e5%be%97%e6%bd%98%e7%9a%84-swift-ios-app-%e9%96%8b%e7%99%bc%e6%95%99%e5%ae%a4/%e5%b0%87%e4%b8%8b%e8%bc%89%e5%9c%a8%e9%9b%bb%e8%85%a6%e8%a3%a1%e7%9a%84macos-%e5%ae%89%e8%a3%9d%e7%a8%8b%e5%bc%8f%e8%bd%89%e6%88%90-iso%e6%aa%94-f4b8c59ebdc6" target="_blank" rel="noopener">將下載在電腦裡的macOS 安裝程式轉成 iso檔 - 彼得潘的 Swift iOS App 開發教室 - Medium</a></li>
-<li><a href="https://www.tokfun.net/os/mac/make-macos-big-sur-installer-iso-dmg/" target="_blank" rel="noopener">[macOS]製作 macOS Big Sur 11.0 系統安裝映像檔(ISO、DMG) - 科技阿宅王</a></li>
-</ul>
+					<p>專案要幫一些舊項目導入 GitLab CI/CD,
+案例是有多個項目需參考另一個 Git 共用元件項目, 通常會用 Git SubModule 來引用共用元件項目.
+但因舊項目既有開發流程與版控管理已久, 有些需求實作就難以較正確的方式進行.</p>
+<p>該案例中的管理流程是: 開發時, 主要功能和共用元件項目都建立相同名稱的 branch, (Ex: BR-A001)
+若共用元件有更新. 則 build 時需 checkout 共用元件的 BR-A001 分支進行編譯.
+若共用元件沒有更新, 則以 master 為主.</p>
+<p>因此, 需在命令列模式下知道某個特定名稱的 Branch 是否存在.</p>
+<p>找了一下, 原來 <code>ls-remote</code> 配合 <code>--exit-code</code> 可以得知某個 branch-name 是否存在遠端 repos 上.
+<a href="https://git-scm.com/docs/git-ls-remote" target="_blank" rel="noopener">官方說明</a> 如下:</p>
+<blockquote>
+  <p>&ndash;exit-code
+Exit with status &ldquo;2&rdquo; when no matching refs are found in the remote repository. Usually the command exits with status &ldquo;0&rdquo; to indicate it successfully talked with the remote repository, whether it found any matching refs.</p>
+  <footer>
+    <strong></strong>
+  </footer>
+</blockquote>
+<p><strong>xNIX-like Shell</strong></p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ git ls-remote --exit-code --heads origin &lt;branch-that-exists-in-origin&gt;
+<span class="o">=</span>&gt; <span class="k">return</span> <span class="m">0</span>
+
+$ git ls-remote --exit-code --heads origin &lt;branch-that-not-exists-origin&gt;
+<span class="o">=</span>&gt; <span class="k">return</span> <span class="m">2</span>
+</code></pre></div><p><strong>PowerShell</strong></p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="p">$</span> <span class="k">if</span> <span class="p">(</span><span class="n">git</span> <span class="n">ls-remote</span> <span class="p">-</span><span class="n">-exit-code</span> <span class="p">-</span><span class="n">-heads</span> <span class="n">origin</span> <span class="p">&lt;</span><span class="n">branch-that-exists-in-origin</span><span class="p">&gt;)</span> <span class="p">{</span> <span class="nv">$true</span> <span class="p">}</span> <span class="k">else</span> 
+<span class="p">{</span> <span class="nv">$false</span> <span class="p">}</span>
+</code></pre></div><p>Ref: <a href="https://stackoverflow.com/questions/8223906/how-to-check-if-remote-branch-exists-on-a-given-remote-repository" target="_blank" rel="noopener">git - How to check if remote branch exists on a given remote repository? - Stack Overflow</a></p>
 
 					
     <hr>
-    <p>Wrong content?  <a href="https://github.com/wisnuwiry/blog-v2/edit/master/content/posts/tool/macos_make-installer-iso.md">Edit on Github</a>.</p>
+    <p>Wrong content?  <a href="https://github.com/wisnuwiry/blog-v2/edit/master/content/posts/sre/git_check-branch-exists.md">Edit on Github</a>.</p>
     <hr>
 
 					
@@ -315,29 +304,30 @@ $ mv /tmp/bigSur.cdr /tmp/bigSur.iso
 					<footer class="entry__footer">
 						
 <div class="post__tag">
-			<a href="/moco/tags/macos/"># macos</a>
+			<a href="/moco/tags/cli/"># cli</a>
+			<a href="/moco/tags/git/"># git</a>
 </div>
 						
 <div class="post__share">
-	<a class="js-share btn" title=" Facebook" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fkywk.github.io%2fmoco%2fposts%2ftool%2fmacos_make-installer-iso%2f" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, ' Facebook', 'width=800,height=600,toolbar=0,status=0'); return false">
+	<a class="js-share btn" title=" Facebook" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fkywk.github.io%2fmoco%2fposts%2fsre%2fgit_check-branch-exists%2f" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, ' Facebook', 'width=800,height=600,toolbar=0,status=0'); return false">
 		<svg class="share__icon" aria-label="Facebook" role="img" width="32" height="32" viewBox="0 0 512 512"><path d="M330 512V322h64l9-74h-73v-47c0-22 6-36 37-36h39V99c-7-1-30-3-57-3-57 0-95 34-95 98v54h-64v74h64v190z"/></svg>
 	</a>
-	<a class="js-share btn" title=" Twitter" href="https://twitter.com/intent/tweet/?url=https%3a%2f%2fkywk.github.io%2fmoco%2fposts%2ftool%2fmacos_make-installer-iso%2f&amp;text=%e8%a3%bd%e4%bd%9c%20macOS%20%e5%ae%89%e8%a3%9d%20ISO%20%e6%aa%94" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, ' Twitter', 'width=800,height=450,resizable=yes,toolbar=0,status=0'); return false">
+	<a class="js-share btn" title=" Twitter" href="https://twitter.com/intent/tweet/?url=https%3a%2f%2fkywk.github.io%2fmoco%2fposts%2fsre%2fgit_check-branch-exists%2f&amp;text=Git%3a%20check%20if%20remote%20branch%20exists%20on%20a%20given%20remote%20repository" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, ' Twitter', 'width=800,height=450,resizable=yes,toolbar=0,status=0'); return false">
 		<svg class="share__icon" aria-label="Twitter" viewBox="0 0 24.999 20.316"><path d="M25 2.405a10.253 10.253 0 0 1-2.947.808A5.144 5.144 0 0 0 24.308.376 10.27 10.27 0 0 1 21.05 1.62a5.134 5.134 0 0 0-8.74 4.68A14.56 14.56 0 0 1 1.74.94a5.134 5.134 0 0 0 1.587 6.846 5.108 5.108 0 0 1-2.323-.642v.064a5.132 5.132 0 0 0 4.114 5.03 5.142 5.142 0 0 1-2.316.088 5.134 5.134 0 0 0 4.79 3.562 10.29 10.29 0 0 1-6.37 2.2A10.44 10.44 0 0 1 0 18.012a14.586 14.586 0 0 0 22.454-12.29q0-.333-.015-.662A10.423 10.423 0 0 0 25 2.405z" /></svg>
 
 	</a>
-	<a class="js-share btn" title=" Reddit" href="https://www.reddit.com/submit?url=https%3a%2f%2fkywk.github.io%2fmoco%2fposts%2ftool%2fmacos_make-installer-iso%2f&amp;title=%e8%a3%bd%e4%bd%9c%20macOS%20%e5%ae%89%e8%a3%9d%20ISO%20%e6%aa%94" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, ' Reddit', 'width=832,height=624,toolbar=0,status=0'); return false">
+	<a class="js-share btn" title=" Reddit" href="https://www.reddit.com/submit?url=https%3a%2f%2fkywk.github.io%2fmoco%2fposts%2fsre%2fgit_check-branch-exists%2f&amp;title=Git%3a%20check%20if%20remote%20branch%20exists%20on%20a%20given%20remote%20repository" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, ' Reddit', 'width=832,height=624,toolbar=0,status=0'); return false">
 		<svg class="share__icon" aria-label="Reddit" role="img" width="32" height="32" viewBox="0 0 512 512"><path fill-rule="evenodd" d="M375 146a32 32 0 1 0-29-46l-65-13c-5-1-9 2-10 6l-22 97c-45 1-85 15-113 36a42 42 0 1 0-45 69l-1 12c0 65 74 117 166 117s166-52 166-117l-1-11a42 42 0 1 0-44-69c-28-21-67-35-111-37l19-86 58 13a32 32 0 0 0 32 29zM190 353c2-1 4 0 5 1 15 11 38 18 61 18s46-6 61-18a7 7 0 0 1 8 10c-18 14-44 21-69 21-25-1-51-7-69-21a6 6 0 0 1 3-11zm23-44a31 31 0 1 1-44-44 31 31 0 0 1 44 44zm130 0a31 31 0 1 0-44-44 31 31 0 0 0 44 44z"/></svg>
 	</a>
-	<a class="js-share btn" title=" Telegram" href="https://t.me/share/url?url=https%3a%2f%2fkywk.github.io%2fmoco%2fposts%2ftool%2fmacos_make-installer-iso%2f&amp;title=%e8%a3%bd%e4%bd%9c%20macOS%20%e5%ae%89%e8%a3%9d%20ISO%20%e6%aa%94" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, ' Telegram', 'width=800,height=600,toolbar=0,status=0'); return false">
+	<a class="js-share btn" title=" Telegram" href="https://t.me/share/url?url=https%3a%2f%2fkywk.github.io%2fmoco%2fposts%2fsre%2fgit_check-branch-exists%2f&amp;title=Git%3a%20check%20if%20remote%20branch%20exists%20on%20a%20given%20remote%20repository" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, ' Telegram', 'width=800,height=600,toolbar=0,status=0'); return false">
 		<svg class="share__icon" aria-label="Telegram" role="img" viewBox="0 0 25 25"><path d="m9.417 15.181-.397 5.584c.568 0 .814-.244 1.109-.537l2.663-2.545 5.518 4.041c1.012.564 1.725.267 1.998-.931l3.622-16.972.001-.001c.321-1.496-.541-2.081-1.527-1.714l-21.29 8.151c-1.453.564-1.431 1.374-.247 1.741l5.443 1.693 12.643-7.911c.595-.394 1.136-.176.691.218z"/></svg>
 
 	</a>
-	<a class="js-share btn" title=" LinkedIn" href="https://www.linkedin.com/shareArticle?mini=true&url=https%3a%2f%2fkywk.github.io%2fmoco%2fposts%2ftool%2fmacos_make-installer-iso%2f&title=%e8%a3%bd%e4%bd%9c%20macOS%20%e5%ae%89%e8%a3%9d%20ISO%20%e6%aa%94" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, ' LinkedIn', 'width=640,height=480,toolbar=0,status=0'); return false">
+	<a class="js-share btn" title=" LinkedIn" href="https://www.linkedin.com/shareArticle?mini=true&url=https%3a%2f%2fkywk.github.io%2fmoco%2fposts%2fsre%2fgit_check-branch-exists%2f&title=Git%3a%20check%20if%20remote%20branch%20exists%20on%20a%20given%20remote%20repository" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, ' LinkedIn', 'width=640,height=480,toolbar=0,status=0'); return false">
 		<svg class="share__icon" aria-label="LinkedIn" role="img" viewBox="0 0 34.48 32"><path d="M29.632,0H2.362A2.336,2.336,0,0,0,0,2.306V29.691A2.337,2.337,0,0,0,2.362,32h27.27A2.342,2.342,0,0,0,32,29.691V2.306A2.34,2.34,0,0,0,29.632,0ZM9.491,27.268H4.744V12H9.491ZM7.119,9.909a2.752,2.752,0,1,1,2.75-2.753A2.753,2.753,0,0,1,7.119,9.909ZM27.268,27.268H22.525V19.842c0-1.772-.033-4.05-2.466-4.05-2.47,0-2.848,1.929-2.848,3.921v7.555H12.468V12h4.553v2.086h.063a4.986,4.986,0,0,1,4.491-2.467c4.806,0,5.694,3.163,5.694,7.275Z"/></svg>
 
 	</a>
-	<a class="js-share btn" title=" Pinterest" href="https://pinterest.com/pin/create/button/?url=https%3a%2f%2fkywk.github.io%2fmoco%2fposts%2ftool%2fmacos_make-installer-iso%2f&description=%e8%a3%bd%e4%bd%9c%20macOS%20%e5%ae%89%e8%a3%9d%20ISO%20%e6%aa%94" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, ' Pocket', 'width=800,height=720,toolbar=0,status=0'); return false">
+	<a class="js-share btn" title=" Pinterest" href="https://pinterest.com/pin/create/button/?url=https%3a%2f%2fkywk.github.io%2fmoco%2fposts%2fsre%2fgit_check-branch-exists%2f&description=Git%3a%20check%20if%20remote%20branch%20exists%20on%20a%20given%20remote%20repository" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, ' Pocket', 'width=800,height=720,toolbar=0,status=0'); return false">
 		<svg class="share__icon" aria-label="Pinterest" role="img" width="32" height="32" viewBox="0 0 512 512"><path d="m265 65c-104 0-157 75-157 138 0 37 14 71 45 83 5 2 10 0 12-5l3-18c2-6 1-7-2-12-9-11-15-24-15-43 0-56 41-106 108-106 60 0 92 37 92 85 0 64-28 116-70 116-23 0-40-18-34-42 6-27 19-57 19-77 0-18-9-34-30-34-24 0-42 25-42 58 0 20 7 34 7 34l-29 120a249 249 0 0 0 2 86l3-1c2-3 31-37 40-72l16-61c7 15 29 28 53 28 71 0 119-64 119-151 0-66-56-126-140-126z"/></svg>
 	</a>
 </div>
@@ -370,6 +360,27 @@ $ mv /tmp/bigSur.cdr /tmp/bigSur.iso
 		<article class="related__item">
 			<div class="feed__meta">
 				
+	<time itemprop="datePublished" class="feed__date" datetime="2021-04-14T11:45:28&#43;08:00">April 14, 2021</time>
+			</div>
+			<h3><a class="invert" href="/moco/posts/sre/ps_zip-archive/">PowerShell: How to Zip (and Unzip) Files</a></h3></article>
+		
+		<article class="related__item">
+			<div class="feed__meta">
+				
+	<time itemprop="datePublished" class="feed__date" datetime="2021-04-06T11:18:48&#43;08:00">April 06, 2021</time>
+			</div>
+			<h3><a class="invert" href="/moco/posts/tool/macos_make-installer-iso/">製作 macOS 安裝 ISO 檔</a></h3></article>
+		
+		<article class="related__item">
+			<div class="feed__meta">
+				
+	<time itemprop="datePublished" class="feed__date" datetime="2021-03-16T16:58:20&#43;08:00">March 16, 2021</time>
+			</div>
+			<h3><a class="invert" href="/moco/posts/sre/ubuntu_nginx-php/">在 Ubuntu Server 利用 Nginx 伺服器執行 PHP 程式</a></h3></article>
+		
+		<article class="related__item">
+			<div class="feed__meta">
+				
 	<time itemprop="datePublished" class="feed__date" datetime="2021-03-15T15:33:18&#43;08:00">March 15, 2021</time>
 			</div>
 			<h3><a class="invert" href="/moco/posts/tool/macos_shadowsocks/">Setup shadowsocks on macOS</a></h3></article>
@@ -377,30 +388,9 @@ $ mv /tmp/bigSur.cdr /tmp/bigSur.iso
 		<article class="related__item">
 			<div class="feed__meta">
 				
-	<time itemprop="datePublished" class="feed__date" datetime="2021-02-26T14:53:37&#43;08:00">February 26, 2021</time>
+	<time itemprop="datePublished" class="feed__date" datetime="2021-03-09T14:37:59&#43;08:00">March 09, 2021</time>
 			</div>
-			<h3><a class="invert" href="/moco/posts/tool/macos_dev-env-2021-feb/">macOS 開發環境建構 2021 Feb</a></h3></article>
-		
-		<article class="related__item">
-			<div class="feed__meta">
-				
-	<time itemprop="datePublished" class="feed__date" datetime="2021-02-26T14:05:03&#43;08:00">February 26, 2021</time>
-			</div>
-			<h3><a class="invert" href="/moco/posts/tool/macos_setup-note-2021-feb/">macOS 系統安裝紀錄 2021.Feb</a></h3></article>
-		
-		<article class="related__item">
-			<div class="feed__meta">
-				
-	<time itemprop="datePublished" class="feed__date" datetime="2020-12-07T16:48:04&#43;08:00">December 07, 2020</time>
-			</div>
-			<h3><a class="invert" href="/moco/posts/tool/macos_install-iftop/">macOS 安裝 iftop 失敗與解決方式</a></h3></article>
-		
-		<article class="related__item">
-			<div class="feed__meta">
-				
-	<time itemprop="datePublished" class="feed__date" datetime="2021-04-14T11:45:28&#43;08:00">April 14, 2021</time>
-			</div>
-			<h3><a class="invert" href="/moco/posts/sre/ps_zip-archive/">PowerShell: How to Zip (and Unzip) Files</a></h3></article>
+			<h3><a class="invert" href="/moco/posts/tool/chrome_extension-2021-mar/">Chrome Extension List, 2021.Mar</a></h3></article>
 		
 	</div>
 </div>

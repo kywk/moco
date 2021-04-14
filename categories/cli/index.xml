@@ -11,10 +11,10 @@
     <lastBuildDate>Thu, 10 Dec 2020 17:31:07 +0800</lastBuildDate><atom:link href="https://kywk.github.io/moco/categories/cli/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Tar 加密打包語法</title>
-      <link>https://kywk.github.io/moco/posts/tool/cli_encrypt-tarball/</link>
+      <link>https://kywk.github.io/moco/posts/sre/cli_encrypt-tarball/</link>
       <pubDate>Thu, 10 Dec 2020 17:31:07 +0800</pubDate>
       <author>kywk.id@gmail.com (Moo Cow)</author>
-      <guid>https://kywk.github.io/moco/posts/tool/cli_encrypt-tarball/</guid>
+      <guid>https://kywk.github.io/moco/posts/sre/cli_encrypt-tarball/</guid>
       <description>網路上免費創建團隊硬碟理論上創建者是團隊硬碟管理員, 但實際上所有的團隊硬碟仍受 Google GSuite / Workspace 機構管理員管轄. 機構管理員雖然無法直接存取檔案, 但有權將檔案擁有者轉移給他人. 如果只是存放網路上載來的資源就算了, 若是存放個人檔案, 仍建議加密壓縮.</description>
     </item>
     

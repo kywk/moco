@@ -8,13 +8,23 @@
     <language>zh-tw</language>
     <managingEditor>kywk.id@gmail.com (Moo Cow)</managingEditor>
     <webMaster>kywk.id@gmail.com (Moo Cow)</webMaster>
-    <lastBuildDate>Mon, 12 Apr 2021 15:13:11 +0800</lastBuildDate><atom:link href="https://kywk.github.io/moco/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 14 Apr 2021 11:45:28 +0800</lastBuildDate><atom:link href="https://kywk.github.io/moco/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>PowerShell: How to Zip (and Unzip) Files</title>
+      <link>https://kywk.github.io/moco/posts/sre/ps_zip-archive/</link>
+      <pubDate>Wed, 14 Apr 2021 11:45:28 +0800</pubDate>
+      <author>kywk.id@gmail.com (Moo Cow)</author>
+      <guid>https://kywk.github.io/moco/posts/sre/ps_zip-archive/</guid>
+      <description>專案的佈署腳本中, 通常會存在複製程式碼到特定資料夾的步驟. 這次遇到的問題是複製中文檔名時發生錯誤.
+猜想可能是 SCP 上傳時發生編碼轉換的情況, 但實話說 Windows 的一些編碼問題, 對於長期習慣在 UNiX (macOS, Linux) 下工作人來說, 有些難以理解.</description>
+    </item>
+    
     <item>
       <title>Git: check if remote branch exists on a given remote repository</title>
-      <link>https://kywk.github.io/moco/posts/tool/git_check-branch-exists/</link>
+      <link>https://kywk.github.io/moco/posts/sre/git_check-branch-exists/</link>
       <pubDate>Mon, 12 Apr 2021 15:13:11 +0800</pubDate>
       <author>kywk.id@gmail.com (Moo Cow)</author>
-      <guid>https://kywk.github.io/moco/posts/tool/git_check-branch-exists/</guid>
+      <guid>https://kywk.github.io/moco/posts/sre/git_check-branch-exists/</guid>
       <description>專案要幫一些舊項目導入 GitLab CI/CD, 案例是有多個項目需參考另一個 Git 共用元件項目, 通常會用 Git SubModule 來引用共用元件項目. 但因舊項目既有開發流程與版控管理已久, 有些需求實作就難以較正確的方式進行.</description>
     </item>
     
@@ -95,10 +105,10 @@ Shadowsocks（簡稱SS） 是一種基於Socks5代理方式的加密傳輸協定
     
     <item>
       <title>Tar 加密打包語法</title>
-      <link>https://kywk.github.io/moco/posts/tool/cli_encrypt-tarball/</link>
+      <link>https://kywk.github.io/moco/posts/sre/cli_encrypt-tarball/</link>
       <pubDate>Thu, 10 Dec 2020 17:31:07 +0800</pubDate>
       <author>kywk.id@gmail.com (Moo Cow)</author>
-      <guid>https://kywk.github.io/moco/posts/tool/cli_encrypt-tarball/</guid>
+      <guid>https://kywk.github.io/moco/posts/sre/cli_encrypt-tarball/</guid>
       <description>網路上免費創建團隊硬碟理論上創建者是團隊硬碟管理員, 但實際上所有的團隊硬碟仍受 Google GSuite / Workspace 機構管理員管轄. 機構管理員雖然無法直接存取檔案, 但有權將檔案擁有者轉移給他人. 如果只是存放網路上載來的資源就算了, 若是存放個人檔案, 仍建議加密壓縮.</description>
     </item>
     

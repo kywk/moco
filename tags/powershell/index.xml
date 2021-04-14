@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>powershell on moco</title>
+    <link>https://kywk.github.io/moco/tags/powershell/</link>
+    <description>Recent content in powershell on moco</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <managingEditor>kywk.id@gmail.com (Moo Cow)</managingEditor>
+    <webMaster>kywk.id@gmail.com (Moo Cow)</webMaster>
+    <lastBuildDate>Wed, 14 Apr 2021 11:45:28 +0800</lastBuildDate><atom:link href="https://kywk.github.io/moco/tags/powershell/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>PowerShell: How to Zip (and Unzip) Files</title>
+      <link>https://kywk.github.io/moco/posts/sre/ps_zip-archive/</link>
+      <pubDate>Wed, 14 Apr 2021 11:45:28 +0800</pubDate>
+      <author>kywk.id@gmail.com (Moo Cow)</author>
+      <guid>https://kywk.github.io/moco/posts/sre/ps_zip-archive/</guid>
+      <description>專案的佈署腳本中, 通常會存在複製程式碼到特定資料夾的步驟. 這次遇到的問題是複製中文檔名時發生錯誤.
+猜想可能是 SCP 上傳時發生編碼轉換的情況, 但實話說 Windows 的一些編碼問題, 對於長期習慣在 UNiX (macOS, Linux) 下工作人來說, 有些難以理解.</description>
+    </item>
+    
+  </channel>
+</rss>
