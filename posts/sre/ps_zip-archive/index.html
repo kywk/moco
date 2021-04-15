@@ -9,10 +9,10 @@
 	<title>PowerShell: How to Zip (and Unzip) Files |  moco </title>
 	<meta name="description"
 		content="專案的佈署腳本中, 通常會存在複製程式碼到特定資料夾的步驟. 這次遇到的問題是複製中文檔名時發生錯誤.
-猜想可能是 SCP 上傳時發生編碼轉換的情況. 應該是可以從 SCP 設定去了解. 然而同一份 gitlab.">
+88Copy-Item : �e���L�k�ƻs���{�����������ءC 89���� �u��:1 �r��:1 90&#43; Copy-Item -Path F:\temp\BIN\* -Destination F:\xxx\xxx .">
 	<meta property="og:title" content="PowerShell: How to Zip (and Unzip) Files" />
 <meta property="og:description" content="專案的佈署腳本中, 通常會存在複製程式碼到特定資料夾的步驟. 這次遇到的問題是複製中文檔名時發生錯誤.
-猜想可能是 SCP 上傳時發生編碼轉換的情況. 應該是可以從 SCP 設定去了解. 然而同一份 gitlab." />
+88Copy-Item : �e���L�k�ƻs���{�����������ءC 89���� �u��:1 �r��:1 90&#43; Copy-Item -Path F:\temp\BIN\* -Destination F:\xxx\xxx ." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://kywk.github.io/moco/posts/sre/ps_zip-archive/" /><meta property="og:image" content="https://lh3.googleusercontent.com/pw/ACtC-3cPqSgsILVWQUJLUO-B39cp4gUhiMB-BSO7R0u1j5ce7Zsc8xvuTeMsxNwE_pvNj7BDkE1MZ2t_nRgJebUtxx2-MKXstRulc9N44FSZbOOaN91_WMer6PA8XjwA75P8E7aUWLZaQUi-oSAKMYz_ao1ncw=w760-h428-no?authuser=0" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-04-14T11:45:28&#43;08:00" />
@@ -24,14 +24,14 @@
 
 <meta name="twitter:title" content="PowerShell: How to Zip (and Unzip) Files"/>
 <meta name="twitter:description" content="專案的佈署腳本中, 通常會存在複製程式碼到特定資料夾的步驟. 這次遇到的問題是複製中文檔名時發生錯誤.
-猜想可能是 SCP 上傳時發生編碼轉換的情況. 應該是可以從 SCP 設定去了解. 然而同一份 gitlab."/>
+88Copy-Item : �e���L�k�ƻs���{�����������ءC 89���� �u��:1 �r��:1 90&#43; Copy-Item -Path F:\temp\BIN\* -Destination F:\xxx\xxx ."/>
 
 	<meta name="twitter:site" content="@wisnuwiry" />
 	<meta itemprop="name" content="PowerShell: How to Zip (and Unzip) Files">
 <meta itemprop="description" content="專案的佈署腳本中, 通常會存在複製程式碼到特定資料夾的步驟. 這次遇到的問題是複製中文檔名時發生錯誤.
-猜想可能是 SCP 上傳時發生編碼轉換的情況. 應該是可以從 SCP 設定去了解. 然而同一份 gitlab."><meta itemprop="datePublished" content="2021-04-14T11:45:28&#43;08:00" />
+88Copy-Item : �e���L�k�ƻs���{�����������ءC 89���� �u��:1 �r��:1 90&#43; Copy-Item -Path F:\temp\BIN\* -Destination F:\xxx\xxx ."><meta itemprop="datePublished" content="2021-04-14T11:45:28&#43;08:00" />
 <meta itemprop="dateModified" content="2021-04-14T11:45:28&#43;08:00" />
-<meta itemprop="wordCount" content="199"><meta itemprop="image" content="https://lh3.googleusercontent.com/pw/ACtC-3cPqSgsILVWQUJLUO-B39cp4gUhiMB-BSO7R0u1j5ce7Zsc8xvuTeMsxNwE_pvNj7BDkE1MZ2t_nRgJebUtxx2-MKXstRulc9N44FSZbOOaN91_WMer6PA8XjwA75P8E7aUWLZaQUi-oSAKMYz_ao1ncw=w760-h428-no?authuser=0">
+<meta itemprop="wordCount" content="239"><meta itemprop="image" content="https://lh3.googleusercontent.com/pw/ACtC-3cPqSgsILVWQUJLUO-B39cp4gUhiMB-BSO7R0u1j5ce7Zsc8xvuTeMsxNwE_pvNj7BDkE1MZ2t_nRgJebUtxx2-MKXstRulc9N44FSZbOOaN91_WMer6PA8XjwA75P8E7aUWLZaQUi-oSAKMYz_ao1ncw=w760-h428-no?authuser=0">
 <meta itemprop="keywords" content="cli,powershell," />
 	<link rel="stylesheet" href="/moco/css/bundle.min.css">
 	<link rel="apple-touch-icon" sizes="180x180" href="https://kywk.github.io/icons/apple-touch-icon.png">
@@ -102,10 +102,10 @@
 	"headline":"PowerShell: How to Zip (and Unzip) Files",
 	"datePublished":"2021-04-14T11",
 	"dateModified":"2021-04-14T11",
-	"description":"專案的佈署腳本中, 通常會存在複製程式碼到特定資料夾的步驟. 這次遇到的問題是複製中文檔名時發生錯誤.\n猜想可能是 SCP 上傳時發生編碼轉換的情況. 應該是可以從 SCP 設定去了解. 然而同一份 gitlab.",
+	"description":"專案的佈署腳本中, 通常會存在複製程式碼到特定資料夾的步驟. 這次遇到的問題是複製中文檔名時發生錯誤.\n88Copy-Item : �e���L�k�ƻs���{�����������ءC 89���� �u��:1 �r��:1 90\u002b Copy-Item -Path F:\\temp\\BIN\\* -Destination F:\\xxx\\xxx .",
 	"isFamilyFriendly": "true",
 	"image":  ["https://lh3.googleusercontent.com/pw/ACtC-3cPqSgsILVWQUJLUO-B39cp4gUhiMB-BSO7R0u1j5ce7Zsc8xvuTeMsxNwE_pvNj7BDkE1MZ2t_nRgJebUtxx2-MKXstRulc9N44FSZbOOaN91_WMer6PA8XjwA75P8E7aUWLZaQUi-oSAKMYz_ao1ncw=w760-h428-no?authuser=0"] ,
-	"wordCount" : "199",
+	"wordCount" : "239",
 	"keywords": ["cli","powershell"],
 	"genre": ["cli","powershell"],
 	"accountablePerson": {
@@ -250,7 +250,7 @@
     <p>🔄 Updated: 
         <time itemprop="dateModified" datetime="2021-04-14T11:45:28&#43;08:00">April 14, 2021</time>
     </p>
-    <p>🕔 1 min read ∙ 199 words</p></div>
+    <p>🕔 2 min read ∙ 239 words</p></div>
 			
 <nav class="breadcrumb block" aria-label="breadcrumb">
 	<ol class="breadcrumb__list">
@@ -269,15 +269,20 @@
 					<div class="entry__content">
 					<p>專案的佈署腳本中, 通常會存在複製程式碼到特定資料夾的步驟.
 這次遇到的問題是複製中文檔名時發生錯誤.</p>
-<pre><code></code></pre><p>猜想可能是 SCP 上傳時發生編碼轉換的情況. 應該是可以從 SCP 設定去了解.
-然而同一份 gitlab.yml 檔, 有時成功有時失敗. 也許和不同 runner 有關,
+<pre><code>88Copy-Item : �e���L�k�ƻs���{�����������ءC
+89���� �u��:1 �r��:1
+90+ Copy-Item -Path F:\temp\BIN\* -Destination F:\xxx\xxx ...
+91+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+92    + CategoryInfo          : InvalidArgument: (F:\temp\BIN\_theme:String) [Copy-Item]�APSArgumentExceptio
+93    n
+94    + FullyQualifiedErrorId : CopyContainerItemToLeafError,Microsoft.PowerShell.Commands.CopyItemCommand
+</code></pre><p>然而同一份 gitlab.yml 檔, 有時成功有時失敗. 也許和不同 runner 有關,
 加上發案方的許多防火牆限制, 都讓追查問題相當困難.</p>
-<p>實話說 Windows 的編碼問題,
-對於長期習慣在 UNiX (macOS, Linux) 下工作人來說, 有些難以理解.<br>
+<p>實話說 Windows 的編碼問題, 對於長期習慣在 UNiX (macOS, Linux) 下工作人來說, 有些一頭霧水.
 雖然這次的情況, 是個契機去好好了解與學習 Windows 與 PowerShell 下如何處理與避免編碼問題.
 可惜恰好遇上繁忙, 無法慢慢去釐清與學習了解.</p>
-<p>Workaround 解法是, 在 CI/CD Pipeline 編譯成功之後, 把檔案壓縮打包.
-打包後沒有中文檔名, SCP 傳輸不會出錯, 後續再解壓縮來佈署.</p>
+<p>Workaround 的解法是, 在 CI/CD Pipeline 編譯成功之後, 把檔案壓縮打包.
+後續再解壓縮來佈署.</p>
 <p>在 PowerShell 5.0 以後可透過 <a href="https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.archive/compress-archive" target="_blank" rel="noopener">Compress-Archive</a> 和 <a href="https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.archive/expand-archive" target="_blank" rel="noopener">Expand-Archive</a>
 來壓縮和解壓縮 Zip 檔案. 常用簡單命令如後:</p>
 <p><strong>建立 Zip 壓縮檔</strong></p>
@@ -328,6 +333,12 @@ PowerShell 會比對 <code>D:\MyArchive.zip</code> 與 <code>D:\MyFolder\*.txt</
 <div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="c"># 解壓縮 Zip 檔</span>
 <span class="nb">Expand-Archive</span> <span class="n">-Path</span> <span class="n">D:</span><span class="p">\</span><span class="n">MyArchive</span><span class="p">.</span><span class="n">Zip</span> <span class="n">-DestinationPath</span> <span class="n">D:</span><span class="p">\</span><span class="n">Output</span>
 </code></pre></div><p>執行之後就會將 <code>D:\MyArchive.Zip</code> 解壓縮至 <code>D:\Output</code> 目錄中. 如果 <code>D:\Output</code> 目錄不存在的話, 解壓縮時它會自動建立.</p>
+<p><em>後記更新</em></p>
+<p>最後發現, 和中文檔名一點關係也沒.</p>
+<p>簡單來說, 在 PowerShell 下使用 <code>Copy-Item</code> 時,
+最好是搭配 <code>-LiteralPath</code> 而非 <code>-Path</code> 已避免錯誤.
+至於原因, 暫時無力追蹤理解.
+請先參考 <a href="https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.management/copy-item" target="_blank" rel="noopener">Copy-Item 官方說明</a> 自行求解.</p>
 <p><em>Reference</em></p>
 <ul>
 <li><a href="https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.archive/" target="_blank" rel="noopener">Microsoft.PowerShell.Archive Module - PowerShell | Microsoft Docs</a></li>
@@ -405,6 +416,13 @@ PowerShell 會比對 <code>D:\MyArchive.zip</code> 與 <code>D:\MyFolder\*.txt</
 		<article class="related__item">
 			<div class="feed__meta">
 				
+	<time itemprop="datePublished" class="feed__date" datetime="2021-04-15T13:24:47&#43;08:00">April 15, 2021</time>
+			</div>
+			<h3><a class="invert" href="/moco/posts/sre/ps_path-vs-literalpath/">PowerShell: Path and LiteralPath</a></h3></article>
+		
+		<article class="related__item">
+			<div class="feed__meta">
+				
 	<time itemprop="datePublished" class="feed__date" datetime="2021-04-12T15:13:11&#43;08:00">April 12, 2021</time>
 			</div>
 			<h3><a class="invert" href="/moco/posts/sre/git_check-branch-exists/">Git: check if remote branch exists on a given remote repository</a></h3></article>
@@ -429,13 +447,6 @@ PowerShell 會比對 <code>D:\MyArchive.zip</code> 與 <code>D:\MyFolder\*.txt</
 	<time itemprop="datePublished" class="feed__date" datetime="2021-03-15T15:33:18&#43;08:00">March 15, 2021</time>
 			</div>
 			<h3><a class="invert" href="/moco/posts/tool/macos_shadowsocks/">Setup shadowsocks on macOS</a></h3></article>
-		
-		<article class="related__item">
-			<div class="feed__meta">
-				
-	<time itemprop="datePublished" class="feed__date" datetime="2021-03-09T14:37:59&#43;08:00">March 09, 2021</time>
-			</div>
-			<h3><a class="invert" href="/moco/posts/tool/chrome_extension-2021-mar/">Chrome Extension List, 2021.Mar</a></h3></article>
 		
 	</div>
 </div>

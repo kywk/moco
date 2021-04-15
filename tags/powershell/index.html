@@ -92,8 +92,8 @@
 		"@id":"https:\/\/kywk.github.io\/mocohttps:\/\/kywk.github.io\/moco\/tags\/powershell\/"
 	},
 	"headline":"powershell",
-	"datePublished":"2021-04-14T11",
-	"dateModified":"2021-04-14T11",
+	"datePublished":"2021-04-15T13",
+	"dateModified":"2021-04-15T13",
 	"description":"",
 	"isFamilyFriendly": "true",
 	"image": ["https://kywk.github.io/moco/img/avatar.webp"],
@@ -226,13 +226,32 @@
 		<div class="feed__meta">
 				<img alt="Moo Cow avatar" data-src="/moco/img/avatar.webp" class="post__author-thumb lazyload" src="/moco/img/placeholder.svg">
 				<a class="feed__author invert" href="/about">Moo Cow</a>
+	<time itemprop="datePublished" class="feed__date" datetime="2021-04-15T13:24:47&#43;08:00">April 15, 2021</time>
+		</div>
+		<h2>
+			<a href="/moco/posts/sre/ps_path-vs-literalpath/" class="invert">PowerShell: Path and LiteralPath</a>
+		</h2>
+		<p>在 PowerShell: How to Zip (and Unzip) Files 文中提及, 遇到 Copy-Item 使用 -Path 遇到中文檔名時出現錯誤, 需改用 -LiteralPath 才成功.</p>
+		
+<div class="post__tag">
+			<a href="/moco/tags/cli/"># cli</a>
+			<a href="/moco/tags/powershell/"># powershell</a>
+</div>
+	</div>
+</article>
+		
+			<article class="feed__item">
+	<div>
+		<div class="feed__meta">
+				<img alt="Moo Cow avatar" data-src="/moco/img/avatar.webp" class="post__author-thumb lazyload" src="/moco/img/placeholder.svg">
+				<a class="feed__author invert" href="/about">Moo Cow</a>
 	<time itemprop="datePublished" class="feed__date" datetime="2021-04-14T11:45:28&#43;08:00">April 14, 2021</time>
 		</div>
 		<h2>
 			<a href="/moco/posts/sre/ps_zip-archive/" class="invert">PowerShell: How to Zip (and Unzip) Files</a>
 		</h2>
 		<p>專案的佈署腳本中, 通常會存在複製程式碼到特定資料夾的步驟. 這次遇到的問題是複製中文檔名時發生錯誤.
-猜想可能是 SCP 上傳時發生編碼轉換的情況. 應該是可以從 SCP 設定去了解. 然而同一份 gitlab.</p>
+88Copy-Item : �e���L�k�ƻs���{�����������ءC 89���� �u��:1 �r��:1 90+ Copy-Item -Path F:\temp\BIN\* -Destination F:\xxx\xxx .</p>
 		
 <div class="post__tag">
 			<a href="/moco/tags/cli/"># cli</a>

@@ -8,7 +8,16 @@
     <language>zh-tw</language>
     <managingEditor>kywk.id@gmail.com (Moo Cow)</managingEditor>
     <webMaster>kywk.id@gmail.com (Moo Cow)</webMaster>
-    <lastBuildDate>Wed, 14 Apr 2021 11:45:28 +0800</lastBuildDate><atom:link href="https://kywk.github.io/moco/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 15 Apr 2021 13:24:47 +0800</lastBuildDate><atom:link href="https://kywk.github.io/moco/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>PowerShell: Path and LiteralPath</title>
+      <link>https://kywk.github.io/moco/posts/sre/ps_path-vs-literalpath/</link>
+      <pubDate>Thu, 15 Apr 2021 13:24:47 +0800</pubDate>
+      <author>kywk.id@gmail.com (Moo Cow)</author>
+      <guid>https://kywk.github.io/moco/posts/sre/ps_path-vs-literalpath/</guid>
+      <description>在 PowerShell: How to Zip (and Unzip) Files 文中提及, 遇到 Copy-Item 使用 -Path 遇到中文檔名時出現錯誤, 需改用 -LiteralPath 才成功.</description>
+    </item>
+    
     <item>
       <title>PowerShell: How to Zip (and Unzip) Files</title>
       <link>https://kywk.github.io/moco/posts/sre/ps_zip-archive/</link>
@@ -16,7 +25,7 @@
       <author>kywk.id@gmail.com (Moo Cow)</author>
       <guid>https://kywk.github.io/moco/posts/sre/ps_zip-archive/</guid>
       <description>專案的佈署腳本中, 通常會存在複製程式碼到特定資料夾的步驟. 這次遇到的問題是複製中文檔名時發生錯誤.
-猜想可能是 SCP 上傳時發生編碼轉換的情況. 應該是可以從 SCP 設定去了解. 然而同一份 gitlab.</description>
+88Copy-Item : �e���L�k�ƻs���{�����������ءC 89���� �u��:1 �r��:1 90+ Copy-Item -Path F:\temp\BIN\* -Destination F:\xxx\xxx .</description>
     </item>
     
     <item>
