@@ -8,13 +8,31 @@
     <language>zh-tw</language>
     <managingEditor>kywk.id@gmail.com (Moo Cow)</managingEditor>
     <webMaster>kywk.id@gmail.com (Moo Cow)</webMaster>
-    <lastBuildDate>Sun, 25 Apr 2021 20:40:21 +0800</lastBuildDate><atom:link href="https://kywk.github.io/moco/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 07 May 2021 09:30:26 +0800</lastBuildDate><atom:link href="https://kywk.github.io/moco/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>sre</title>
+      <title>redis</title>
+      <link>https://kywk.github.io/moco/tags/redis/</link>
+      <pubDate>Fri, 07 May 2021 09:30:26 +0800</pubDate>
+      <author>kywk.id@gmail.com (Moo Cow)</author>
+      <guid>https://kywk.github.io/moco/tags/redis/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>SRE</title>
       <link>https://kywk.github.io/moco/tags/sre/</link>
-      <pubDate>Sun, 25 Apr 2021 20:40:21 +0800</pubDate>
+      <pubDate>Fri, 07 May 2021 09:30:26 +0800</pubDate>
       <author>kywk.id@gmail.com (Moo Cow)</author>
       <guid>https://kywk.github.io/moco/tags/sre/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>nginx</title>
+      <link>https://kywk.github.io/moco/tags/nginx/</link>
+      <pubDate>Sun, 25 Apr 2021 20:40:21 +0800</pubDate>
+      <author>kywk.id@gmail.com (Moo Cow)</author>
+      <guid>https://kywk.github.io/moco/tags/nginx/</guid>
       <description></description>
     </item>
     
@@ -51,15 +69,6 @@
       <pubDate>Tue, 06 Apr 2021 11:18:48 +0800</pubDate>
       <author>kywk.id@gmail.com (Moo Cow)</author>
       <guid>https://kywk.github.io/moco/tags/macos/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>nginx</title>
-      <link>https://kywk.github.io/moco/tags/nginx/</link>
-      <pubDate>Tue, 16 Mar 2021 16:58:20 +0800</pubDate>
-      <author>kywk.id@gmail.com (Moo Cow)</author>
-      <guid>https://kywk.github.io/moco/tags/nginx/</guid>
       <description></description>
     </item>
     

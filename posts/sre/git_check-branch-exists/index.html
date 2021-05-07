@@ -286,7 +286,7 @@ Exit with status &ldquo;2&rdquo; when no matching refs are found in the remote r
 $ git ls-remote --exit-code --heads origin &lt;branch-that-not-exists-origin&gt;
 <span class="o">=</span>&gt; <span class="k">return</span> <span class="m">2</span>
 </code></pre></div><p><strong>PowerShell</strong></p>
-<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="p">$</span> <span class="k">if</span> <span class="p">(</span><span class="n">git</span> <span class="n">ls-remote</span> <span class="p">-</span><span class="n">-exit-code</span> <span class="p">-</span><span class="n">-heads</span> <span class="n">origin</span> <span class="p">&lt;</span><span class="n">branch-that-exists-in-origin</span><span class="p">&gt;)</span> <span class="p">{</span> <span class="nv">$true</span> <span class="p">}</span> <span class="k">else</span> 
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="p">$</span> <span class="k">if</span> <span class="p">(</span><span class="n">git</span> <span class="nb">ls-remote</span> <span class="p">-</span><span class="n">-exit-code</span> <span class="p">-</span><span class="n">-heads</span> <span class="n">origin</span> <span class="p">&lt;</span><span class="nb">branch-that</span><span class="n">-exists-in-origin</span><span class="p">&gt;)</span> <span class="p">{</span> <span class="nv">$true</span> <span class="p">}</span> <span class="k">else</span> 
 <span class="p">{</span> <span class="nv">$false</span> <span class="p">}</span>
 </code></pre></div><p>Ref: <a href="https://stackoverflow.com/questions/8223906/how-to-check-if-remote-branch-exists-on-a-given-remote-repository" target="_blank" rel="noopener">git - How to check if remote branch exists on a given remote repository? - Stack Overflow</a></p>
 
@@ -360,9 +360,23 @@ $ git ls-remote --exit-code --heads origin &lt;branch-that-not-exists-origin&gt;
 		<article class="related__item">
 			<div class="feed__meta">
 				
+	<time itemprop="datePublished" class="feed__date" datetime="2021-05-07T09:30:26&#43;08:00">May 07, 2021</time>
+			</div>
+			<h3><a class="invert" href="/moco/posts/sre/it_redis-cluster/">建製 Redis Cluster</a></h3></article>
+		
+		<article class="related__item">
+			<div class="feed__meta">
+				
+	<time itemprop="datePublished" class="feed__date" datetime="2021-05-06T14:26:31&#43;08:00">May 06, 2021</time>
+			</div>
+			<h3><a class="invert" href="/moco/posts/sre/it_solve-redis-warning/">Redis 警告訊息排除</a></h3></article>
+		
+		<article class="related__item">
+			<div class="feed__meta">
+				
 	<time itemprop="datePublished" class="feed__date" datetime="2021-04-25T20:40:21&#43;08:00">April 25, 2021</time>
 			</div>
-			<h3><a class="invert" href="/moco/posts/sre/it-manual-sign-letsencrypt/">手動申請 Let&#39;s Encrypt 憑證與設定 Nginx</a></h3></article>
+			<h3><a class="invert" href="/moco/posts/sre/it_manual-sign-letsencrypt/">手動申請 Let&#39;s Encrypt 憑證與設定 Nginx</a></h3></article>
 		
 		<article class="related__item">
 			<div class="feed__meta">
@@ -377,20 +391,6 @@ $ git ls-remote --exit-code --heads origin &lt;branch-that-not-exists-origin&gt;
 	<time itemprop="datePublished" class="feed__date" datetime="2021-04-14T11:45:28&#43;08:00">April 14, 2021</time>
 			</div>
 			<h3><a class="invert" href="/moco/posts/sre/ps_zip-archive/">PowerShell: How to Zip (and Unzip) Files</a></h3></article>
-		
-		<article class="related__item">
-			<div class="feed__meta">
-				
-	<time itemprop="datePublished" class="feed__date" datetime="2021-04-06T11:18:48&#43;08:00">April 06, 2021</time>
-			</div>
-			<h3><a class="invert" href="/moco/posts/tool/macos_make-installer-iso/">製作 macOS 安裝 ISO 檔</a></h3></article>
-		
-		<article class="related__item">
-			<div class="feed__meta">
-				
-	<time itemprop="datePublished" class="feed__date" datetime="2021-03-16T16:58:20&#43;08:00">March 16, 2021</time>
-			</div>
-			<h3><a class="invert" href="/moco/posts/sre/ubuntu_nginx-php/">在 Ubuntu Server 利用 Nginx 伺服器執行 PHP 程式</a></h3></article>
 		
 	</div>
 </div>

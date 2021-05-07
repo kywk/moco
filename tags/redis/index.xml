@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>SRE on moco</title>
-    <link>https://kywk.github.io/moco/tags/sre/</link>
-    <description>Recent content in SRE on moco</description>
+    <title>redis on moco</title>
+    <link>https://kywk.github.io/moco/tags/redis/</link>
+    <description>Recent content in redis on moco</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-tw</language>
     <managingEditor>kywk.id@gmail.com (Moo Cow)</managingEditor>
     <webMaster>kywk.id@gmail.com (Moo Cow)</webMaster>
-    <lastBuildDate>Fri, 07 May 2021 09:30:26 +0800</lastBuildDate><atom:link href="https://kywk.github.io/moco/tags/sre/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 07 May 2021 09:30:26 +0800</lastBuildDate><atom:link href="https://kywk.github.io/moco/tags/redis/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>建製 Redis Cluster</title>
       <link>https://kywk.github.io/moco/posts/sre/it_redis-cluster/</link>
@@ -26,24 +26,6 @@
       <guid>https://kywk.github.io/moco/posts/sre/it_solve-redis-warning/</guid>
       <description>啟動 Redis 出現下列警告訊息, 警告說明相當清楚, 如何處理與配置也很清楚, 一一設置即可.
 cow@sandbox:~/tmp/redis/src# ./redis-server 25572:C 06 May 2021 07:58:52.</description>
-    </item>
-    
-    <item>
-      <title>手動申請 Let&#39;s Encrypt 憑證與設定 Nginx</title>
-      <link>https://kywk.github.io/moco/posts/sre/it_manual-sign-letsencrypt/</link>
-      <pubDate>Sun, 25 Apr 2021 20:40:21 +0800</pubDate>
-      <author>kywk.id@gmail.com (Moo Cow)</author>
-      <guid>https://kywk.github.io/moco/posts/sre/it_manual-sign-letsencrypt/</guid>
-      <description>在 Google, Apple 等科技巨頭主導下, HTTPS 已成網站服務必備. 而合格 https CA 憑證的申請是要費用的, 因此出現 Let&amp;rsquo;s Encrypt 這樣的服務.</description>
-    </item>
-    
-    <item>
-      <title>在 Ubuntu Server 利用 Nginx 伺服器執行 PHP 程式</title>
-      <link>https://kywk.github.io/moco/posts/sre/ubuntu_nginx-php/</link>
-      <pubDate>Tue, 16 Mar 2021 16:58:20 +0800</pubDate>
-      <author>kywk.id@gmail.com (Moo Cow)</author>
-      <guid>https://kywk.github.io/moco/posts/sre/ubuntu_nginx-php/</guid>
-      <description>Nginx + PHP on ubuntu # 長期以來 Apache Server 的效能與承載數低落, 加上層出不窮的漏洞, 許多人陸續投向 Event-based Server 的懷抱, 例如 Nginx.</description>
     </item>
     
   </channel>
