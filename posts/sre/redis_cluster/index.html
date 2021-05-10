@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh-tw">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="theme-color" content="#1da1f2">
+	<title>建製 Redis Cluster |  moco </title>
+	<meta name="description"
+		content="Redis-Cluster 為無中心化架構, 每個節點都會儲存數據以及整個叢集狀態, 每個節點都會和其他節點建立連線. 一組 Redis Cluster 由多個獨立 Redis 節點組成, 官方建議六個節點, 其中三個為主節點 (master) 三個為從節點 (slave).">
+	<meta property="og:title" content="建製 Redis Cluster" />
+<meta property="og:description" content="Redis-Cluster 為無中心化架構, 每個節點都會儲存數據以及整個叢集狀態, 每個節點都會和其他節點建立連線. 一組 Redis Cluster 由多個獨立 Redis 節點組成, 官方建議六個節點, 其中三個為主節點 (master) 三個為從節點 (slave)." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://kywk.github.io/moco/posts/sre/redis_cluster/" /><meta property="og:image" content="https://lh3.googleusercontent.com/pw/ACtC-3fIlrxgO6AX1o_tNuiD0YfrwpojgHUZa_OSpR36XoOZ_Ojz9q0Bw9yZ2V9QwSKUqApRMEIPWetv9AQd4TsfGgE0AaZXj7IJ2NV6ffvWj7N_Fjo2EzJ7BaCjZ7Fxx702zh6ZnykZAOChtRM-P1Zr9t0SYQ=w800-no?authuser=0" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-05-07T09:30:26&#43;08:00" />
+<meta property="article:modified_time" content="2021-05-07T09:30:26&#43;08:00" />
+
+
+	<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://lh3.googleusercontent.com/pw/ACtC-3fIlrxgO6AX1o_tNuiD0YfrwpojgHUZa_OSpR36XoOZ_Ojz9q0Bw9yZ2V9QwSKUqApRMEIPWetv9AQd4TsfGgE0AaZXj7IJ2NV6ffvWj7N_Fjo2EzJ7BaCjZ7Fxx702zh6ZnykZAOChtRM-P1Zr9t0SYQ=w800-no?authuser=0"/>
+
+<meta name="twitter:title" content="建製 Redis Cluster"/>
+<meta name="twitter:description" content="Redis-Cluster 為無中心化架構, 每個節點都會儲存數據以及整個叢集狀態, 每個節點都會和其他節點建立連線. 一組 Redis Cluster 由多個獨立 Redis 節點組成, 官方建議六個節點, 其中三個為主節點 (master) 三個為從節點 (slave)."/>
+
+	<meta name="twitter:site" content="@wisnuwiry" />
+	<meta itemprop="name" content="建製 Redis Cluster">
+<meta itemprop="description" content="Redis-Cluster 為無中心化架構, 每個節點都會儲存數據以及整個叢集狀態, 每個節點都會和其他節點建立連線. 一組 Redis Cluster 由多個獨立 Redis 節點組成, 官方建議六個節點, 其中三個為主節點 (master) 三個為從節點 (slave)."><meta itemprop="datePublished" content="2021-05-07T09:30:26&#43;08:00" />
+<meta itemprop="dateModified" content="2021-05-07T09:30:26&#43;08:00" />
+<meta itemprop="wordCount" content="584"><meta itemprop="image" content="https://lh3.googleusercontent.com/pw/ACtC-3fIlrxgO6AX1o_tNuiD0YfrwpojgHUZa_OSpR36XoOZ_Ojz9q0Bw9yZ2V9QwSKUqApRMEIPWetv9AQd4TsfGgE0AaZXj7IJ2NV6ffvWj7N_Fjo2EzJ7BaCjZ7Fxx702zh6ZnykZAOChtRM-P1Zr9t0SYQ=w800-no?authuser=0">
+<meta itemprop="keywords" content="SRE,redis," />
+	<link rel="stylesheet" href="/moco/css/bundle.min.css">
+	<link rel="apple-touch-icon" sizes="180x180" href="https://kywk.github.io/icons/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="https://kywk.github.io/icons/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="https://kywk.github.io/icons/favicon-16x16.png">
+	<link rel="shortcut icon" href="https://kywk.github.io/icons/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="https://kywk.github.io/icons/favicon.ico" type="image/x-icon">
+	<meta name="msapplication-TileColor" content="#1da1f2">
+	<link rel="manifest" href="https://kywk.github.io/moco/manifest.json">
+	
+	<script type="application/ld+json">
+{
+	"@context":"http://schema.org",
+	"@type":"WebSite",
+	"name":"moco",
+	"url":"https:\/\/kywk.github.io\/moco",
+	"sameAs":[
+		"https://twitter.com/kywkid",
+		"https://gitlab.com/",
+		"https://linkedin.com/in/kywk",
+		"https://t.me/"
+		],
+	"potentialAction": {
+		"@type": "SearchAction",
+		"target": "https://wisnuwiry.space/search?q={search_term}",
+		"query-input": "required name=search_term"
+	}
+}
+</script>
+
+<script type='application/ld+json'>
+{
+	"@context": "http://www.schema.org",
+	"@type": "person",
+	"name": "Moo Cow",
+	"jobTitle": "Software Engineer",
+	"gender": "male",
+	"url": "https:\/\/kywk.github.io\/moco",
+	"sameAs":[
+		"https://twitter.com/kywkid",
+		"https://gitlab.com/",
+		"https://linkedin.com/in/kywk",
+		"https://t.me/"
+		],
+	"image": "https:\/\/kywk.github.io\/moco\/img\/avatar.webp",
+	"address": {
+		"@type": "PostalAddress",
+		"streetAddress": "Mayong, Jepara",
+		"addressLocality": "Jepara",
+		"addressRegion": "Jawa Tengah",
+		"addressCountry": "Indonesia"
+	},
+	"email": "kywk.id@gmail.com",
+	"birthDate": "2003-01-31",
+	"birthPlace": "Jepara",
+	"nationality": "Indonesian"
+}
+</script>
+
+<script type="application/ld+json">
+{
+	"@context":"http://schema.org",
+	"@type":"BlogPosting",
+	"mainEntityOfPage":{
+		"@type":"WebPage",
+		"@id":"https:\/\/kywk.github.io\/mocohttps:\/\/kywk.github.io\/moco\/posts\/sre\/redis_cluster\/"
+	},
+	"headline":"建製 Redis Cluster",
+	"datePublished":"2021-05-07T09",
+	"dateModified":"2021-05-07T09",
+	"description":"Redis-Cluster 為無中心化架構, 每個節點都會儲存數據以及整個叢集狀態, 每個節點都會和其他節點建立連線. 一組 Redis Cluster 由多個獨立 Redis 節點組成, 官方建議六個節點, 其中三個為主節點 (master) 三個為從節點 (slave).",
+	"isFamilyFriendly": "true",
+	"image":  ["https://lh3.googleusercontent.com/pw/ACtC-3fIlrxgO6AX1o_tNuiD0YfrwpojgHUZa_OSpR36XoOZ_Ojz9q0Bw9yZ2V9QwSKUqApRMEIPWetv9AQd4TsfGgE0AaZXj7IJ2NV6ffvWj7N_Fjo2EzJ7BaCjZ7Fxx702zh6ZnykZAOChtRM-P1Zr9t0SYQ=w800-no?authuser=0"] ,
+	"wordCount" : "584",
+	"keywords": ["SRE","redis"],
+	"genre": ["SRE","redis"],
+	"accountablePerson": {
+		"@type": "Person",
+		"name": "Moo Cow",
+		"url": ""
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Moo Cow",
+		"url": ""
+	},
+	"creator": {
+		"@type": "Person",
+		"name": "Moo Cow",
+		"url": ""
+	},
+	"publisher":{
+		"@type":"Organization",
+		"name":"Moo Cow", 
+		"logo": {
+			"@type": "imageObject",
+			"url": "https:\/\/kywk.github.io\/moco\/img\/avatar.webp"
+		}
+	}
+}</script>
+
+
+	<meta content="" property="fb:admins">
+	<meta content="" property="fb:app_id">
+	<meta content="index,follow" name="googlebot">
+	<meta content="follow, all" name="Googlebot-Image">
+	<meta content="follow, all" name="Scooter">
+	<meta content="follow, all" name="msnbot">
+	<meta content="follow, all" name="alexabot">
+	<meta content="follow, all" name="Slurp">
+	<meta content="follow, all" name="ZyBorg">
+	<meta content="follow, all" name="Scooter">
+	<meta content="true" name="MSSmartTagsPreventParsing">
+	<meta content="ALL" name="SPIDERS">
+	<meta content="ALL" name="WEBCRAWLERS">
+	<meta
+		content="aeiwi, alexa, alltheWeb, altavista, aol netfind, anzwers, canada, directhit, euroseek, excite, overture, go, google, hotbot. infomak, kanoodle, lycos, mastersite, national directory, northern light, searchit, simplesearch, Websmostlinked, webtop, what-u-seek, aol, yahoo, webcrawler, infoseek, excite, magellan, looksmart, bing, cnet, googlebot"
+		name="search engines">
+	
+</head>
+
+<body class="">
+	<div class="site-container">
+		<header class="top" id="js-header">
+	<a class="logo" href="/moco" title="moco">
+    <img src="/img/placeholder.svg" alt="moco" class="lazyload" data-src="/moco/img/avatar.webp">
+</a>
+	
+	<nav class="navbar js-navbar">
+		<ul class="navbar__menu">
+			
+			
+				
+				<li>
+					<a href="/moco/posts" target="_self">
+						📝 Post
+					</a>
+				</li>
+				
+				
+				<li>
+					<a href="/moco/project" target="_self">
+						🗃 Project
+					</a>
+				</li>
+				
+				
+				<li>
+					<a href="/moco/about" target="_self">
+						🐮 About
+					</a>
+				</li>
+				
+				
+				<li>
+					<a href="/moco/contact" target="_self">
+						🤙 Contact
+					</a>
+				</li>
+				
+		</ul>
+		<button class="navbar__toggle js-toggle" aria-label="Menu" aria-haspopup="true" aria-expanded="false"><span class="navbar__toggle-box"><span class="navbar__toggle-inner">Menu</span></span>
+		</button>
+	</nav>
+	<div class="search">
+	<a class="search__btn btn" aria-label="Search" href="/search" title="Search">
+		<svg viewBox="0 0 15 15">
+<path d="M14.81,13.14l-3-3h0a6.52,6.52,0,1,0-1.67,1.67h0l3,3a1.06,1.06,0,0,0,1.43-.24A1.06,1.06,0,0,0,14.81,13.14ZM6.5,11A4.5,4.5,0,1,1,11,6.5,4.51,4.51,0,0,1,6.5,11Z"/>
+</svg>
+
+	</a>
+	<button class="search__btn large" aria-label="Switch Theme" id="toggle-theme">
+		<svg viewBox="0 0 24 24">
+			<path id="icon-theme"></path>
+		</svg>
+	</button>
+</div>
+</header>
+
+		<main>
+			
+<div class="hero">
+	
+
+
+<figure class="hero__image hero__image--overlay">
+	<img class="hero__image-img lazyload" data-src="https://lh3.googleusercontent.com/pw/ACtC-3fIlrxgO6AX1o_tNuiD0YfrwpojgHUZa_OSpR36XoOZ_Ojz9q0Bw9yZ2V9QwSKUqApRMEIPWetv9AQd4TsfGgE0AaZXj7IJ2NV6ffvWj7N_Fjo2EzJ7BaCjZ7Fxx702zh6ZnykZAOChtRM-P1Zr9t0SYQ=w800-no?authuser=0" src="/moco/img/placeholder.svg" alt="建製 Redis Cluster"/>
+</figure>
+
+
+	<header class="hero__content" >
+	<div class="wrapper">
+		<h1 itemprop="name"  style="color: white;" >
+	
+		建製 Redis Cluster
+	
+		</h1>
+	
+		</div>
+	</header>
+</div>
+
+	
+	<div class="progress-container" >
+    <div class="scroll-indicator-bar" id="indicator"></div>
+</div>
+
+	<div class="content  grid ">
+		
+<aside class="tableOfContentContainer" id="tableOfContentContainer">
+	<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#安裝-redis">安裝 Redis</a></li>
+        <li><a href="#準備-config">準備 config</a></li>
+        <li><a href="#啟動">啟動</a></li>
+        <li><a href="#加入-cluster">加入 cluster</a></li>
+        <li><a href="#see-also">See Also</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</aside>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        enableStickyToc();
+    });
+</script>
+
+		<div class="wrapper post__entry">
+			<div class='property outline'>
+    <p>📅️ Published: 
+        <time itemprop="datePublished" datetime="2021-05-07T09:30:26&#43;08:00">May 07, 2021</time>
+    </p>
+    <p>🔄 Updated: 
+        <time itemprop="dateModified" datetime="2021-05-07T09:30:26&#43;08:00">May 07, 2021</time>
+    </p>
+    <p>🕔 3 min read ∙ 584 words</p></div>
+			
+<nav class="breadcrumb block" aria-label="breadcrumb">
+	<ol class="breadcrumb__list">
+		
+		<li class="breadcrumb__item">
+			<a class="breadcrumbs__link" href="/moco/">Home</a> &nbsp;
+		</li>
+		<li class="breadcrumb__item">
+			<a class="breadcrumbs__link" href="/moco/posts/">Posts</a> &nbsp;
+		</li>
+		<li class="breadcrumbs__item breadcrumb__item--active" aria-current="page">建製 Redis Cluster</li>
+	</ol>
+</nav>
+			<div class="single block">
+				<article class="entry" id="article">
+					<div class="entry__content">
+					<p>Redis-Cluster 為無中心化架構, 每個節點都會儲存數據以及整個叢集狀態, 每個節點都會和其他節點建立連線.
+一組 Redis Cluster 由多個獨立 Redis 節點組成,
+官方建議六個節點, 其中三個為主節點 (master) 三個為從節點 (slave).</p>
+<h3 id="安裝-redis" itemprop="headline" class="heading">安裝 Redis <a class="anchor-link" href="#%e5%ae%89%e8%a3%9d-redis">#</a></h3>
+<p>略. 可透過不同系統的套件管理程式安裝, 或參考<a href="https://redis.io/download" target="_blank" rel="noopener">官方文件</a>下載 source tar ball 編譯安裝.</p>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">$ wget https://download.redis.io/releases/redis-6.2.3.tar.gz
+$ tar xzf redis-6.2.3.tar.gz
+$ <span class="nb">cd</span> redis-6.2.3
+$ make
+</code></pre></div><p>編譯後執行檔在 <code>src/redis-server</code>, 可試著執行開啟 redis 服務.</p>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">cow@sandbox:~/tmp/redis/src# ./redis-server
+25572:C <span class="m">06</span> May <span class="m">2021</span> 07:58:52.254 <span class="c1"># oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo</span>
+25572:C <span class="m">06</span> May <span class="m">2021</span> 07:58:52.254 <span class="c1"># Redis version=5.0.5, bits=64, commit=00000000, modified=0, pid=25572, just started</span>
+25572:C <span class="m">06</span> May <span class="m">2021</span> 07:58:52.254 <span class="c1"># Warning: no config file specified, using the default config. In order to specify a config file use ./redis-server /path/to/redis.conf</span>
+25572:M <span class="m">06</span> May <span class="m">2021</span> 07:58:52.255 * Increased maximum number of open files to <span class="m">10032</span> <span class="o">(</span>it was originally <span class="nb">set</span> to 1024<span class="o">)</span>.
+                _._
+           _.-<span class="sb">``</span>__ <span class="s1">&#39;&#39;</span>-._
+      _.-<span class="sb">``</span>    <span class="sb">`</span>.  <span class="sb">`</span>_.  <span class="s1">&#39;&#39;</span>-._           Redis 5.0.5 <span class="o">(</span>00000000/0<span class="o">)</span> <span class="m">64</span> bit
+  .-<span class="sb">``</span> .-<span class="sb">```</span>.  <span class="sb">```</span><span class="se">\/</span>    _.,_ <span class="s1">&#39;&#39;</span>-._
+ <span class="o">(</span>    <span class="s1">&#39;      ,       .-`  | `,    )     Running in standalone mode
+</span><span class="s1"> |`-._`-...-` __...-.``-._|&#39;</span><span class="sb">`</span> _.-<span class="s1">&#39;|     Port: 6379
+</span><span class="s1"> |    `-._   `._    /     _.-&#39;</span>    <span class="p">|</span>     PID: <span class="m">25572</span>
+  <span class="sb">`</span>-._    <span class="sb">`</span>-._  <span class="sb">`</span>-./  _.-<span class="s1">&#39;    _.-&#39;</span>
+ <span class="p">|</span><span class="sb">`</span>-._<span class="sb">`</span>-._    <span class="sb">`</span>-.__.-<span class="s1">&#39;    _.-&#39;</span>_.-<span class="s1">&#39;|
+</span><span class="s1"> |    `-._`-._        _.-&#39;</span>_.-<span class="s1">&#39;    |           http://redis.io
+</span><span class="s1">  `-._    `-._`-.__.-&#39;</span>_.-<span class="s1">&#39;    _.-&#39;</span>
+ <span class="p">|</span><span class="sb">`</span>-._<span class="sb">`</span>-._    <span class="sb">`</span>-.__.-<span class="s1">&#39;    _.-&#39;</span>_.-<span class="s1">&#39;|
+</span><span class="s1"> |    `-._`-._        _.-&#39;</span>_.-<span class="s1">&#39;    |
+</span><span class="s1">  `-._    `-._`-.__.-&#39;</span>_.-<span class="s1">&#39;    _.-&#39;</span>
+      <span class="sb">`</span>-._    <span class="sb">`</span>-.__.-<span class="s1">&#39;    _.-&#39;</span>
+          <span class="sb">`</span>-._        _.-<span class="s1">&#39;
+</span><span class="s1">              `-.__.-&#39;</span>
+
+25572:M <span class="m">06</span> May <span class="m">2021</span> 07:58:52.255 <span class="c1"># WARNING: The TCP backlog setting of 511 cannot be enforced because /proc/sys/net/core/somaxconn is set to the lower value of 128.</span>
+25572:M <span class="m">06</span> May <span class="m">2021</span> 07:58:52.255 <span class="c1"># Server initialized</span>
+25572:M <span class="m">06</span> May <span class="m">2021</span> 07:58:52.255 <span class="c1"># WARNING overcommit_memory is set to 0! Background save may fail under low memory condition. To fix this issue add &#39;vm.overcommit_memory = 1&#39; to /etc/sysctl.conf and then reboot or run the command &#39;sysctl vm.overcommit_memory=1&#39; for this to take effect.</span>
+25572:M <span class="m">06</span> May <span class="m">2021</span> 07:58:52.255 <span class="c1"># WARNING you have Transparent Huge Pages (THP) support enabled in your kernel. This will create latency and memory usage issues with Redis. To fix this issue run the command &#39;echo never &gt; /sys/kernel/mm/transparent_hugepage/enabled&#39; as root, and add it to your /etc/rc.local in order to retain the setting after a reboot. Redis must be restarted after THP is disabled.</span>
+25572:M <span class="m">06</span> May <span class="m">2021</span> 07:58:52.255 * Ready to accept connections
+</code></pre></div><p>出現 <strong>Ready to accept connections</strong> 後表示 Redis 程式可正常運作,
+可再依需要把執行檔複製到 `/usr/local/bin' 之類系統資料夾中.</p>
+<p>而警告訊息的排除可參考: <a href="/moco/posts/sre/it_solve-redis-warning/">Redis 警告訊息排除</a></p>
+<h3 id="準備-config" itemprop="headline" class="heading">準備 config <a class="anchor-link" href="#%e6%ba%96%e5%82%99-config">#</a></h3>
+<p>官方建議使用六個 node 來建 redis cluster,
+實際業務運行上通常為六台獨立的主機, 使用同一份 config 部署到六台主機即可.</p>
+<blockquote>
+<p>本地測試在同一台主機上跑六個不同 redis-server instance, 分別使用 Port: 7001 ~ 7006. 因此需準備六份 config.</p>
+</blockquote>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">$ mkdir <span class="m">7001</span> <span class="m">7002</span> <span class="m">7003</span> <span class="m">7004</span> <span class="m">7005</span> <span class="m">7006</span>
+$ vi 7001/redis.config
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-cfg" data-lang="cfg"><span class="na">port 7001</span>
+<span class="na">cluster-enabled yes</span>
+<span class="na">cluster-config-file nodes_7001.conf</span>
+<span class="na">cluster-node-timeout 5000</span>
+<span class="na">appendonly yes</span>
+<span class="na">daemonize yes</span>
+<span class="na">bind x.x.x.x</span>
+<span class="na">requirepass password</span>
+<span class="na">masterauth password</span>
+</code></pre></div><p>基本需要的設置內容與簡單說明如下:</p>
+<ul>
+<li><strong>port</strong> <em>7001</em><br>
+Redis-Server instance 所服務的 port, 相同主機的話需錯開.</li>
+<li><strong>cluster-enabled</strong> <em>yes</em><br>
+啟用 redis cluster</li>
+<li><strong>cluster-config-file</strong> <em>nodes_7001.conf</em><br>
+每個 node 需要獨立的 cluster 設定檔.
+僅需指定檔名, 無須設定檔案內容.
+redis-cluster 運作時會自行維護與修改該檔案內容.</li>
+<li><strong>cluster-node-timeout</strong> <em>5000</em><br>
+node 判斷失效的時間</li>
+<li><strong>appendonly</strong> <em>yes</em><br>
+啟用 aof</li>
+</ul>
+<p>設定檔有上述內容, 基本上就可以執行一個 redis-cluster node 了.
+而一些常見的額外設定如下:</p>
+<ul>
+<li><strong>daemonize</strong> <em>yes</em><br>
+背景執行</li>
+<li><strong>bind</strong> <em>x.x.x.x</em><br>
+允許 listen 特定 ip 的連線</li>
+<li><strong>requirepass</strong> <em>password</em><br>
+密碼設定</li>
+<li><strong>masterauth</strong> <em>password</em><br>
+從 master 的密碼</li>
+</ul>
+<p><figure class="post__image">
+	<img 
+	itemprop="image"
+	class="lazyload post__image" 
+    data-sizes="auto"
+    src="/img/placeholder.svg"
+    data-src='https://lh3.googleusercontent.com/pw/ACtC-3cIjjFhS63ywfyKTBTR55SdYX1NTTwgKzdEjZ9LqEuyrjRM2yUSQ7nWOw_zki8AQLXzLJLjRuseunT-LcW5QTEt6Jg7D18Gf3S5B8yGy_ittXXp19pD8FCj33nBdo-pZbKl2BkLTPK0rzOo5ntxgCUoFQ=w502no?authuser=0'
+    alt=''
+    
+ 	/>
+</figure>
+</p>
+<h3 id="啟動" itemprop="headline" class="heading">啟動 <a class="anchor-link" href="#%e5%95%9f%e5%8b%95">#</a></h3>
+<p>透過 <code>redis-server</code> 搭配各個設定檔, 逐一啟動不同的 redis-server instance</p>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">$ redis-server 7001/redif.conf
+$ redis-server 7002/redif.conf
+$ redis-server 7003/redif.conf
+$ redis-server 7004/redif.conf
+$ redis-server 7005/redif.conf
+$ redis-server 7006/redif.conf
+</code></pre></div><h3 id="加入-cluster" itemprop="headline" class="heading">加入 cluster <a class="anchor-link" href="#%e5%8a%a0%e5%85%a5-cluster">#</a></h3>
+<p>只是把各個 redis-server instance 跑起來, 彼此尚不是 cluster 裡面的 node,
+需下指令建理 cluster.</p>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">$ redis-cli --cluster create 127.0.0.1:7001 127.0.0.1:7002 127.0.0.1:7003 127.0.0.1:7004 127.0.0.1:7005 127.0.0.1:7006 --cluster-replicas <span class="m">1</span>
+</code></pre></div><ul>
+<li><strong>redis-cli</strong><br>
+redis CLI 控制程式, 除了集成一些控制項目外, 也是個完整的 redis-client.</li>
+<li><strong>&ndash;cluster create</strong> <em>x.x.x.x:port1 &hellip; x.x.x.x:port6</em><br>
+利用這些 redis-server instance 建立 redis-cluster.</li>
+<li><strong>&ndash;cluster-replicas</strong> <em>1</em><br>
+一個 master 節點搭配一個 slave 節點.<br>
+因上述指令共有六個節點, 所以會建構出三個 master 節點搭配三個 slave 節點.</li>
+</ul>
+<h3 id="see-also" itemprop="headline" class="heading">See Also <a class="anchor-link" href="#see-also">#</a></h3>
+<p>以上是最常見的 Redis Cluster 建製方法, 也是官方建議的方案.
+關於 Redis Cluster 進一步資訊, <a href="https://www.796t.com/article.php?id=192567" target="_blank" rel="noopener">Redis初步學習整理——第五節Cluster叢集部署、主從複製、哨兵模式_資料庫_程式人生</a>
+是個相當不錯的文章, 值得一讀.</p>
+<p>其他參考資料陳列於下:</p>
+<ul>
+<li><a href="https://redis.io/topics/cluster-tutorial" target="_blank" rel="noopener">Redis cluster tutorial – Redis</a></li>
+<li><a href="https://tw511.com/a/01/6479.html" target="_blank" rel="noopener">Centos 7 部署Redis 三主三從叢集 - tw511教學網</a></li>
+<li><a href="https://blog.yowko.com/create-redis-cluster/" target="_blank" rel="noopener">建立 Redis Cluster (Redis 5) - Yowko&rsquo;s Notes</a></li>
+<li><a href="https://medium.com/@zihansyu/redis-%e9%9b%86%e7%be%a4%e6%9e%b6%e8%a8%ad-ff641c97232c" target="_blank" rel="noopener">Redis 集群架設. 前言 | by 徐子函 | Medium</a></li>
+</ul>
+
+					
+    <hr>
+    <p>Wrong content?  <a href="https://github.com/wisnuwiry/blog-v2/edit/master/content/posts/sre/redis_cluster.md">Edit on Github</a>.</p>
+    <hr>
+
+					
+
+					
+
+					</div>
+					
+					<footer class="entry__footer">
+						
+<div class="post__tag">
+			<a href="/moco/tags/sre/"># SRE</a>
+			<a href="/moco/tags/redis/"># redis</a>
+</div>
+						
+<div class="post__share">
+	<a class="js-share btn" title=" Facebook" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fkywk.github.io%2fmoco%2fposts%2fsre%2fredis_cluster%2f" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, ' Facebook', 'width=800,height=600,toolbar=0,status=0'); return false">
+		<svg class="share__icon" aria-label="Facebook" role="img" width="32" height="32" viewBox="0 0 512 512"><path d="M330 512V322h64l9-74h-73v-47c0-22 6-36 37-36h39V99c-7-1-30-3-57-3-57 0-95 34-95 98v54h-64v74h64v190z"/></svg>
+	</a>
+	<a class="js-share btn" title=" Twitter" href="https://twitter.com/intent/tweet/?url=https%3a%2f%2fkywk.github.io%2fmoco%2fposts%2fsre%2fredis_cluster%2f&amp;text=%e5%bb%ba%e8%a3%bd%20Redis%20Cluster" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, ' Twitter', 'width=800,height=450,resizable=yes,toolbar=0,status=0'); return false">
+		<svg class="share__icon" aria-label="Twitter" viewBox="0 0 24.999 20.316"><path d="M25 2.405a10.253 10.253 0 0 1-2.947.808A5.144 5.144 0 0 0 24.308.376 10.27 10.27 0 0 1 21.05 1.62a5.134 5.134 0 0 0-8.74 4.68A14.56 14.56 0 0 1 1.74.94a5.134 5.134 0 0 0 1.587 6.846 5.108 5.108 0 0 1-2.323-.642v.064a5.132 5.132 0 0 0 4.114 5.03 5.142 5.142 0 0 1-2.316.088 5.134 5.134 0 0 0 4.79 3.562 10.29 10.29 0 0 1-6.37 2.2A10.44 10.44 0 0 1 0 18.012a14.586 14.586 0 0 0 22.454-12.29q0-.333-.015-.662A10.423 10.423 0 0 0 25 2.405z" /></svg>
+
+	</a>
+	<a class="js-share btn" title=" Reddit" href="https://www.reddit.com/submit?url=https%3a%2f%2fkywk.github.io%2fmoco%2fposts%2fsre%2fredis_cluster%2f&amp;title=%e5%bb%ba%e8%a3%bd%20Redis%20Cluster" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, ' Reddit', 'width=832,height=624,toolbar=0,status=0'); return false">
+		<svg class="share__icon" aria-label="Reddit" role="img" width="32" height="32" viewBox="0 0 512 512"><path fill-rule="evenodd" d="M375 146a32 32 0 1 0-29-46l-65-13c-5-1-9 2-10 6l-22 97c-45 1-85 15-113 36a42 42 0 1 0-45 69l-1 12c0 65 74 117 166 117s166-52 166-117l-1-11a42 42 0 1 0-44-69c-28-21-67-35-111-37l19-86 58 13a32 32 0 0 0 32 29zM190 353c2-1 4 0 5 1 15 11 38 18 61 18s46-6 61-18a7 7 0 0 1 8 10c-18 14-44 21-69 21-25-1-51-7-69-21a6 6 0 0 1 3-11zm23-44a31 31 0 1 1-44-44 31 31 0 0 1 44 44zm130 0a31 31 0 1 0-44-44 31 31 0 0 0 44 44z"/></svg>
+	</a>
+	<a class="js-share btn" title=" Telegram" href="https://t.me/share/url?url=https%3a%2f%2fkywk.github.io%2fmoco%2fposts%2fsre%2fredis_cluster%2f&amp;title=%e5%bb%ba%e8%a3%bd%20Redis%20Cluster" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, ' Telegram', 'width=800,height=600,toolbar=0,status=0'); return false">
+		<svg class="share__icon" aria-label="Telegram" role="img" viewBox="0 0 25 25"><path d="m9.417 15.181-.397 5.584c.568 0 .814-.244 1.109-.537l2.663-2.545 5.518 4.041c1.012.564 1.725.267 1.998-.931l3.622-16.972.001-.001c.321-1.496-.541-2.081-1.527-1.714l-21.29 8.151c-1.453.564-1.431 1.374-.247 1.741l5.443 1.693 12.643-7.911c.595-.394 1.136-.176.691.218z"/></svg>
+
+	</a>
+	<a class="js-share btn" title=" LinkedIn" href="https://www.linkedin.com/shareArticle?mini=true&url=https%3a%2f%2fkywk.github.io%2fmoco%2fposts%2fsre%2fredis_cluster%2f&title=%e5%bb%ba%e8%a3%bd%20Redis%20Cluster" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, ' LinkedIn', 'width=640,height=480,toolbar=0,status=0'); return false">
+		<svg class="share__icon" aria-label="LinkedIn" role="img" viewBox="0 0 34.48 32"><path d="M29.632,0H2.362A2.336,2.336,0,0,0,0,2.306V29.691A2.337,2.337,0,0,0,2.362,32h27.27A2.342,2.342,0,0,0,32,29.691V2.306A2.34,2.34,0,0,0,29.632,0ZM9.491,27.268H4.744V12H9.491ZM7.119,9.909a2.752,2.752,0,1,1,2.75-2.753A2.753,2.753,0,0,1,7.119,9.909ZM27.268,27.268H22.525V19.842c0-1.772-.033-4.05-2.466-4.05-2.47,0-2.848,1.929-2.848,3.921v7.555H12.468V12h4.553v2.086h.063a4.986,4.986,0,0,1,4.491-2.467c4.806,0,5.694,3.163,5.694,7.275Z"/></svg>
+
+	</a>
+	<a class="js-share btn" title=" Pinterest" href="https://pinterest.com/pin/create/button/?url=https%3a%2f%2fkywk.github.io%2fmoco%2fposts%2fsre%2fredis_cluster%2f&description=%e5%bb%ba%e8%a3%bd%20Redis%20Cluster" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, ' Pocket', 'width=800,height=720,toolbar=0,status=0'); return false">
+		<svg class="share__icon" aria-label="Pinterest" role="img" width="32" height="32" viewBox="0 0 512 512"><path d="m265 65c-104 0-157 75-157 138 0 37 14 71 45 83 5 2 10 0 12-5l3-18c2-6 1-7-2-12-9-11-15-24-15-43 0-56 41-106 108-106 60 0 92 37 92 85 0 64-28 116-70 116-23 0-40-18-34-42 6-27 19-57 19-77 0-18-9-34-30-34-24 0-42 25-42 58 0 20 7 34 7 34l-29 120a249 249 0 0 0 2 86l3-1c2-3 31-37 40-72l16-61c7 15 29 28 53 28 71 0 119-64 119-151 0-66-56-126-140-126z"/></svg>
+	</a>
+</div>
+						
+<div class="post__bio bio" >
+		<img class="lazyload bio__avatar" alt="Moo Cow avatar" data-src="/moco/img/avatar.webp" height="90" width="90" src="/moco/img/placeholder.svg">
+	<div class="bio__info">
+		<a class="bio__name invert" href="/about">
+			<p itemprop="author">Moo Cow</p>
+		</a>
+		
+	</div>
+</div>
+
+					</footer>
+					
+				</article>
+				
+			</div>
+		</div>
+	</div>
+	
+
+
+
+<div class="post__related related">
+	<div class="wrapper">
+		<h2 class="h5 related__title">You should also read:</h2>
+		
+		<article class="related__item">
+			<div class="feed__meta">
+				
+	<time itemprop="datePublished" class="feed__date" datetime="2021-05-06T14:26:31&#43;08:00">May 06, 2021</time>
+			</div>
+			<h3><a class="invert" href="/moco/posts/sre/redis_-warning-slove/">Redis 警告訊息排除</a></h3></article>
+		
+		<article class="related__item">
+			<div class="feed__meta">
+				
+	<time itemprop="datePublished" class="feed__date" datetime="2021-04-25T20:40:21&#43;08:00">April 25, 2021</time>
+			</div>
+			<h3><a class="invert" href="/moco/posts/sre/web_manual-letsencrypt/">手動申請 Let&#39;s Encrypt 憑證與設定 Nginx</a></h3></article>
+		
+		<article class="related__item">
+			<div class="feed__meta">
+				
+	<time itemprop="datePublished" class="feed__date" datetime="2021-05-10T15:21:31&#43;08:00">May 10, 2021</time>
+			</div>
+			<h3><a class="invert" href="/moco/posts/it/git_add-empty-folder/">Git: Add empty folder</a></h3></article>
+		
+		<article class="related__item">
+			<div class="feed__meta">
+				
+	<time itemprop="datePublished" class="feed__date" datetime="2021-04-15T13:24:47&#43;08:00">April 15, 2021</time>
+			</div>
+			<h3><a class="invert" href="/moco/posts/it/ps_path-vs-literalpath/">PowerShell: Path and LiteralPath</a></h3></article>
+		
+		<article class="related__item">
+			<div class="feed__meta">
+				
+	<time itemprop="datePublished" class="feed__date" datetime="2021-04-14T11:45:28&#43;08:00">April 14, 2021</time>
+			</div>
+			<h3><a class="invert" href="/moco/posts/it/ps_zip-archive/">PowerShell: How to Zip (and Unzip) Files</a></h3></article>
+		
+	</div>
+</div>
+
+	
+<section class="post__comments">
+	<div class="wrapper">
+		<h5>💬 Comment: </h5>
+		<div id="comment"></div>
+		
+	</div>
+	<script>
+		var commentId = document.getElementById('comment');
+		var commentLoaded = false;
+		window.addEventListener('scroll', loadComment());
+
+		function loadComment(){
+			window.addEventListener('DOMContentLoaded', () => {
+				var top = commentId.offsetTop;
+				
+				if (!commentLoaded) {
+					commentLoaded = true;
+					(function () {
+						var d = document, s = d.createElement('script');
+						s.src = 'https://utteranc.es/client.js';
+						s.setAttribute('repo', '');
+						s.setAttribute('issue-term', 'title');
+						var currentTheme = localStorage.getItem("w-theme");
+						if(currentTheme == 'light'){
+							s.setAttribute('theme', 'github-light');
+						}else{
+							s.setAttribute('theme', 'photon-dark');
+						}
+						s.setAttribute('crossorigin', 'anonymous');
+						s.async = !0;
+						commentId.appendChild(s);
+					})();
+				}
+			});		
+		}
+	</script>
+</section>
+
+	
+
+		</main>
+		<footer class="footer">
+<div class="footer__social">
+		<a itemprop="sameAs" class="social__link" target="_blank" rel="noopener noreferrer" href="https://twitter.com/kywkid">
+			<svg class="social__icon" aria-label="Twitter" viewBox="0 0 24.999 20.316"><path d="M25 2.405a10.253 10.253 0 0 1-2.947.808A5.144 5.144 0 0 0 24.308.376 10.27 10.27 0 0 1 21.05 1.62a5.134 5.134 0 0 0-8.74 4.68A14.56 14.56 0 0 1 1.74.94a5.134 5.134 0 0 0 1.587 6.846 5.108 5.108 0 0 1-2.323-.642v.064a5.132 5.132 0 0 0 4.114 5.03 5.142 5.142 0 0 1-2.316.088 5.134 5.134 0 0 0 4.79 3.562 10.29 10.29 0 0 1-6.37 2.2A10.44 10.44 0 0 1 0 18.012a14.586 14.586 0 0 0 22.454-12.29q0-.333-.015-.662A10.423 10.423 0 0 0 25 2.405z" /></svg>
+
+		</a>
+		<a itemprop="sameAs" class="social__link" target="_blank" rel="noopener noreferrer" href="https://linkedin.com/in/kywk">
+			<svg class="social__icon" aria-label="LinkedIn" role="img" viewBox="0 0 34.48 32"><path d="M29.632,0H2.362A2.336,2.336,0,0,0,0,2.306V29.691A2.337,2.337,0,0,0,2.362,32h27.27A2.342,2.342,0,0,0,32,29.691V2.306A2.34,2.34,0,0,0,29.632,0ZM9.491,27.268H4.744V12H9.491ZM7.119,9.909a2.752,2.752,0,1,1,2.75-2.753A2.753,2.753,0,0,1,7.119,9.909ZM27.268,27.268H22.525V19.842c0-1.772-.033-4.05-2.466-4.05-2.47,0-2.848,1.929-2.848,3.921v7.555H12.468V12h4.553v2.086h.063a4.986,4.986,0,0,1,4.491-2.467c4.806,0,5.694,3.163,5.694,7.275Z"/></svg>
+
+		</a>
+		<a itemprop="sameAs" class="social__link" target="_blank" rel="noopener noreferrer" href="https://github.com/kywk">
+			<svg class="social__icon" aria-label="Github" role="img" viewBox="0 0 25 25"><path d="m12 .5c-6.63 0-12 5.28-12 11.792 0 5.211 3.438 9.63 8.205 11.188.6.111.82-.254.82-.567 0-.28-.01-1.022-.015-2.005-3.338.711-4.042-1.582-4.042-1.582-.546-1.361-1.335-1.725-1.335-1.725-1.087-.731.084-.716.084-.716 1.205.082 1.838 1.215 1.838 1.215 1.07 1.803 2.809 1.282 3.495.981.108-.763.417-1.282.76-1.577-2.665-.295-5.466-1.309-5.466-5.827 0-1.287.465-2.339 1.235-3.164-.135-.298-.54-1.497.105-3.121 0 0 1.005-.316 3.3 1.209.96-.262 1.98-.392 3-.398 1.02.006 2.04.136 3 .398 2.28-1.525 3.285-1.209 3.285-1.209.645 1.624.24 2.823.12 3.121.765.825 1.23 1.877 1.23 3.164 0 4.53-2.805 5.527-5.475 5.817.42.354.81 1.077.81 2.182 0 1.578-.015 2.846-.015 3.229 0 .309.21.678.825.56 4.801-1.548 8.236-5.97 8.236-11.173 0-6.512-5.373-11.792-12-11.792z" /></svg>
+
+		</a>
+</div>
+	<div class="footer__copyright">© 2021 <a href="https://wisnuwiry.space">MooCow</a> <span class="footer__copyright-credits"></span> | Created with ❤️ <a href="//gohugo.io">Hugo</a></div>
+</footer>
+	</div>
+	
+
+
+
+<script type="text/javascript" src="/moco/js/bundle.min.js" defer></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.2.0/lazysizes.min.js"></script>
+<script>(function (d, e) { d[e] = d[e].replace("no-js", "js"); })(document.documentElement, "className");</script>
+<script>
+    
+
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker
+            .register('/sw.js', { scope: '/' })
+            .then(function (registration) {
+                console.log('Service Worker Registered');
+            });
+
+        navigator.serviceWorker
+            .ready
+            .then(function (registration) {
+                console.log('Service Worker Ready');
+            });
+    }
+</script>
+
+</body>
+
+</html>

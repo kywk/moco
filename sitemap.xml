@@ -5,7 +5,7 @@
   
   <url>
     <loc>https://kywk.github.io/moco/categories/</loc>
-    <lastmod>2021-05-07T09:30:26+08:00</lastmod>
+    <lastmod>2021-05-10T15:21:31+08:00</lastmod>
     
     <changefreq>monthly</changefreq>
     
@@ -18,8 +18,64 @@
   
   
   <url>
+    <loc>https://kywk.github.io/moco/tags/cli/</loc>
+    <lastmod>2021-05-10T15:21:31+08:00</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    
+     
+    <priority>0.3</priority>
+    
+    
+  </url>
+  
+  
+  
+  <url>
+    <loc>https://kywk.github.io/moco/tags/git/</loc>
+    <lastmod>2021-05-10T15:21:31+08:00</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    
+     
+    <priority>0.3</priority>
+    
+    
+  </url>
+  
+  
+  
+  <url>
+    <loc>https://kywk.github.io/moco/categories/git/</loc>
+    <lastmod>2021-05-10T15:21:31+08:00</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    
+     
+    <priority>0.3</priority>
+    
+    
+  </url>
+  
+  
+  
+  <url>
+    <loc>https://kywk.github.io/moco/posts/it/git_add-empty-folder/</loc>
+    <lastmod>2021-05-10T15:21:31+08:00</lastmod>
+    
+    
+    
+    
+    <priority>-1</priority>
+    
+    
+  </url>
+  
+  
+  
+  <url>
     <loc>https://kywk.github.io/moco/</loc>
-    <lastmod>2021-05-07T09:30:26+08:00</lastmod>
+    <lastmod>2021-05-10T15:21:31+08:00</lastmod>
     
     <changefreq>monthly</changefreq>
     
@@ -33,7 +89,21 @@
   
   <url>
     <loc>https://kywk.github.io/moco/posts/</loc>
-    <lastmod>2021-05-07T09:30:26+08:00</lastmod>
+    <lastmod>2021-05-10T15:21:31+08:00</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    
+     
+    <priority>0.3</priority>
+    
+    
+  </url>
+  
+  
+  
+  <url>
+    <loc>https://kywk.github.io/moco/tags/</loc>
+    <lastmod>2021-05-10T15:21:31+08:00</lastmod>
     
     <changefreq>monthly</changefreq>
     
@@ -88,21 +158,7 @@
   
   
   <url>
-    <loc>https://kywk.github.io/moco/tags/</loc>
-    <lastmod>2021-05-07T09:30:26+08:00</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    
-     
-    <priority>0.3</priority>
-    
-    
-  </url>
-  
-  
-  
-  <url>
-    <loc>https://kywk.github.io/moco/posts/sre/it_redis-cluster/</loc>
+    <loc>https://kywk.github.io/moco/posts/sre/redis_cluster/</loc>
     <lastmod>2021-05-07T09:30:26+08:00</lastmod>
     
     
@@ -116,7 +172,7 @@
   
   
   <url>
-    <loc>https://kywk.github.io/moco/posts/sre/it_solve-redis-warning/</loc>
+    <loc>https://kywk.github.io/moco/posts/sre/redis_-warning-slove/</loc>
     <lastmod>2021-05-06T14:26:31+08:00</lastmod>
     
     
@@ -144,27 +200,13 @@
   
   
   <url>
-    <loc>https://kywk.github.io/moco/posts/sre/it_manual-sign-letsencrypt/</loc>
+    <loc>https://kywk.github.io/moco/posts/sre/web_manual-letsencrypt/</loc>
     <lastmod>2021-04-25T20:40:21+08:00</lastmod>
     
     
     
     
     <priority>-1</priority>
-    
-    
-  </url>
-  
-  
-  
-  <url>
-    <loc>https://kywk.github.io/moco/tags/cli/</loc>
-    <lastmod>2021-04-15T13:24:47+08:00</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    
-     
-    <priority>0.3</priority>
     
     
   </url>
@@ -200,7 +242,7 @@
   
   
   <url>
-    <loc>https://kywk.github.io/moco/posts/sre/ps_path-vs-literalpath/</loc>
+    <loc>https://kywk.github.io/moco/posts/it/ps_path-vs-literalpath/</loc>
     <lastmod>2021-04-15T13:24:47+08:00</lastmod>
     
     
@@ -214,7 +256,7 @@
   
   
   <url>
-    <loc>https://kywk.github.io/moco/posts/sre/ps_zip-archive/</loc>
+    <loc>https://kywk.github.io/moco/posts/it/ps_zip-archive/</loc>
     <lastmod>2021-04-14T11:45:28+08:00</lastmod>
     
     
@@ -228,35 +270,7 @@
   
   
   <url>
-    <loc>https://kywk.github.io/moco/tags/git/</loc>
-    <lastmod>2021-04-12T15:13:11+08:00</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    
-     
-    <priority>0.3</priority>
-    
-    
-  </url>
-  
-  
-  
-  <url>
-    <loc>https://kywk.github.io/moco/categories/git/</loc>
-    <lastmod>2021-04-12T15:13:11+08:00</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    
-     
-    <priority>0.3</priority>
-    
-    
-  </url>
-  
-  
-  
-  <url>
-    <loc>https://kywk.github.io/moco/posts/sre/git_check-branch-exists/</loc>
+    <loc>https://kywk.github.io/moco/posts/it/git_check-branch-exists/</loc>
     <lastmod>2021-04-12T15:13:11+08:00</lastmod>
     
     
@@ -564,7 +578,7 @@
   
   
   <url>
-    <loc>https://kywk.github.io/moco/posts/sre/cli_encrypt-tarball/</loc>
+    <loc>https://kywk.github.io/moco/posts/it/cli_encrypt-tarball/</loc>
     <lastmod>2020-12-10T17:31:07+08:00</lastmod>
     
     

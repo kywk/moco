@@ -192,10 +192,30 @@
 		<div class="feed__meta">
 				<img alt="Moo Cow avatar" data-src="/moco/img/avatar.webp" class="post__author-thumb lazyload" src="/moco/img/placeholder.svg">
 				<a class="feed__author invert" href="/about">Moo Cow</a>
+	<time itemprop="datePublished" class="feed__date" datetime="2021-05-10T15:21:31&#43;08:00">May 10, 2021</time>
+		</div>
+		<h2>
+			<a href="/moco/posts/it/git_add-empty-folder/" class="invert">Git: Add empty folder</a>
+		</h2>
+		<p>如何提交空資料夾?
+ 最近專案中不斷被問起這件事, 為了日後管理維護方便, 案主期待 git 裡面能夠預先建立對應的資料夾樹.
+而 git 設計是無法提交空資料夾, 雖然網路上可以找到一些 hack 的方式可以在 git 裡加入空資料夾, 但可能因不同 git 版本關係, 在 checkout 時無法建立對應資料夾.</p>
+		
+<div class="post__tag">
+			<a href="/moco/tags/cli/"># cli</a>
+			<a href="/moco/tags/git/"># git</a>
+</div>
+	</div>
+</article>
+				<article class="feed__item">
+	<div>
+		<div class="feed__meta">
+				<img alt="Moo Cow avatar" data-src="/moco/img/avatar.webp" class="post__author-thumb lazyload" src="/moco/img/placeholder.svg">
+				<a class="feed__author invert" href="/about">Moo Cow</a>
 	<time itemprop="datePublished" class="feed__date" datetime="2021-05-07T09:30:26&#43;08:00">May 07, 2021</time>
 		</div>
 		<h2>
-			<a href="/moco/posts/sre/it_redis-cluster/" class="invert">建製 Redis Cluster</a>
+			<a href="/moco/posts/sre/redis_cluster/" class="invert">建製 Redis Cluster</a>
 		</h2>
 		<p>Redis-Cluster 為無中心化架構, 每個節點都會儲存數據以及整個叢集狀態, 每個節點都會和其他節點建立連線. 一組 Redis Cluster 由多個獨立 Redis 節點組成, 官方建議六個節點, 其中三個為主節點 (master) 三個為從節點 (slave).</p>
 		
@@ -213,7 +233,7 @@
 	<time itemprop="datePublished" class="feed__date" datetime="2021-05-06T14:26:31&#43;08:00">May 06, 2021</time>
 		</div>
 		<h2>
-			<a href="/moco/posts/sre/it_solve-redis-warning/" class="invert">Redis 警告訊息排除</a>
+			<a href="/moco/posts/sre/redis_-warning-slove/" class="invert">Redis 警告訊息排除</a>
 		</h2>
 		<p>啟動 Redis 出現下列警告訊息, 警告說明相當清楚, 如何處理與配置也很清楚, 一一設置即可.
 cow@sandbox:~/tmp/redis/src# ./redis-server 25572:C 06 May 2021 07:58:52.</p>
@@ -232,7 +252,7 @@ cow@sandbox:~/tmp/redis/src# ./redis-server 25572:C 06 May 2021 07:58:52.</p>
 	<time itemprop="datePublished" class="feed__date" datetime="2021-04-25T20:40:21&#43;08:00">April 25, 2021</time>
 		</div>
 		<h2>
-			<a href="/moco/posts/sre/it_manual-sign-letsencrypt/" class="invert">手動申請 Let&#39;s Encrypt 憑證與設定 Nginx</a>
+			<a href="/moco/posts/sre/web_manual-letsencrypt/" class="invert">手動申請 Let&#39;s Encrypt 憑證與設定 Nginx</a>
 		</h2>
 		<p>在 Google, Apple 等科技巨頭主導下, HTTPS 已成網站服務必備. 而合格 https CA 憑證的申請是要費用的, 因此出現 Let&rsquo;s Encrypt 這樣的服務.</p>
 		
@@ -250,28 +270,9 @@ cow@sandbox:~/tmp/redis/src# ./redis-server 25572:C 06 May 2021 07:58:52.</p>
 	<time itemprop="datePublished" class="feed__date" datetime="2021-04-15T13:24:47&#43;08:00">April 15, 2021</time>
 		</div>
 		<h2>
-			<a href="/moco/posts/sre/ps_path-vs-literalpath/" class="invert">PowerShell: Path and LiteralPath</a>
+			<a href="/moco/posts/it/ps_path-vs-literalpath/" class="invert">PowerShell: Path and LiteralPath</a>
 		</h2>
 		<p>在 PowerShell: How to Zip (and Unzip) Files 文中提及, 遇到 Copy-Item 使用 -Path 遇到中文檔名時出現錯誤, 需改用 -LiteralPath 才成功.</p>
-		
-<div class="post__tag">
-			<a href="/moco/tags/cli/"># cli</a>
-			<a href="/moco/tags/powershell/"># powershell</a>
-</div>
-	</div>
-</article>
-				<article class="feed__item">
-	<div>
-		<div class="feed__meta">
-				<img alt="Moo Cow avatar" data-src="/moco/img/avatar.webp" class="post__author-thumb lazyload" src="/moco/img/placeholder.svg">
-				<a class="feed__author invert" href="/about">Moo Cow</a>
-	<time itemprop="datePublished" class="feed__date" datetime="2021-04-14T11:45:28&#43;08:00">April 14, 2021</time>
-		</div>
-		<h2>
-			<a href="/moco/posts/sre/ps_zip-archive/" class="invert">PowerShell: How to Zip (and Unzip) Files</a>
-		</h2>
-		<p>專案的佈署腳本中, 通常會存在複製程式碼到特定資料夾的步驟. 這次遇到的問題是複製中文檔名時發生錯誤.
-88Copy-Item : �e���L�k�ƻs���{�����������ءC 89���� �u��:1 �r��:1 90+ Copy-Item -Path F:\temp\BIN\* -Destination F:\xxx\xxx .</p>
 		
 <div class="post__tag">
 			<a href="/moco/tags/cli/"># cli</a>

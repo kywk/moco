@@ -8,13 +8,24 @@
     <language>zh-tw</language>
     <managingEditor>kywk.id@gmail.com (Moo Cow)</managingEditor>
     <webMaster>kywk.id@gmail.com (Moo Cow)</webMaster>
-    <lastBuildDate>Mon, 12 Apr 2021 15:13:11 +0800</lastBuildDate><atom:link href="https://kywk.github.io/moco/tags/git/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 10 May 2021 15:21:31 +0800</lastBuildDate><atom:link href="https://kywk.github.io/moco/tags/git/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Git: Add empty folder</title>
+      <link>https://kywk.github.io/moco/posts/it/git_add-empty-folder/</link>
+      <pubDate>Mon, 10 May 2021 15:21:31 +0800</pubDate>
+      <author>kywk.id@gmail.com (Moo Cow)</author>
+      <guid>https://kywk.github.io/moco/posts/it/git_add-empty-folder/</guid>
+      <description>如何提交空資料夾?
+ 最近專案中不斷被問起這件事, 為了日後管理維護方便, 案主期待 git 裡面能夠預先建立對應的資料夾樹.
+而 git 設計是無法提交空資料夾, 雖然網路上可以找到一些 hack 的方式可以在 git 裡加入空資料夾, 但可能因不同 git 版本關係, 在 checkout 時無法建立對應資料夾.</description>
+    </item>
+    
     <item>
       <title>Git: check if remote branch exists on a given remote repository</title>
-      <link>https://kywk.github.io/moco/posts/sre/git_check-branch-exists/</link>
+      <link>https://kywk.github.io/moco/posts/it/git_check-branch-exists/</link>
       <pubDate>Mon, 12 Apr 2021 15:13:11 +0800</pubDate>
       <author>kywk.id@gmail.com (Moo Cow)</author>
-      <guid>https://kywk.github.io/moco/posts/sre/git_check-branch-exists/</guid>
+      <guid>https://kywk.github.io/moco/posts/it/git_check-branch-exists/</guid>
       <description>專案要幫一些舊項目導入 GitLab CI/CD, 案例是有多個項目需參考另一個 Git 共用元件項目, 通常會用 Git SubModule 來引用共用元件項目. 但因舊項目既有開發流程與版控管理已久, 有些需求實作就難以較正確的方式進行.</description>
     </item>
     

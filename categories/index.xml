@@ -8,7 +8,16 @@
     <language>zh-tw</language>
     <managingEditor>kywk.id@gmail.com (Moo Cow)</managingEditor>
     <webMaster>kywk.id@gmail.com (Moo Cow)</webMaster>
-    <lastBuildDate>Fri, 07 May 2021 09:30:26 +0800</lastBuildDate><atom:link href="https://kywk.github.io/moco/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 10 May 2021 15:21:31 +0800</lastBuildDate><atom:link href="https://kywk.github.io/moco/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>git</title>
+      <link>https://kywk.github.io/moco/categories/git/</link>
+      <pubDate>Mon, 10 May 2021 15:21:31 +0800</pubDate>
+      <author>kywk.id@gmail.com (Moo Cow)</author>
+      <guid>https://kywk.github.io/moco/categories/git/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>SRE</title>
       <link>https://kywk.github.io/moco/categories/sre/</link>
@@ -24,15 +33,6 @@
       <pubDate>Thu, 15 Apr 2021 13:24:47 +0800</pubDate>
       <author>kywk.id@gmail.com (Moo Cow)</author>
       <guid>https://kywk.github.io/moco/categories/powershell/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>git</title>
-      <link>https://kywk.github.io/moco/categories/git/</link>
-      <pubDate>Mon, 12 Apr 2021 15:13:11 +0800</pubDate>
-      <author>kywk.id@gmail.com (Moo Cow)</author>
-      <guid>https://kywk.github.io/moco/categories/git/</guid>
       <description></description>
     </item>
     

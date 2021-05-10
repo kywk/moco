@@ -11,10 +11,10 @@
     <lastBuildDate>Sun, 25 Apr 2021 20:40:21 +0800</lastBuildDate><atom:link href="https://kywk.github.io/moco/tags/nginx/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>手動申請 Let&#39;s Encrypt 憑證與設定 Nginx</title>
-      <link>https://kywk.github.io/moco/posts/sre/it_manual-sign-letsencrypt/</link>
+      <link>https://kywk.github.io/moco/posts/sre/web_manual-letsencrypt/</link>
       <pubDate>Sun, 25 Apr 2021 20:40:21 +0800</pubDate>
       <author>kywk.id@gmail.com (Moo Cow)</author>
-      <guid>https://kywk.github.io/moco/posts/sre/it_manual-sign-letsencrypt/</guid>
+      <guid>https://kywk.github.io/moco/posts/sre/web_manual-letsencrypt/</guid>
       <description>在 Google, Apple 等科技巨頭主導下, HTTPS 已成網站服務必備. 而合格 https CA 憑證的申請是要費用的, 因此出現 Let&amp;rsquo;s Encrypt 這樣的服務.</description>
     </item>
     

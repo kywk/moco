@@ -6,29 +6,29 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="theme-color" content="#1da1f2">
-	<title>macOS 安裝 iftop 失敗與解決方式 |  moco </title>
+	<title>手動申請 Let&#39;s Encrypt 憑證與設定 Nginx |  moco </title>
 	<meta name="description"
-		content="測試 Rclone 伺服機端傳輸時發覺 macOS 並無 iftop 指令, 習慣性地用 brew 安裝了.">
-	<meta property="og:title" content="macOS 安裝 iftop 失敗與解決方式" />
-<meta property="og:description" content="測試 Rclone 伺服機端傳輸時發覺 macOS 並無 iftop 指令, 習慣性地用 brew 安裝了." />
+		content="在 Google, Apple 等科技巨頭主導下, HTTPS 已成網站服務必備. 而合格 https CA 憑證的申請是要費用的, 因此出現 Let&rsquo;s Encrypt 這樣的服務.">
+	<meta property="og:title" content="手動申請 Let&#39;s Encrypt 憑證與設定 Nginx" />
+<meta property="og:description" content="在 Google, Apple 等科技巨頭主導下, HTTPS 已成網站服務必備. 而合格 https CA 憑證的申請是要費用的, 因此出現 Let&rsquo;s Encrypt 這樣的服務." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://kywk.github.io/moco/posts/tool/macos_install-iftop/" /><meta property="og:image" content="https://kywk.github.io/moco/img/avatar.webp"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2020-12-07T16:48:04&#43;08:00" />
-<meta property="article:modified_time" content="2020-12-07T16:48:04&#43;08:00" />
+<meta property="og:url" content="https://kywk.github.io/moco/posts/sre/web_manual-letsencrypt/" /><meta property="og:image" content="https://lh3.googleusercontent.com/pw/ACtC-3dlde6AddUGr3W5sFOvL0D8daOPkJQdjAiPB8u9xRorMWgPcie0_c6Gt7reWYvL9IMqe4M6NLpwn-FvoBAkNpmRWwZ0SrKJFibtnC6IxzmdSWEtY1u_dMmf4b0YnUewWCkHbEyWCd3Nzod1tiNwb0IiQQ=w800-no?authuser=0" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-04-25T20:40:21&#43;08:00" />
+<meta property="article:modified_time" content="2021-04-25T20:40:21&#43;08:00" />
 
 
 	<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://kywk.github.io/moco/img/avatar.webp"/>
+<meta name="twitter:image" content="https://lh3.googleusercontent.com/pw/ACtC-3dlde6AddUGr3W5sFOvL0D8daOPkJQdjAiPB8u9xRorMWgPcie0_c6Gt7reWYvL9IMqe4M6NLpwn-FvoBAkNpmRWwZ0SrKJFibtnC6IxzmdSWEtY1u_dMmf4b0YnUewWCkHbEyWCd3Nzod1tiNwb0IiQQ=w800-no?authuser=0"/>
 
-<meta name="twitter:title" content="macOS 安裝 iftop 失敗與解決方式"/>
-<meta name="twitter:description" content="測試 Rclone 伺服機端傳輸時發覺 macOS 並無 iftop 指令, 習慣性地用 brew 安裝了."/>
+<meta name="twitter:title" content="手動申請 Let&#39;s Encrypt 憑證與設定 Nginx"/>
+<meta name="twitter:description" content="在 Google, Apple 等科技巨頭主導下, HTTPS 已成網站服務必備. 而合格 https CA 憑證的申請是要費用的, 因此出現 Let&rsquo;s Encrypt 這樣的服務."/>
 
 	<meta name="twitter:site" content="@wisnuwiry" />
-	<meta itemprop="name" content="macOS 安裝 iftop 失敗與解決方式">
-<meta itemprop="description" content="測試 Rclone 伺服機端傳輸時發覺 macOS 並無 iftop 指令, 習慣性地用 brew 安裝了."><meta itemprop="datePublished" content="2020-12-07T16:48:04&#43;08:00" />
-<meta itemprop="dateModified" content="2020-12-07T16:48:04&#43;08:00" />
-<meta itemprop="wordCount" content="85"><meta itemprop="image" content="https://kywk.github.io/moco/img/avatar.webp"/>
-<meta itemprop="keywords" content="macos," />
+	<meta itemprop="name" content="手動申請 Let&#39;s Encrypt 憑證與設定 Nginx">
+<meta itemprop="description" content="在 Google, Apple 等科技巨頭主導下, HTTPS 已成網站服務必備. 而合格 https CA 憑證的申請是要費用的, 因此出現 Let&rsquo;s Encrypt 這樣的服務."><meta itemprop="datePublished" content="2021-04-25T20:40:21&#43;08:00" />
+<meta itemprop="dateModified" content="2021-04-25T20:40:21&#43;08:00" />
+<meta itemprop="wordCount" content="253"><meta itemprop="image" content="https://lh3.googleusercontent.com/pw/ACtC-3dlde6AddUGr3W5sFOvL0D8daOPkJQdjAiPB8u9xRorMWgPcie0_c6Gt7reWYvL9IMqe4M6NLpwn-FvoBAkNpmRWwZ0SrKJFibtnC6IxzmdSWEtY1u_dMmf4b0YnUewWCkHbEyWCd3Nzod1tiNwb0IiQQ=w800-no?authuser=0">
+<meta itemprop="keywords" content="SRE,nginx," />
 	<link rel="stylesheet" href="/moco/css/bundle.min.css">
 	<link rel="apple-touch-icon" sizes="180x180" href="https://kywk.github.io/icons/apple-touch-icon.png">
 	<link rel="icon" type="image/png" sizes="32x32" href="https://kywk.github.io/icons/favicon-32x32.png">
@@ -93,17 +93,17 @@
 	"@type":"BlogPosting",
 	"mainEntityOfPage":{
 		"@type":"WebPage",
-		"@id":"https:\/\/kywk.github.io\/mocohttps:\/\/kywk.github.io\/moco\/posts\/tool\/macos_install-iftop\/"
+		"@id":"https:\/\/kywk.github.io\/mocohttps:\/\/kywk.github.io\/moco\/posts\/sre\/web_manual-letsencrypt\/"
 	},
-	"headline":"macOS 安裝 iftop 失敗與解決方式",
-	"datePublished":"2020-12-07T16",
-	"dateModified":"2020-12-07T16",
-	"description":"測試 Rclone 伺服機端傳輸時發覺 macOS 並無 iftop 指令, 習慣性地用 brew 安裝了.",
+	"headline":"手動申請 Let\u0027s Encrypt 憑證與設定 Nginx",
+	"datePublished":"2021-04-25T20",
+	"dateModified":"2021-04-25T20",
+	"description":"在 Google, Apple 等科技巨頭主導下, HTTPS 已成網站服務必備. 而合格 https CA 憑證的申請是要費用的, 因此出現 Let\u0026rsquo;s Encrypt 這樣的服務.",
 	"isFamilyFriendly": "true",
-	"image": ["https://kywk.github.io/moco/img/avatar.webp"],
-	"wordCount" : "85",
-	"keywords": ["macos"],
-	"genre": ["macos"],
+	"image":  ["https://lh3.googleusercontent.com/pw/ACtC-3dlde6AddUGr3W5sFOvL0D8daOPkJQdjAiPB8u9xRorMWgPcie0_c6Gt7reWYvL9IMqe4M6NLpwn-FvoBAkNpmRWwZ0SrKJFibtnC6IxzmdSWEtY1u_dMmf4b0YnUewWCkHbEyWCd3Nzod1tiNwb0IiQQ=w800-no?authuser=0"] ,
+	"wordCount" : "253",
+	"keywords": ["SRE","nginx"],
+	"genre": ["SRE","nginx"],
 	"accountablePerson": {
 		"@type": "Person",
 		"name": "Moo Cow",
@@ -211,11 +211,18 @@
 			
 <div class="hero">
 	
+
+
+<figure class="hero__image hero__image--overlay">
+	<img class="hero__image-img lazyload" data-src="https://lh3.googleusercontent.com/pw/ACtC-3dlde6AddUGr3W5sFOvL0D8daOPkJQdjAiPB8u9xRorMWgPcie0_c6Gt7reWYvL9IMqe4M6NLpwn-FvoBAkNpmRWwZ0SrKJFibtnC6IxzmdSWEtY1u_dMmf4b0YnUewWCkHbEyWCd3Nzod1tiNwb0IiQQ=w800-no?authuser=0" src="/moco/img/placeholder.svg" alt="手動申請 Let&#39;s Encrypt 憑證與設定 Nginx"/>
+</figure>
+
+
 	<header class="hero__content" >
 	<div class="wrapper">
-		<h1 itemprop="name" >
+		<h1 itemprop="name"  style="color: white;" >
 	
-		macOS 安裝 iftop 失敗與解決方式
+		手動申請 Let&#39;s Encrypt 憑證與設定 Nginx
 	
 		</h1>
 	
@@ -228,26 +235,18 @@
     <div class="scroll-indicator-bar" id="indicator"></div>
 </div>
 
-	<div class="content  grid ">
+	<div class="content ">
 		
-<aside class="tableOfContentContainer" id="tableOfContentContainer">
-	<nav id="TableOfContents"></nav>
-</aside>
-<script>
-    window.addEventListener('DOMContentLoaded', () => {
-        enableStickyToc();
-    });
-</script>
 
 		<div class="wrapper post__entry">
 			<div class='property outline'>
     <p>📅️ Published: 
-        <time itemprop="datePublished" datetime="2020-12-07T16:48:04&#43;08:00">December 07, 2020</time>
+        <time itemprop="datePublished" datetime="2021-04-25T20:40:21&#43;08:00">April 25, 2021</time>
     </p>
     <p>🔄 Updated: 
-        <time itemprop="dateModified" datetime="2020-12-07T16:48:04&#43;08:00">December 07, 2020</time>
+        <time itemprop="dateModified" datetime="2021-04-25T20:40:21&#43;08:00">April 25, 2021</time>
     </p>
-    <p>🕔 1 min read ∙ 85 words</p></div>
+    <p>🕔 2 min read ∙ 253 words</p></div>
 			
 <nav class="breadcrumb block" aria-label="breadcrumb">
 	<ol class="breadcrumb__list">
@@ -258,46 +257,110 @@
 		<li class="breadcrumb__item">
 			<a class="breadcrumbs__link" href="/moco/posts/">Posts</a> &nbsp;
 		</li>
-		<li class="breadcrumbs__item breadcrumb__item--active" aria-current="page">macOS 安裝 iftop 失敗與解決方式</li>
+		<li class="breadcrumbs__item breadcrumb__item--active" aria-current="page">手動申請 Let&#39;s Encrypt 憑證與設定 Nginx</li>
 	</ol>
 </nav>
 			<div class="single block">
 				<article class="entry" id="article">
 					<div class="entry__content">
-					<p>測試 Rclone 伺服機端傳輸時發覺 macOS 並無 iftop 指令, 習慣性地用 brew 安裝了.</p>
-<!-- more -->
-<pre><code>$ brew install iftop
-...
-...
-iftop requires root privileges so you will need to run `sudo iftop`.
-You should be certain that you trust any software you grant root privileges.
-</code></pre><p>安裝完成後提示 iftop 這個指令需要用 root 權限執行.</p>
-<p>然而使用 sudo iftop 之後卻出現 command not found 的錯誤.</p>
-<pre><code>$sudo iftop
-sudo: iftop: command not found
-</code></pre><p>上網查了查, 看到這篇 <a href="https://blog.csdn.net/hl449006540/article/details/86753227" target="_blank" rel="noopener">一次macbook安装iftop失败的经历及解决方式_偷懒的加菲-CSDN博客</a><br>
-跟著該文敘述一一確認後, 發覺我電腦上只存在著 sbin 不在 path 環境變數的問題.</p>
-<pre><code>$ sudo vim /etc/paths
-</code></pre><p>打開後發覺裡面有 <code>/usr/local/bin</code>, 但沒有 <code>/usr/local/sbin</code>.<br>
-手動把 <code>/usr/local/sbin</code> 加入, 存檔, 重啟終端機.</p>
+					<p>在 Google, Apple 等科技巨頭主導下, HTTPS 已成網站服務必備.
+而合格 https CA 憑證的申請是要費用的, 因此出現 Let&rsquo;s Encrypt 這樣的服務.
+Let&rsquo;s Encrypt 是由多家公司與非營利組織共同創立的數位憑證認證機構,
+目標就是要讓網站可以免費, 申請簡單與自動化流程的憑證服務.</p>
+<p>網路上相當多 <a href="https://xenby.com/b/101-%e6%95%99%e5%ad%b8-%e7%94%b3%e8%ab%8blets-encrypt%e6%86%91%e8%ad%89%e8%88%87%e5%95%9f%e7%94%a8https-nginx" target="_blank" rel="noopener">Let’s Encrypt 憑證的申請教學</a>,
+這些教學大多數都是利用官方 <code>certbot</code> 進行申請,
+為了避免 <code>certbot</code> 版本不同的差異, 只要找篇近期一些的文章跟著作即可成功.</p>
+<p>為確保所申請憑證的 DNS 確實為申請者擁有,
+<code>certbot</code> 自動更新時需要能透過標準 http request 存取驗證資訊,
+網站管理員必須把 <code>certbot</code> 執行當下所產生的隨機碼放置網站上特定位置,
+以提供 Let&rsquo;s Encrypt 主機存取驗證.</p>
+<p>而這次情況是專案主機所在網路防火牆封鎖對外的 80 Port,
+無法自動申請, 需手動申請憑證與驗證.</p>
+<h3 id="手動申請憑證" itemprop="headline" class="heading">手動申請憑證 <a class="anchor-link" href="#%e6%89%8b%e5%8b%95%e7%94%b3%e8%ab%8b%e6%86%91%e8%ad%89">#</a></h3>
+<p>手動下載 <a href="https://certbot.eff.org" target="_blank" rel="noopener">certbot</a>, 放置主機上.
+或利用套件管理安裝亦可.</p>
+<p>手動申請指令與說明如下:</p>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">$ ./certbot-auto certonly --manual --no-self-upgrade --dry-run --preferred-challenge dns -d www.abc.com 
+</code></pre></div><ul>
+<li>
+<p><code>certonly --manual</code> 手動申請. 自行配置 HTTP 伺服器, 或 HTTP 伺服器在其他主機上.</p>
+</li>
+<li>
+<p><code>--no-self-upgrade</code> 不自動更新 certbot.
+certbot 啟動時會先到 Server 檢查有沒有新版自動下載更新, 加上這個指令可強制不更新.</p>
+</li>
+<li>
+<p><code>--dry-run</code> 為避免濫用, Let&rsquo;s Encrypt 有驗證次數的限制, 加上 &ndash;dry-run 可以使用 stage 環境健行配置的測試.
+<a href="https://letsencrypt.org/docs/rate-limits/" target="_blank" rel="noopener">官方文件在此</a></p>
+<p>There is a <strong>Failed Validation</strong> limit of <strong>5 failures</strong> per account, per hostname, per hour.
+This limit is higher on our <a href="https://letsencrypt.org/docs/staging-environment/" target="_blank" rel="noopener">staging environment</a>,
+so you can use that environment to debug connectivity problems.
+Exceeding the Failed Validations limit is reported with the error message <code>too many failed authorizations recently</code>.</p>
+</li>
+<li>
+<p><code>--preferred-challenge dns</code> Port 80 被封鎖無法從外部連入, 所以採用 DNS Record 驗證.</p>
+</li>
+<li>
+<p><code>-d www.abc.com</code> 最後這邊是自己的域名.</p>
+</li>
+</ul>
 <p><figure class="post__image">
 	<img 
 	itemprop="image"
 	class="lazyload post__image" 
     data-sizes="auto"
     src="/img/placeholder.svg"
-    data-src='https://lh3.googleusercontent.com/pw/ACtC-3dGa69B3UVBKt_TYzNt4-nTxPn8WbSfDK1nVlQ7PXOXDIwwV9pQbliqr6_vH69TMj-FOUY26BG_CiFLDHo6pXTGOE6dtYMESpYQD-8jucaCbnZ3qObEMzdsFbm62I_Omdvzz-Q_unLNo2CVRxQPkyDsAw=w1208-h894-no?authuser=0'
+    data-src='https://lh3.googleusercontent.com/pw/ACtC-3d-aDmRoy2x3HClJlSGM-Ho-8XfyqNcGoOfWrof5nxSIpGHLSt-YfZAhe1cDblZrANtXjWOdnQg2FhfY9Y1PYvjO3SvyiJI2YhCFjTLb1yMpczNcGkEDIlxFB2_2x6wZ40zvzSGhLfOAlWEyoYpsGY0-A=w644-h392-no?authuser=0'
     alt=''
     
  	/>
 </figure>
 </p>
-<p>成功.
-紀錄之.</p>
+<p>輸入後 certbot 會產生一組需配置到 DNS TXT Record 的值.<br>
+例如專案是利用 CloudFlare 當 DNS, 就在後台新增一組 TXT Record.</p>
+<p><figure class="post__image">
+	<img 
+	itemprop="image"
+	class="lazyload post__image" 
+    data-sizes="auto"
+    src="/img/placeholder.svg"
+    data-src='https://lh3.googleusercontent.com/pw/ACtC-3dhwYkZM8hVg9SYU9Rz4iPAK4F3sgvckO4QW2MtkUa2DpKEI_H7gyZWghuhmLwFLpgmaDY0WXur7ORh90E5j5bHdRGW01eyyeQM-h6mvkvteypJHwDnSdjZxOAvMOYRmtFEit3pLX3teKkaAWOBwH70UA=w795-h111-no?authuser=0'
+    alt=''
+    
+ 	/>
+</figure>
+</p>
+<p>設置好後按 Enter, Let&rsquo;s Encrypt 主機會去查 <code>_acme-challenge.www.abc.com</code> 的值,
+若相符則會核發對應的憑證.</p>
+<p>取得憑證後即可把剛剛的 DNS Record 移除,
+畢竟下次申請時內容需要替換, 留著沒意義.</p>
+<h3 id="nginx-設定" itemprop="headline" class="heading">Nginx 設定 <a class="anchor-link" href="#nginx-%e8%a8%ad%e5%ae%9a">#</a></h3>
+<p>取得憑證後把相關憑證檔案放在 nginx 可以存取的資料夾下,
+修改 <code>/etc/nginx/sites-enabled/deafult</code>
+新增 SSL 憑證相關配置如下:</p>
+<pre><code>server{
+  server_name www.abc.com;
+  listen 8888 ssl;
+  ssl_certificate /etc/letsencrypt/cert/www.abc.com/fullchain1.pem;
+  ssl_certificate_key /etc/letsencrypt/cert/www.abc.com/privkey1.pem;
+  ssl_dhparam /etc/ssl/certs/dhparams.pem;
+  ssl_protocols SSLv3 TLSv1 TLSv1.1 TLSv1.2;
+  ssl_ciphers HIGH:!aNULL:!MD5;
+}
+</code></pre><p>修改後重啟 Nginx 即可.</p>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">$ sudo nginx -t
+$ sudo nginx -s reload
+</code></pre></div><p><em>Reference:</em></p>
+<ul>
+<li><a href="https://xenby.com/b/101-%e6%95%99%e5%ad%b8-%e7%94%b3%e8%ab%8blets-encrypt%e6%86%91%e8%ad%89%e8%88%87%e5%95%9f%e7%94%a8https-nginx" target="_blank" rel="noopener">[教學] 申請Let’s Encrypt憑證與啟用https (Nginx) | 辛比誌</a></li>
+<li><a href="https://andyyou.github.io/2019/04/13/how-to-use-certbot/" target="_blank" rel="noopener">解析 Certbot（Let&rsquo;s encrypt） 使用方式 | DEVLOG of andyyou</a></li>
+<li><a href="https://www.kjnotes.com/devtools/103" target="_blank" rel="noopener">acme.sh 自動化申請和更新 Let&rsquo;s Encrypt 萬用 SSL 憑證教學 | KJie Notes</a></li>
+<li><a href="https://blog.csdn.net/qq_34083928/article/details/85044202" target="_blank" rel="noopener">域名在80端口无法访问的情况下通过certbot生成证书_起梦成长的博客-CSDN博客</a></li>
+</ul>
 
 					
     <hr>
-    <p>Wrong content?  <a href="https://github.com/wisnuwiry/blog-v2/edit/master/content/posts/tool/macos_install-iftop.md">Edit on Github</a>.</p>
+    <p>Wrong content?  <a href="https://github.com/wisnuwiry/blog-v2/edit/master/content/posts/sre/web_manual-letsencrypt.md">Edit on Github</a>.</p>
     <hr>
 
 					
@@ -309,29 +372,30 @@ sudo: iftop: command not found
 					<footer class="entry__footer">
 						
 <div class="post__tag">
-			<a href="/moco/tags/macos/"># macos</a>
+			<a href="/moco/tags/sre/"># SRE</a>
+			<a href="/moco/tags/nginx/"># nginx</a>
 </div>
 						
 <div class="post__share">
-	<a class="js-share btn" title=" Facebook" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fkywk.github.io%2fmoco%2fposts%2ftool%2fmacos_install-iftop%2f" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, ' Facebook', 'width=800,height=600,toolbar=0,status=0'); return false">
+	<a class="js-share btn" title=" Facebook" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fkywk.github.io%2fmoco%2fposts%2fsre%2fweb_manual-letsencrypt%2f" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, ' Facebook', 'width=800,height=600,toolbar=0,status=0'); return false">
 		<svg class="share__icon" aria-label="Facebook" role="img" width="32" height="32" viewBox="0 0 512 512"><path d="M330 512V322h64l9-74h-73v-47c0-22 6-36 37-36h39V99c-7-1-30-3-57-3-57 0-95 34-95 98v54h-64v74h64v190z"/></svg>
 	</a>
-	<a class="js-share btn" title=" Twitter" href="https://twitter.com/intent/tweet/?url=https%3a%2f%2fkywk.github.io%2fmoco%2fposts%2ftool%2fmacos_install-iftop%2f&amp;text=macOS%20%e5%ae%89%e8%a3%9d%20iftop%20%e5%a4%b1%e6%95%97%e8%88%87%e8%a7%a3%e6%b1%ba%e6%96%b9%e5%bc%8f" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, ' Twitter', 'width=800,height=450,resizable=yes,toolbar=0,status=0'); return false">
+	<a class="js-share btn" title=" Twitter" href="https://twitter.com/intent/tweet/?url=https%3a%2f%2fkywk.github.io%2fmoco%2fposts%2fsre%2fweb_manual-letsencrypt%2f&amp;text=%e6%89%8b%e5%8b%95%e7%94%b3%e8%ab%8b%20Let%27s%20Encrypt%20%e6%86%91%e8%ad%89%e8%88%87%e8%a8%ad%e5%ae%9a%20Nginx" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, ' Twitter', 'width=800,height=450,resizable=yes,toolbar=0,status=0'); return false">
 		<svg class="share__icon" aria-label="Twitter" viewBox="0 0 24.999 20.316"><path d="M25 2.405a10.253 10.253 0 0 1-2.947.808A5.144 5.144 0 0 0 24.308.376 10.27 10.27 0 0 1 21.05 1.62a5.134 5.134 0 0 0-8.74 4.68A14.56 14.56 0 0 1 1.74.94a5.134 5.134 0 0 0 1.587 6.846 5.108 5.108 0 0 1-2.323-.642v.064a5.132 5.132 0 0 0 4.114 5.03 5.142 5.142 0 0 1-2.316.088 5.134 5.134 0 0 0 4.79 3.562 10.29 10.29 0 0 1-6.37 2.2A10.44 10.44 0 0 1 0 18.012a14.586 14.586 0 0 0 22.454-12.29q0-.333-.015-.662A10.423 10.423 0 0 0 25 2.405z" /></svg>
 
 	</a>
-	<a class="js-share btn" title=" Reddit" href="https://www.reddit.com/submit?url=https%3a%2f%2fkywk.github.io%2fmoco%2fposts%2ftool%2fmacos_install-iftop%2f&amp;title=macOS%20%e5%ae%89%e8%a3%9d%20iftop%20%e5%a4%b1%e6%95%97%e8%88%87%e8%a7%a3%e6%b1%ba%e6%96%b9%e5%bc%8f" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, ' Reddit', 'width=832,height=624,toolbar=0,status=0'); return false">
+	<a class="js-share btn" title=" Reddit" href="https://www.reddit.com/submit?url=https%3a%2f%2fkywk.github.io%2fmoco%2fposts%2fsre%2fweb_manual-letsencrypt%2f&amp;title=%e6%89%8b%e5%8b%95%e7%94%b3%e8%ab%8b%20Let%27s%20Encrypt%20%e6%86%91%e8%ad%89%e8%88%87%e8%a8%ad%e5%ae%9a%20Nginx" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, ' Reddit', 'width=832,height=624,toolbar=0,status=0'); return false">
 		<svg class="share__icon" aria-label="Reddit" role="img" width="32" height="32" viewBox="0 0 512 512"><path fill-rule="evenodd" d="M375 146a32 32 0 1 0-29-46l-65-13c-5-1-9 2-10 6l-22 97c-45 1-85 15-113 36a42 42 0 1 0-45 69l-1 12c0 65 74 117 166 117s166-52 166-117l-1-11a42 42 0 1 0-44-69c-28-21-67-35-111-37l19-86 58 13a32 32 0 0 0 32 29zM190 353c2-1 4 0 5 1 15 11 38 18 61 18s46-6 61-18a7 7 0 0 1 8 10c-18 14-44 21-69 21-25-1-51-7-69-21a6 6 0 0 1 3-11zm23-44a31 31 0 1 1-44-44 31 31 0 0 1 44 44zm130 0a31 31 0 1 0-44-44 31 31 0 0 0 44 44z"/></svg>
 	</a>
-	<a class="js-share btn" title=" Telegram" href="https://t.me/share/url?url=https%3a%2f%2fkywk.github.io%2fmoco%2fposts%2ftool%2fmacos_install-iftop%2f&amp;title=macOS%20%e5%ae%89%e8%a3%9d%20iftop%20%e5%a4%b1%e6%95%97%e8%88%87%e8%a7%a3%e6%b1%ba%e6%96%b9%e5%bc%8f" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, ' Telegram', 'width=800,height=600,toolbar=0,status=0'); return false">
+	<a class="js-share btn" title=" Telegram" href="https://t.me/share/url?url=https%3a%2f%2fkywk.github.io%2fmoco%2fposts%2fsre%2fweb_manual-letsencrypt%2f&amp;title=%e6%89%8b%e5%8b%95%e7%94%b3%e8%ab%8b%20Let%27s%20Encrypt%20%e6%86%91%e8%ad%89%e8%88%87%e8%a8%ad%e5%ae%9a%20Nginx" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, ' Telegram', 'width=800,height=600,toolbar=0,status=0'); return false">
 		<svg class="share__icon" aria-label="Telegram" role="img" viewBox="0 0 25 25"><path d="m9.417 15.181-.397 5.584c.568 0 .814-.244 1.109-.537l2.663-2.545 5.518 4.041c1.012.564 1.725.267 1.998-.931l3.622-16.972.001-.001c.321-1.496-.541-2.081-1.527-1.714l-21.29 8.151c-1.453.564-1.431 1.374-.247 1.741l5.443 1.693 12.643-7.911c.595-.394 1.136-.176.691.218z"/></svg>
 
 	</a>
-	<a class="js-share btn" title=" LinkedIn" href="https://www.linkedin.com/shareArticle?mini=true&url=https%3a%2f%2fkywk.github.io%2fmoco%2fposts%2ftool%2fmacos_install-iftop%2f&title=macOS%20%e5%ae%89%e8%a3%9d%20iftop%20%e5%a4%b1%e6%95%97%e8%88%87%e8%a7%a3%e6%b1%ba%e6%96%b9%e5%bc%8f" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, ' LinkedIn', 'width=640,height=480,toolbar=0,status=0'); return false">
+	<a class="js-share btn" title=" LinkedIn" href="https://www.linkedin.com/shareArticle?mini=true&url=https%3a%2f%2fkywk.github.io%2fmoco%2fposts%2fsre%2fweb_manual-letsencrypt%2f&title=%e6%89%8b%e5%8b%95%e7%94%b3%e8%ab%8b%20Let%27s%20Encrypt%20%e6%86%91%e8%ad%89%e8%88%87%e8%a8%ad%e5%ae%9a%20Nginx" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, ' LinkedIn', 'width=640,height=480,toolbar=0,status=0'); return false">
 		<svg class="share__icon" aria-label="LinkedIn" role="img" viewBox="0 0 34.48 32"><path d="M29.632,0H2.362A2.336,2.336,0,0,0,0,2.306V29.691A2.337,2.337,0,0,0,2.362,32h27.27A2.342,2.342,0,0,0,32,29.691V2.306A2.34,2.34,0,0,0,29.632,0ZM9.491,27.268H4.744V12H9.491ZM7.119,9.909a2.752,2.752,0,1,1,2.75-2.753A2.753,2.753,0,0,1,7.119,9.909ZM27.268,27.268H22.525V19.842c0-1.772-.033-4.05-2.466-4.05-2.47,0-2.848,1.929-2.848,3.921v7.555H12.468V12h4.553v2.086h.063a4.986,4.986,0,0,1,4.491-2.467c4.806,0,5.694,3.163,5.694,7.275Z"/></svg>
 
 	</a>
-	<a class="js-share btn" title=" Pinterest" href="https://pinterest.com/pin/create/button/?url=https%3a%2f%2fkywk.github.io%2fmoco%2fposts%2ftool%2fmacos_install-iftop%2f&description=macOS%20%e5%ae%89%e8%a3%9d%20iftop%20%e5%a4%b1%e6%95%97%e8%88%87%e8%a7%a3%e6%b1%ba%e6%96%b9%e5%bc%8f" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, ' Pocket', 'width=800,height=720,toolbar=0,status=0'); return false">
+	<a class="js-share btn" title=" Pinterest" href="https://pinterest.com/pin/create/button/?url=https%3a%2f%2fkywk.github.io%2fmoco%2fposts%2fsre%2fweb_manual-letsencrypt%2f&description=%e6%89%8b%e5%8b%95%e7%94%b3%e8%ab%8b%20Let%27s%20Encrypt%20%e6%86%91%e8%ad%89%e8%88%87%e8%a8%ad%e5%ae%9a%20Nginx" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, ' Pocket', 'width=800,height=720,toolbar=0,status=0'); return false">
 		<svg class="share__icon" aria-label="Pinterest" role="img" width="32" height="32" viewBox="0 0 512 512"><path d="m265 65c-104 0-157 75-157 138 0 37 14 71 45 83 5 2 10 0 12-5l3-18c2-6 1-7-2-12-9-11-15-24-15-43 0-56 41-106 108-106 60 0 92 37 92 85 0 64-28 116-70 116-23 0-40-18-34-42 6-27 19-57 19-77 0-18-9-34-30-34-24 0-42 25-42 58 0 20 7 34 7 34l-29 120a249 249 0 0 0 2 86l3-1c2-3 31-37 40-72l16-61c7 15 29 28 53 28 71 0 119-64 119-151 0-66-56-126-140-126z"/></svg>
 	</a>
 </div>
@@ -364,37 +428,37 @@ sudo: iftop: command not found
 		<article class="related__item">
 			<div class="feed__meta">
 				
-	<time itemprop="datePublished" class="feed__date" datetime="2021-04-06T11:18:48&#43;08:00">April 06, 2021</time>
+	<time itemprop="datePublished" class="feed__date" datetime="2021-05-07T09:30:26&#43;08:00">May 07, 2021</time>
 			</div>
-			<h3><a class="invert" href="/moco/posts/tool/macos_make-installer-iso/">製作 macOS 安裝 ISO 檔</a></h3></article>
+			<h3><a class="invert" href="/moco/posts/sre/redis_cluster/">建製 Redis Cluster</a></h3></article>
 		
 		<article class="related__item">
 			<div class="feed__meta">
 				
-	<time itemprop="datePublished" class="feed__date" datetime="2021-03-15T15:33:18&#43;08:00">March 15, 2021</time>
+	<time itemprop="datePublished" class="feed__date" datetime="2021-05-06T14:26:31&#43;08:00">May 06, 2021</time>
 			</div>
-			<h3><a class="invert" href="/moco/posts/tool/macos_shadowsocks/">Setup shadowsocks on macOS</a></h3></article>
+			<h3><a class="invert" href="/moco/posts/sre/redis_-warning-slove/">Redis 警告訊息排除</a></h3></article>
 		
 		<article class="related__item">
 			<div class="feed__meta">
 				
-	<time itemprop="datePublished" class="feed__date" datetime="2021-02-26T14:53:37&#43;08:00">February 26, 2021</time>
+	<time itemprop="datePublished" class="feed__date" datetime="2021-05-10T15:21:31&#43;08:00">May 10, 2021</time>
 			</div>
-			<h3><a class="invert" href="/moco/posts/tool/macos_dev-env-2021-feb/">macOS 開發環境建構 2021 Feb</a></h3></article>
+			<h3><a class="invert" href="/moco/posts/it/git_add-empty-folder/">Git: Add empty folder</a></h3></article>
 		
 		<article class="related__item">
 			<div class="feed__meta">
 				
-	<time itemprop="datePublished" class="feed__date" datetime="2021-02-26T14:05:03&#43;08:00">February 26, 2021</time>
+	<time itemprop="datePublished" class="feed__date" datetime="2021-04-15T13:24:47&#43;08:00">April 15, 2021</time>
 			</div>
-			<h3><a class="invert" href="/moco/posts/tool/macos_setup-note-2021-feb/">macOS 系統安裝紀錄 2021.Feb</a></h3></article>
+			<h3><a class="invert" href="/moco/posts/it/ps_path-vs-literalpath/">PowerShell: Path and LiteralPath</a></h3></article>
 		
 		<article class="related__item">
 			<div class="feed__meta">
 				
-	<time itemprop="datePublished" class="feed__date" datetime="2020-12-10T17:31:07&#43;08:00">December 10, 2020</time>
+	<time itemprop="datePublished" class="feed__date" datetime="2021-04-14T11:45:28&#43;08:00">April 14, 2021</time>
 			</div>
-			<h3><a class="invert" href="/moco/posts/it/cli_encrypt-tarball/">Tar 加密打包語法</a></h3></article>
+			<h3><a class="invert" href="/moco/posts/it/ps_zip-archive/">PowerShell: How to Zip (and Unzip) Files</a></h3></article>
 		
 	</div>
 </div>

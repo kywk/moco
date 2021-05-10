@@ -11,29 +11,29 @@
     <lastBuildDate>Fri, 07 May 2021 09:30:26 +0800</lastBuildDate><atom:link href="https://kywk.github.io/moco/categories/sre/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>建製 Redis Cluster</title>
-      <link>https://kywk.github.io/moco/posts/sre/it_redis-cluster/</link>
+      <link>https://kywk.github.io/moco/posts/sre/redis_cluster/</link>
       <pubDate>Fri, 07 May 2021 09:30:26 +0800</pubDate>
       <author>kywk.id@gmail.com (Moo Cow)</author>
-      <guid>https://kywk.github.io/moco/posts/sre/it_redis-cluster/</guid>
+      <guid>https://kywk.github.io/moco/posts/sre/redis_cluster/</guid>
       <description>Redis-Cluster 為無中心化架構, 每個節點都會儲存數據以及整個叢集狀態, 每個節點都會和其他節點建立連線. 一組 Redis Cluster 由多個獨立 Redis 節點組成, 官方建議六個節點, 其中三個為主節點 (master) 三個為從節點 (slave).</description>
     </item>
     
     <item>
       <title>Redis 警告訊息排除</title>
-      <link>https://kywk.github.io/moco/posts/sre/it_solve-redis-warning/</link>
+      <link>https://kywk.github.io/moco/posts/sre/redis_-warning-slove/</link>
       <pubDate>Thu, 06 May 2021 14:26:31 +0800</pubDate>
       <author>kywk.id@gmail.com (Moo Cow)</author>
-      <guid>https://kywk.github.io/moco/posts/sre/it_solve-redis-warning/</guid>
+      <guid>https://kywk.github.io/moco/posts/sre/redis_-warning-slove/</guid>
       <description>啟動 Redis 出現下列警告訊息, 警告說明相當清楚, 如何處理與配置也很清楚, 一一設置即可.
 cow@sandbox:~/tmp/redis/src# ./redis-server 25572:C 06 May 2021 07:58:52.</description>
     </item>
     
     <item>
       <title>手動申請 Let&#39;s Encrypt 憑證與設定 Nginx</title>
-      <link>https://kywk.github.io/moco/posts/sre/it_manual-sign-letsencrypt/</link>
+      <link>https://kywk.github.io/moco/posts/sre/web_manual-letsencrypt/</link>
       <pubDate>Sun, 25 Apr 2021 20:40:21 +0800</pubDate>
       <author>kywk.id@gmail.com (Moo Cow)</author>
-      <guid>https://kywk.github.io/moco/posts/sre/it_manual-sign-letsencrypt/</guid>
+      <guid>https://kywk.github.io/moco/posts/sre/web_manual-letsencrypt/</guid>
       <description>在 Google, Apple 等科技巨頭主導下, HTTPS 已成網站服務必備. 而合格 https CA 憑證的申請是要費用的, 因此出現 Let&amp;rsquo;s Encrypt 這樣的服務.</description>
     </item>
     
