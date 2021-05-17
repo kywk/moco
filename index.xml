@@ -8,7 +8,26 @@
     <language>zh-tw</language>
     <managingEditor>kywk.id@gmail.com (Moo Cow)</managingEditor>
     <webMaster>kywk.id@gmail.com (Moo Cow)</webMaster>
-    <lastBuildDate>Mon, 10 May 2021 15:21:31 +0800</lastBuildDate><atom:link href="https://kywk.github.io/moco/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 16 May 2021 11:45:54 +0800</lastBuildDate><atom:link href="https://kywk.github.io/moco/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Macbook Air 2011 安裝 Mojava/Catalina</title>
+      <link>https://kywk.github.io/moco/posts/tool/hackintosh_macbook-air-2011/</link>
+      <pubDate>Sun, 16 May 2021 11:45:54 +0800</pubDate>
+      <author>kywk.id@gmail.com (Moo Cow)</author>
+      <guid>https://kywk.github.io/moco/posts/tool/hackintosh_macbook-air-2011/</guid>
+      <description>因故拿出閒置已久的 MacBook Air 2011 使用， 升級 brew 套件時發覺不再支援 High Sierra， 而升級 OS 時卻又發現新版 macOS 不再支援舊機型升級。 MacBook Air 爹不疼娘不愛地成了孤兒。</description>
+    </item>
+    
+    <item>
+      <title>macOS 掛載 EFI 磁區方式</title>
+      <link>https://kywk.github.io/moco/posts/tool/macos_mount-efi-disk/</link>
+      <pubDate>Fri, 14 May 2021 14:56:41 +0800</pubDate>
+      <author>kywk.id@gmail.com (Moo Cow)</author>
+      <guid>https://kywk.github.io/moco/posts/tool/macos_mount-efi-disk/</guid>
+      <description>EFI 系統磁區 # EFI系統磁碟分割區是什麼？
+ EFI 系統分割區是一個 FAT 或 FAT32 格式的磁碟分割區。UEFI 韌體可從 ESP 加載 EFI 啟動程式或者 EFI 應用程式</description>
+    </item>
+    
     <item>
       <title>Git: Add empty folder</title>
       <link>https://kywk.github.io/moco/posts/it/git_add-empty-folder/</link>

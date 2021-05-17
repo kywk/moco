@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>hackintosh on moco</title>
+    <link>https://kywk.github.io/moco/categories/hackintosh/</link>
+    <description>Recent content in hackintosh on moco</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-tw</language>
+    <managingEditor>kywk.id@gmail.com (Moo Cow)</managingEditor>
+    <webMaster>kywk.id@gmail.com (Moo Cow)</webMaster>
+    <lastBuildDate>Sun, 16 May 2021 11:45:54 +0800</lastBuildDate><atom:link href="https://kywk.github.io/moco/categories/hackintosh/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Macbook Air 2011 安裝 Mojava/Catalina</title>
+      <link>https://kywk.github.io/moco/posts/tool/hackintosh_macbook-air-2011/</link>
+      <pubDate>Sun, 16 May 2021 11:45:54 +0800</pubDate>
+      <author>kywk.id@gmail.com (Moo Cow)</author>
+      <guid>https://kywk.github.io/moco/posts/tool/hackintosh_macbook-air-2011/</guid>
+      <description>因故拿出閒置已久的 MacBook Air 2011 使用， 升級 brew 套件時發覺不再支援 High Sierra， 而升級 OS 時卻又發現新版 macOS 不再支援舊機型升級。 MacBook Air 爹不疼娘不愛地成了孤兒。</description>
+    </item>
+    
+  </channel>
+</rss>

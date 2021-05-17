@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh-tw">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="theme-color" content="#1da1f2">
+	<title>Macbook Air 2011 安裝 Mojava/Catalina |  moco </title>
+	<meta name="description"
+		content="因故拿出閒置已久的 MacBook Air 2011 使用， 升級 brew 套件時發覺不再支援 High Sierra， 而升級 OS 時卻又發現新版 macOS 不再支援舊機型升級。 MacBook Air 爹不疼娘不愛地成了孤兒。">
+	<meta property="og:title" content="Macbook Air 2011 安裝 Mojava/Catalina" />
+<meta property="og:description" content="因故拿出閒置已久的 MacBook Air 2011 使用， 升級 brew 套件時發覺不再支援 High Sierra， 而升級 OS 時卻又發現新版 macOS 不再支援舊機型升級。 MacBook Air 爹不疼娘不愛地成了孤兒。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://kywk.github.io/moco/posts/tool/hackintosh_macbook-air-2011/" /><meta property="og:image" content="https://lh3.googleusercontent.com/pw/ACtC-3fVXuzPrSrtx2R10grZCwGi5meFEzFOuBSgtw8JrnWZ4N9G2MOCHLb41djGH8w9KeBv3wazMhPvopYCxvlLDcYrhAhB8JwJC4RYb4WkZo2EWUEXVjMquzbs7S5wYhLbasNhNq1nXFXKqZ6pqD4_qNv-8w=w800-no?authuser=0" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-05-16T11:45:54&#43;08:00" />
+<meta property="article:modified_time" content="2021-05-16T11:45:54&#43;08:00" />
+
+
+	<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://lh3.googleusercontent.com/pw/ACtC-3fVXuzPrSrtx2R10grZCwGi5meFEzFOuBSgtw8JrnWZ4N9G2MOCHLb41djGH8w9KeBv3wazMhPvopYCxvlLDcYrhAhB8JwJC4RYb4WkZo2EWUEXVjMquzbs7S5wYhLbasNhNq1nXFXKqZ6pqD4_qNv-8w=w800-no?authuser=0"/>
+
+<meta name="twitter:title" content="Macbook Air 2011 安裝 Mojava/Catalina"/>
+<meta name="twitter:description" content="因故拿出閒置已久的 MacBook Air 2011 使用， 升級 brew 套件時發覺不再支援 High Sierra， 而升級 OS 時卻又發現新版 macOS 不再支援舊機型升級。 MacBook Air 爹不疼娘不愛地成了孤兒。"/>
+
+	<meta name="twitter:site" content="@wisnuwiry" />
+	<meta itemprop="name" content="Macbook Air 2011 安裝 Mojava/Catalina">
+<meta itemprop="description" content="因故拿出閒置已久的 MacBook Air 2011 使用， 升級 brew 套件時發覺不再支援 High Sierra， 而升級 OS 時卻又發現新版 macOS 不再支援舊機型升級。 MacBook Air 爹不疼娘不愛地成了孤兒。"><meta itemprop="datePublished" content="2021-05-16T11:45:54&#43;08:00" />
+<meta itemprop="dateModified" content="2021-05-16T11:45:54&#43;08:00" />
+<meta itemprop="wordCount" content="194"><meta itemprop="image" content="https://lh3.googleusercontent.com/pw/ACtC-3fVXuzPrSrtx2R10grZCwGi5meFEzFOuBSgtw8JrnWZ4N9G2MOCHLb41djGH8w9KeBv3wazMhPvopYCxvlLDcYrhAhB8JwJC4RYb4WkZo2EWUEXVjMquzbs7S5wYhLbasNhNq1nXFXKqZ6pqD4_qNv-8w=w800-no?authuser=0">
+<meta itemprop="keywords" content="hackintosh," />
+	<link rel="stylesheet" href="/moco/css/bundle.min.css">
+	<link rel="apple-touch-icon" sizes="180x180" href="https://kywk.github.io/icons/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="https://kywk.github.io/icons/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="https://kywk.github.io/icons/favicon-16x16.png">
+	<link rel="shortcut icon" href="https://kywk.github.io/icons/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="https://kywk.github.io/icons/favicon.ico" type="image/x-icon">
+	<meta name="msapplication-TileColor" content="#1da1f2">
+	<link rel="manifest" href="https://kywk.github.io/moco/manifest.json">
+	
+	<script type="application/ld+json">
+{
+	"@context":"http://schema.org",
+	"@type":"WebSite",
+	"name":"moco",
+	"url":"https:\/\/kywk.github.io\/moco",
+	"sameAs":[
+		"https://twitter.com/kywkid",
+		"https://gitlab.com/",
+		"https://linkedin.com/in/kywk",
+		"https://t.me/"
+		],
+	"potentialAction": {
+		"@type": "SearchAction",
+		"target": "https://wisnuwiry.space/search?q={search_term}",
+		"query-input": "required name=search_term"
+	}
+}
+</script>
+
+<script type='application/ld+json'>
+{
+	"@context": "http://www.schema.org",
+	"@type": "person",
+	"name": "Moo Cow",
+	"jobTitle": "Software Engineer",
+	"gender": "male",
+	"url": "https:\/\/kywk.github.io\/moco",
+	"sameAs":[
+		"https://twitter.com/kywkid",
+		"https://gitlab.com/",
+		"https://linkedin.com/in/kywk",
+		"https://t.me/"
+		],
+	"image": "https:\/\/kywk.github.io\/moco\/img\/avatar.webp",
+	"address": {
+		"@type": "PostalAddress",
+		"streetAddress": "Mayong, Jepara",
+		"addressLocality": "Jepara",
+		"addressRegion": "Jawa Tengah",
+		"addressCountry": "Indonesia"
+	},
+	"email": "kywk.id@gmail.com",
+	"birthDate": "2003-01-31",
+	"birthPlace": "Jepara",
+	"nationality": "Indonesian"
+}
+</script>
+
+<script type="application/ld+json">
+{
+	"@context":"http://schema.org",
+	"@type":"BlogPosting",
+	"mainEntityOfPage":{
+		"@type":"WebPage",
+		"@id":"https:\/\/kywk.github.io\/mocohttps:\/\/kywk.github.io\/moco\/posts\/tool\/hackintosh_macbook-air-2011\/"
+	},
+	"headline":"Macbook Air 2011 安裝 Mojava\/Catalina",
+	"datePublished":"2021-05-16T11",
+	"dateModified":"2021-05-16T11",
+	"description":"因故拿出閒置已久的 MacBook Air 2011 使用， 升級 brew 套件時發覺不再支援 High Sierra， 而升級 OS 時卻又發現新版 macOS 不再支援舊機型升級。 MacBook Air 爹不疼娘不愛地成了孤兒。",
+	"isFamilyFriendly": "true",
+	"image":  ["https://lh3.googleusercontent.com/pw/ACtC-3fVXuzPrSrtx2R10grZCwGi5meFEzFOuBSgtw8JrnWZ4N9G2MOCHLb41djGH8w9KeBv3wazMhPvopYCxvlLDcYrhAhB8JwJC4RYb4WkZo2EWUEXVjMquzbs7S5wYhLbasNhNq1nXFXKqZ6pqD4_qNv-8w=w800-no?authuser=0"] ,
+	"wordCount" : "194",
+	"keywords": ["hackintosh"],
+	"genre": ["hackintosh"],
+	"accountablePerson": {
+		"@type": "Person",
+		"name": "Moo Cow",
+		"url": ""
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Moo Cow",
+		"url": ""
+	},
+	"creator": {
+		"@type": "Person",
+		"name": "Moo Cow",
+		"url": ""
+	},
+	"publisher":{
+		"@type":"Organization",
+		"name":"Moo Cow", 
+		"logo": {
+			"@type": "imageObject",
+			"url": "https:\/\/kywk.github.io\/moco\/img\/avatar.webp"
+		}
+	}
+}</script>
+
+
+	<meta content="" property="fb:admins">
+	<meta content="" property="fb:app_id">
+	<meta content="index,follow" name="googlebot">
+	<meta content="follow, all" name="Googlebot-Image">
+	<meta content="follow, all" name="Scooter">
+	<meta content="follow, all" name="msnbot">
+	<meta content="follow, all" name="alexabot">
+	<meta content="follow, all" name="Slurp">
+	<meta content="follow, all" name="ZyBorg">
+	<meta content="follow, all" name="Scooter">
+	<meta content="true" name="MSSmartTagsPreventParsing">
+	<meta content="ALL" name="SPIDERS">
+	<meta content="ALL" name="WEBCRAWLERS">
+	<meta
+		content="aeiwi, alexa, alltheWeb, altavista, aol netfind, anzwers, canada, directhit, euroseek, excite, overture, go, google, hotbot. infomak, kanoodle, lycos, mastersite, national directory, northern light, searchit, simplesearch, Websmostlinked, webtop, what-u-seek, aol, yahoo, webcrawler, infoseek, excite, magellan, looksmart, bing, cnet, googlebot"
+		name="search engines">
+	
+</head>
+
+<body class="">
+	<div class="site-container">
+		<header class="top" id="js-header">
+	<a class="logo" href="/moco" title="moco">
+    <img src="/img/placeholder.svg" alt="moco" class="lazyload" data-src="/moco/img/avatar.webp">
+</a>
+	
+	<nav class="navbar js-navbar">
+		<ul class="navbar__menu">
+			
+			
+				
+				<li>
+					<a href="/moco/posts" target="_self">
+						📝 Post
+					</a>
+				</li>
+				
+				
+				<li>
+					<a href="/moco/project" target="_self">
+						🗃 Project
+					</a>
+				</li>
+				
+				
+				<li>
+					<a href="/moco/about" target="_self">
+						🐮 About
+					</a>
+				</li>
+				
+				
+				<li>
+					<a href="/moco/contact" target="_self">
+						🤙 Contact
+					</a>
+				</li>
+				
+		</ul>
+		<button class="navbar__toggle js-toggle" aria-label="Menu" aria-haspopup="true" aria-expanded="false"><span class="navbar__toggle-box"><span class="navbar__toggle-inner">Menu</span></span>
+		</button>
+	</nav>
+	<div class="search">
+	<a class="search__btn btn" aria-label="Search" href="/search" title="Search">
+		<svg viewBox="0 0 15 15">
+<path d="M14.81,13.14l-3-3h0a6.52,6.52,0,1,0-1.67,1.67h0l3,3a1.06,1.06,0,0,0,1.43-.24A1.06,1.06,0,0,0,14.81,13.14ZM6.5,11A4.5,4.5,0,1,1,11,6.5,4.51,4.51,0,0,1,6.5,11Z"/>
+</svg>
+
+	</a>
+	<button class="search__btn large" aria-label="Switch Theme" id="toggle-theme">
+		<svg viewBox="0 0 24 24">
+			<path id="icon-theme"></path>
+		</svg>
+	</button>
+</div>
+</header>
+
+		<main>
+			
+<div class="hero">
+	
+
+
+<figure class="hero__image hero__image--overlay">
+	<img class="hero__image-img lazyload" data-src="https://lh3.googleusercontent.com/pw/ACtC-3fVXuzPrSrtx2R10grZCwGi5meFEzFOuBSgtw8JrnWZ4N9G2MOCHLb41djGH8w9KeBv3wazMhPvopYCxvlLDcYrhAhB8JwJC4RYb4WkZo2EWUEXVjMquzbs7S5wYhLbasNhNq1nXFXKqZ6pqD4_qNv-8w=w800-no?authuser=0" src="/moco/img/placeholder.svg" alt="Macbook Air 2011 安裝 Mojava/Catalina"/>
+</figure>
+
+
+	<header class="hero__content" >
+	<div class="wrapper">
+		<h1 itemprop="name"  style="color: white;" >
+	
+		Macbook Air 2011 安裝 Mojava/Catalina
+	
+		</h1>
+	
+		</div>
+	</header>
+</div>
+
+	
+	<div class="progress-container" >
+    <div class="scroll-indicator-bar" id="indicator"></div>
+</div>
+
+	<div class="content ">
+		
+
+		<div class="wrapper post__entry">
+			<div class='property outline'>
+    <p>📅️ Published: 
+        <time itemprop="datePublished" datetime="2021-05-16T11:45:54&#43;08:00">May 16, 2021</time>
+    </p>
+    <p>🔄 Updated: 
+        <time itemprop="dateModified" datetime="2021-05-16T11:45:54&#43;08:00">May 16, 2021</time>
+    </p>
+    <p>🕔 1 min read ∙ 194 words</p></div>
+			
+<nav class="breadcrumb block" aria-label="breadcrumb">
+	<ol class="breadcrumb__list">
+		
+		<li class="breadcrumb__item">
+			<a class="breadcrumbs__link" href="/moco/">Home</a> &nbsp;
+		</li>
+		<li class="breadcrumb__item">
+			<a class="breadcrumbs__link" href="/moco/posts/">Posts</a> &nbsp;
+		</li>
+		<li class="breadcrumbs__item breadcrumb__item--active" aria-current="page">Macbook Air 2011 安裝 Mojava/Catalina</li>
+	</ol>
+</nav>
+			<div class="single block">
+				<article class="entry" id="article">
+					<div class="entry__content">
+					<p>因故拿出閒置已久的 MacBook Air 2011 使用，
+升級 brew 套件時發覺不再支援 High Sierra，
+而升級 OS 時卻又發現新版 macOS 不再支援舊機型升級。
+MacBook Air 爹不疼娘不愛地成了孤兒。</p>
+<p>上網搜尋一下發現了 Mojava/Catalina Patcher，
+可以讓部分官方不再支援的舊機型安裝新版系統。
+其運作原理和 hackintosh 雷同，
+仿造官方支援的 EFI 資訊，讓新版 macOS 可以順利跑在舊機型上。</p>
+<p>參考比對一些資訊後，決定安裝 Mojava 而非 Catalina，
+老電腦效能有限，Mojava 似乎比 Catalina 流暢些。
+安裝紀錄於後。</p>
+<p><em>越獄安裝 macOS Mojava/Catalina 在非官方支援的硬體設備中，仍存有不穩定的風險，後果自負。</em></p>
+<h3 id="準備工作" itemprop="headline" class="heading">準備工作 <a class="anchor-link" href="#%e6%ba%96%e5%82%99%e5%b7%a5%e4%bd%9c">#</a></h3>
+<p>確認主機型號，並非所有舊電腦都可以透過 Patcher 安裝 Mojava/Catalina，
+官方有列出支援的主機，請自行參考官網說明。</p>
+<p><figure class="post__image">
+	<img 
+	itemprop="image"
+	class="lazyload post__image" 
+    data-sizes="auto"
+    src="/img/placeholder.svg"
+    data-src='https://lh3.googleusercontent.com/pw/ACtC-3dL0riUaXnORmvDJUBkVLQYxPWmZByDQMB1PuFagMM5giIdPMBO6k8pyY1j2g9k6tpSTe9UR_LOk5YlNtg5MEWodsATK5e4ruaxO-TSwzjgoi8fppqRW77WQdSRHfHc-KIs2uOU8m8mjZhzYp-jDd8eBg=w593-h538-no?authuser=0'
+    alt=''
+    
+ 	/>
+</figure>
+</p>
+<p>Macbook Air 2011 系統型號為 <code>MacBookAir4.2</code>
+在官方支援的機型中，可以進行後續準備動作。</p>
+<ul>
+<li>16G 以上隨身碟</li>
+<li><a href="http://dosdude1.com/mojave/" target="_blank" rel="noopener">macOS Mojava Patcher</a></li>
+<li><a href="https://apps.apple.com/us/app/macos-mojave/id1398502828?mt=12" target="_blank" rel="noopener">macOS Mojava Installer</a><br>
+建議預先下載官方 macOS 系統安裝程序，亦可透過 Mojava Patcher 下載。<br>
+<figure class="post__image">
+	<img 
+	itemprop="image"
+	class="lazyload post__image" 
+    data-sizes="auto"
+    src="/img/placeholder.svg"
+    data-src='https://lh3.googleusercontent.com/pw/ACtC-3d_P68vX1FQrc3cOVDFTsZXnykQ_iChRuqJ5IqrUarM4K9RGkGO2455iA67EsHJDgYQC83jwGLpmHA_hAV1z_vywntth5N26A421ZeliQa-9eOzpkt3xOlCgnC28kxn66ZH_9llUpc5LU1NDH-yilQt2g=w800-no?authuser=0'
+    alt=''
+    
+ 	/>
+</figure>
+</li>
+</ul>
+<h3 id="製作安裝碟" itemprop="headline" class="heading">製作安裝碟 <a class="anchor-link" href="#%e8%a3%bd%e4%bd%9c%e5%ae%89%e8%a3%9d%e7%a2%9f">#</a></h3>
+<p>將隨身碟格式化成GUID的擴充格式（日誌式）</p>
+<p><figure class="post__image">
+	<img 
+	itemprop="image"
+	class="lazyload post__image" 
+    data-sizes="auto"
+    src="/img/placeholder.svg"
+    data-src='https://lh3.googleusercontent.com/pw/ACtC-3dRH-9ipZmGNjim_uuVggf68nGbBjqlFky4G-2Khhrxvk459_LPCdLx8EsiNXpytFNTIysk2rQd43DM_hzo9ev-yz0vcIooIHOvnkcdt5i5hyZFGhXZYT0KiX0Kh5JnopIscPAaFlEGjS1KX8Ynx9294A=w800-no?authuser=0'
+    alt=''
+    
+ 	/>
+</figure>
+</p>
+<p>執行 macOS Mojava Patcher</p>
+<p><figure class="post__image">
+	<img 
+	itemprop="image"
+	class="lazyload post__image" 
+    data-sizes="auto"
+    src="/img/placeholder.svg"
+    data-src='https://lh3.googleusercontent.com/pw/ACtC-3f3oCmV_zRbzb6znhnjPs8Cf5bwM--3KtDKIA9d4l3__tF9m8Y1aUgI9fnkCfvcfcdoSrAmoPdnwIx-7n6JZyoFp0M78Ee0qlmSb5VaOamM9wjEu1bQVYdWEwxwE1rnRohgSL5oT2AwblIxKD8LlrKafg=w800-no?authuser=0'
+    alt=''
+    
+ 	/>
+</figure>
+</p>
+<p>分別選擇已下載的 Installer、剛剛格式化的隨身碟後按 <strong>Start Operation&hellip;</strong></p>
+<p><figure class="post__image">
+	<img 
+	itemprop="image"
+	class="lazyload post__image" 
+    data-sizes="auto"
+    src="/img/placeholder.svg"
+    data-src='https://lh3.googleusercontent.com/pw/ACtC-3dpj2jDzuaPZTYRnBxksbvbfkhcZai1k7gUZaTssI0NOKDqtojW5yqsngQUEyZ5mowvUId7JmNaNKXvf9G3mjbd_inGYQutjXEDuP6Fxji4AVvKGTrjzqXKgJYpPIwsT6Ao17qmvd4wpU7gRoV1fqSdMQ=w800-no?authuser=0'
+    alt=''
+    
+ 	/>
+</figure>
+</p>
+<p>系統會跳出一些存取權限的請求警示視窗，一一確認後即開始製作安裝碟。</p>
+<p><figure class="post__image">
+	<img 
+	itemprop="image"
+	class="lazyload post__image" 
+    data-sizes="auto"
+    src="/img/placeholder.svg"
+    data-src='https://lh3.googleusercontent.com/pw/ACtC-3c2iIyJr7L8R-CWB4t_vlzThNcrt1pParpZXhLNDlulX-XEOv_lOhuGYrIRWWZoe4QXubXHqibg3xHifzBhcNut3RXOmAui86ACwBypML8lkjnPHnCi3CyPfAP2qw262yIGu1YxONVHbFCKs3hiCkaFUQ=w800-no?authuser=0'
+    alt=''
+    
+ 	/>
+</figure>
+</p>
+<p><figure class="post__image">
+	<img 
+	itemprop="image"
+	class="lazyload post__image" 
+    data-sizes="auto"
+    src="/img/placeholder.svg"
+    data-src='https://lh3.googleusercontent.com/pw/ACtC-3dsnASd-CKeHD1Bq-UFWoetPaVGOLVivHOzqPsD4-GseR60nl8ewhcWbvy-DcPoqQyFFYu21jwUpVErZL3HrCGTXDA37w_akjF9fuBrP3pPfyS3pQq1h3IOQjK0IQpXBl9LijItDsXYeSCW3DMsoj6Wsg=w800-no?authuser=0'
+    alt=''
+    
+ 	/>
+</figure>
+</p>
+<h3 id="安裝系統" itemprop="headline" class="heading">安裝系統 <a class="anchor-link" href="#%e5%ae%89%e8%a3%9d%e7%b3%bb%e7%b5%b1">#</a></h3>
+<p>USB 開機碟製作完成後，在 Macbook Air 2011 上使用隨身碟開機與安裝系統，
+安裝選單介面略有不同，但安裝流程和一般安裝 macOS 並無不同。</p>
+<p><figure class="post__image">
+	<img 
+	itemprop="image"
+	class="lazyload post__image" 
+    data-sizes="auto"
+    src="/img/placeholder.svg"
+    data-src='https://lh3.googleusercontent.com/pw/ACtC-3ckHt3xbE-g3RNZtnNNiRHRS6GfD1DyOE4w3hCT8nHnmRPYNp5p78U9Q-45fYQsfQxTSYLvrzoa3h1rBGdcC2k5JlKgeFu48kkP2oC0IHNZPn-9iqPvX2CWBoVsAICaPloJkEHtanT368Nfhk0Gurjh5A=w800-no?authuser=0'
+    alt=''
+    
+ 	/>
+</figure>
+</p>
+<p><figure class="post__image">
+	<img 
+	itemprop="image"
+	class="lazyload post__image" 
+    data-sizes="auto"
+    src="/img/placeholder.svg"
+    data-src='https://lh3.googleusercontent.com/pw/ACtC-3cpHHeOmeZIaXnKjuOwIieW-yiM_1vz-Fore8QbOWSih_YQoFRWuya1vIiGFbOJEVOb8YOw4BExcMqs0gZAz1tSOfNryy3xaR90dYjxO9_docDjLCLWh1n6My-i-8QckwATQ2ZWoJG496eiIeO3EkjJtg=w800-no?authuser=0'
+    alt=''
+    
+ 	/>
+</figure>
+</p>
+<p>安裝完成之後，會重新啟動電腦。
+正常來說，重新啟動之後就完成系統安裝，
+不過不要忘了這台電腦是不被原廠允許安裝這個作業系統的，
+所以需要再次透過 USB 隨身碟開機，安裝修正檔。</p>
+<h3 id="安裝修正檔" itemprop="headline" class="heading">安裝修正檔 <a class="anchor-link" href="#%e5%ae%89%e8%a3%9d%e4%bf%ae%e6%ad%a3%e6%aa%94">#</a></h3>
+<p>第一次開機的時候按下 <code>Option</code> 不放，再次選擇USB安裝磁碟。
+這次回來安裝畫面之後，選擇下方的這個 <code>macOS Post Install</code>。</p>
+<p><figure class="post__image">
+	<img 
+	itemprop="image"
+	class="lazyload post__image" 
+    data-sizes="auto"
+    src="/img/placeholder.svg"
+    data-src='https://lh3.googleusercontent.com/pw/ACtC-3dBw1ew6bzjvSHFQP-hRlQ2jsQRXMFpIDu2z205QA4AGueR7HU4I8k9Qj-eaNxSNYRYGZn7SKrHbl63B8vfkc0ZHLy_vASySS5Xb4Z9IPGY-g0MzmEKhRVEjce52jG6aeOILk1a8mfYjjzjNLpDrFu77g=w800-no?authuser=0'
+    alt=''
+    
+ 	/>
+</figure>
+</p>
+<p>執行之後，軟體自動判斷你這台機型應該是哪台，
+可以確認一下軟體判斷的是否為前面步驟所查的型號 <code>MacBookAir4,2</code>
+下面這一堆有的打勾、有的沒打勾的，就是適合這台安裝的一些修正。</p>
+<p><figure class="post__image">
+	<img 
+	itemprop="image"
+	class="lazyload post__image" 
+    data-sizes="auto"
+    src="/img/placeholder.svg"
+    data-src='https://lh3.googleusercontent.com/pw/ACtC-3dOAiY-38JGULik-odL_9inPHKGsiCrSQlWAFcCcBZVDg4P3Gmn2O65rL8wVcxrKzzLi5c4x_S5TlRs-j3cFW5rd4pQX6JN_2X2KRf_nCdMPuXognH7CLfKU8rhfgF1sOUFGNbnYOuWzk_c1IzD8GH5Pw=w800-no?authuser=0'
+    alt=''
+    
+ 	/>
+</figure>
+</p>
+<p>選擇所要安裝的系統磁碟後安裝，
+等候修正程序安裝完成之後重新開機就可以正確進入 macOS 10.14。</p>
+<p><figure class="post__image">
+	<img 
+	itemprop="image"
+	class="lazyload post__image" 
+    data-sizes="auto"
+    src="/img/placeholder.svg"
+    data-src='https://lh3.googleusercontent.com/pw/ACtC-3c6NmV2FD-LJxXEq9ISRSFPnOvmLSeOD23zZFq1DnAA6Nrr--K00enPtEFXvLxRhPn6zh0eSThdkiQQrXQgpVDmf1MshbGhOuB2uEeAQ0kGK2k0m_0oghTBcBsC9BmG--Ebkbr4bMhbFSUAkl19IQqMZg=w698-no?authuser=0'
+    alt=''
+    
+ 	/>
+</figure>
+</p>
+<p>第一次進入系統後會自動跳出 Patch Updater，
+讓他自動安裝需要的更新後再次重新開機，就可以快樂使用 Mojave 了。</p>
+<p><figure class="post__image">
+	<img 
+	itemprop="image"
+	class="lazyload post__image" 
+    data-sizes="auto"
+    src="/img/placeholder.svg"
+    data-src='https://lh3.googleusercontent.com/pw/ACtC-3e4qtQeJ6g7G3LPmgGIrUOrOW0zNEfMpXLoYp2xw2Mgx8MyXy7j0p2oBZCj_M8p4mSmEJV_AhKCyBOy6CXbeC-B3bKw-50rUwQxYf2KltUYFCTS7mLCFNBZJtmM3CORK5c8-31a7XxLjnoDU6m5iJuLLA=w800-no?authuser=0'
+    alt=''
+    
+ 	/>
+</figure>
+</p>
+<p>後續的系統更新有時可以直接安裝，有時會有問題。
+出錯時大多情況下重新跑一次 Patch Updater 即可。
+不過在進行系統更新前，最好先去 Mojava Patcher 官網確認支援情況後再更新。
+也就是非必要的話，無須第一時間更新系統。</p>
+<h3 id="後記" itemprop="headline" class="heading">後記 <a class="anchor-link" href="#%e5%be%8c%e8%a8%98">#</a></h3>
+<p>因手上其他筆電皆為 macOS BigSur，介面操作和權限管理上和 Catalina 較為相近，
+所以又把 MacBook Air 重新安裝 Catalina。</p>
+<p>安裝流程大致雷同，就不另筆記了。</p>
+<h3 id="see-also" itemprop="headline" class="heading">See Also <a class="anchor-link" href="#see-also">#</a></h3>
+<p>上述流程和參考資料幾乎一樣，有部分內容也是直接引用參考資料。
+所以發文，一來自己紀錄過會比較有記憶點，
+二者網路資源隨時消逝，可能下回有需要安裝時就找不到資源了。</p>
+<p>感謝前人整理的資訊，本篇安裝筆記分享之。</p>
+<p>最後再次提醒：<br>
+<em>越獄安裝 macOS Mojava/Catalina 在非官方支援的硬體設備中，仍存有不穩定的風險，後果自負。</em></p>
+<ul>
+<li><a href="https://iphone4.tw/forums/showthread.php?t=221017" target="_blank" rel="noopener">[OS X] 《吉米教你用》JB的方式讓你的老Mac可以跑macOS Mojave 10.14 - iPhone4.TW</a>
+<ul>
+<li><a href="https://iphone4.tw/forums/showthread.php?t=221260" target="_blank" rel="noopener">[OS X] 《吉米教你用》JB的方式讓你的老Mac可以跑macOS Catalina 10.15 - iPhone4.TW</a></li>
+<li><a href="https://7--8.com/how-to-create-a-macos-catalina-10-15-unsupported-usb-installer/" target="_blank" rel="noopener">非支援機種 macOS 10.15 Catalina USB 安裝工具與重灌 | 民樂電腦</a></li>
+<li><a href="https://blog.steveyi.net/macos-catalina-on-unsupport-mac/" target="_blank" rel="noopener">在官方不支援macOS Catalina的裝置安裝macOS Catalina - 酷小易</a></li>
+<li><a href="https://blog.steveyi.net/macos-catalina-on-unsupport-mac/" target="_blank" rel="noopener">macOS Catalina Patcher(如何在旧mac上安装Catalina系统) - 知乎</a></li>
+</ul>
+</li>
+<li><a href="https://www.imacpc.net/archives/3864" target="_blank" rel="noopener">如何取得舊版 macOS 作業系統 - 我和我的黑蘋果</a></li>
+</ul>
+
+					
+    <hr>
+    <p>Wrong content?  <a href="https://github.com/wisnuwiry/blog-v2/edit/master/content/posts/tool/hackintosh_macbook-air-2011.md">Edit on Github</a>.</p>
+    <hr>
+
+					
+
+					
+
+					</div>
+					
+					<footer class="entry__footer">
+						
+<div class="post__tag">
+			<a href="/moco/tags/hackintosh/"># hackintosh</a>
+</div>
+						
+<div class="post__share">
+	<a class="js-share btn" title=" Facebook" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fkywk.github.io%2fmoco%2fposts%2ftool%2fhackintosh_macbook-air-2011%2f" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, ' Facebook', 'width=800,height=600,toolbar=0,status=0'); return false">
+		<svg class="share__icon" aria-label="Facebook" role="img" width="32" height="32" viewBox="0 0 512 512"><path d="M330 512V322h64l9-74h-73v-47c0-22 6-36 37-36h39V99c-7-1-30-3-57-3-57 0-95 34-95 98v54h-64v74h64v190z"/></svg>
+	</a>
+	<a class="js-share btn" title=" Twitter" href="https://twitter.com/intent/tweet/?url=https%3a%2f%2fkywk.github.io%2fmoco%2fposts%2ftool%2fhackintosh_macbook-air-2011%2f&amp;text=Macbook%20Air%202011%20%e5%ae%89%e8%a3%9d%20Mojava%2fCatalina" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, ' Twitter', 'width=800,height=450,resizable=yes,toolbar=0,status=0'); return false">
+		<svg class="share__icon" aria-label="Twitter" viewBox="0 0 24.999 20.316"><path d="M25 2.405a10.253 10.253 0 0 1-2.947.808A5.144 5.144 0 0 0 24.308.376 10.27 10.27 0 0 1 21.05 1.62a5.134 5.134 0 0 0-8.74 4.68A14.56 14.56 0 0 1 1.74.94a5.134 5.134 0 0 0 1.587 6.846 5.108 5.108 0 0 1-2.323-.642v.064a5.132 5.132 0 0 0 4.114 5.03 5.142 5.142 0 0 1-2.316.088 5.134 5.134 0 0 0 4.79 3.562 10.29 10.29 0 0 1-6.37 2.2A10.44 10.44 0 0 1 0 18.012a14.586 14.586 0 0 0 22.454-12.29q0-.333-.015-.662A10.423 10.423 0 0 0 25 2.405z" /></svg>
+
+	</a>
+	<a class="js-share btn" title=" Reddit" href="https://www.reddit.com/submit?url=https%3a%2f%2fkywk.github.io%2fmoco%2fposts%2ftool%2fhackintosh_macbook-air-2011%2f&amp;title=Macbook%20Air%202011%20%e5%ae%89%e8%a3%9d%20Mojava%2fCatalina" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, ' Reddit', 'width=832,height=624,toolbar=0,status=0'); return false">
+		<svg class="share__icon" aria-label="Reddit" role="img" width="32" height="32" viewBox="0 0 512 512"><path fill-rule="evenodd" d="M375 146a32 32 0 1 0-29-46l-65-13c-5-1-9 2-10 6l-22 97c-45 1-85 15-113 36a42 42 0 1 0-45 69l-1 12c0 65 74 117 166 117s166-52 166-117l-1-11a42 42 0 1 0-44-69c-28-21-67-35-111-37l19-86 58 13a32 32 0 0 0 32 29zM190 353c2-1 4 0 5 1 15 11 38 18 61 18s46-6 61-18a7 7 0 0 1 8 10c-18 14-44 21-69 21-25-1-51-7-69-21a6 6 0 0 1 3-11zm23-44a31 31 0 1 1-44-44 31 31 0 0 1 44 44zm130 0a31 31 0 1 0-44-44 31 31 0 0 0 44 44z"/></svg>
+	</a>
+	<a class="js-share btn" title=" Telegram" href="https://t.me/share/url?url=https%3a%2f%2fkywk.github.io%2fmoco%2fposts%2ftool%2fhackintosh_macbook-air-2011%2f&amp;title=Macbook%20Air%202011%20%e5%ae%89%e8%a3%9d%20Mojava%2fCatalina" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, ' Telegram', 'width=800,height=600,toolbar=0,status=0'); return false">
+		<svg class="share__icon" aria-label="Telegram" role="img" viewBox="0 0 25 25"><path d="m9.417 15.181-.397 5.584c.568 0 .814-.244 1.109-.537l2.663-2.545 5.518 4.041c1.012.564 1.725.267 1.998-.931l3.622-16.972.001-.001c.321-1.496-.541-2.081-1.527-1.714l-21.29 8.151c-1.453.564-1.431 1.374-.247 1.741l5.443 1.693 12.643-7.911c.595-.394 1.136-.176.691.218z"/></svg>
+
+	</a>
+	<a class="js-share btn" title=" LinkedIn" href="https://www.linkedin.com/shareArticle?mini=true&url=https%3a%2f%2fkywk.github.io%2fmoco%2fposts%2ftool%2fhackintosh_macbook-air-2011%2f&title=Macbook%20Air%202011%20%e5%ae%89%e8%a3%9d%20Mojava%2fCatalina" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, ' LinkedIn', 'width=640,height=480,toolbar=0,status=0'); return false">
+		<svg class="share__icon" aria-label="LinkedIn" role="img" viewBox="0 0 34.48 32"><path d="M29.632,0H2.362A2.336,2.336,0,0,0,0,2.306V29.691A2.337,2.337,0,0,0,2.362,32h27.27A2.342,2.342,0,0,0,32,29.691V2.306A2.34,2.34,0,0,0,29.632,0ZM9.491,27.268H4.744V12H9.491ZM7.119,9.909a2.752,2.752,0,1,1,2.75-2.753A2.753,2.753,0,0,1,7.119,9.909ZM27.268,27.268H22.525V19.842c0-1.772-.033-4.05-2.466-4.05-2.47,0-2.848,1.929-2.848,3.921v7.555H12.468V12h4.553v2.086h.063a4.986,4.986,0,0,1,4.491-2.467c4.806,0,5.694,3.163,5.694,7.275Z"/></svg>
+
+	</a>
+	<a class="js-share btn" title=" Pinterest" href="https://pinterest.com/pin/create/button/?url=https%3a%2f%2fkywk.github.io%2fmoco%2fposts%2ftool%2fhackintosh_macbook-air-2011%2f&description=Macbook%20Air%202011%20%e5%ae%89%e8%a3%9d%20Mojava%2fCatalina" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, ' Pocket', 'width=800,height=720,toolbar=0,status=0'); return false">
+		<svg class="share__icon" aria-label="Pinterest" role="img" width="32" height="32" viewBox="0 0 512 512"><path d="m265 65c-104 0-157 75-157 138 0 37 14 71 45 83 5 2 10 0 12-5l3-18c2-6 1-7-2-12-9-11-15-24-15-43 0-56 41-106 108-106 60 0 92 37 92 85 0 64-28 116-70 116-23 0-40-18-34-42 6-27 19-57 19-77 0-18-9-34-30-34-24 0-42 25-42 58 0 20 7 34 7 34l-29 120a249 249 0 0 0 2 86l3-1c2-3 31-37 40-72l16-61c7 15 29 28 53 28 71 0 119-64 119-151 0-66-56-126-140-126z"/></svg>
+	</a>
+</div>
+						
+<div class="post__bio bio" >
+		<img class="lazyload bio__avatar" alt="Moo Cow avatar" data-src="/moco/img/avatar.webp" height="90" width="90" src="/moco/img/placeholder.svg">
+	<div class="bio__info">
+		<a class="bio__name invert" href="/about">
+			<p itemprop="author">Moo Cow</p>
+		</a>
+		
+	</div>
+</div>
+
+					</footer>
+					
+				</article>
+				
+			</div>
+		</div>
+	</div>
+	
+
+
+
+<div class="post__related related">
+	<div class="wrapper">
+		<h2 class="h5 related__title">You should also read:</h2>
+		
+		<article class="related__item">
+			<div class="feed__meta">
+				
+	<time itemprop="datePublished" class="feed__date" datetime="2021-05-14T14:56:41&#43;08:00">May 14, 2021</time>
+			</div>
+			<h3><a class="invert" href="/moco/posts/tool/macos_mount-efi-disk/">macOS 掛載 EFI 磁區方式</a></h3></article>
+		
+		<article class="related__item">
+			<div class="feed__meta">
+				
+	<time itemprop="datePublished" class="feed__date" datetime="2021-05-10T15:21:31&#43;08:00">May 10, 2021</time>
+			</div>
+			<h3><a class="invert" href="/moco/posts/it/git_add-empty-folder/">Git: Add empty folder</a></h3></article>
+		
+		<article class="related__item">
+			<div class="feed__meta">
+				
+	<time itemprop="datePublished" class="feed__date" datetime="2021-05-07T09:30:26&#43;08:00">May 07, 2021</time>
+			</div>
+			<h3><a class="invert" href="/moco/posts/sre/redis_cluster/">建製 Redis Cluster</a></h3></article>
+		
+		<article class="related__item">
+			<div class="feed__meta">
+				
+	<time itemprop="datePublished" class="feed__date" datetime="2021-05-06T14:26:31&#43;08:00">May 06, 2021</time>
+			</div>
+			<h3><a class="invert" href="/moco/posts/sre/redis_-warning-slove/">Redis 警告訊息排除</a></h3></article>
+		
+		<article class="related__item">
+			<div class="feed__meta">
+				
+	<time itemprop="datePublished" class="feed__date" datetime="2021-04-25T20:40:21&#43;08:00">April 25, 2021</time>
+			</div>
+			<h3><a class="invert" href="/moco/posts/sre/web_manual-letsencrypt/">手動申請 Let&#39;s Encrypt 憑證與設定 Nginx</a></h3></article>
+		
+	</div>
+</div>
+
+	
+<section class="post__comments">
+	<div class="wrapper">
+		<h5>💬 Comment: </h5>
+		<div id="comment"></div>
+		
+	</div>
+	<script>
+		var commentId = document.getElementById('comment');
+		var commentLoaded = false;
+		window.addEventListener('scroll', loadComment());
+
+		function loadComment(){
+			window.addEventListener('DOMContentLoaded', () => {
+				var top = commentId.offsetTop;
+				
+				if (!commentLoaded) {
+					commentLoaded = true;
+					(function () {
+						var d = document, s = d.createElement('script');
+						s.src = 'https://utteranc.es/client.js';
+						s.setAttribute('repo', '');
+						s.setAttribute('issue-term', 'title');
+						var currentTheme = localStorage.getItem("w-theme");
+						if(currentTheme == 'light'){
+							s.setAttribute('theme', 'github-light');
+						}else{
+							s.setAttribute('theme', 'photon-dark');
+						}
+						s.setAttribute('crossorigin', 'anonymous');
+						s.async = !0;
+						commentId.appendChild(s);
+					})();
+				}
+			});		
+		}
+	</script>
+</section>
+
+	
+
+		</main>
+		<footer class="footer">
+<div class="footer__social">
+		<a itemprop="sameAs" class="social__link" target="_blank" rel="noopener noreferrer" href="https://twitter.com/kywkid">
+			<svg class="social__icon" aria-label="Twitter" viewBox="0 0 24.999 20.316"><path d="M25 2.405a10.253 10.253 0 0 1-2.947.808A5.144 5.144 0 0 0 24.308.376 10.27 10.27 0 0 1 21.05 1.62a5.134 5.134 0 0 0-8.74 4.68A14.56 14.56 0 0 1 1.74.94a5.134 5.134 0 0 0 1.587 6.846 5.108 5.108 0 0 1-2.323-.642v.064a5.132 5.132 0 0 0 4.114 5.03 5.142 5.142 0 0 1-2.316.088 5.134 5.134 0 0 0 4.79 3.562 10.29 10.29 0 0 1-6.37 2.2A10.44 10.44 0 0 1 0 18.012a14.586 14.586 0 0 0 22.454-12.29q0-.333-.015-.662A10.423 10.423 0 0 0 25 2.405z" /></svg>
+
+		</a>
+		<a itemprop="sameAs" class="social__link" target="_blank" rel="noopener noreferrer" href="https://linkedin.com/in/kywk">
+			<svg class="social__icon" aria-label="LinkedIn" role="img" viewBox="0 0 34.48 32"><path d="M29.632,0H2.362A2.336,2.336,0,0,0,0,2.306V29.691A2.337,2.337,0,0,0,2.362,32h27.27A2.342,2.342,0,0,0,32,29.691V2.306A2.34,2.34,0,0,0,29.632,0ZM9.491,27.268H4.744V12H9.491ZM7.119,9.909a2.752,2.752,0,1,1,2.75-2.753A2.753,2.753,0,0,1,7.119,9.909ZM27.268,27.268H22.525V19.842c0-1.772-.033-4.05-2.466-4.05-2.47,0-2.848,1.929-2.848,3.921v7.555H12.468V12h4.553v2.086h.063a4.986,4.986,0,0,1,4.491-2.467c4.806,0,5.694,3.163,5.694,7.275Z"/></svg>
+
+		</a>
+		<a itemprop="sameAs" class="social__link" target="_blank" rel="noopener noreferrer" href="https://github.com/kywk">
+			<svg class="social__icon" aria-label="Github" role="img" viewBox="0 0 25 25"><path d="m12 .5c-6.63 0-12 5.28-12 11.792 0 5.211 3.438 9.63 8.205 11.188.6.111.82-.254.82-.567 0-.28-.01-1.022-.015-2.005-3.338.711-4.042-1.582-4.042-1.582-.546-1.361-1.335-1.725-1.335-1.725-1.087-.731.084-.716.084-.716 1.205.082 1.838 1.215 1.838 1.215 1.07 1.803 2.809 1.282 3.495.981.108-.763.417-1.282.76-1.577-2.665-.295-5.466-1.309-5.466-5.827 0-1.287.465-2.339 1.235-3.164-.135-.298-.54-1.497.105-3.121 0 0 1.005-.316 3.3 1.209.96-.262 1.98-.392 3-.398 1.02.006 2.04.136 3 .398 2.28-1.525 3.285-1.209 3.285-1.209.645 1.624.24 2.823.12 3.121.765.825 1.23 1.877 1.23 3.164 0 4.53-2.805 5.527-5.475 5.817.42.354.81 1.077.81 2.182 0 1.578-.015 2.846-.015 3.229 0 .309.21.678.825.56 4.801-1.548 8.236-5.97 8.236-11.173 0-6.512-5.373-11.792-12-11.792z" /></svg>
+
+		</a>
+</div>
+	<div class="footer__copyright">© 2021 <a href="https://wisnuwiry.space">MooCow</a> <span class="footer__copyright-credits"></span> | Created with ❤️ <a href="//gohugo.io">Hugo</a></div>
+</footer>
+	</div>
+	
+
+
+
+<script type="text/javascript" src="/moco/js/bundle.min.js" defer></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.2.0/lazysizes.min.js"></script>
+<script>(function (d, e) { d[e] = d[e].replace("no-js", "js"); })(document.documentElement, "className");</script>
+<script>
+    
+
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker
+            .register('/sw.js', { scope: '/' })
+            .then(function (registration) {
+                console.log('Service Worker Registered');
+            });
+
+        navigator.serviceWorker
+            .ready
+            .then(function (registration) {
+                console.log('Service Worker Ready');
+            });
+    }
+</script>
+
+</body>
+
+</html>

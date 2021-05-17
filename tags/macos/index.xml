@@ -8,7 +8,17 @@
     <language>zh-tw</language>
     <managingEditor>kywk.id@gmail.com (Moo Cow)</managingEditor>
     <webMaster>kywk.id@gmail.com (Moo Cow)</webMaster>
-    <lastBuildDate>Tue, 06 Apr 2021 11:18:48 +0800</lastBuildDate><atom:link href="https://kywk.github.io/moco/tags/macos/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 14 May 2021 14:56:41 +0800</lastBuildDate><atom:link href="https://kywk.github.io/moco/tags/macos/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>macOS 掛載 EFI 磁區方式</title>
+      <link>https://kywk.github.io/moco/posts/tool/macos_mount-efi-disk/</link>
+      <pubDate>Fri, 14 May 2021 14:56:41 +0800</pubDate>
+      <author>kywk.id@gmail.com (Moo Cow)</author>
+      <guid>https://kywk.github.io/moco/posts/tool/macos_mount-efi-disk/</guid>
+      <description>EFI 系統磁區 # EFI系統磁碟分割區是什麼？
+ EFI 系統分割區是一個 FAT 或 FAT32 格式的磁碟分割區。UEFI 韌體可從 ESP 加載 EFI 啟動程式或者 EFI 應用程式</description>
+    </item>
+    
     <item>
       <title>製作 macOS 安裝 ISO 檔</title>
       <link>https://kywk.github.io/moco/posts/tool/macos_make-installer-iso/</link>

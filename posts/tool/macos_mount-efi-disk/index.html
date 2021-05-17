@@ -6,37 +6,33 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="theme-color" content="#1da1f2">
-	<title>Git: Add empty folder |  moco </title>
+	<title>macOS 掛載 EFI 磁區方式 |  moco </title>
 	<meta name="description"
-		content="如何提交空資料夾?
- 最近專案中不斷被問起這件事, 為了日後管理維護方便, 案主期待 git 裡面能夠預先建立對應的資料夾樹.
-而 git 設計是無法提交空資料夾, 雖然網路上可以找到一些 hack 的方式可以在 git 裡加入空資料夾, 但可能因不同 git 版本關係, 在 checkout 時無法建立對應資料夾.">
-	<meta property="og:title" content="Git: Add empty folder" />
-<meta property="og:description" content="如何提交空資料夾?
- 最近專案中不斷被問起這件事, 為了日後管理維護方便, 案主期待 git 裡面能夠預先建立對應的資料夾樹.
-而 git 設計是無法提交空資料夾, 雖然網路上可以找到一些 hack 的方式可以在 git 裡加入空資料夾, 但可能因不同 git 版本關係, 在 checkout 時無法建立對應資料夾." />
+		content="EFI 系統磁區 # EFI系統磁碟分割區是什麼？
+ EFI 系統分割區是一個 FAT 或 FAT32 格式的磁碟分割區。UEFI 韌體可從 ESP 加載 EFI 啟動程式或者 EFI 應用程式">
+	<meta property="og:title" content="macOS 掛載 EFI 磁區方式" />
+<meta property="og:description" content="EFI 系統磁區 # EFI系統磁碟分割區是什麼？
+ EFI 系統分割區是一個 FAT 或 FAT32 格式的磁碟分割區。UEFI 韌體可從 ESP 加載 EFI 啟動程式或者 EFI 應用程式" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://kywk.github.io/moco/posts/it/git_add-empty-folder/" /><meta property="og:image" content="https://lh3.googleusercontent.com/pw/ACtC-3c1Fcx8ZIVYrXBrmLfZUFhSnpBJqiUgVL36d3S6x_VzJ0a0JzmkF__USqKP6HCuphBVaLiWP5Vf0Qv2l-WzrdNy3h2G_emtP9mNa82Y2FySF8wu42FOSOySVj-7hf-yuabf58RkxPr-Lv8PvX172gAtYA=w800-no?authuser=0" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2021-05-10T15:21:31&#43;08:00" />
-<meta property="article:modified_time" content="2021-05-10T15:21:31&#43;08:00" />
+<meta property="og:url" content="https://kywk.github.io/moco/posts/tool/macos_mount-efi-disk/" /><meta property="og:image" content="https://lh3.googleusercontent.com/pw/ACtC-3fnLstA2rsbmbt0hI7IWqhfzOU17UzGFO6pEIfoC2_x_l526rOlZ3_p4RbWvVFWlT6uMlnPMzjCSxDILtn7Er5Ch0JPYJReE0BhmCXqJh6TsqrygLrL17dcz1Dyq3eJ7MZhHDqQhvWbX3zJvneD1CRanA=w800-no?authuser=0" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-05-14T14:56:41&#43;08:00" />
+<meta property="article:modified_time" content="2021-05-14T14:56:41&#43;08:00" />
 
 
 	<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://lh3.googleusercontent.com/pw/ACtC-3c1Fcx8ZIVYrXBrmLfZUFhSnpBJqiUgVL36d3S6x_VzJ0a0JzmkF__USqKP6HCuphBVaLiWP5Vf0Qv2l-WzrdNy3h2G_emtP9mNa82Y2FySF8wu42FOSOySVj-7hf-yuabf58RkxPr-Lv8PvX172gAtYA=w800-no?authuser=0"/>
+<meta name="twitter:image" content="https://lh3.googleusercontent.com/pw/ACtC-3fnLstA2rsbmbt0hI7IWqhfzOU17UzGFO6pEIfoC2_x_l526rOlZ3_p4RbWvVFWlT6uMlnPMzjCSxDILtn7Er5Ch0JPYJReE0BhmCXqJh6TsqrygLrL17dcz1Dyq3eJ7MZhHDqQhvWbX3zJvneD1CRanA=w800-no?authuser=0"/>
 
-<meta name="twitter:title" content="Git: Add empty folder"/>
-<meta name="twitter:description" content="如何提交空資料夾?
- 最近專案中不斷被問起這件事, 為了日後管理維護方便, 案主期待 git 裡面能夠預先建立對應的資料夾樹.
-而 git 設計是無法提交空資料夾, 雖然網路上可以找到一些 hack 的方式可以在 git 裡加入空資料夾, 但可能因不同 git 版本關係, 在 checkout 時無法建立對應資料夾."/>
+<meta name="twitter:title" content="macOS 掛載 EFI 磁區方式"/>
+<meta name="twitter:description" content="EFI 系統磁區 # EFI系統磁碟分割區是什麼？
+ EFI 系統分割區是一個 FAT 或 FAT32 格式的磁碟分割區。UEFI 韌體可從 ESP 加載 EFI 啟動程式或者 EFI 應用程式"/>
 
 	<meta name="twitter:site" content="@wisnuwiry" />
-	<meta itemprop="name" content="Git: Add empty folder">
-<meta itemprop="description" content="如何提交空資料夾?
- 最近專案中不斷被問起這件事, 為了日後管理維護方便, 案主期待 git 裡面能夠預先建立對應的資料夾樹.
-而 git 設計是無法提交空資料夾, 雖然網路上可以找到一些 hack 的方式可以在 git 裡加入空資料夾, 但可能因不同 git 版本關係, 在 checkout 時無法建立對應資料夾."><meta itemprop="datePublished" content="2021-05-10T15:21:31&#43;08:00" />
-<meta itemprop="dateModified" content="2021-05-10T15:21:31&#43;08:00" />
-<meta itemprop="wordCount" content="171"><meta itemprop="image" content="https://lh3.googleusercontent.com/pw/ACtC-3c1Fcx8ZIVYrXBrmLfZUFhSnpBJqiUgVL36d3S6x_VzJ0a0JzmkF__USqKP6HCuphBVaLiWP5Vf0Qv2l-WzrdNy3h2G_emtP9mNa82Y2FySF8wu42FOSOySVj-7hf-yuabf58RkxPr-Lv8PvX172gAtYA=w800-no?authuser=0">
-<meta itemprop="keywords" content="cli,git," />
+	<meta itemprop="name" content="macOS 掛載 EFI 磁區方式">
+<meta itemprop="description" content="EFI 系統磁區 # EFI系統磁碟分割區是什麼？
+ EFI 系統分割區是一個 FAT 或 FAT32 格式的磁碟分割區。UEFI 韌體可從 ESP 加載 EFI 啟動程式或者 EFI 應用程式"><meta itemprop="datePublished" content="2021-05-14T14:56:41&#43;08:00" />
+<meta itemprop="dateModified" content="2021-05-14T14:56:41&#43;08:00" />
+<meta itemprop="wordCount" content="30"><meta itemprop="image" content="https://lh3.googleusercontent.com/pw/ACtC-3fnLstA2rsbmbt0hI7IWqhfzOU17UzGFO6pEIfoC2_x_l526rOlZ3_p4RbWvVFWlT6uMlnPMzjCSxDILtn7Er5Ch0JPYJReE0BhmCXqJh6TsqrygLrL17dcz1Dyq3eJ7MZhHDqQhvWbX3zJvneD1CRanA=w800-no?authuser=0">
+<meta itemprop="keywords" content="macos,hackintosh," />
 	<link rel="stylesheet" href="/moco/css/bundle.min.css">
 	<link rel="apple-touch-icon" sizes="180x180" href="https://kywk.github.io/icons/apple-touch-icon.png">
 	<link rel="icon" type="image/png" sizes="32x32" href="https://kywk.github.io/icons/favicon-32x32.png">
@@ -101,17 +97,17 @@
 	"@type":"BlogPosting",
 	"mainEntityOfPage":{
 		"@type":"WebPage",
-		"@id":"https:\/\/kywk.github.io\/mocohttps:\/\/kywk.github.io\/moco\/posts\/it\/git_add-empty-folder\/"
+		"@id":"https:\/\/kywk.github.io\/mocohttps:\/\/kywk.github.io\/moco\/posts\/tool\/macos_mount-efi-disk\/"
 	},
-	"headline":"Git: Add empty folder",
-	"datePublished":"2021-05-10T15",
-	"dateModified":"2021-05-10T15",
-	"description":"如何提交空資料夾?\n 最近專案中不斷被問起這件事, 為了日後管理維護方便, 案主期待 git 裡面能夠預先建立對應的資料夾樹.\n而 git 設計是無法提交空資料夾, 雖然網路上可以找到一些 hack 的方式可以在 git 裡加入空資料夾, 但可能因不同 git 版本關係, 在 checkout 時無法建立對應資料夾.",
+	"headline":"macOS 掛載 EFI 磁區方式",
+	"datePublished":"2021-05-14T14",
+	"dateModified":"2021-05-14T14",
+	"description":"EFI 系統磁區 # EFI系統磁碟分割區是什麼？\n EFI 系統分割區是一個 FAT 或 FAT32 格式的磁碟分割區。UEFI 韌體可從 ESP 加載 EFI 啟動程式或者 EFI 應用程式",
 	"isFamilyFriendly": "true",
-	"image":  ["https://lh3.googleusercontent.com/pw/ACtC-3c1Fcx8ZIVYrXBrmLfZUFhSnpBJqiUgVL36d3S6x_VzJ0a0JzmkF__USqKP6HCuphBVaLiWP5Vf0Qv2l-WzrdNy3h2G_emtP9mNa82Y2FySF8wu42FOSOySVj-7hf-yuabf58RkxPr-Lv8PvX172gAtYA=w800-no?authuser=0"] ,
-	"wordCount" : "171",
-	"keywords": ["cli","git"],
-	"genre": ["cli","git"],
+	"image":  ["https://lh3.googleusercontent.com/pw/ACtC-3fnLstA2rsbmbt0hI7IWqhfzOU17UzGFO6pEIfoC2_x_l526rOlZ3_p4RbWvVFWlT6uMlnPMzjCSxDILtn7Er5Ch0JPYJReE0BhmCXqJh6TsqrygLrL17dcz1Dyq3eJ7MZhHDqQhvWbX3zJvneD1CRanA=w800-no?authuser=0"] ,
+	"wordCount" : "30",
+	"keywords": ["macos","hackintosh"],
+	"genre": ["macos","hackintosh"],
 	"accountablePerson": {
 		"@type": "Person",
 		"name": "Moo Cow",
@@ -222,7 +218,7 @@
 
 
 <figure class="hero__image hero__image--overlay">
-	<img class="hero__image-img lazyload" data-src="https://lh3.googleusercontent.com/pw/ACtC-3c1Fcx8ZIVYrXBrmLfZUFhSnpBJqiUgVL36d3S6x_VzJ0a0JzmkF__USqKP6HCuphBVaLiWP5Vf0Qv2l-WzrdNy3h2G_emtP9mNa82Y2FySF8wu42FOSOySVj-7hf-yuabf58RkxPr-Lv8PvX172gAtYA=w800-no?authuser=0" src="/moco/img/placeholder.svg" alt="Git: Add empty folder"/>
+	<img class="hero__image-img lazyload" data-src="https://lh3.googleusercontent.com/pw/ACtC-3fnLstA2rsbmbt0hI7IWqhfzOU17UzGFO6pEIfoC2_x_l526rOlZ3_p4RbWvVFWlT6uMlnPMzjCSxDILtn7Er5Ch0JPYJReE0BhmCXqJh6TsqrygLrL17dcz1Dyq3eJ7MZhHDqQhvWbX3zJvneD1CRanA=w800-no?authuser=0" src="/moco/img/placeholder.svg" alt="macOS 掛載 EFI 磁區方式"/>
 </figure>
 
 
@@ -230,7 +226,7 @@
 	<div class="wrapper">
 		<h1 itemprop="name"  style="color: white;" >
 	
-		Git: Add empty folder
+		macOS 掛載 EFI 磁區方式
 	
 		</h1>
 	
@@ -243,18 +239,36 @@
     <div class="scroll-indicator-bar" id="indicator"></div>
 </div>
 
-	<div class="content ">
+	<div class="content  grid ">
 		
+<aside class="tableOfContentContainer" id="tableOfContentContainer">
+	<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#efi-系統磁區">EFI 系統磁區</a></li>
+        <li><a href="#heading"></a></li>
+        <li><a href="#reference">Reference</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</aside>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        enableStickyToc();
+    });
+</script>
 
 		<div class="wrapper post__entry">
 			<div class='property outline'>
     <p>📅️ Published: 
-        <time itemprop="datePublished" datetime="2021-05-10T15:21:31&#43;08:00">May 10, 2021</time>
+        <time itemprop="datePublished" datetime="2021-05-14T14:56:41&#43;08:00">May 14, 2021</time>
     </p>
     <p>🔄 Updated: 
-        <time itemprop="dateModified" datetime="2021-05-10T15:21:31&#43;08:00">May 10, 2021</time>
+        <time itemprop="dateModified" datetime="2021-05-14T14:56:41&#43;08:00">May 14, 2021</time>
     </p>
-    <p>🕔 1 min read ∙ 171 words</p></div>
+    <p>🕔 1 min read ∙ 30 words</p></div>
 			
 <nav class="breadcrumb block" aria-label="breadcrumb">
 	<ol class="breadcrumb__list">
@@ -265,69 +279,33 @@
 		<li class="breadcrumb__item">
 			<a class="breadcrumbs__link" href="/moco/posts/">Posts</a> &nbsp;
 		</li>
-		<li class="breadcrumbs__item breadcrumb__item--active" aria-current="page">Git: Add empty folder</li>
+		<li class="breadcrumbs__item breadcrumb__item--active" aria-current="page">macOS 掛載 EFI 磁區方式</li>
 	</ol>
 </nav>
 			<div class="single block">
 				<article class="entry" id="article">
 					<div class="entry__content">
-					<blockquote>
-<p>如何提交空資料夾?</p>
+					<h3 id="efi-系統磁區" itemprop="headline" class="heading">EFI 系統磁區 <a class="anchor-link" href="#efi-%e7%b3%bb%e7%b5%b1%e7%a3%81%e5%8d%80">#</a></h3>
+<p>EFI系統磁碟分割區是什麼？</p>
+<blockquote>
+<p>EFI 系統分割區是一個 FAT 或 FAT32 格式的磁碟分割區。UEFI 韌體可從 ESP 加載 EFI 啟動程式或者 EFI 應用程式</p>
+<p>維基百科</p>
 </blockquote>
-<p>最近專案中不斷被問起這件事, 為了日後管理維護方便,
-案主期待 git 裡面能夠預先建立對應的資料夾樹.</p>
-<p>而 git 設計是無法提交空資料夾,
-雖然網路上可以找到一些 hack 的方式可以在 git 裡加入空資料夾,
-但可能因不同 git 版本關係, 在 checkout 時無法建立對應資料夾.</p>
-<p>通用解法是在該資料夾底下新增一個不影響程式運行的檔案.
-常見的有 <code>.gitignore</code> <code>.gitkeep</code> <code>README.md</code></p>
-<h3 id="gitignore" itemprop="headline" class="heading">.gitignore <a class="anchor-link" href="#gitignore">#</a></h3>
-<p>若該資料夾不該保存任何程式資源, 只是為了專案特殊需求而必須存在資料夾,
-可新增 <code>.gitignore</code> 檔. 內容範例如後:</p>
-<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">$ mkdir &lt;NEW_FOLDER&gt;
-$ <span class="nb">cd</span> &lt;NEW_FOLDER&gt;
-$ vi .gitignore
-
-<span class="c1"># Ignore everything in this directory</span>
-*
-<span class="c1"># Except this file</span>
-!.gitignore
-</code></pre></div><p>往後專案開發在該資料夾放任何檔案, commit 時都不會被加入 git 倉儲,
-checkout 時也不會產生衝突或影像.
-適合當作不同環境會有所不同開發測試資源, 臨時資料夾等.</p>
-<h3 id="gitkeep" itemprop="headline" class="heading">.gitkeep <a class="anchor-link" href="#gitkeep">#</a></h3>
-<p>在資料夾底下新增一個 <code>.gitkeep</code> 的空白檔案,  git 就不會認為是空資料夾了.
-雖然命名很像 Git 的系統檔案, 但其實不是, 它只是個普通檔案.</p>
-<p>這個方式可以保存資料夾, 日後資料夾有檔案增減時, 億會被提交到專案倉儲.
-<em>題外話: 在 gitlab web 上新增資料夾的話, 建立資料夾外也會新增 .gitkeep 空白檔.</em></p>
-<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">$ mkdir &lt;NEW_FOLDER&gt;
-$ <span class="nb">cd</span> &lt;NEW_FOLDER&gt;
-$ touch .gitkeep
-</code></pre></div><h3 id="readmemd" itemprop="headline" class="heading">README.md <a class="anchor-link" href="#readmemd">#</a></h3>
-<p>和新增 <code>.gitkeep</code> 一樣, 在空資料夾下新增 <code>README.md</code> 檔案, 就不是空資料夾了.</p>
-<p>不同的地方是 <code>.gitkeep</code> 會被視為系統隱藏檔, 大部分開發工具都會忽略它的存在,
-而 <code>README.md</code> 則是個一般檔案, 要注意開發工具會不會引用而出錯.</p>
-<p>若開發工具不會因為 <code>README.md</code> 出錯, 且專案是多人共同開發,
-新增個 <code>README.md</code> 簡單說明一下該空資料夾作什麼用途,
-是對團隊較為友善的方式.</p>
-<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">$ mkdir &lt;NEW_FOLDER&gt;
-$ <span class="nb">cd</span> &lt;NEW_FOLDER&gt;
-$ vi README.md
-
-WHO CREATED THIS FOLDER
-WHY THIS FOLDER EXIST
-WHAT THIS FOLDER WORKING FOR
-</code></pre></div><h3 id="reference" itemprop="headline" class="heading">Reference <a class="anchor-link" href="#reference">#</a></h3>
+<p>EFI分割區有什麼？它包含了4個主要部分：</p>
+<p>啟動程式
+裝置驅動程式
+系統工具套件
+資料檔</p>
+<h3 id="heading" itemprop="headline" class="heading"> <a class="anchor-link" href="#heading">#</a></h3>
+<h3 id="reference" itemprop="headline" class="heading">Reference <a class="anchor-link" href="#reference">#</a></h3>
 <ul>
-<li><a href="https://stackoverflow.com/questions/115983/how-can-i-add-an-empty-directory-to-a-git-repository" target="_blank" rel="noopener">How can I add an empty directory to a Git repository? - Stack Overflow</a></li>
-<li><a href="https://gitbook.tw/chapters/using-git/add-folder-to-git.html" target="_blank" rel="noopener">【狀況題】新增目錄？ - 為你自己學 Git | 高見龍</a></li>
-<li><a href="https://www.itread01.com/content/1542022390.html" target="_blank" rel="noopener">git提交空資料夾 - IT閱讀</a></li>
-<li><a href="https://xyz.cinc.biz/2014/03/git-add-empty-directory.html" target="_blank" rel="noopener">XYZ的筆記本: Git commit 空資料夾</a></li>
+<li><a href="https://tw.easeus.com/partition-manager-tips/delete-efi-system-partition.html" target="_blank" rel="noopener">如何刪除Windows 10/8/7/XP/Vista的EFI系統磁碟分割區 - EaseUS</a></li>
+<li><a href=""></a></li>
 </ul>
 
 					
     <hr>
-    <p>Wrong content?  <a href="https://github.com/wisnuwiry/blog-v2/edit/master/content/posts/it/git_add-empty-folder.md">Edit on Github</a>.</p>
+    <p>Wrong content?  <a href="https://github.com/wisnuwiry/blog-v2/edit/master/content/posts/tool/macos_mount-efi-disk.md">Edit on Github</a>.</p>
     <hr>
 
 					
@@ -339,30 +317,30 @@ WHAT THIS FOLDER WORKING FOR
 					<footer class="entry__footer">
 						
 <div class="post__tag">
-			<a href="/moco/tags/cli/"># cli</a>
-			<a href="/moco/tags/git/"># git</a>
+			<a href="/moco/tags/macos/"># macos</a>
+			<a href="/moco/tags/hackintosh/"># hackintosh</a>
 </div>
 						
 <div class="post__share">
-	<a class="js-share btn" title=" Facebook" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fkywk.github.io%2fmoco%2fposts%2fit%2fgit_add-empty-folder%2f" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, ' Facebook', 'width=800,height=600,toolbar=0,status=0'); return false">
+	<a class="js-share btn" title=" Facebook" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fkywk.github.io%2fmoco%2fposts%2ftool%2fmacos_mount-efi-disk%2f" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, ' Facebook', 'width=800,height=600,toolbar=0,status=0'); return false">
 		<svg class="share__icon" aria-label="Facebook" role="img" width="32" height="32" viewBox="0 0 512 512"><path d="M330 512V322h64l9-74h-73v-47c0-22 6-36 37-36h39V99c-7-1-30-3-57-3-57 0-95 34-95 98v54h-64v74h64v190z"/></svg>
 	</a>
-	<a class="js-share btn" title=" Twitter" href="https://twitter.com/intent/tweet/?url=https%3a%2f%2fkywk.github.io%2fmoco%2fposts%2fit%2fgit_add-empty-folder%2f&amp;text=Git%3a%20Add%20empty%20folder" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, ' Twitter', 'width=800,height=450,resizable=yes,toolbar=0,status=0'); return false">
+	<a class="js-share btn" title=" Twitter" href="https://twitter.com/intent/tweet/?url=https%3a%2f%2fkywk.github.io%2fmoco%2fposts%2ftool%2fmacos_mount-efi-disk%2f&amp;text=macOS%20%e6%8e%9b%e8%bc%89%20EFI%20%e7%a3%81%e5%8d%80%e6%96%b9%e5%bc%8f" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, ' Twitter', 'width=800,height=450,resizable=yes,toolbar=0,status=0'); return false">
 		<svg class="share__icon" aria-label="Twitter" viewBox="0 0 24.999 20.316"><path d="M25 2.405a10.253 10.253 0 0 1-2.947.808A5.144 5.144 0 0 0 24.308.376 10.27 10.27 0 0 1 21.05 1.62a5.134 5.134 0 0 0-8.74 4.68A14.56 14.56 0 0 1 1.74.94a5.134 5.134 0 0 0 1.587 6.846 5.108 5.108 0 0 1-2.323-.642v.064a5.132 5.132 0 0 0 4.114 5.03 5.142 5.142 0 0 1-2.316.088 5.134 5.134 0 0 0 4.79 3.562 10.29 10.29 0 0 1-6.37 2.2A10.44 10.44 0 0 1 0 18.012a14.586 14.586 0 0 0 22.454-12.29q0-.333-.015-.662A10.423 10.423 0 0 0 25 2.405z" /></svg>
 
 	</a>
-	<a class="js-share btn" title=" Reddit" href="https://www.reddit.com/submit?url=https%3a%2f%2fkywk.github.io%2fmoco%2fposts%2fit%2fgit_add-empty-folder%2f&amp;title=Git%3a%20Add%20empty%20folder" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, ' Reddit', 'width=832,height=624,toolbar=0,status=0'); return false">
+	<a class="js-share btn" title=" Reddit" href="https://www.reddit.com/submit?url=https%3a%2f%2fkywk.github.io%2fmoco%2fposts%2ftool%2fmacos_mount-efi-disk%2f&amp;title=macOS%20%e6%8e%9b%e8%bc%89%20EFI%20%e7%a3%81%e5%8d%80%e6%96%b9%e5%bc%8f" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, ' Reddit', 'width=832,height=624,toolbar=0,status=0'); return false">
 		<svg class="share__icon" aria-label="Reddit" role="img" width="32" height="32" viewBox="0 0 512 512"><path fill-rule="evenodd" d="M375 146a32 32 0 1 0-29-46l-65-13c-5-1-9 2-10 6l-22 97c-45 1-85 15-113 36a42 42 0 1 0-45 69l-1 12c0 65 74 117 166 117s166-52 166-117l-1-11a42 42 0 1 0-44-69c-28-21-67-35-111-37l19-86 58 13a32 32 0 0 0 32 29zM190 353c2-1 4 0 5 1 15 11 38 18 61 18s46-6 61-18a7 7 0 0 1 8 10c-18 14-44 21-69 21-25-1-51-7-69-21a6 6 0 0 1 3-11zm23-44a31 31 0 1 1-44-44 31 31 0 0 1 44 44zm130 0a31 31 0 1 0-44-44 31 31 0 0 0 44 44z"/></svg>
 	</a>
-	<a class="js-share btn" title=" Telegram" href="https://t.me/share/url?url=https%3a%2f%2fkywk.github.io%2fmoco%2fposts%2fit%2fgit_add-empty-folder%2f&amp;title=Git%3a%20Add%20empty%20folder" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, ' Telegram', 'width=800,height=600,toolbar=0,status=0'); return false">
+	<a class="js-share btn" title=" Telegram" href="https://t.me/share/url?url=https%3a%2f%2fkywk.github.io%2fmoco%2fposts%2ftool%2fmacos_mount-efi-disk%2f&amp;title=macOS%20%e6%8e%9b%e8%bc%89%20EFI%20%e7%a3%81%e5%8d%80%e6%96%b9%e5%bc%8f" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, ' Telegram', 'width=800,height=600,toolbar=0,status=0'); return false">
 		<svg class="share__icon" aria-label="Telegram" role="img" viewBox="0 0 25 25"><path d="m9.417 15.181-.397 5.584c.568 0 .814-.244 1.109-.537l2.663-2.545 5.518 4.041c1.012.564 1.725.267 1.998-.931l3.622-16.972.001-.001c.321-1.496-.541-2.081-1.527-1.714l-21.29 8.151c-1.453.564-1.431 1.374-.247 1.741l5.443 1.693 12.643-7.911c.595-.394 1.136-.176.691.218z"/></svg>
 
 	</a>
-	<a class="js-share btn" title=" LinkedIn" href="https://www.linkedin.com/shareArticle?mini=true&url=https%3a%2f%2fkywk.github.io%2fmoco%2fposts%2fit%2fgit_add-empty-folder%2f&title=Git%3a%20Add%20empty%20folder" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, ' LinkedIn', 'width=640,height=480,toolbar=0,status=0'); return false">
+	<a class="js-share btn" title=" LinkedIn" href="https://www.linkedin.com/shareArticle?mini=true&url=https%3a%2f%2fkywk.github.io%2fmoco%2fposts%2ftool%2fmacos_mount-efi-disk%2f&title=macOS%20%e6%8e%9b%e8%bc%89%20EFI%20%e7%a3%81%e5%8d%80%e6%96%b9%e5%bc%8f" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, ' LinkedIn', 'width=640,height=480,toolbar=0,status=0'); return false">
 		<svg class="share__icon" aria-label="LinkedIn" role="img" viewBox="0 0 34.48 32"><path d="M29.632,0H2.362A2.336,2.336,0,0,0,0,2.306V29.691A2.337,2.337,0,0,0,2.362,32h27.27A2.342,2.342,0,0,0,32,29.691V2.306A2.34,2.34,0,0,0,29.632,0ZM9.491,27.268H4.744V12H9.491ZM7.119,9.909a2.752,2.752,0,1,1,2.75-2.753A2.753,2.753,0,0,1,7.119,9.909ZM27.268,27.268H22.525V19.842c0-1.772-.033-4.05-2.466-4.05-2.47,0-2.848,1.929-2.848,3.921v7.555H12.468V12h4.553v2.086h.063a4.986,4.986,0,0,1,4.491-2.467c4.806,0,5.694,3.163,5.694,7.275Z"/></svg>
 
 	</a>
-	<a class="js-share btn" title=" Pinterest" href="https://pinterest.com/pin/create/button/?url=https%3a%2f%2fkywk.github.io%2fmoco%2fposts%2fit%2fgit_add-empty-folder%2f&description=Git%3a%20Add%20empty%20folder" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, ' Pocket', 'width=800,height=720,toolbar=0,status=0'); return false">
+	<a class="js-share btn" title=" Pinterest" href="https://pinterest.com/pin/create/button/?url=https%3a%2f%2fkywk.github.io%2fmoco%2fposts%2ftool%2fmacos_mount-efi-disk%2f&description=macOS%20%e6%8e%9b%e8%bc%89%20EFI%20%e7%a3%81%e5%8d%80%e6%96%b9%e5%bc%8f" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href, ' Pocket', 'width=800,height=720,toolbar=0,status=0'); return false">
 		<svg class="share__icon" aria-label="Pinterest" role="img" width="32" height="32" viewBox="0 0 512 512"><path d="m265 65c-104 0-157 75-157 138 0 37 14 71 45 83 5 2 10 0 12-5l3-18c2-6 1-7-2-12-9-11-15-24-15-43 0-56 41-106 108-106 60 0 92 37 92 85 0 64-28 116-70 116-23 0-40-18-34-42 6-27 19-57 19-77 0-18-9-34-30-34-24 0-42 25-42 58 0 20 7 34 7 34l-29 120a249 249 0 0 0 2 86l3-1c2-3 31-37 40-72l16-61c7 15 29 28 53 28 71 0 119-64 119-151 0-66-56-126-140-126z"/></svg>
 	</a>
 </div>
@@ -395,37 +373,37 @@ WHAT THIS FOLDER WORKING FOR
 		<article class="related__item">
 			<div class="feed__meta">
 				
-	<time itemprop="datePublished" class="feed__date" datetime="2021-04-12T15:13:11&#43;08:00">April 12, 2021</time>
+	<time itemprop="datePublished" class="feed__date" datetime="2021-04-06T11:18:48&#43;08:00">April 06, 2021</time>
 			</div>
-			<h3><a class="invert" href="/moco/posts/it/git_check-branch-exists/">Git: check if remote branch exists on a given remote repository</a></h3></article>
+			<h3><a class="invert" href="/moco/posts/tool/macos_make-installer-iso/">製作 macOS 安裝 ISO 檔</a></h3></article>
 		
 		<article class="related__item">
 			<div class="feed__meta">
 				
-	<time itemprop="datePublished" class="feed__date" datetime="2021-05-16T11:45:54&#43;08:00">May 16, 2021</time>
+	<time itemprop="datePublished" class="feed__date" datetime="2021-03-15T15:33:18&#43;08:00">March 15, 2021</time>
 			</div>
-			<h3><a class="invert" href="/moco/posts/tool/hackintosh_macbook-air-2011/">Macbook Air 2011 安裝 Mojava/Catalina</a></h3></article>
+			<h3><a class="invert" href="/moco/posts/tool/macos_shadowsocks/">Setup shadowsocks on macOS</a></h3></article>
 		
 		<article class="related__item">
 			<div class="feed__meta">
 				
-	<time itemprop="datePublished" class="feed__date" datetime="2021-05-14T14:56:41&#43;08:00">May 14, 2021</time>
+	<time itemprop="datePublished" class="feed__date" datetime="2021-02-26T14:53:37&#43;08:00">February 26, 2021</time>
 			</div>
-			<h3><a class="invert" href="/moco/posts/tool/macos_mount-efi-disk/">macOS 掛載 EFI 磁區方式</a></h3></article>
+			<h3><a class="invert" href="/moco/posts/tool/macos_dev-env-2021-feb/">macOS 開發環境建構 2021 Feb</a></h3></article>
 		
 		<article class="related__item">
 			<div class="feed__meta">
 				
-	<time itemprop="datePublished" class="feed__date" datetime="2021-05-07T09:30:26&#43;08:00">May 07, 2021</time>
+	<time itemprop="datePublished" class="feed__date" datetime="2021-02-26T14:05:03&#43;08:00">February 26, 2021</time>
 			</div>
-			<h3><a class="invert" href="/moco/posts/sre/redis_cluster/">建製 Redis Cluster</a></h3></article>
+			<h3><a class="invert" href="/moco/posts/tool/macos_setup-note-2021-feb/">macOS 系統安裝紀錄 2021.Feb</a></h3></article>
 		
 		<article class="related__item">
 			<div class="feed__meta">
 				
-	<time itemprop="datePublished" class="feed__date" datetime="2021-05-06T14:26:31&#43;08:00">May 06, 2021</time>
+	<time itemprop="datePublished" class="feed__date" datetime="2020-12-07T16:48:04&#43;08:00">December 07, 2020</time>
 			</div>
-			<h3><a class="invert" href="/moco/posts/sre/redis_-warning-slove/">Redis 警告訊息排除</a></h3></article>
+			<h3><a class="invert" href="/moco/posts/tool/macos_install-iftop/">macOS 安裝 iftop 失敗與解決方式</a></h3></article>
 		
 	</div>
 </div>
