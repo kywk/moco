@@ -35,7 +35,7 @@
  最近專案中不斷被問起這件事, 為了日後管理維護方便, 案主期待 git 裡面能夠預先建立對應的資料夾樹.
 而 git 設計是無法提交空資料夾, 雖然網路上可以找到一些 hack 的方式可以在 git 裡加入空資料夾, 但可能因不同 git 版本關係, 在 checkout 時無法建立對應資料夾."><meta itemprop="datePublished" content="2021-05-10T15:21:31&#43;08:00" />
 <meta itemprop="dateModified" content="2021-05-10T15:21:31&#43;08:00" />
-<meta itemprop="wordCount" content="171"><meta itemprop="image" content="https://lh3.googleusercontent.com/pw/ACtC-3c1Fcx8ZIVYrXBrmLfZUFhSnpBJqiUgVL36d3S6x_VzJ0a0JzmkF__USqKP6HCuphBVaLiWP5Vf0Qv2l-WzrdNy3h2G_emtP9mNa82Y2FySF8wu42FOSOySVj-7hf-yuabf58RkxPr-Lv8PvX172gAtYA=w800-no?authuser=0">
+<meta itemprop="wordCount" content="172"><meta itemprop="image" content="https://lh3.googleusercontent.com/pw/ACtC-3c1Fcx8ZIVYrXBrmLfZUFhSnpBJqiUgVL36d3S6x_VzJ0a0JzmkF__USqKP6HCuphBVaLiWP5Vf0Qv2l-WzrdNy3h2G_emtP9mNa82Y2FySF8wu42FOSOySVj-7hf-yuabf58RkxPr-Lv8PvX172gAtYA=w800-no?authuser=0">
 <meta itemprop="keywords" content="cli,git," />
 	<link rel="stylesheet" href="/moco/css/bundle.min.css">
 	<link rel="apple-touch-icon" sizes="180x180" href="https://kywk.github.io/icons/apple-touch-icon.png">
@@ -109,7 +109,7 @@
 	"description":"如何提交空資料夾?\n 最近專案中不斷被問起這件事, 為了日後管理維護方便, 案主期待 git 裡面能夠預先建立對應的資料夾樹.\n而 git 設計是無法提交空資料夾, 雖然網路上可以找到一些 hack 的方式可以在 git 裡加入空資料夾, 但可能因不同 git 版本關係, 在 checkout 時無法建立對應資料夾.",
 	"isFamilyFriendly": "true",
 	"image":  ["https://lh3.googleusercontent.com/pw/ACtC-3c1Fcx8ZIVYrXBrmLfZUFhSnpBJqiUgVL36d3S6x_VzJ0a0JzmkF__USqKP6HCuphBVaLiWP5Vf0Qv2l-WzrdNy3h2G_emtP9mNa82Y2FySF8wu42FOSOySVj-7hf-yuabf58RkxPr-Lv8PvX172gAtYA=w800-no?authuser=0"] ,
-	"wordCount" : "171",
+	"wordCount" : "172",
 	"keywords": ["cli","git"],
 	"genre": ["cli","git"],
 	"accountablePerson": {
@@ -254,7 +254,7 @@
     <p>🔄 Updated: 
         <time itemprop="dateModified" datetime="2021-05-10T15:21:31&#43;08:00">May 10, 2021</time>
     </p>
-    <p>🕔 1 min read ∙ 171 words</p></div>
+    <p>🕔 1 min read ∙ 172 words</p></div>
 			
 <nav class="breadcrumb block" aria-label="breadcrumb">
 	<ol class="breadcrumb__list">
@@ -293,13 +293,13 @@ $ vi .gitignore
 <span class="c1"># Except this file</span>
 !.gitignore
 </code></pre></div><p>往後專案開發在該資料夾放任何檔案, commit 時都不會被加入 git 倉儲,
-checkout 時也不會產生衝突或影像.
+checkout 時也不會產生衝突或影響.
 適合當作不同環境會有所不同開發測試資源, 臨時資料夾等.</p>
 <h3 id="gitkeep" itemprop="headline" class="heading">.gitkeep <a class="anchor-link" href="#gitkeep">#</a></h3>
 <p>在資料夾底下新增一個 <code>.gitkeep</code> 的空白檔案,  git 就不會認為是空資料夾了.
 雖然命名很像 Git 的系統檔案, 但其實不是, 它只是個普通檔案.</p>
-<p>這個方式可以保存資料夾, 日後資料夾有檔案增減時, 億會被提交到專案倉儲.
-<em>題外話: 在 gitlab web 上新增資料夾的話, 建立資料夾外也會新增 .gitkeep 空白檔.</em></p>
+<p>這個方式可以保存資料夾, 日後資料夾有檔案增減時, 亦會被提交到專案倉儲.</p>
+<p><em>題外話: 在 gitlab web 上新增資料夾時, gitlab 也是新增 .gitkeep 檔來處理空白資料夾的提交.</em></p>
 <div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell">$ mkdir &lt;NEW_FOLDER&gt;
 $ <span class="nb">cd</span> &lt;NEW_FOLDER&gt;
 $ touch .gitkeep
