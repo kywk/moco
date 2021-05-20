@@ -8,7 +8,17 @@
     <language>zh-tw</language>
     <managingEditor>kywk.id@gmail.com (Moo Cow)</managingEditor>
     <webMaster>kywk.id@gmail.com (Moo Cow)</webMaster>
-    <lastBuildDate>Sun, 16 May 2021 11:45:54 +0800</lastBuildDate><atom:link href="https://kywk.github.io/moco/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 20 May 2021 17:07:15 +0800</lastBuildDate><atom:link href="https://kywk.github.io/moco/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>在 macOS 上安裝 PowerShell</title>
+      <link>https://kywk.github.io/moco/posts/tool/macos_install-powershell/</link>
+      <pubDate>Thu, 20 May 2021 17:07:15 +0800</pubDate>
+      <author>kywk.id@gmail.com (Moo Cow)</author>
+      <guid>https://kywk.github.io/moco/posts/tool/macos_install-powershell/</guid>
+      <description>這篇基本上沒啥技術價值, 只是沒想到自己會有在 macOS 上安裝 PowerShell 的這一天. 純紀錄之&amp;hellip;
+ 專案需求中需編寫些較為複雜的 PowerShell 腳本, 在 Windows 環境下開發了一會有些不習慣, 印象中 PowerShell Open Source 後有發行 macOS/Linux 版.</description>
+    </item>
+    
     <item>
       <title>Macbook Air 2011 安裝 Mojava/Catalina</title>
       <link>https://kywk.github.io/moco/posts/tool/hackintosh_macbook-air-2011/</link>
