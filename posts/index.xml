@@ -8,7 +8,16 @@
     <language>zh-tw</language>
     <managingEditor>kywk.id@gmail.com (Moo Cow)</managingEditor>
     <webMaster>kywk.id@gmail.com (Moo Cow)</webMaster>
-    <lastBuildDate>Thu, 20 May 2021 17:07:15 +0800</lastBuildDate><atom:link href="https://kywk.github.io/moco/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 20 May 2021 17:43:46 +0800</lastBuildDate><atom:link href="https://kywk.github.io/moco/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>macOS (BigSur) 刪除 Mojava/Catalina 映像檔</title>
+      <link>https://kywk.github.io/moco/posts/macos-remove-installer-img/</link>
+      <pubDate>Thu, 20 May 2021 17:43:46 +0800</pubDate>
+      <author>kywk.id@gmail.com (Moo Cow)</author>
+      <guid>https://kywk.github.io/moco/posts/macos-remove-installer-img/</guid>
+      <description>在 Big Sur 下載 Mojava/Catalina Installer, 製作完 USB 開機碟後, 要刪除時卻殺生無法刪除的錯誤訊息:</description>
+    </item>
+    
     <item>
       <title>在 macOS 上安裝 PowerShell</title>
       <link>https://kywk.github.io/moco/posts/tool/macos_install-powershell/</link>

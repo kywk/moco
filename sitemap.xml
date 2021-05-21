@@ -5,7 +5,91 @@
   
   <url>
     <loc>https://kywk.github.io/moco/categories/</loc>
-    <lastmod>2021-05-20T17:07:15+08:00</lastmod>
+    <lastmod>2021-05-20T17:43:46+08:00</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    
+     
+    <priority>0.3</priority>
+    
+    
+  </url>
+  
+  
+  
+  <url>
+    <loc>https://kywk.github.io/moco/tags/macos/</loc>
+    <lastmod>2021-05-20T17:43:46+08:00</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    
+     
+    <priority>0.3</priority>
+    
+    
+  </url>
+  
+  
+  
+  <url>
+    <loc>https://kywk.github.io/moco/categories/macos/</loc>
+    <lastmod>2021-05-20T17:43:46+08:00</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    
+     
+    <priority>0.3</priority>
+    
+    
+  </url>
+  
+  
+  
+  <url>
+    <loc>https://kywk.github.io/moco/posts/macos-remove-installer-img/</loc>
+    <lastmod>2021-05-20T17:43:46+08:00</lastmod>
+    
+    
+    
+    
+    <priority>-1</priority>
+    
+    
+  </url>
+  
+  
+  
+  <url>
+    <loc>https://kywk.github.io/moco/</loc>
+    <lastmod>2021-05-20T17:43:46+08:00</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    
+     
+    <priority>0.3</priority>
+    
+    
+  </url>
+  
+  
+  
+  <url>
+    <loc>https://kywk.github.io/moco/posts/</loc>
+    <lastmod>2021-05-20T17:43:46+08:00</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    
+     
+    <priority>0.3</priority>
+    
+    
+  </url>
+  
+  
+  
+  <url>
+    <loc>https://kywk.github.io/moco/tags/</loc>
+    <lastmod>2021-05-20T17:43:46+08:00</lastmod>
     
     <changefreq>monthly</changefreq>
     
@@ -32,77 +116,7 @@
   
   
   <url>
-    <loc>https://kywk.github.io/moco/categories/macos/</loc>
-    <lastmod>2021-05-20T17:07:15+08:00</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    
-     
-    <priority>0.3</priority>
-    
-    
-  </url>
-  
-  
-  
-  <url>
-    <loc>https://kywk.github.io/moco/tags/macos/</loc>
-    <lastmod>2021-05-20T17:07:15+08:00</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    
-     
-    <priority>0.3</priority>
-    
-    
-  </url>
-  
-  
-  
-  <url>
-    <loc>https://kywk.github.io/moco/</loc>
-    <lastmod>2021-05-20T17:07:15+08:00</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    
-     
-    <priority>0.3</priority>
-    
-    
-  </url>
-  
-  
-  
-  <url>
-    <loc>https://kywk.github.io/moco/posts/</loc>
-    <lastmod>2021-05-20T17:07:15+08:00</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    
-     
-    <priority>0.3</priority>
-    
-    
-  </url>
-  
-  
-  
-  <url>
     <loc>https://kywk.github.io/moco/tags/powershell/</loc>
-    <lastmod>2021-05-20T17:07:15+08:00</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    
-     
-    <priority>0.3</priority>
-    
-    
-  </url>
-  
-  
-  
-  <url>
-    <loc>https://kywk.github.io/moco/tags/</loc>
     <lastmod>2021-05-20T17:07:15+08:00</lastmod>
     
     <changefreq>monthly</changefreq>
